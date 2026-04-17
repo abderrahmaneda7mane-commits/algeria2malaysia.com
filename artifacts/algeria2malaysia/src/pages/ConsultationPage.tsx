@@ -109,6 +109,8 @@ export default function ConsultationPage() {
         EMAILJS_SERVICE_ID,
         EMAILJS_TEMPLATE_ID,
         {
+          to_email:      "algeria2malaysia@gmail.com",
+          reply_to:      form.email,
           full_name:     form.fullName,
           email:         form.email,
           phone:         form.phone,
