@@ -144,7 +144,7 @@ export default function StratfordPage() {
     <div className="min-h-screen bg-gray-50" dir="rtl">
 
       {/* ── Header ── */}
-      <div className={`bg-gradient-to-br ${c.header} text-white pt-12 pb-20 px-4 transition-all duration-500`}>
+      <div className={`bg-gradient-to-br ${c.header} text-white pt-20 pb-20 px-4 transition-all duration-500`}>
         <div className="max-w-4xl mx-auto">
           <button
             onClick={() => go("home", { scrollTo: "institutes" })}
@@ -159,9 +159,6 @@ export default function StratfordPage() {
               <img src="/stratford-logo.png" alt="Stratford" className="max-w-full max-h-full object-contain" />
             </div>
             <div>
-              <div className={`inline-block border rounded-full px-3 py-0.5 text-xs font-semibold mb-2 ${c.badge}`}>
-                معهد معتمد · رقم WE10027
-              </div>
               <h1 className="text-2xl md:text-3xl font-extrabold leading-tight">معهد ستراتفورد الدولي للغات</h1>
               <p className="text-white/70 text-sm mt-1">Stratford International Language Centre</p>
             </div>
