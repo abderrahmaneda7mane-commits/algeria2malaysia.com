@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { ArrowLeft, Search, BookOpen, Clock, Calendar, DollarSign, AlertCircle, ChevronRight, ChevronLeft } from "lucide-react";
 import { useNavigate } from "../hooks/useNavigate";
 import { useCourses, PAGE_SIZE } from "../hooks/useCourses";
+import PriceDisclaimer from "../components/PriceDisclaimer";
 
 const TAYLORS_UNIVERSITY_ID = 3;
 const EUR_RATE = 5;
@@ -95,6 +96,7 @@ export default function TaylorsCoursesPage() {
       </div>
 
       <div className="max-w-5xl mx-auto px-4 pb-16">
+        <PriceDisclaimer />
         {loading && <div className="grid grid-cols-1 md:grid-cols-2 gap-4">{Array.from({ length: PAGE_SIZE }).map((_, i) => <SkeletonCard key={i} />)}</div>}
         {!loading && error && (
           <div className="bg-red-50 border border-red-200 rounded-2xl p-8 text-center">

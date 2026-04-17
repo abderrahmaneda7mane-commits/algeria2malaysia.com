@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { ArrowLeft, CheckCircle, GraduationCap, MapPin, BookOpen, BarChart2 } from "lucide-react";
 import { useNavigate, getNavState } from "../hooks/useNavigate";
+import PriceDisclaimer from "../components/PriceDisclaimer";
 
 const WA_LINK = "https://wa.me/601112200603";
 const GOOGLE_FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSd0wQH2-RL3zDf2BB1UsskwBfIIXsJ8KLxw1lMVD6TEQnWpgA/viewform";
@@ -377,6 +378,7 @@ export default function UniversitiesPage() {
 
       {/* University Sections */}
       <div className="max-w-5xl mx-auto px-4 py-10 space-y-20">
+        <PriceDisclaimer />
         {UNIVERSITIES.map((uni) => {
           const accent = accentMap[uni.accentColor] || accentMap.green;
           return (

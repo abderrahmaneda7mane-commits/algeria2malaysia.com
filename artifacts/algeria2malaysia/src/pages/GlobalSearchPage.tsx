@@ -6,6 +6,7 @@ import {
 } from "lucide-react";
 import { useNavigate } from "../hooks/useNavigate";
 import { supabase } from "../lib/supabase";
+import PriceDisclaimer from "../components/PriceDisclaimer";
 
 const EUR_RATE = 5;
 function toEur(rm: number) { return Math.round(rm / EUR_RATE).toLocaleString(); }
@@ -222,6 +223,7 @@ export default function GlobalSearchPage() {
 
         {!loading && results.length > 0 && (
           <div className="space-y-4">
+            <PriceDisclaimer />
             <p className="text-xs text-gray-400 pt-2 pb-1 pr-1">
               {results.length} نتيجة في {Object.keys(grouped).length} جامعة
             </p>

@@ -4,6 +4,7 @@ import {
   Star, BookOpen, FileText, X, BarChart2, Building2
 } from "lucide-react";
 import { useNavigate } from "../hooks/useNavigate";
+import PriceDisclaimer from "../components/PriceDisclaimer";
 
 function fmtEur(rm: number) { return Math.round(rm / 5).toLocaleString(); }
 const GOOGLE_FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSd0wQH2-RL3zDf2BB1UsskwBfIIXsJ8KLxw1lMVD6TEQnWpgA/viewform";
@@ -431,6 +432,7 @@ export default function CompareUniversitiesPage() {
       </div>
 
       <div className="max-w-5xl mx-auto px-3 sm:px-4 -mt-8 pb-24">
+        <PriceDisclaimer />
 
         {/* ── University header cards — sticky on mobile ── */}
         <div className={`grid gap-2 mb-4`} style={{ gridTemplateColumns: `repeat(${cols}, 1fr)` }}>
