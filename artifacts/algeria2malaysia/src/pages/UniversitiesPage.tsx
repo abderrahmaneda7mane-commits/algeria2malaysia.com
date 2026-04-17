@@ -591,6 +591,16 @@ export default function UniversitiesPage() {
                         <ArrowLeft size={14} className="group-hover:-translate-x-1 transition-transform" />
                       </button>
                     )}
+                    {uni.id === "sunway" && (
+                      <button
+                        onClick={() => go("sunway")}
+                        className="flex-1 bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-3 rounded-full font-bold text-sm transition-all shadow-md flex items-center justify-center gap-2 group"
+                      >
+                        <BookOpen size={16} />
+                        <span>استعرض تخصصات Sunway</span>
+                        <ArrowLeft size={14} className="group-hover:-translate-x-1 transition-transform" />
+                      </button>
+                    )}
                     <button
                       onClick={() => go("uni-apply", { university: uni.name })}
                       className="flex-1 bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-full font-bold text-sm transition-all shadow-md flex items-center justify-center gap-2 group"

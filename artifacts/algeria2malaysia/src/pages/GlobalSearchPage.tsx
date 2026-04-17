@@ -25,6 +25,7 @@ const UNI_META: Record<number, {
   9: { nameAr: "جامعة تكنيكال ماليزيا ملاكا (UTeM)", nameEn: "Universiti Teknikal Malaysia Melaka", location: "دوريان تونغال، ملاكا", logo: "/logos/utem.png", color: "text-rose-700", bg: "bg-rose-50", border: "border-rose-200", page: "utem", uniApplyKey: "UTeM" },
   10: { nameAr: "جامعة UCSI", nameEn: "UCSI University", location: "كوالالمبور", logo: "/logos/ucsi.png", color: "text-pink-700", bg: "bg-pink-50", border: "border-pink-200", page: "ucsi", uniApplyKey: "UCSI University" },
   11: { nameAr: "جامعة سيتي ماليزيا", nameEn: "City University Malaysia", location: "بيتالينغ جايا، سيلانغور", logo: "/logos/cityu.png", color: "text-red-700", bg: "bg-red-50", border: "border-red-200", page: "cityu-courses", uniApplyKey: "City University" },
+  12: { nameAr: "جامعة صنواي", nameEn: "Sunway University", location: "بانغار سيري بيتالينغ، كوالالمبور", logo: "/logos/sunway.png", color: "text-indigo-700", bg: "bg-indigo-50", border: "border-indigo-200", page: "sunway", uniApplyKey: "Sunway University" },
 };
 
 interface Course {

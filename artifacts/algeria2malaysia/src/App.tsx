@@ -16,6 +16,7 @@ import UTMCoursesPage from "./pages/UTMCoursesPage";
 import UTeMCoursesPage from "./pages/UTeMCoursesPage";
 import UCSICoursesPage from "./pages/UCSICoursesPage";
 import CityUCoursesPage from "./pages/CityUCoursesPage";
+import SunwayCoursesPage from "./pages/SunwayCoursesPage";
 import GlobalSearchPage from "./pages/GlobalSearchPage";
 import CompareUniversitiesPage from "./pages/CompareUniversitiesPage";
 import { getNavState, subscribeNav } from "./hooks/useNavigate";
@@ -29,7 +30,7 @@ function App() {
 
   const { page, state } = nav;
 
-  const showNavbar = page === "home" || page === "universities" || page === "upm" || page === "apu" || page === "taylors" || page === "mmu" || page === "unikl" || page === "lincoln" || page === "utp" || page === "utm" || page === "utem" || page === "ucsi" || page === "cityu-courses" || page === "search" || page === "compare";
+  const showNavbar = page === "home" || page === "universities" || page === "upm" || page === "apu" || page === "taylors" || page === "mmu" || page === "unikl" || page === "lincoln" || page === "utp" || page === "utm" || page === "utem" || page === "ucsi" || page === "cityu-courses" || page === "sunway" || page === "search" || page === "compare";
 
   return (
     <div className="min-h-screen bg-white" dir="rtl">
@@ -50,6 +51,7 @@ function App() {
       {page === "utem" && <UTeMCoursesPage />}
       {page === "ucsi" && <UCSICoursesPage />}
       {page === "cityu-courses" && <CityUCoursesPage />}
+      {page === "sunway" && <SunwayCoursesPage />}
       {page === "search" && <GlobalSearchPage />}
       {page === "compare" && <CompareUniversitiesPage />}
     </div>
