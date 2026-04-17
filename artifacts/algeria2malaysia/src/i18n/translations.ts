@@ -31,11 +31,28 @@ export const translations = {
 
   // ─── Stats ────────────────────────────────────────────────
   stats: {
-    unis:     { ar: "جامعة معتمدة",  en: "Partner Universities", fr: "Universités partenaires" },
-    insts:    { ar: "معاهد معتمدة",  en: "Certified Institutes",  fr: "Instituts certifiés" },
-    students: { ar: "طالب سافر",     en: "Students Enrolled",     fr: "Étudiants inscrits" },
-    free:     { ar: "استشارة مجانية", en: "Free Consultation",    fr: "Consultation gratuite" },
-    freeVal:  { ar: "100%",           en: "100%",                  fr: "100%" },
+    unis:       { ar: "جامعة معتمدة",      en: "Partner Universities", fr: "Universités partenaires" },
+    insts:      { ar: "معاهد معتمدة",      en: "Certified Institutes",  fr: "Instituts certifiés" },
+    students:   { ar: "طالب سافر",         en: "Students Enrolled",     fr: "Étudiants inscrits" },
+    free:       { ar: "استشارة مجانية",    en: "Free Consultation",     fr: "Consultation gratuite" },
+    freeVal:    { ar: "100%",              en: "100%",                   fr: "100%" },
+    majors:     { ar: "تخصص وكورس",       en: "Majors & Courses",       fr: "Spécialités & cours" },
+    partners:   { ar: "جامعة شريكة",      en: "Partner University",     fr: "Université partenaire" },
+    certified:  { ar: "معاهد معتمدة",     en: "Certified Institutes",   fr: "Instituts certifiés" },
+    transparent:{ ar: "شفافية بالأسعار",  en: "Price Transparency",     fr: "Transparence des prix" },
+    fast:       { ar: "رد سريع",          en: "Quick Response",         fr: "Réponse rapide" },
+  },
+
+  // ─── About ────────────────────────────────────────────────
+  about: {
+    badge:    { ar: "من نحن؟",                                en: "About Us",                                fr: "À propos" },
+    title:    { ar: "نرافقك نحو دراستك في ماليزيا بكل ثقة", en: "We guide you to study in Malaysia with confidence", fr: "Nous vous guidons pour étudier en Malaisie en toute confiance" },
+    desc:     { ar: "نحن Algeria2Malaysia، جهة متخصصة في توجيه ومرافقة الطلبة الراغبين في الدراسة في ماليزيا.", en: "We are Algeria2Malaysia, specialized in guiding and supporting students who wish to study in Malaysia.", fr: "Nous sommes Algeria2Malaysia, spécialisés dans l'accompagnement des étudiants souhaitant étudier en Malaisie." },
+    p1: { ar: "استشارة مجانية 100% بدون أي التزام", en: "100% free consultation with no obligation", fr: "Consultation 100% gratuite sans aucun engagement" },
+    p2: { ar: "نختار لك أنسب معهد أو جامعة حسب وضعك", en: "We find the best institute or university for your situation", fr: "Nous trouvons le meilleur établissement selon votre situation" },
+    p3: { ar: "نتولى إجراءات التأشيرة والقبول بالكامل", en: "We handle all visa and admission procedures", fr: "Nous gérons toutes les procédures de visa et d'admission" },
+    p4: { ar: "نرافقك حتى وصولك إلى ماليزيا", en: "We accompany you until your arrival in Malaysia", fr: "Nous vous accompagnons jusqu'à votre arrivée en Malaisie" },
+    cta: { ar: "احجز استشارتك المجانية", en: "Book Your Free Consultation", fr: "Réserver votre consultation gratuite" },
   },
 
   // ─── Services section ─────────────────────────────────────

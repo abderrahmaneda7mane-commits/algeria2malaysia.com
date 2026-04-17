@@ -2,6 +2,8 @@ import { useEffect } from "react";
 import { GraduationCap, Globe, DollarSign, Shield, Star, CheckCircle, ArrowLeft, Building2, BookOpen, Users, Award, Phone, MapPin, Wifi, Home, Plane, MessageCircle } from "lucide-react";
 import { useNavigate, getNavState } from "../hooks/useNavigate";
 import InstituteQuiz from "../components/InstituteQuiz";
+import { useLanguage } from "../i18n/LanguageContext";
+import { translations as T } from "../i18n/translations";
 
 const WA_LINK = "https://wa.me/601112200603";
 const GOOGLE_FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSd0wQH2-RL3zDf2BB1UsskwBfIIXsJ8KLxw1lMVD6TEQnWpgA/viewform";
@@ -137,6 +139,7 @@ const UNIVERSITIES = [
 
 export default function HomePage() {
   const { go } = useNavigate();
+  const { t, dir } = useLanguage();
 
   useEffect(() => {
     const { state } = getNavState();
@@ -149,7 +152,7 @@ export default function HomePage() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-white" dir="rtl">
+    <div className="min-h-screen bg-white" dir={dir}>
 
       {/* WhatsApp Floating Button */}
       <a
@@ -191,17 +194,16 @@ export default function HomePage() {
           </div>
 
           <div className="inline-block bg-white/20 backdrop-blur-sm border border-white/30 rounded-full px-5 py-2 text-sm font-medium mb-6">
-            🇩🇿 من الجزائر إلى ماليزيا 🇲🇾
+            {t(T.hero.badge)}
           </div>
 
           <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
-            ابدأ مستقبلك الأكاديمي
-            <span className="block text-green-300 mt-2">في قلب ماليزيا</span>
+            {t(T.hero.title1)}
+            <span className="block text-green-300 mt-2">{t(T.hero.title3)}</span>
           </h1>
 
           <p className="text-lg md:text-xl text-green-100 mb-10 max-w-2xl mx-auto leading-relaxed">
-            نساعد الطلاب الجزائريين على الدراسة في أفضل المعاهد والجامعات الماليزية.
-            استشارة مجانية — نرافقك حتى تطأ أرض ماليزيا.
+            {t(T.hero.subtitle)}
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -209,23 +211,22 @@ export default function HomePage() {
               onClick={() => go("apply")}
               className="bg-white text-green-800 px-8 py-4 rounded-full font-bold text-lg hover:bg-green-50 transition-all shadow-lg hover:shadow-xl flex items-center justify-center gap-2 group"
             >
-              <span>ابدأ رحلتك الآن</span>
-              <ArrowLeft size={20} className="group-hover:-translate-x-1 transition-transform" />
+              <span>{t(T.hero.cta1)}</span>
             </button>
             <a
               href="#about"
               className="border-2 border-white/50 text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-white/10 transition-all"
             >
-              اعرف أكثر
+              {t(T.hero.cta2)}
             </a>
           </div>
 
           <div className="mt-14 max-w-2xl mx-auto">
             <div className="grid grid-cols-3 gap-3 mb-3">
               {[
-                { num: "2000+", label: "تخصص وكورس", icon: "📚" },
-                { num: "12+", label: "جامعة شريكة", icon: "🎓" },
-                { num: "4", label: "معاهد معتمدة", icon: "🏫" },
+                { num: "2000+", label: t(T.stats.majors), icon: "📚" },
+                { num: "12+",   label: t(T.stats.partners), icon: "🎓" },
+                { num: "4",     label: t(T.stats.certified), icon: "🏫" },
               ].map((stat) => (
                 <div key={stat.label} className="text-center bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl py-4 px-2">
                   <div className="text-xl mb-1">{stat.icon}</div>
@@ -236,8 +237,8 @@ export default function HomePage() {
             </div>
             <div className="grid grid-cols-2 gap-3">
               {[
-                { num: "100%", label: "شفافية بالأسعار", icon: "✅" },
-                { num: "24h", label: "رد سريع", icon: "⚡" },
+                { num: "100%", label: t(T.stats.transparent), icon: "✅" },
+                { num: "24h",  label: t(T.stats.fast), icon: "⚡" },
               ].map((stat) => (
                 <div key={stat.label} className="text-center bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl py-4 px-2">
                   <div className="text-xl mb-1">{stat.icon}</div>
@@ -261,20 +262,19 @@ export default function HomePage() {
         <div className="max-w-6xl mx-auto px-4">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
-              <div className="inline-block bg-green-100 text-green-700 rounded-full px-4 py-1 text-sm font-semibold mb-4">من نحن؟</div>
+              <div className="inline-block bg-green-100 text-green-700 rounded-full px-4 py-1 text-sm font-semibold mb-4">{t(T.about.badge)}</div>
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6 leading-tight">
-                نرافقك نحو دراستك في ماليزيا بكل ثقة
+                {t(T.about.title)}
               </h2>
               <p className="text-gray-600 text-lg leading-relaxed mb-6">
-                نحن Algeria2Malaysia، جهة متخصصة في توجيه ومرافقة الطلبة الراغبين في الدراسة في ماليزيا.
-                نعمل من خلال شبكة شركائنا ونتعاون مع جهات تعليمية تشمل الجامعات ومعاهد اللغة الإنجليزية، لنساعدك في اختيار الأنسب لك وتسهيل إجراءات التسجيل.
+                {t(T.about.desc)}
               </p>
               <div className="space-y-4 mb-8">
                 {[
-                  { icon: <CheckCircle className="text-green-600 flex-shrink-0" size={20} />, text: "استشارة مجانية 100% بدون أي التزام" },
-                  { icon: <CheckCircle className="text-green-600 flex-shrink-0" size={20} />, text: "نختار لك أنسب معهد أو جامعة حسب وضعك" },
-                  { icon: <CheckCircle className="text-green-600 flex-shrink-0" size={20} />, text: "نتولى إجراءات التأشيرة والقبول بالكامل" },
-                  { icon: <CheckCircle className="text-green-600 flex-shrink-0" size={20} />, text: "نرافقك حتى وصولك إلى ماليزيا" },
+                  { icon: <CheckCircle className="text-green-600 flex-shrink-0" size={20} />, text: t(T.about.p1) },
+                  { icon: <CheckCircle className="text-green-600 flex-shrink-0" size={20} />, text: t(T.about.p2) },
+                  { icon: <CheckCircle className="text-green-600 flex-shrink-0" size={20} />, text: t(T.about.p3) },
+                  { icon: <CheckCircle className="text-green-600 flex-shrink-0" size={20} />, text: t(T.about.p4) },
                 ].map((item, i) => (
                   <div key={i} className="flex items-center gap-3">
                     {item.icon}
@@ -286,7 +286,7 @@ export default function HomePage() {
                 onClick={() => go("consultation")}
                 className="bg-green-700 hover:bg-green-800 text-white px-8 py-4 rounded-full font-bold text-lg transition-all shadow-lg hover:shadow-xl flex items-center gap-2 group w-fit"
               >
-                <span>احجز استشارتك المجانية</span>
+                <span>{t(T.about.cta)}</span>
                 <ArrowLeft size={18} className="group-hover:-translate-x-1 transition-transform" />
               </button>
             </div>
