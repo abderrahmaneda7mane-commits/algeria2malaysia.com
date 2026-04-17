@@ -282,7 +282,7 @@ export default function HomePage() {
                 ))}
               </div>
               <button
-                onClick={() => go("apply")}
+                onClick={() => go("consultation")}
                 className="bg-green-700 hover:bg-green-800 text-white px-8 py-4 rounded-full font-bold text-lg transition-all shadow-lg hover:shadow-xl flex items-center gap-2 group w-fit"
               >
                 <span>احجز استشارتك المجانية</span>
