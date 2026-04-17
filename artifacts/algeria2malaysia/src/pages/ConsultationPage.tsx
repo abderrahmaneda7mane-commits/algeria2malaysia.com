@@ -147,9 +147,6 @@ export default function ConsultationPage() {
                 <ArrowRight size={18} className="flex-shrink-0 opacity-70 group-hover:opacity-100 transition-opacity" />
               </button>
 
-              <p className="text-center text-gray-400 text-xs mt-3">
-                ستُفتح صفحة الحجز داخل الموقع مع إمكانية الرجوع بسهولة
-              </p>
             </div>
           </div>
 
