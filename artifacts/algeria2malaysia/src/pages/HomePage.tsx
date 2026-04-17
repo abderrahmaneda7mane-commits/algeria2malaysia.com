@@ -225,7 +225,7 @@ export default function HomePage() {
               {[
                 { num: "2000+", label: "تخصص وكورس", icon: "📚" },
                 { num: "12+", label: "جامعة شريكة", icon: "🎓" },
-                { num: "3+", label: "معاهد معتمدة", icon: "🏫" },
+                { num: "4", label: "معاهد معتمدة", icon: "🏫" },
               ].map((stat) => (
                 <div key={stat.label} className="text-center bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl py-4 px-2">
                   <div className="text-xl mb-1">{stat.icon}</div>
