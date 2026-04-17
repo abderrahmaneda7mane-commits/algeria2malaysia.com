@@ -1,10 +1,12 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { navigate } from "../hooks/useNavigate";
 import { ArrowRight, Clock, CheckCircle, Calendar } from "lucide-react";
 
 const ZCAL_URL = "https://zcal.co/i/DNzrLfY_";
 
 export default function ConsultationPage() {
+  const [showBooking, setShowBooking] = useState(false);
+
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, []);
@@ -17,7 +19,36 @@ export default function ConsultationPage() {
   ];
 
   return (
-    <div
+    <>
+      {/* ── Booking overlay with back button ── */}
+      {showBooking && (
+        <div className="fixed inset-0 z-[9999] flex flex-col bg-white" dir="rtl">
+          {/* Back bar */}
+          <div className="flex items-center gap-3 bg-white border-b border-gray-200 px-4 py-3 shadow-sm flex-shrink-0">
+            <button
+              onClick={() => setShowBooking(false)}
+              className="flex items-center gap-2 bg-green-600 hover:bg-green-700 active:bg-green-800 text-white font-bold text-sm rounded-xl px-5 py-2.5 transition-all shadow-sm"
+            >
+              <ArrowRight size={16} />
+              رجوع
+            </button>
+            <div className="flex items-center gap-2 text-gray-600 text-sm font-medium">
+              <Calendar size={15} className="text-green-600" />
+              استشارة مجانية — 30 دقيقة
+            </div>
+          </div>
+
+          {/* zcal page */}
+          <iframe
+            src={ZCAL_URL}
+            title="حجز استشارة مجانية"
+            className="flex-1 w-full border-none"
+          />
+        </div>
+      )}
+
+      {/* ── Main page ── */}
+      <div
         className="min-h-screen"
         style={{ background: "linear-gradient(160deg, #f0faf4 0%, #ffffff 50%, #f5f9ff 100%)" }}
         dir="rtl"
@@ -68,7 +99,6 @@ export default function ConsultationPage() {
         {/* Booking card */}
         <div className="max-w-3xl mx-auto px-4 pb-12">
           <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
-
             <div className="border-b border-gray-100 px-6 py-4 text-center">
               <p className="text-gray-800 font-bold text-base">اختر الوقت المناسب لك</p>
               <p className="text-gray-400 text-sm mt-0.5">سيتواصل معك أحد مستشارينا في الموعد المحدد</p>
@@ -76,7 +106,7 @@ export default function ConsultationPage() {
 
             <div className="p-6">
               <button
-                onClick={() => window.open(ZCAL_URL, "_blank")}
+                onClick={() => setShowBooking(true)}
                 className="group flex items-center justify-center gap-3 w-full bg-gradient-to-l from-green-600 to-green-700 hover:from-green-500 hover:to-green-600 text-white font-bold text-lg rounded-2xl py-5 px-6 shadow-lg hover:shadow-xl transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0"
               >
                 <Calendar size={22} className="flex-shrink-0" />
@@ -95,5 +125,6 @@ export default function ConsultationPage() {
           </div>
         </div>
       </div>
+    </>
   );
 }
