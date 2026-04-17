@@ -312,19 +312,12 @@ export default function StratfordPage() {
         <div className="bg-gradient-to-r from-green-700 to-green-600 rounded-2xl p-6 mb-8 text-white text-center">
           <h3 className="text-lg font-extrabold mb-2">جاهز للتسجيل في ستراتفورد؟</h3>
           <p className="text-green-100 text-sm mb-5">تواصل معنا وسنساعدك في إتمام عملية القبول والتأشيرة خطوة بخطوة</p>
-          <div className="flex flex-col sm:flex-row gap-3 justify-center">
-            <button
-              onClick={() => go("consultation")}
-              className="flex items-center justify-center gap-2 bg-white text-green-700 font-bold text-sm rounded-xl px-6 py-3 hover:bg-green-50 transition-all shadow-md"
-            >
-              <Calendar size={16} />
-              احجز استشارة مجانية
-            </button>
+          <div className="flex justify-center">
             <a
               href="https://wa.me/601112200603"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center justify-center gap-2 bg-green-500 hover:bg-green-400 text-white font-bold text-sm rounded-xl px-6 py-3 transition-all"
+              className="flex items-center justify-center gap-2 bg-green-500 hover:bg-green-400 text-white font-bold text-sm rounded-xl px-8 py-3 transition-all"
             >
               <ExternalLink size={16} />
               تواصل عبر واتساب
