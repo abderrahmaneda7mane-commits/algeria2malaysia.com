@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { ArrowLeft, MapPin, Phone, Mail, Globe, Clock, CheckCircle, Calendar, ExternalLink } from "lucide-react";
+import { ArrowLeft, MapPin, Clock, CheckCircle, Calendar, ExternalLink } from "lucide-react";
 import { useNavigate } from "../hooks/useNavigate";
 
 const EUR = (rm: number) => Math.round(rm / 5).toLocaleString();
@@ -305,24 +305,6 @@ export default function StratfordPage() {
           </div>
           <div className="px-6 pb-4">
             <p className="text-xs text-gray-400">* يُودَع 50 RM كضمان بطاقة الوصول (قابل للاسترداد)</p>
-          </div>
-        </div>
-
-        {/* ── Contact & Location ── */}
-        <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 mb-6">
-          <h3 className="font-bold text-gray-800 text-sm mb-4">معلومات التواصل والموقع</h3>
-          <div className="space-y-3">
-            {[
-              { icon: <MapPin size={16} className="text-green-600" />, text: "Suite 17-01, 17-03, 17-06, Level 17, G Tower, 199 Jalan Tun Razak, 50400 Kuala Lumpur" },
-              { icon: <Phone size={16} className="text-green-600" />, text: "+60 3-50333118" },
-              { icon: <Mail size={16} className="text-green-600" />, text: "info@stratford.edu.my" },
-              { icon: <Globe size={16} className="text-green-600" />, text: "www.stratford.edu.my" },
-            ].map((item, i) => (
-              <div key={i} className="flex items-start gap-3 text-sm text-gray-700">
-                <span className="flex-shrink-0 mt-0.5">{item.icon}</span>
-                <span>{item.text}</span>
-              </div>
-            ))}
           </div>
         </div>
 
