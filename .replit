@@ -30,6 +30,7 @@ timeoutMs = 20000
 [userenv.shared]
 VITE_SUPABASE_URL = "https://fiejakshypupxadusvrc.supabase.co"
 VITE_SUPABASE_ANON_KEY = "sb_publishable_-Na0n2NGrRfv1OmNvKOfoA_8sYZmaaa"
+GMAIL_USER = "algeria2malaysia@gmail.com"
 
 [nix]
 channel = "stable-25_05"
