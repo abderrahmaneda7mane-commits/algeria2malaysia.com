@@ -122,22 +122,22 @@ const VISA = [
 
 const colorMap: Record<string, { header: string; tabActive: string; row: string; accent: string }> = {
   red: {
-    header: "from-red-900 via-red-800 to-red-700",
-    tabActive: "bg-red-700 text-white border-red-700",
-    row: "bg-red-50",
-    accent: "text-red-700",
+    header: "from-[#5a1020] via-[#7a1a2e] to-[#952236]",
+    tabActive: "bg-[#7a1a2e] text-white border-[#7a1a2e]",
+    row: "bg-rose-50",
+    accent: "text-[#7a1a2e]",
   },
   blue: {
-    header: "from-blue-900 via-blue-800 to-blue-700",
-    tabActive: "bg-blue-700 text-white border-blue-700",
-    row: "bg-blue-50",
-    accent: "text-blue-700",
+    header: "from-slate-900 via-slate-800 to-slate-700",
+    tabActive: "bg-slate-700 text-white border-slate-700",
+    row: "bg-slate-50",
+    accent: "text-slate-700",
   },
   amber: {
-    header: "from-amber-900 via-amber-800 to-amber-700",
-    tabActive: "bg-amber-700 text-white border-amber-700",
+    header: "from-stone-800 via-stone-700 to-amber-800",
+    tabActive: "bg-stone-700 text-white border-stone-700",
     row: "bg-amber-50",
-    accent: "text-amber-700",
+    accent: "text-stone-700",
   },
 };
 
@@ -291,7 +291,7 @@ export default function BigBenPage() {
                         <td className="py-3 px-4 text-gray-400 line-through border-b border-gray-50">
                           {RM(p.standard)} RM
                         </td>
-                        <td className="py-3 px-4 font-bold text-red-700 border-b border-gray-50">
+                        <td className="py-3 px-4 font-bold text-[#7a1a2e] border-b border-gray-50">
                           {RM(p.special)} RM
                         </td>
                         <td className="py-3 px-4 text-gray-500 border-b border-gray-50">
@@ -326,7 +326,7 @@ export default function BigBenPage() {
                           {item.label}
                           {item.note && <span className="block text-xs text-gray-400 mt-0.5">{item.note}</span>}
                         </td>
-                        <td className="py-3 px-4 font-bold text-blue-700 border-b border-gray-50">
+                        <td className="py-3 px-4 font-bold text-slate-700 border-b border-gray-50">
                           {RM(item.rm)} RM
                         </td>
                         <td className="py-3 px-4 text-gray-500 border-b border-gray-50">
@@ -347,7 +347,7 @@ export default function BigBenPage() {
               <div className="grid md:grid-cols-2 gap-4">
                 {/* Physical */}
                 <div>
-                  <div className="bg-amber-700 text-white text-center text-sm font-bold py-2.5 rounded-t-xl">حضوري (Physical)</div>
+                  <div className="bg-stone-700 text-white text-center text-sm font-bold py-2.5 rounded-t-xl">حضوري (Physical)</div>
                   <div className="rounded-b-xl border border-amber-100 overflow-hidden">
                     <table className="w-full text-sm">
                       <thead>
@@ -360,7 +360,7 @@ export default function BigBenPage() {
                         {prog.vipPhysical.map((item, i) => (
                           <tr key={i} className={i % 2 === 0 ? "bg-white" : "bg-amber-50/40"}>
                             <td className="py-2.5 px-3 text-gray-800 border-b border-gray-50">{item.range}</td>
-                            <td className="py-2.5 px-3 font-bold text-amber-700 border-b border-gray-50">{RM(item.rate)} RM</td>
+                            <td className="py-2.5 px-3 font-bold text-stone-700 border-b border-gray-50">{RM(item.rate)} RM</td>
                           </tr>
                         ))}
                       </tbody>
@@ -418,7 +418,7 @@ export default function BigBenPage() {
         )}
 
         {/* ── CTA ── */}
-        <div className="bg-gradient-to-r from-red-800 to-red-700 rounded-2xl p-6 mb-8 text-white text-center">
+        <div className="bg-gradient-to-r from-[#5a1020] to-[#7a1a2e] rounded-2xl p-6 mb-8 text-white text-center">
           <h3 className="text-lg font-extrabold mb-2">جاهز للتسجيل في بيغ بان؟</h3>
           <p className="text-red-100 text-sm mb-5">تواصل معنا وسنساعدك في إتمام عملية القبول والتأشيرة خطوة بخطوة</p>
           <div className="flex justify-center">
