@@ -4,6 +4,8 @@ import { INSTITUTES, ACCOMMODATION_OPTIONS, suggestInstitutes, GOOGLE_FORM_LINKS
 import type { Goal, RoomType } from "../data/institutes";
 import { useNavigate } from "../hooks/useNavigate";
 import InstituteQuiz from "../components/InstituteQuiz";
+import { useLanguage } from "../i18n/LanguageContext";
+import { translations as T } from "../i18n/translations";
 
 type Step = "type" | "institute-quiz" | "goal" | "budget" | "suggestion" | "accommodation" | "intake" | "redirect" | "university-redirect";
 
@@ -86,6 +88,7 @@ function Card({
 
 export default function ApplyPage({ initialType }: { initialType?: "institute" | "university" }) {
   const { go } = useNavigate();
+  const { t, dir } = useLanguage();
   const [form, setForm] = useState<FormState>({ ...initialState, type: initialType || null });
   const [step, setStep] = useState<Step>(initialType === "university" ? "university-redirect" : "type");
 
@@ -115,10 +118,10 @@ export default function ApplyPage({ initialType }: { initialType?: "institute" |
 
   if (step === "type") {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-green-900 via-green-800 to-green-700 flex items-center justify-center py-10 px-4" dir="rtl">
+      <div className="min-h-screen bg-gradient-to-br from-green-900 via-green-800 to-green-700 flex items-center justify-center py-10 px-4" dir={dir}>
         <div className="w-full max-w-lg">
           <button onClick={() => go("home")} className="flex items-center gap-2 text-green-200 hover:text-white text-sm mb-6 transition-colors">
-            <ArrowRight size={16} /> الرئيسية
+            <ArrowRight size={16} /> {t(T.apply.back)}
           </button>
 
           <div className="bg-white rounded-3xl shadow-2xl overflow-hidden">
@@ -126,8 +129,8 @@ export default function ApplyPage({ initialType }: { initialType?: "institute" |
               <div className="inline-flex items-center gap-2 bg-white/20 rounded-full px-4 py-1.5 mb-3">
                 <span className="text-white text-xs font-medium">Algeria2Malaysia</span>
               </div>
-              <h1 className="text-2xl font-bold text-white mb-1">ابدأ رحلتك التعليمية</h1>
-              <p className="text-green-100 text-sm">اختر المسار الذي تريده في ماليزيا</p>
+              <h1 className="text-2xl font-bold text-white mb-1">{t(T.apply.title)}</h1>
+              <p className="text-green-100 text-sm">{t(T.apply.subtitle)}</p>
             </div>
 
             <div className="px-4 sm:px-7 py-5 sm:py-7 flex flex-col gap-3 sm:gap-4">
@@ -141,9 +144,9 @@ export default function ApplyPage({ initialType }: { initialType?: "institute" |
                     <BookOpen size={22} className="text-green-600" />
                   </div>
                   <div className="flex-1 min-w-0">
-                    <div className="font-extrabold text-gray-900 text-sm sm:text-base leading-snug">معهد اللغة الإنجليزية</div>
-                    <div className="text-gray-500 text-xs sm:text-sm mt-0.5 leading-snug">IELTS · إنجليزي عام · أعمال · أطفال</div>
-                    <div className="text-green-600 text-xs font-semibold mt-1">✦ نساعدك تختار الأنسب لك</div>
+                    <div className="font-extrabold text-gray-900 text-sm sm:text-base leading-snug">{t(T.apply.instLabel)}</div>
+                    <div className="text-gray-500 text-xs sm:text-sm mt-0.5 leading-snug">{t(T.apply.instSub)}</div>
+                    <div className="text-green-600 text-xs font-semibold mt-1">{t(T.apply.instHint)}</div>
                   </div>
                   <ArrowLeft size={16} className="text-gray-300 group-hover:text-green-500 group-hover:-translate-x-1 transition-all flex-shrink-0" />
                 </div>
@@ -159,16 +162,16 @@ export default function ApplyPage({ initialType }: { initialType?: "institute" |
                     <GraduationCap size={22} className="text-blue-600" />
                   </div>
                   <div className="flex-1 min-w-0">
-                    <div className="font-extrabold text-gray-900 text-sm sm:text-base leading-snug">القبول الجامعي</div>
-                    <div className="text-gray-500 text-xs sm:text-sm mt-0.5 leading-snug">بكالوريوس · ماستر · دكتوراه</div>
-                    <div className="text-blue-600 text-xs font-semibold mt-1">✦ تعبئة نموذج القبول الرسمي</div>
+                    <div className="font-extrabold text-gray-900 text-sm sm:text-base leading-snug">{t(T.apply.uniLabel)}</div>
+                    <div className="text-gray-500 text-xs sm:text-sm mt-0.5 leading-snug">{t(T.apply.uniSub)}</div>
+                    <div className="text-blue-600 text-xs font-semibold mt-1">{t(T.apply.uniHint)}</div>
                   </div>
                   <ArrowLeft size={16} className="text-gray-300 group-hover:text-blue-500 group-hover:-translate-x-1 transition-all flex-shrink-0" />
                 </div>
               </button>
 
               <p className="text-center text-xs text-gray-400 pt-1">
-                كلا المسارين مجانيان — بدون رسوم استشارة
+                {t(T.apply.free)}
               </p>
             </div>
           </div>
@@ -243,7 +246,7 @@ export default function ApplyPage({ initialType }: { initialType?: "institute" |
               {/* Info box */}
               <div className="bg-green-50 border border-green-200 rounded-2xl p-4 mb-6">
                 <p className="text-green-800 text-sm font-medium text-center">
-                  🎓 أكثر من 2,000 تخصص في 11 جامعة ماليزية معتمدة
+                  🎓 أكثر من 2,000 تخصص في 12 جامعة ماليزية معتمدة
                 </p>
               </div>
 

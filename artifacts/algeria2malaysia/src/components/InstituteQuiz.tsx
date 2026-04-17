@@ -1,6 +1,9 @@
 import { useState } from "react";
 import { ArrowLeft, RotateCcw, CheckCircle, ChevronLeft, Sparkles, Info } from "lucide-react";
 import { useNavigate } from "../hooks/useNavigate";
+import { useLanguage } from "../i18n/LanguageContext";
+import { translations as T } from "../i18n/translations";
+import type { Lang } from "../i18n/translations";
 
 type Goal     = "general" | "ielts" | "business" | "kids";
 type Duration = "short" | "mid" | "long";
@@ -290,55 +293,53 @@ function buildRecommendations(a: Answers): ScoreEntry[] {
   return results.filter(e => e.score >= 60).sort((a, b) => b.score - a.score).slice(0, 3);
 }
 
-// ─── Answer labels (for summary bar) ──────────────────────
-const GOAL_LABELS: Record<Goal, string>     = { general: "إنجليزية عامة", ielts: "IELTS", business: "أعمال", kids: "أطفال/ناشئون" };
-const DUR_LABELS:  Record<Duration, string> = { short: "1–3 أشهر", mid: "4–6 أشهر", long: "7+ أشهر" };
-const BUD_LABELS:  Record<Budget, string>   = { low: "< 10,000 RM", mid: "10–25,000 RM", high: "> 25,000 RM" };
+// ─── Build translated steps ─────────────────────────────────
+type TFn = (obj: Record<Lang, string>) => string;
 
-// ─── Questions ─────────────────────────────────────────────
-const STEPS = [
-  {
-    key: "goal",
-    q: "ما هدفك الأساسي من الدراسة؟",
-    sub: "اختر ما يصف هدفك بدقة",
-    options: [
-      { value: "general",  label: "تحسين الإنجليزية العامة",  icon: "🗣️", desc: "بناء مهارات التواصل والطلاقة" },
-      { value: "ielts",    label: "التحضير لاختبار IELTS",    icon: "📋", desc: "الحصول على درجة مرتفعة للجامعة أو الهجرة" },
-      { value: "business", label: "إنجليزية الأعمال",          icon: "💼", desc: "للبيئات المهنية والشركات" },
-      { value: "kids",     label: "برامج الأطفال والناشئين",   icon: "🎒", desc: "من 7 إلى 17 سنة" },
-    ],
-  },
-  {
-    key: "duration",
-    q: "كم مدة الدراسة المتوقعة؟",
-    sub: "ملاحظة: 4 أشهر فأكثر تستلزم تأشيرة طالب",
-    options: [
-      { value: "short", label: "1 إلى 3 أشهر",  icon: "⚡", desc: "تأشيرة سياحية تكفي — لا تأشيرة طالب" },
-      { value: "mid",   label: "4 إلى 6 أشهر",  icon: "📅", desc: "تأشيرة طالب ضرورية — نتولى إجراءاتها" },
-      { value: "long",  label: "7 أشهر فأكثر",  icon: "🗓️", desc: "إقامة طلابية كاملة — تأشيرة طالب" },
-    ],
-  },
-  {
-    key: "budget",
-    q: "ما ميزانيتك التقريبية للدراسة؟",
-    sub: "رسوم التسجيل فقط — بدون احتساب السكن والمعيشة",
-    options: [
-      { value: "low",  label: "أقل من 10,000 RM",    icon: "💰", desc: "≈ أقل من 2,000 €" },
-      { value: "mid",  label: "10,000 – 25,000 RM",  icon: "💳", desc: "≈ 2,000 – 5,000 €" },
-      { value: "high", label: "أكثر من 25,000 RM",   icon: "💎", desc: "≈ أكثر من 5,000 €" },
-    ],
-  },
-];
+function buildSteps(t: TFn) {
+  return [
+    {
+      key: "goal",
+      q: t(T.quiz.q1.q), sub: t(T.quiz.q1.sub),
+      options: [
+        { value: "general",  label: t(T.quiz.q1.general),  icon: "🗣️", desc: t(T.quiz.q1.generalD) },
+        { value: "ielts",    label: t(T.quiz.q1.ielts),    icon: "📋", desc: t(T.quiz.q1.ieltsD) },
+        { value: "business", label: t(T.quiz.q1.business), icon: "💼", desc: t(T.quiz.q1.businessD) },
+        { value: "kids",     label: t(T.quiz.q1.kids),     icon: "🎒", desc: t(T.quiz.q1.kidsD) },
+      ],
+    },
+    {
+      key: "duration",
+      q: t(T.quiz.q2.q), sub: t(T.quiz.q2.sub),
+      options: [
+        { value: "short", label: t(T.quiz.q2.short), icon: "⚡", desc: t(T.quiz.q2.shortD) },
+        { value: "mid",   label: t(T.quiz.q2.mid),   icon: "📅", desc: t(T.quiz.q2.midD) },
+        { value: "long",  label: t(T.quiz.q2.long),  icon: "🗓️", desc: t(T.quiz.q2.longD) },
+      ],
+    },
+    {
+      key: "budget",
+      q: t(T.quiz.q3.q), sub: t(T.quiz.q3.sub),
+      options: [
+        { value: "low",  label: t(T.quiz.q3.low),  icon: "💰", desc: t(T.quiz.q3.lowD) },
+        { value: "mid",  label: t(T.quiz.q3.mid),  icon: "💳", desc: t(T.quiz.q3.midD) },
+        { value: "high", label: t(T.quiz.q3.high), icon: "💎", desc: t(T.quiz.q3.highD) },
+      ],
+    },
+  ];
+}
 
 // ─── Props ─────────────────────────────────────────────────
 interface Props { }
 
 export default function InstituteQuiz(_props: Props = {}) {
   const { go } = useNavigate();
+  const { t, dir } = useLanguage();
   const [step, setStep]       = useState(0);
   const [answers, setAnswers] = useState<Answers>({});
   const [done, setDone]       = useState(false);
 
+  const STEPS = buildSteps(t);
   const currentStep = STEPS[step];
 
   function pick(value: string) {
@@ -366,17 +367,17 @@ export default function InstituteQuiz(_props: Props = {}) {
           <div>
             <div className="flex items-center gap-2 mb-1">
               <Sparkles size={16} className="text-green-600" />
-              <h3 className="font-extrabold text-gray-900 text-lg">المعاهد الأنسب لك</h3>
+              <h3 className="font-extrabold text-gray-900 text-lg">{t(T.quiz.bestMatch)}</h3>
             </div>
             {/* Selections summary */}
             <div className="flex flex-wrap gap-1.5 mt-1">
-              {answers.goal     && <span className="bg-green-100 text-green-800 text-xs font-semibold px-2.5 py-0.5 rounded-full">{GOAL_LABELS[answers.goal]}</span>}
-              {answers.duration && <span className="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded-full">{DUR_LABELS[answers.duration]}</span>}
-              {answers.budget   && <span className="bg-amber-100 text-amber-800 text-xs font-semibold px-2.5 py-0.5 rounded-full">{BUD_LABELS[answers.budget]}</span>}
+              {answers.goal     && <span className="bg-green-100 text-green-800 text-xs font-semibold px-2.5 py-0.5 rounded-full">{STEPS[0].options.find(o => o.value === answers.goal)?.label}</span>}
+              {answers.duration && <span className="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded-full">{STEPS[1].options.find(o => o.value === answers.duration)?.label}</span>}
+              {answers.budget   && <span className="bg-amber-100 text-amber-800 text-xs font-semibold px-2.5 py-0.5 rounded-full">{STEPS[2].options.find(o => o.value === answers.budget)?.label}</span>}
             </div>
           </div>
           <button onClick={reset} className="flex items-center gap-1.5 text-xs text-gray-400 hover:text-gray-600 border border-gray-200 rounded-lg px-3 py-1.5 transition-all hover:border-gray-300 flex-shrink-0">
-            <RotateCcw size={12} /> تغيير
+            <RotateCcw size={12} /> {t(T.quiz.change)}
           </button>
         </div>
 
@@ -398,8 +399,8 @@ export default function InstituteQuiz(_props: Props = {}) {
                 </div>
                 <div className="text-right flex-shrink-0">
                   {i === 0
-                    ? <span className="bg-green-500 text-white text-xs font-bold px-2.5 py-1 rounded-full">الأنسب ✓</span>
-                    : <span className="bg-gray-100 text-gray-600 text-xs font-semibold px-2.5 py-1 rounded-full">بديل جيد</span>
+                    ? <span className="bg-green-500 text-white text-xs font-bold px-2.5 py-1 rounded-full">{t(T.quiz.best)}</span>
+                    : <span className="bg-gray-100 text-gray-600 text-xs font-semibold px-2.5 py-1 rounded-full">{t(T.quiz.alt)}</span>
                   }
                 </div>
               </div>
@@ -414,7 +415,7 @@ export default function InstituteQuiz(_props: Props = {}) {
                       style={{ width: `${rec.score}%` }}
                     />
                   </div>
-                  <span className={`text-xs font-bold flex-shrink-0 ${i === 0 ? "text-green-600" : "text-blue-600"}`}>توافق {rec.score}%</span>
+                  <span className={`text-xs font-bold flex-shrink-0 ${i === 0 ? "text-green-600" : "text-blue-600"}`}>{t(T.quiz.match)} {rec.score}%</span>
                 </div>
 
                 {/* Reason */}
@@ -437,7 +438,7 @@ export default function InstituteQuiz(_props: Props = {}) {
                     onClick={() => go(meta.page as any)}
                     className={`flex-1 ${meta.btnColor} text-white text-xs font-bold rounded-xl px-3 py-2.5 transition-all flex items-center gap-1 justify-center`}
                   >
-                    عرض الأسعار والبرامج
+                    {t(T.quiz.details)}
                     <ChevronLeft size={13} />
                   </button>
                   <a
@@ -446,7 +447,7 @@ export default function InstituteQuiz(_props: Props = {}) {
                     rel="noopener noreferrer"
                     className="bg-[#25d366] hover:bg-[#1da851] text-white text-xs font-bold rounded-xl px-4 py-2.5 transition-all text-center flex-shrink-0"
                   >
-                    واتساب
+                    {t(T.quiz.whatsapp)}
                   </a>
                 </div>
               </div>
@@ -455,7 +456,7 @@ export default function InstituteQuiz(_props: Props = {}) {
         })}
 
         {recs.length === 0 && (
-          <div className="text-center py-8 text-gray-400 text-sm">لم يتم العثور على معهد مناسب — حاول تغيير الإجابات</div>
+          <div className="text-center py-8 text-gray-400 text-sm">{t(T.quiz.noResult)}</div>
         )}
       </div>
     );
@@ -488,7 +489,7 @@ export default function InstituteQuiz(_props: Props = {}) {
             </div>
           ))}
           <span className="text-xs text-gray-400 mr-auto">
-            {step < totalSteps - 1 ? `${totalSteps - step - 1} سؤال متبقي` : "آخر سؤال"}
+            {step < totalSteps - 1 ? `${totalSteps - step - 1} ${t(T.quiz.remaining)}` : t(T.quiz.lastQ)}
           </span>
         </div>
 
@@ -512,11 +513,25 @@ export default function InstituteQuiz(_props: Props = {}) {
           ))}
         </div>
 
-        {step > 0 && (
-          <button onClick={() => setStep(step - 1)} className="mt-4 text-xs text-gray-400 hover:text-gray-600 flex items-center gap-1.5 transition-colors">
-            <RotateCcw size={12} /> السؤال السابق
-          </button>
-        )}
+        <div className="flex items-center justify-between mt-4">
+          {step > 0 ? (
+            <button
+              onClick={() => setStep(step - 1)}
+              className="flex items-center gap-1.5 text-xs font-semibold text-gray-500 hover:text-green-700 border border-gray-200 hover:border-green-300 bg-white hover:bg-green-50 px-3 py-1.5 rounded-lg transition-all"
+            >
+              <ArrowLeft size={13} className={dir === "ltr" ? "rotate-180" : ""} />
+              {t(T.quiz.prevQ)}
+            </button>
+          ) : (
+            <button
+              onClick={reset}
+              className="flex items-center gap-1.5 text-xs text-gray-400 hover:text-gray-500 transition-colors"
+            >
+              <RotateCcw size={11} />
+              {t(T.quiz.restart)}
+            </button>
+          )}
+        </div>
       </div>
     </div>
   );

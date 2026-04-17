@@ -71,8 +71,29 @@ export const GOOGLE_FORM_LINKS = {
 ### WhatsApp Number
 `+601112200603` — defined in `WHATSAPP_NUMBER` constant in `src/data/institutes.ts`
 
+### Multi-Language Support (i18n)
+- **Languages**: Arabic (default, RTL), English (LTR), French (LTR)
+- **Language files**: `src/i18n/translations.ts` — all UI translations (ar/en/fr)
+- **Language context**: `src/i18n/LanguageContext.tsx` — useLanguage() hook, t() function, dir state
+- **Language switcher**: In Navbar (desktop: inline, mobile: top of drawer)
+- **Persistence**: saved to localStorage (`a2m_lang`)
+- **Translated pages**: Navbar, InstituteQuiz, ApplyPage (type selection), key UI strings
+- **Data pages** (university courses, institute details): remain in Arabic
+
+### Key Files (updated)
+- `artifacts/algeria2malaysia/src/i18n/translations.ts` — all AR/EN/FR translations
+- `artifacts/algeria2malaysia/src/i18n/LanguageContext.tsx` — language state provider
+- `artifacts/algeria2malaysia/src/components/Navbar.tsx` — includes lang switcher
+- `artifacts/algeria2malaysia/src/components/InstituteQuiz.tsx` — fully translated quiz
+- `artifacts/algeria2malaysia/src/pages/ApplyPage.tsx` — type selection translated
+- `artifacts/algeria2malaysia/src/pages/GlobalSearchPage.tsx` — now searches by university name too
+- `artifacts/algeria2malaysia/src/pages/SheffieldPage.tsx` — adult fees table mobile fix (min-width)
+
 ### Branding
 - Colors: Green (#166534) and White
 - Font: Cairo (Arabic) + Tajawal
-- Direction: RTL (Arabic)
+- Direction: RTL by default (Arabic), switches to LTR for EN/FR
 - Logo: `/public/logo.jpeg`
+
+### University Count
+- Currently 12 universities (updated from 11 in all relevant places)

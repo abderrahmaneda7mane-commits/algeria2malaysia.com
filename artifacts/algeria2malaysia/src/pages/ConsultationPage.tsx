@@ -238,8 +238,7 @@ export default function ConsultationPage() {
   if (submitted && !showBooking) {
     return (
       <div
-        className="min-h-screen flex items-center justify-center px-4"
-        style={{ background: "linear-gradient(160deg, #f0faf4 0%, #ffffff 50%, #f5f9ff 100%)" }}
+        className="min-h-screen flex items-center justify-center px-4 bg-gray-50"
         dir="rtl"
       >
         <div className="max-w-md w-full text-center">
@@ -291,12 +290,11 @@ export default function ConsultationPage() {
 
       {/* ── Main page ── */}
       <div
-        className="min-h-screen"
-        style={{ background: "linear-gradient(160deg, #f0faf4 0%, #ffffff 50%, #f5f9ff 100%)" }}
+        className="min-h-screen bg-white"
         dir="rtl"
       >
         {/* Header */}
-        <div className="pt-24 pb-8 px-4 border-b border-green-100">
+        <div className="pt-24 pb-8 px-4 bg-gradient-to-b from-green-50 to-white border-b border-green-100">
           <div className="max-w-2xl mx-auto text-center">
             <button
               onClick={() => navigate("home")}

@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { LanguageProvider } from "./i18n/LanguageContext";
 import Navbar from "./components/Navbar";
 import HomePage from "./pages/HomePage";
 import ApplyPage from "./pages/ApplyPage";
@@ -84,7 +85,8 @@ function App() {
   const showNavbar = page === "home" || page === "universities" || page === "upm" || page === "apu" || page === "taylors" || page === "mmu" || page === "unikl" || page === "lincoln" || page === "utp" || page === "utm" || page === "utem" || page === "ucsi" || page === "cityu-courses" || page === "sunway" || page === "search" || page === "compare" || page === "consultation" || page === "stratford-institute" || page === "bigben-institute" || page === "erican-institute" || page === "sheffield-institute";
 
   return (
-    <div className="min-h-screen bg-white" dir="rtl">
+    <LanguageProvider>
+    <div className="min-h-screen bg-white">
       {showNavbar && <Navbar />}
       {page === "home" && <HomePage />}
       {page === "universities" && <UniversitiesPage />}
@@ -112,6 +114,7 @@ function App() {
       {page === "sheffield-institute" && <SheffieldPage />}
       {showFormPopup && <FormReturnPopup onClose={() => setShowFormPopup(false)} />}
     </div>
+    </LanguageProvider>
   );
 }
 

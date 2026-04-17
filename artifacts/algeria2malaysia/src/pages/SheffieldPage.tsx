@@ -234,16 +234,16 @@ export default function SheffieldPage() {
                 <span className="flex items-center gap-1"><CheckCircle size={12} className="text-green-500" /> الفيزا من الشهر الرابع</span>
               </div>
             </div>
-            <div className="p-4 overflow-x-auto">
-              <table className="w-full text-sm">
+            <div className="p-4 overflow-x-auto -mx-1 px-1">
+              <table className="text-sm" style={{ minWidth: "520px", width: "100%" }}>
                 <thead>
                   <tr className="bg-[#1a3272]">
-                    <th className="text-right py-3 px-3 font-bold text-white/90 border-b border-white/10 rounded-tr-lg">المدة</th>
-                    <th className="text-right py-3 px-3 font-bold text-white/90 border-b border-white/10">رسوم الدراسة</th>
-                    <th className="text-right py-3 px-3 font-bold text-white/90 border-b border-white/10">التسجيل</th>
-                    <th className="text-right py-3 px-3 font-bold text-white/90 border-b border-white/10">التأمين</th>
-                    <th className="text-right py-3 px-3 font-bold text-white/90 border-b border-white/10">الفيزا</th>
-                    <th className="text-right py-3 px-3 font-bold text-yellow-300 border-b border-white/10">الإجمالي</th>
+                    <th className="text-right py-3 px-3 font-bold text-white/90 border-b border-white/10 rounded-tr-lg whitespace-nowrap">المدة</th>
+                    <th className="text-right py-3 px-3 font-bold text-white/90 border-b border-white/10 whitespace-nowrap">رسوم الدراسة</th>
+                    <th className="text-right py-3 px-3 font-bold text-white/90 border-b border-white/10 whitespace-nowrap">التسجيل</th>
+                    <th className="text-right py-3 px-3 font-bold text-white/90 border-b border-white/10 whitespace-nowrap">التأمين</th>
+                    <th className="text-right py-3 px-3 font-bold text-white/90 border-b border-white/10 whitespace-nowrap">الفيزا</th>
+                    <th className="text-right py-3 px-3 font-bold text-yellow-300 border-b border-white/10 whitespace-nowrap">الإجمالي</th>
                   </tr>
                 </thead>
                 <tbody>

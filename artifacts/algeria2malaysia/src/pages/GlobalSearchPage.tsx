@@ -81,19 +81,41 @@ export default function GlobalSearchPage() {
 
   useEffect(() => { inputRef.current?.focus(); }, []);
 
+  /* Find university IDs matching the search term (by name) */
+  function findMatchingUniIds(term: string): number[] {
+    const t = term.toLowerCase().trim();
+    return Object.entries(UNI_META)
+      .filter(([, meta]) =>
+        meta.nameEn.toLowerCase().includes(t) ||
+        meta.nameAr.includes(term.trim()) ||
+        meta.uniApplyKey.toLowerCase().includes(t)
+      )
+      .map(([id]) => Number(id));
+  }
+
   const doSearch = useCallback(async (term: string) => {
     if (!term.trim()) { setResults([]); setSearched(false); return; }
     setLoading(true);
     setSearched(true);
     try {
-      const { data } = await supabase
+      const uniIds = findMatchingUniIds(term);
+      let query = supabase
         .from("courses")
         .select("id, name, duration, intake, price, university_id")
-        .ilike("name", `%${term.trim()}%`)
         .not("price", "is", null)
         .gt("price", 0)
         .order("price", { ascending: true })
         .limit(60);
+
+      if (uniIds.length > 0) {
+        /* University name search — return all courses for matching universities */
+        query = query.in("university_id", uniIds);
+      } else {
+        /* Course name search */
+        query = query.ilike("name", `%${term.trim()}%`);
+      }
+
+      const { data } = await query;
       setResults(data ?? []);
     } catch { setResults([]); } finally { setLoading(false); }
   }, []);
@@ -156,7 +178,7 @@ export default function GlobalSearchPage() {
             <h1 className="text-2xl font-bold text-white">ابحث عن تخصصك</h1>
           </div>
           <p className="text-green-200 text-sm mb-6 mr-13">
-            أكثر من 2,000 تخصص في 11 جامعة ماليزية معتمدة
+            أكثر من 2,000 تخصص في 12 جامعة ماليزية معتمدة
           </p>
 
           {/* Search box */}
@@ -167,7 +189,7 @@ export default function GlobalSearchPage() {
               type="text"
               value={query}
               onChange={e => setQuery(e.target.value)}
-              placeholder="اكتب اسم التخصص بالإنجليزية... مثل: Engineering, Business, Law"
+              placeholder="اكتب التخصص أو اسم الجامعة... مثل: APU, UPM, Engineering, Business"
               className="w-full bg-white rounded-2xl py-4 pr-12 pl-12 text-base text-gray-800 shadow-lg focus:outline-none focus:ring-4 focus:ring-green-400/40 placeholder:text-gray-400"
             />
             {query && (
@@ -200,7 +222,7 @@ export default function GlobalSearchPage() {
               اكتب اسم التخصص الذي تبحث عنه وستظهر لك النتائج من جميع الجامعات فوراً
             </p>
             <div className="mt-6 flex flex-wrap justify-center gap-2">
-              {["Engineering", "Business", "Law", "Medicine", "IT", "Accounting", "Design"].map(s => (
+              {["APU", "UPM", "Sunway", "Engineering", "Business", "Law", "IT", "Accounting"].map(s => (
                 <button
                   key={s}
                   onClick={() => setQuery(s)}
