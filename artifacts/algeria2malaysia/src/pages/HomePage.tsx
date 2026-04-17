@@ -523,11 +523,11 @@ export default function HomePage() {
           <p className="text-gray-500 mb-10 mr-5">4 معاهد معتمدة في قلب كوالالمبور — IELTS، إنجليزي عام، أعمال، وأطفال</p>
 
           {/* Smart finder embedded */}
-          <div className="bg-gradient-to-br from-green-50 to-white border border-green-100 rounded-3xl p-6 sm:p-8 mb-12">
-            <div className="text-center mb-6">
-              <div className="inline-block bg-green-100 text-green-700 rounded-full px-4 py-1 text-sm font-semibold mb-2">اكتشف الأنسب لك</div>
-              <h3 className="text-xl font-extrabold text-gray-900 mb-1">أجب على 3 أسئلة — نجد لك أفضل معهد</h3>
-              <p className="text-gray-400 text-sm">بناءً على هدفك وميزانيتك ومدة إقامتك</p>
+          <div className="bg-gradient-to-br from-green-50 to-white border border-green-100 rounded-2xl sm:rounded-3xl p-4 sm:p-8 mb-10">
+            <div className="text-center mb-4 sm:mb-6">
+              <div className="inline-block bg-green-100 text-green-700 rounded-full px-3 py-1 text-xs sm:text-sm font-semibold mb-2">اكتشف الأنسب لك</div>
+              <h3 className="text-lg sm:text-xl font-extrabold text-gray-900 mb-1">أجب على 3 أسئلة — نجد لك أفضل معهد</h3>
+              <p className="text-gray-400 text-xs sm:text-sm">بناءً على هدفك وميزانيتك ومدة إقامتك</p>
             </div>
             <InstituteQuiz />
           </div>

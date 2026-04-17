@@ -492,22 +492,22 @@ export default function InstituteQuiz(_props: Props = {}) {
           </span>
         </div>
 
-        <h3 className="text-xl font-extrabold text-gray-900 mb-0.5">{currentStep.q}</h3>
-        <p className="text-gray-400 text-sm mb-5">{currentStep.sub}</p>
+        <h3 className="text-lg sm:text-xl font-extrabold text-gray-900 mb-0.5">{currentStep.q}</h3>
+        <p className="text-gray-400 text-xs sm:text-sm mb-4">{currentStep.sub}</p>
 
-        <div className="grid gap-2.5">
+        <div className="grid gap-2">
           {currentStep.options.map((opt) => (
             <button
               key={opt.value}
               onClick={() => pick(opt.value)}
-              className="flex items-center gap-3.5 text-right p-4 rounded-2xl border-2 border-gray-100 hover:border-green-400 hover:bg-green-50 transition-all group"
+              className="flex items-center gap-3 text-right p-3 sm:p-4 rounded-xl sm:rounded-2xl border-2 border-gray-100 hover:border-green-400 hover:bg-green-50 active:bg-green-100 transition-all group w-full"
             >
-              <span className="text-xl flex-shrink-0">{opt.icon}</span>
-              <div className="flex-1 min-w-0">
-                <div className="font-bold text-gray-900 group-hover:text-green-700 transition-colors text-sm">{opt.label}</div>
-                <div className="text-gray-400 text-xs mt-0.5 truncate">{opt.desc}</div>
+              <span className="text-lg sm:text-xl flex-shrink-0 w-8 text-center">{opt.icon}</span>
+              <div className="flex-1 min-w-0 text-right">
+                <div className="font-bold text-gray-900 group-hover:text-green-700 transition-colors text-sm leading-snug">{opt.label}</div>
+                <div className="text-gray-400 text-xs mt-0.5 leading-snug line-clamp-2">{opt.desc}</div>
               </div>
-              <ArrowLeft size={15} className="text-gray-300 group-hover:text-green-500 group-hover:-translate-x-1 transition-all flex-shrink-0" />
+              <ArrowLeft size={14} className="text-gray-300 group-hover:text-green-500 group-hover:-translate-x-1 transition-all flex-shrink-0" />
             </button>
           ))}
         </div>
