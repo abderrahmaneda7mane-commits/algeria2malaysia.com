@@ -19,6 +19,7 @@ import CityUCoursesPage from "./pages/CityUCoursesPage";
 import SunwayCoursesPage from "./pages/SunwayCoursesPage";
 import GlobalSearchPage from "./pages/GlobalSearchPage";
 import CompareUniversitiesPage from "./pages/CompareUniversitiesPage";
+import ConsultationPage from "./pages/ConsultationPage";
 import { getNavState, subscribeNav } from "./hooks/useNavigate";
 
 function FormReturnPopup({ onClose }: { onClose: () => void }) {
@@ -76,7 +77,7 @@ function App() {
 
   const { page, state } = nav;
 
-  const showNavbar = page === "home" || page === "universities" || page === "upm" || page === "apu" || page === "taylors" || page === "mmu" || page === "unikl" || page === "lincoln" || page === "utp" || page === "utm" || page === "utem" || page === "ucsi" || page === "cityu-courses" || page === "sunway" || page === "search" || page === "compare";
+  const showNavbar = page === "home" || page === "universities" || page === "upm" || page === "apu" || page === "taylors" || page === "mmu" || page === "unikl" || page === "lincoln" || page === "utp" || page === "utm" || page === "utem" || page === "ucsi" || page === "cityu-courses" || page === "sunway" || page === "search" || page === "compare" || page === "consultation";
 
   return (
     <div className="min-h-screen bg-white" dir="rtl">
@@ -100,6 +101,7 @@ function App() {
       {page === "sunway" && <SunwayCoursesPage />}
       {page === "search" && <GlobalSearchPage />}
       {page === "compare" && <CompareUniversitiesPage />}
+      {page === "consultation" && <ConsultationPage />}
       {showFormPopup && <FormReturnPopup onClose={() => setShowFormPopup(false)} />}
     </div>
   );

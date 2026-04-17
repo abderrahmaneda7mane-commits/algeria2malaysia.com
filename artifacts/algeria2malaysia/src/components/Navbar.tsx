@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Menu, X, Search } from "lucide-react";
+import { Menu, X, Search, Calendar } from "lucide-react";
 import { useNavigate, getNavState, navigate } from "../hooks/useNavigate";
 
 function scrollToSection(sectionId: string) {
@@ -72,6 +72,13 @@ export default function Navbar() {
             <span>ابحث عن تخصص</span>
           </button>
           <button
+            onClick={() => navigate("consultation")}
+            className="flex items-center gap-1.5 border border-green-600 text-green-700 hover:bg-green-700 hover:text-white px-4 py-2 rounded-full text-sm font-semibold transition-all"
+          >
+            <Calendar size={15} />
+            <span>استشارة مجانية</span>
+          </button>
+          <button
             onClick={() => handleNavLink("apply", null)}
             className="bg-green-700 text-white px-5 py-2.5 rounded-full text-sm font-bold hover:bg-green-800 transition-colors shadow-sm"
           >
@@ -107,8 +114,15 @@ export default function Navbar() {
             </button>
           ))}
           <button
+            onClick={() => { setOpen(false); navigate("consultation"); }}
+            className="flex items-center justify-center gap-2 border border-green-600 text-green-700 px-5 py-2.5 rounded-full text-sm font-semibold text-center hover:bg-green-700 hover:text-white transition-all"
+          >
+            <Calendar size={15} />
+            استشارة مجانية — 30 دقيقة
+          </button>
+          <button
             onClick={() => { setOpen(false); handleNavLink("apply", null); }}
-            className="bg-green-700 text-white px-5 py-3 rounded-full text-sm font-bold text-center hover:bg-green-800 transition-colors mt-2"
+            className="bg-green-700 text-white px-5 py-3 rounded-full text-sm font-bold text-center hover:bg-green-800 transition-colors"
           >
             ابدأ الآن
           </button>
