@@ -190,6 +190,7 @@ export default function UniApplyPage() {
       .filter((l) => l !== null)
       .join("\n");
 
+    sessionStorage.setItem("formOpened", "1");
     window.open(GOOGLE_FORM_URL, "_blank");
     setSubmitted(true);
     window.scrollTo({ top: 0, behavior: "smooth" });

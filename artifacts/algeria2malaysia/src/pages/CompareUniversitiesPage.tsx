@@ -492,7 +492,7 @@ export default function CompareUniversitiesPage() {
             {selectedUnis.map(uni => (
               <button
                 key={uni.id}
-                onClick={() => window.open(GOOGLE_FORM_URL, "_blank")}
+                onClick={() => (sessionStorage.setItem("formOpened","1"), window.open(GOOGLE_FORM_URL, "_blank"))}
                 className={`w-full ${uni.accent.solid} ${uni.accent.hover} active:scale-95 text-white py-4 rounded-2xl font-extrabold text-xs sm:text-sm transition-all shadow-lg flex flex-col items-center justify-center gap-1 border-b-4 border-black/10`}
               >
                 <FileText size={16} />

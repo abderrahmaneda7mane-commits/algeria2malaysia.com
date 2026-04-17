@@ -636,7 +636,7 @@ export default function HomePage() {
               <ArrowLeft size={18} className="group-hover:-translate-x-1 transition-transform" />
             </button>
             <button
-              onClick={() => window.open(GOOGLE_FORM_URL, "_blank")}
+              onClick={() => (sessionStorage.setItem("formOpened","1"), window.open(GOOGLE_FORM_URL, "_blank"))}
               className="bg-amber-500 hover:bg-amber-600 text-white px-8 py-4 rounded-full font-bold text-lg transition-all shadow-xl flex items-center gap-3 group"
             >
               <span>📄</span>

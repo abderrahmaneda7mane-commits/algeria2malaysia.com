@@ -603,7 +603,7 @@ export default function UniversitiesPage() {
                       </button>
                     )}
                     <button
-                      onClick={() => window.open(GOOGLE_FORM_URL, "_blank")}
+                      onClick={() => (sessionStorage.setItem("formOpened","1"), window.open(GOOGLE_FORM_URL, "_blank"))}
                       className="flex-1 bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-full font-bold text-sm transition-all shadow-md flex items-center justify-center gap-2 group"
                     >
                       <span>📄</span>
@@ -635,7 +635,7 @@ export default function UniversitiesPage() {
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <button
-            onClick={() => window.open(GOOGLE_FORM_URL, "_blank")}
+            onClick={() => (sessionStorage.setItem("formOpened","1"), window.open(GOOGLE_FORM_URL, "_blank"))}
             className="bg-white text-green-800 px-8 py-4 rounded-full font-bold text-lg hover:bg-green-50 transition-all shadow-lg flex items-center justify-center gap-2 group"
           >
             <span>📄</span>

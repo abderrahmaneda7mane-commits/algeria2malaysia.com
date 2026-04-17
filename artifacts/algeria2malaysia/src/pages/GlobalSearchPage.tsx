@@ -381,7 +381,7 @@ export default function GlobalSearchPage() {
                   قارن سعر هذا التخصص عبر الجامعات
                 </button>
                 <button
-                  onClick={() => { setModal(null); window.open(GOOGLE_FORM_URL, "_blank"); }}
+                  onClick={() => { setModal(null); (sessionStorage.setItem("formOpened","1"), window.open(GOOGLE_FORM_URL, "_blank")); }}
                   className="w-full bg-green-600 hover:bg-green-700 text-white py-4 rounded-2xl font-bold text-base transition-all shadow-md flex items-center justify-center gap-2"
                 >
                   <FileText size={18} />
@@ -521,7 +521,7 @@ export default function GlobalSearchPage() {
                     return (
                       <button
                         key={uid}
-                        onClick={() => { setShowCompare(false); window.open(GOOGLE_FORM_URL, "_blank"); }}
+                        onClick={() => { setShowCompare(false); (sessionStorage.setItem("formOpened","1"), window.open(GOOGLE_FORM_URL, "_blank")); }}
                         className={`flex-shrink-0 flex items-center gap-1.5 ${m.bg} border ${m.border} ${m.color} px-3 py-2 rounded-xl text-xs font-bold transition-all hover:opacity-80`}
                       >
                         <img src={m.logo} alt="" className="w-4 h-4 object-contain" />
