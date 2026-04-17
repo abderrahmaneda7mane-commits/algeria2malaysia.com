@@ -3,6 +3,7 @@ import { ArrowLeft, CheckCircle, User, Phone, Mail, GraduationCap, FileText, Glo
 import { useNavigate, getNavState } from "../hooks/useNavigate";
 
 const WA_NUMBER = "601112200603";
+const GOOGLE_FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSd0wQH2-RL3zDf2BB1UsskwBfIIXsJ8KLxw1lMVD6TEQnWpgA/viewform";
 
 const UNIVERSITIES = [
   "APU — Asia Pacific University",
@@ -189,7 +190,7 @@ export default function UniApplyPage() {
       .filter((l) => l !== null)
       .join("\n");
 
-    window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`, "_blank");
+    window.open(GOOGLE_FORM_URL, "_blank");
     setSubmitted(true);
     window.scrollTo({ top: 0, behavior: "smooth" });
   }
@@ -201,29 +202,40 @@ export default function UniApplyPage() {
     `w-full border ${errors[field] ? "border-red-400 bg-red-50" : "border-gray-200 bg-white"} rounded-xl px-4 py-3 text-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-transparent transition`;
 
   if (submitted) {
+    const waMsg = encodeURIComponent("مرحباً، لقد قمت بإرسال نموذج طلب خطاب القبول. أرجو مساعدتي في استكمال الإجراءات.");
     return (
       <div className="min-h-screen bg-gradient-to-br from-green-50 to-white flex items-center justify-center px-4 py-20" dir="rtl">
         <div className="max-w-md w-full text-center">
           <div className="w-24 h-24 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg">
             <CheckCircle size={48} className="text-green-600" />
           </div>
-          <h2 className="text-3xl font-black text-gray-900 mb-4">تم إرسال طلبك! 🎉</h2>
+          <h2 className="text-3xl font-black text-gray-900 mb-2">✅ تم إرسال طلبك بنجاح!</h2>
+          <p className="text-green-700 font-semibold text-base mb-6">سيتم التواصل معك قريبًا عبر واتساب</p>
           <div className="bg-white rounded-2xl shadow-xl p-6 mb-6 border border-green-100 text-right">
             <p className="text-gray-700 leading-relaxed text-base mb-4">
-              شكراً لك <strong className="text-green-700">{form.fullName}</strong>، استلمنا معلوماتك كاملة.
+              شكراً لك <strong className="text-green-700">{form.fullName}</strong>، استلمنا طلبك بنجاح.
             </p>
             <div className="bg-green-50 border border-green-200 rounded-xl p-4 mb-4">
               <p className="text-green-800 font-semibold text-sm leading-relaxed">
                 📋 سيقوم فريق Algeria2Malaysia بمراجعة طلبك والتواصل معك قريباً لاستكمال إجراءات الحصول على <strong>خطاب القبول (Offer Letter)</strong>.
               </p>
             </div>
-            <div className="bg-amber-50 border border-amber-200 rounded-xl p-3 text-right">
+            <div className="bg-amber-50 border border-amber-200 rounded-xl p-3">
               <p className="text-amber-800 text-sm font-medium">
                 📎 إذا لم تتمكن من إرفاق وثائقك في النموذج، يرجى إرسالها مباشرة عبر واتساب.
               </p>
             </div>
           </div>
           <div className="flex flex-col gap-3">
+            <a
+              href={`https://wa.me/${WA_NUMBER}?text=${waMsg}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-[#25D366] hover:bg-[#1ebe5d] text-white px-8 py-4 rounded-full font-bold text-base transition-all shadow-lg flex items-center justify-center gap-3"
+            >
+              <svg viewBox="0 0 24 24" className="w-5 h-5 fill-white flex-shrink-0"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.118 1.528 5.847L.057 23.882a.5.5 0 0 0 .61.664l6.337-1.99A11.941 11.941 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.937a9.926 9.926 0 0 1-5.03-1.363l-.361-.214-3.744 1.176 1.2-3.638-.235-.374A9.908 9.908 0 0 1 2.063 12C2.063 6.511 6.511 2.063 12 2.063S21.937 6.511 21.937 12 17.489 21.937 12 21.937z"/></svg>
+              تواصل معنا عبر واتساب
+            </a>
             <button
               onClick={() => go("home")}
               className="bg-green-700 hover:bg-green-800 text-white px-8 py-4 rounded-full font-bold text-base transition-all shadow-lg flex items-center justify-center gap-2"
@@ -584,13 +596,6 @@ export default function UniApplyPage() {
 
           {/* Submit */}
           <div className="bg-gradient-to-br from-green-700 to-green-800 rounded-2xl p-6 text-white text-center shadow-xl">
-            <div className="flex items-center justify-center gap-2 mb-2">
-              <CheckCircle size={20} className="text-green-300" />
-              <span className="text-green-200 text-sm">استشارة مجانية 100% — بدون أي رسوم</span>
-            </div>
-            <p className="text-green-200 text-xs mb-4">
-              بعد الإرسال سيفتح واتساب تلقائياً مع رسالة جاهزة تحتوي على جميع بياناتك
-            </p>
             <button
               type="submit"
               className="w-full bg-white text-green-800 py-4 rounded-xl font-black text-lg hover:bg-green-50 transition-all shadow-lg flex items-center justify-center gap-3 group"
