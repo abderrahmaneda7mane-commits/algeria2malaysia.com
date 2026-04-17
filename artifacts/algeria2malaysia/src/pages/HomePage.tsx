@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { GraduationCap, Globe, DollarSign, Shield, Star, CheckCircle, ArrowLeft, Building2, BookOpen, Users, Award, Phone, MapPin, Wifi, Home, Plane, MessageCircle } from "lucide-react";
 import { useNavigate, getNavState } from "../hooks/useNavigate";
+import InstituteQuiz from "../components/InstituteQuiz";
 
 const WA_LINK = "https://wa.me/601112200603";
 const GOOGLE_FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSd0wQH2-RL3zDf2BB1UsskwBfIIXsJ8KLxw1lMVD6TEQnWpgA/viewform";
@@ -429,35 +430,14 @@ export default function HomePage() {
             ))}
           </div>
 
-          {/* Study type cards */}
-          <div className="grid md:grid-cols-2 gap-6">
-            <div
-              onClick={() => go("apply", { type: "institute" })}
-              className="relative overflow-hidden bg-gradient-to-br from-green-700 to-green-900 rounded-3xl p-8 text-white cursor-pointer hover:shadow-2xl transition-all hover:-translate-y-1 group"
-            >
-              <div className="absolute top-0 left-0 w-40 h-40 bg-white/5 rounded-full -translate-x-10 -translate-y-10"></div>
-              <BookOpen className="mb-4" size={40} />
-              <h3 className="text-2xl font-bold mb-3">معاهد اللغة الإنجليزية</h3>
-              <p className="text-green-100 leading-relaxed mb-6">IELTS • إنجليزي عام • مسار الجامعة<br />معاهد معتمدة في كوالالمبور بأسعار شفافة</p>
-              <div className="flex items-center gap-2 text-green-300 font-semibold group-hover:gap-4 transition-all">
-                <span>اختر معهدك</span>
-                <ArrowLeft size={18} />
-              </div>
+          {/* Smart Institute Finder */}
+          <div className="bg-gradient-to-br from-green-50 to-white border border-green-100 rounded-3xl p-6 sm:p-8">
+            <div className="text-center mb-6">
+              <div className="inline-block bg-green-100 text-green-700 rounded-full px-4 py-1 text-sm font-semibold mb-3">اكتشف المعهد المناسب لك</div>
+              <h3 className="text-2xl font-extrabold text-gray-900 mb-1">أجب على 3 أسئلة — نجد لك الأنسب</h3>
+              <p className="text-gray-400 text-sm">نظام ذكي يحلل احتياجاتك ويقترح أفضل معهد حسب هدفك وميزانيتك ومدة إقامتك</p>
             </div>
-
-            <div
-              onClick={() => go("apply", { type: "university" })}
-              className="relative overflow-hidden bg-gradient-to-br from-gray-800 to-gray-900 rounded-3xl p-8 text-white cursor-pointer hover:shadow-2xl transition-all hover:-translate-y-1 group"
-            >
-              <div className="absolute top-0 left-0 w-40 h-40 bg-white/5 rounded-full -translate-x-10 -translate-y-10"></div>
-              <Building2 className="mb-4" size={40} />
-              <h3 className="text-2xl font-bold mb-3">القبول الجامعي</h3>
-              <p className="text-gray-300 leading-relaxed mb-6">بكالوريوس • ماستر • دكتوراه<br />جامعات معترف بها مع تسهيل إجراءات التأشيرة</p>
-              <div className="flex items-center gap-2 text-gray-400 font-semibold group-hover:gap-4 transition-all">
-                <span>ابدأ طلبك</span>
-                <ArrowLeft size={18} />
-              </div>
-            </div>
+            <InstituteQuiz />
           </div>
         </div>
       </section>
