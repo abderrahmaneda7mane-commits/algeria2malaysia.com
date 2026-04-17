@@ -3,6 +3,7 @@ import { GraduationCap, Globe, DollarSign, Shield, Star, CheckCircle, ArrowLeft,
 import { useNavigate, getNavState } from "../hooks/useNavigate";
 
 const WA_LINK = "https://wa.me/601112200603";
+const GOOGLE_FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSd0wQH2-RL3zDf2BB1UsskwBfIIXsJ8KLxw1lMVD6TEQnWpgA/viewform";
 
 const WHATSAPP_SVG = (
   <svg viewBox="0 0 24 24" className="w-full h-full fill-current">
@@ -635,7 +636,7 @@ export default function HomePage() {
               <ArrowLeft size={18} className="group-hover:-translate-x-1 transition-transform" />
             </button>
             <button
-              onClick={() => go("uni-apply")}
+              onClick={() => window.open(GOOGLE_FORM_URL, "_blank")}
               className="bg-amber-500 hover:bg-amber-600 text-white px-8 py-4 rounded-full font-bold text-lg transition-all shadow-xl flex items-center gap-3 group"
             >
               <span>📄</span>

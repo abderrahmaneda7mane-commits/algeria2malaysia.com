@@ -6,6 +6,7 @@ import {
 import { useNavigate } from "../hooks/useNavigate";
 
 function fmtEur(rm: number) { return Math.round(rm / 5).toLocaleString(); }
+const GOOGLE_FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSd0wQH2-RL3zDf2BB1UsskwBfIIXsJ8KLxw1lMVD6TEQnWpgA/viewform";
 
 const UNIVERSITIES = [
   {
@@ -491,7 +492,7 @@ export default function CompareUniversitiesPage() {
             {selectedUnis.map(uni => (
               <button
                 key={uni.id}
-                onClick={() => go("uni-apply", { university: uni.uniKey })}
+                onClick={() => window.open(GOOGLE_FORM_URL, "_blank")}
                 className={`w-full ${uni.accent.solid} ${uni.accent.hover} active:scale-95 text-white py-4 rounded-2xl font-extrabold text-xs sm:text-sm transition-all shadow-lg flex flex-col items-center justify-center gap-1 border-b-4 border-black/10`}
               >
                 <FileText size={16} />

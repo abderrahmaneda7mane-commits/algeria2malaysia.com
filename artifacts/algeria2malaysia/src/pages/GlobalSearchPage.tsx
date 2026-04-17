@@ -9,6 +9,7 @@ import { supabase } from "../lib/supabase";
 
 const EUR_RATE = 5;
 function toEur(rm: number) { return Math.round(rm / EUR_RATE).toLocaleString(); }
+const GOOGLE_FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSd0wQH2-RL3zDf2BB1UsskwBfIIXsJ8KLxw1lMVD6TEQnWpgA/viewform";
 
 const UNI_META: Record<number, {
   nameAr: string; nameEn: string; location: string;
@@ -380,7 +381,7 @@ export default function GlobalSearchPage() {
                   قارن سعر هذا التخصص عبر الجامعات
                 </button>
                 <button
-                  onClick={() => { setModal(null); go("uni-apply", { university: meta.uniApplyKey }); }}
+                  onClick={() => { setModal(null); window.open(GOOGLE_FORM_URL, "_blank"); }}
                   className="w-full bg-green-600 hover:bg-green-700 text-white py-4 rounded-2xl font-bold text-base transition-all shadow-md flex items-center justify-center gap-2"
                 >
                   <FileText size={18} />
@@ -520,7 +521,7 @@ export default function GlobalSearchPage() {
                     return (
                       <button
                         key={uid}
-                        onClick={() => { setShowCompare(false); go("uni-apply", { university: m.uniApplyKey }); }}
+                        onClick={() => { setShowCompare(false); window.open(GOOGLE_FORM_URL, "_blank"); }}
                         className={`flex-shrink-0 flex items-center gap-1.5 ${m.bg} border ${m.border} ${m.color} px-3 py-2 rounded-xl text-xs font-bold transition-all hover:opacity-80`}
                       >
                         <img src={m.logo} alt="" className="w-4 h-4 object-contain" />

@@ -3,6 +3,7 @@ import { ArrowLeft, CheckCircle, GraduationCap, MapPin, BookOpen, BarChart2 } fr
 import { useNavigate, getNavState } from "../hooks/useNavigate";
 
 const WA_LINK = "https://wa.me/601112200603";
+const GOOGLE_FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSd0wQH2-RL3zDf2BB1UsskwBfIIXsJ8KLxw1lMVD6TEQnWpgA/viewform";
 
 function fmtEur(rm: number) {
   return Math.round(rm / 5).toLocaleString();
@@ -602,7 +603,7 @@ export default function UniversitiesPage() {
                       </button>
                     )}
                     <button
-                      onClick={() => go("uni-apply", { university: uni.name })}
+                      onClick={() => window.open(GOOGLE_FORM_URL, "_blank")}
                       className="flex-1 bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-full font-bold text-sm transition-all shadow-md flex items-center justify-center gap-2 group"
                     >
                       <span>📄</span>
@@ -634,7 +635,7 @@ export default function UniversitiesPage() {
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <button
-            onClick={() => go("uni-apply")}
+            onClick={() => window.open(GOOGLE_FORM_URL, "_blank")}
             className="bg-white text-green-800 px-8 py-4 rounded-full font-bold text-lg hover:bg-green-50 transition-all shadow-lg flex items-center justify-center gap-2 group"
           >
             <span>📄</span>
