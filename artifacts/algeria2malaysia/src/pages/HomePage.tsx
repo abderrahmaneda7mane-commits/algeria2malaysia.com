@@ -513,7 +513,7 @@ export default function HomePage() {
             <p className="text-gray-600">معاهد لغة إنجليزية معتمدة في قلب كوالالمبور</p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
               {
                 name: "Stratford International",
@@ -553,6 +553,19 @@ export default function HomePage() {
                 highlights: ["برنامج دولي مكثف", "تحضير IELTS", "Cambridge معتمد"],
                 onClick: () => go("erican-institute"),
                 btnLabel: "عرض الأسعار التفصيلية",
+              },
+              {
+                name: "Sheffield Academy",
+                nameAr: "أكاديمية شيفيلد",
+                badge: "عروض حصرية",
+                color: "bg-[#1a3272]",
+                logo: "/sheffield-logo.png",
+                desc: "عروض ترويجية استثنائية تشمل IELTS مجاني وأشهر مجانية وخصومات تصل إلى 30%",
+                from: "6,300 RM",
+                fromEur: "≈ 1,260 €",
+                highlights: ["2 شهر + شهر مجاني", "خصم 25% على 8 أشهر", "IELTS مجاني مع الباقات"],
+                onClick: () => go("sheffield-institute"),
+                btnLabel: "عرض العروض والأسعار",
               },
             ].map((inst) => (
               <div key={inst.name} className="border border-gray-200 rounded-2xl overflow-hidden hover:shadow-lg transition-all hover:border-green-200 group flex flex-col">

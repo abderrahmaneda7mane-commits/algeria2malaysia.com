@@ -23,6 +23,7 @@ import ConsultationPage from "./pages/ConsultationPage";
 import StratfordPage from "./pages/StratfordPage";
 import BigBenPage from "./pages/BigBenPage";
 import EricanPage from "./pages/EricanPage";
+import SheffieldPage from "./pages/SheffieldPage";
 import { getNavState, subscribeNav } from "./hooks/useNavigate";
 
 function FormReturnPopup({ onClose }: { onClose: () => void }) {
@@ -80,7 +81,7 @@ function App() {
 
   const { page, state } = nav;
 
-  const showNavbar = page === "home" || page === "universities" || page === "upm" || page === "apu" || page === "taylors" || page === "mmu" || page === "unikl" || page === "lincoln" || page === "utp" || page === "utm" || page === "utem" || page === "ucsi" || page === "cityu-courses" || page === "sunway" || page === "search" || page === "compare" || page === "consultation" || page === "stratford-institute" || page === "bigben-institute" || page === "erican-institute";
+  const showNavbar = page === "home" || page === "universities" || page === "upm" || page === "apu" || page === "taylors" || page === "mmu" || page === "unikl" || page === "lincoln" || page === "utp" || page === "utm" || page === "utem" || page === "ucsi" || page === "cityu-courses" || page === "sunway" || page === "search" || page === "compare" || page === "consultation" || page === "stratford-institute" || page === "bigben-institute" || page === "erican-institute" || page === "sheffield-institute";
 
   return (
     <div className="min-h-screen bg-white" dir="rtl">
@@ -108,6 +109,7 @@ function App() {
       {page === "stratford-institute" && <StratfordPage />}
       {page === "bigben-institute" && <BigBenPage />}
       {page === "erican-institute" && <EricanPage />}
+      {page === "sheffield-institute" && <SheffieldPage />}
       {showFormPopup && <FormReturnPopup onClose={() => setShowFormPopup(false)} />}
     </div>
   );
