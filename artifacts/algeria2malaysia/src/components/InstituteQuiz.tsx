@@ -117,7 +117,11 @@ const STEPS = [
   },
 ];
 
-export default function InstituteQuiz() {
+interface Props {
+  onUniversity?: () => void;
+}
+
+export default function InstituteQuiz({ onUniversity }: Props = {}) {
   const { go } = useNavigate();
   const [step, setStep]       = useState(0);
   const [answers, setAnswers] = useState<Answers>({});
@@ -130,8 +134,9 @@ export default function InstituteQuiz() {
     const newAnswers = { ...answers, [currentStep.key]: value } as Answers;
     setAnswers(newAnswers);
 
-    // University → skip to result immediately
+    // University → delegate to parent or show result
     if (currentStep.key === "goal" && value === "university") {
+      if (onUniversity) { onUniversity(); return; }
       setAnswers(newAnswers);
       setDone(true);
       return;

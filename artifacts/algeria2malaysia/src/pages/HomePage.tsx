@@ -589,7 +589,7 @@ export default function HomePage() {
 
           <div className="text-center mt-10">
             <button
-              onClick={() => go("apply", { type: "institute" })}
+              onClick={() => go("apply")}
               className="bg-green-700 hover:bg-green-800 text-white px-8 py-4 rounded-full font-bold text-lg transition-all shadow-lg flex items-center gap-2 mx-auto group"
             >
               <BookOpen size={20} />
@@ -677,7 +677,7 @@ export default function HomePage() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <button
-                onClick={() => go("apply", { type: "institute" })}
+                onClick={() => go("apply")}
                 className="bg-white text-green-800 px-8 py-4 rounded-full font-bold text-lg hover:bg-green-50 transition-all shadow-lg flex items-center justify-center gap-2 group"
               >
                 <BookOpen size={20} />

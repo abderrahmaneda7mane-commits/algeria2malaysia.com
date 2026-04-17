@@ -3,6 +3,7 @@ import { ArrowRight, ArrowLeft, CheckCircle, BookOpen, Building2, DollarSign, Ta
 import { INSTITUTES, ACCOMMODATION_OPTIONS, suggestInstitutes, GOOGLE_FORM_LINKS, toEur } from "../data/institutes";
 import type { Goal, RoomType } from "../data/institutes";
 import { useNavigate } from "../hooks/useNavigate";
+import InstituteQuiz from "../components/InstituteQuiz";
 
 type Step = "type" | "goal" | "budget" | "suggestion" | "accommodation" | "intake" | "redirect" | "university-redirect";
 
@@ -86,7 +87,7 @@ function Card({
 export default function ApplyPage({ initialType }: { initialType?: "institute" | "university" }) {
   const { go } = useNavigate();
   const [form, setForm] = useState<FormState>({ ...initialState, type: initialType || null });
-  const [step, setStep] = useState<Step>(initialType ? (initialType === "university" ? "university-redirect" : "goal") : "type");
+  const [step, setStep] = useState<Step>(initialType === "university" ? "university-redirect" : "type");
 
   const institutesSteps = ["الهدف", "الميزانية", "الاختيار", "السكن", "موعد البدء"];
   const currentStepIndex = ["goal", "budget", "suggestion", "accommodation", "intake"].indexOf(step);
@@ -114,66 +115,22 @@ export default function ApplyPage({ initialType }: { initialType?: "institute" |
 
   if (step === "type") {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-green-900 via-green-800 to-green-700 flex items-center justify-center py-10 px-4" dir="rtl">
-        <div className="w-full max-w-lg">
+      <div className="min-h-screen bg-gradient-to-br from-green-900 via-green-800 to-green-700 py-10 px-4" dir="rtl">
+        <div className="w-full max-w-lg mx-auto">
           <button onClick={() => go("home")} className="flex items-center gap-2 text-green-200 hover:text-white text-sm mb-6 transition-colors">
             <ArrowRight size={16} /> الرئيسية
           </button>
 
           <div className="bg-white rounded-3xl shadow-2xl overflow-hidden">
-            {/* Header */}
-            <div className="bg-gradient-to-r from-green-600 to-green-500 px-8 py-7 text-center">
+            <div className="bg-gradient-to-r from-green-600 to-green-500 px-8 py-6 text-center">
               <div className="inline-flex items-center gap-2 bg-white/20 rounded-full px-4 py-1.5 mb-3">
                 <span className="text-white text-xs font-medium">Algeria2Malaysia</span>
               </div>
               <h1 className="text-2xl font-bold text-white mb-1">ابدأ رحلتك التعليمية</h1>
-              <p className="text-green-100 text-sm">اختر نوع الدراسة التي تريدها في ماليزيا</p>
+              <p className="text-green-100 text-sm">أجب على 3 أسئلة — نجد لك المعهد الأنسب</p>
             </div>
-
-            <div className="px-8 py-7">
-              <div className="flex flex-col gap-4 mb-7">
-                {/* Institute option */}
-                <button
-                  onClick={() => { setForm({ ...form, type: "institute" }); setStep("goal"); }}
-                  className={`w-full text-right p-5 rounded-2xl border-2 transition-all hover:shadow-md group ${
-                    form.type === "institute" ? "border-green-600 bg-green-50" : "border-gray-200 bg-white hover:border-green-300"
-                  }`}
-                >
-                  <div className="flex items-center gap-4">
-                    <div className={`w-14 h-14 rounded-2xl flex items-center justify-center flex-shrink-0 transition-colors ${form.type === "institute" ? "bg-green-600 text-white" : "bg-blue-50 text-blue-600 group-hover:bg-blue-100"}`}>
-                      <BookOpen size={26} />
-                    </div>
-                    <div className="flex-1">
-                      <div className="font-bold text-gray-900 text-base">معهد اللغة الإنجليزية</div>
-                      <div className="text-sm text-gray-500 mt-0.5">IELTS · إنجليزي عام · مسار جامعي</div>
-                    </div>
-                    <ArrowLeft size={18} className="text-gray-300 group-hover:text-green-500 transition-colors" />
-                  </div>
-                </button>
-
-                {/* University option */}
-                <button
-                  onClick={() => { setForm({ ...form, type: "university" }); setStep("university-redirect"); }}
-                  className={`w-full text-right p-5 rounded-2xl border-2 transition-all hover:shadow-md group ${
-                    form.type === "university" ? "border-green-600 bg-green-50" : "border-gray-200 bg-white hover:border-green-300"
-                  }`}
-                >
-                  <div className="flex items-center gap-4">
-                    <div className={`w-14 h-14 rounded-2xl flex items-center justify-center flex-shrink-0 transition-colors ${form.type === "university" ? "bg-green-600 text-white" : "bg-green-50 text-green-600 group-hover:bg-green-100"}`}>
-                      <GraduationCap size={26} />
-                    </div>
-                    <div className="flex-1">
-                      <div className="font-bold text-gray-900 text-base">القبول الجامعي</div>
-                      <div className="text-sm text-gray-500 mt-0.5">بكالوريوس · ماستر · دكتوراه</div>
-                    </div>
-                    <ArrowLeft size={18} className="text-gray-300 group-hover:text-green-500 transition-colors" />
-                  </div>
-                </button>
-              </div>
-
-              <p className="text-center text-xs text-gray-400">
-                11 جامعة معتمدة · أكثر من 2,000 تخصص
-              </p>
+            <div className="px-5 py-6">
+              <InstituteQuiz onUniversity={() => setStep("university-redirect")} />
             </div>
           </div>
         </div>
