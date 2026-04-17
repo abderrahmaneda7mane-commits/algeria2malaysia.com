@@ -169,10 +169,11 @@ export default function HomePage() {
       </a>
 
       {/* Hero Section */}
-      <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-green-900 via-green-800 to-green-700 pt-16">
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-20 right-10 w-72 h-72 bg-white rounded-full blur-3xl"></div>
-          <div className="absolute bottom-20 left-10 w-96 h-96 bg-white rounded-full blur-3xl"></div>
+      <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16" style={{ background: "linear-gradient(135deg, #1a6b3a 0%, #1f8a4a 50%, #27a85e 100%)" }}>
+        <div className="absolute inset-0">
+          <div className="absolute top-20 right-10 w-80 h-80 bg-white/15 rounded-full blur-3xl"></div>
+          <div className="absolute bottom-20 left-10 w-96 h-96 bg-white/10 rounded-full blur-3xl"></div>
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-emerald-300/10 rounded-full blur-3xl"></div>
         </div>
 
         <div className="relative z-10 max-w-5xl mx-auto px-4 text-center text-white py-20">

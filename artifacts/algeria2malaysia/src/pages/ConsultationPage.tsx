@@ -284,7 +284,12 @@ export default function ConsultationPage() {
               احجز موعدك — 30 دقيقة مجانية
             </div>
           </div>
-          <iframe src={ZCAL_URL} title="حجز استشارة مجانية" className="flex-1 w-full border-none" />
+          <iframe
+            src={ZCAL_URL}
+            title="حجز استشارة مجانية"
+            className="flex-1 w-full border-none"
+            style={{ filter: "brightness(1.18) saturate(0.72)" }}
+          />
         </div>
       )}
 
