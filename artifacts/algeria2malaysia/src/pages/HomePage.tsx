@@ -520,36 +520,39 @@ export default function HomePage() {
                 nameAr: "معهد ستراتفورد",
                 badge: "إنجليزي مكثف",
                 color: "bg-teal-600",
-                borderColor: "border-teal-500",
                 logo: "/stratford-logo.png",
                 desc: "برامج مكثفة 4-6 ساعات/يوم في موقع متميز بـ KLCC — 3 برامج للاختيار",
                 from: "950 RM",
                 fromEur: "≈ 190 €",
                 highlights: ["إنجليزي للتواصل 2 ساعة/يوم", "مكثف 4 ساعات/يوم", "مكثف بلس 6 ساعات/يوم"],
+                onClick: () => go("stratford-institute"),
+                btnLabel: "عرض الأسعار التفصيلية",
               },
               {
                 name: "Big Ben Education",
                 nameAr: "مجموعة بيغ بن",
                 badge: "IELTS & IEP",
                 color: "bg-red-800",
-                borderColor: "border-red-700",
                 logo: "/bigben-logo.png",
                 desc: "المعهد الوحيد في ماليزيا المعتمد من Pearson. IELTS وبرامج أكاديمية متكاملة",
                 from: "2,618 RM",
                 fromEur: "≈ 524 €",
                 highlights: ["برنامج IEP مكثف", "تحضير IELTS", "دروس خاصة VIP"],
+                onClick: () => go("apply", { type: "institute" }),
+                btnLabel: "عرض الأسعار والتسجيل",
               },
               {
                 name: "Erican Language Centre",
                 nameAr: "مركز إيريكان",
                 badge: "Cambridge & IELTS",
                 color: "bg-orange-600",
-                borderColor: "border-orange-500",
                 logo: "/erican-logo.png",
                 desc: "مركز معتمد لامتحانات Cambridge وIDP IELTS. 400,000+ متعلم",
                 from: "2,000 RM",
                 fromEur: "≈ 400 €",
                 highlights: ["برنامج دولي مكثف", "تحضير IELTS", "Cambridge معتمد"],
+                onClick: () => go("apply", { type: "institute" }),
+                btnLabel: "عرض الأسعار والتسجيل",
               },
             ].map((inst) => (
               <div key={inst.name} className="border border-gray-200 rounded-2xl overflow-hidden hover:shadow-lg transition-all hover:border-green-200 group flex flex-col">
@@ -580,10 +583,10 @@ export default function HomePage() {
                       <div className="text-green-500 text-xs">{inst.fromEur}</div>
                     </div>
                     <button
-                      onClick={() => go("apply", { type: "institute" })}
+                      onClick={inst.onClick}
                       className="w-full bg-green-600 hover:bg-green-700 text-white text-sm font-bold py-2.5 rounded-xl transition-all"
                     >
-                      عرض الأسعار والتسجيل
+                      {inst.btnLabel}
                     </button>
                   </div>
                 </div>
