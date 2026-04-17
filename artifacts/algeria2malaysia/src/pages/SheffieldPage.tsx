@@ -6,6 +6,9 @@ const EUR = (rm: number) => Math.round(rm / 5).toLocaleString();
 const RM  = (rm: number) => rm.toLocaleString();
 
 const ADULT_FEES = [
+  { duration: "أسبوع واحد", course: 1450,  reg: 500, ins: null,  visa: null,  total: 1950,  weekly: true },
+  { duration: "أسبوعان",    course: 2030,  reg: 500, ins: null,  visa: null,  total: 2530,  weekly: true },
+  { duration: "3 أسابيع",   course: 2320,  reg: 500, ins: null,  visa: null,  total: 2820,  weekly: true },
   { duration: "شهر واحد",   course: 2900,  reg: 500, ins: null,  visa: null,  total: 3400  },
   { duration: "شهران",      course: 5800,  reg: 500, ins: null,  visa: null,  total: 6300  },
   { duration: "3 أشهر",     course: 8700,  reg: 500, ins: null,  visa: null,  total: 9200  },
@@ -234,31 +237,67 @@ export default function SheffieldPage() {
             <div className="p-4 overflow-x-auto">
               <table className="w-full text-sm">
                 <thead>
-                  <tr className="bg-gray-50">
-                    <th className="text-right py-3 px-3 font-bold text-gray-600 border-b border-gray-100">المدة</th>
-                    <th className="text-right py-3 px-3 font-bold text-gray-600 border-b border-gray-100">رسوم الدراسة</th>
-                    <th className="text-right py-3 px-3 font-bold text-gray-600 border-b border-gray-100">التسجيل</th>
-                    <th className="text-right py-3 px-3 font-bold text-gray-600 border-b border-gray-100">التأمين</th>
-                    <th className="text-right py-3 px-3 font-bold text-gray-600 border-b border-gray-100">الفيزا</th>
-                    <th className="text-right py-3 px-3 font-bold text-[#1a3272] border-b border-gray-100">الإجمالي</th>
+                  <tr className="bg-[#1a3272]">
+                    <th className="text-right py-3 px-3 font-bold text-white/90 border-b border-white/10 rounded-tr-lg">المدة</th>
+                    <th className="text-right py-3 px-3 font-bold text-white/90 border-b border-white/10">رسوم الدراسة</th>
+                    <th className="text-right py-3 px-3 font-bold text-white/90 border-b border-white/10">التسجيل</th>
+                    <th className="text-right py-3 px-3 font-bold text-white/90 border-b border-white/10">التأمين</th>
+                    <th className="text-right py-3 px-3 font-bold text-white/90 border-b border-white/10">الفيزا</th>
+                    <th className="text-right py-3 px-3 font-bold text-yellow-300 border-b border-white/10">الإجمالي</th>
                   </tr>
                 </thead>
                 <tbody>
-                  {ADULT_FEES.map((row, i) => (
-                    <tr key={i} className={i % 2 === 0 ? "bg-white" : "bg-blue-50/20"}>
+                  {/* Weekly section header */}
+                  <tr className="bg-teal-50">
+                    <td colSpan={6} className="py-2 px-3 text-xs font-extrabold text-teal-700 border-b border-teal-100 tracking-wide">
+                      📅 باقات أسبوعية — بدون فيزا
+                    </td>
+                  </tr>
+                  {ADULT_FEES.filter(r => r.weekly).map((row, i) => (
+                    <tr key={`w-${i}`} className="bg-teal-50/40 hover:bg-teal-50 transition-colors">
+                      <td className="py-2.5 px-3 font-semibold text-teal-800 border-b border-teal-100/50">
+                        <span className="inline-flex items-center gap-1.5">
+                          <span className="w-1.5 h-1.5 rounded-full bg-teal-400 flex-shrink-0"></span>
+                          {row.duration}
+                        </span>
+                      </td>
+                      <td className="py-2.5 px-3 text-gray-600 border-b border-teal-100/50">{RM(row.course)}</td>
+                      <td className="py-2.5 px-3 text-gray-600 border-b border-teal-100/50">{RM(row.reg)}</td>
+                      <td className="py-2.5 px-3 text-gray-400 border-b border-teal-100/50">—</td>
+                      <td className="py-2.5 px-3 text-gray-400 border-b border-teal-100/50">—</td>
+                      <td className="py-2.5 px-3 font-extrabold text-teal-700 border-b border-teal-100/50">
+                        {RM(row.total)} <span className="text-xs font-normal text-gray-400">RM</span>
+                        <span className="block text-xs text-teal-500 font-normal">≈ {EUR(row.total)} €</span>
+                      </td>
+                    </tr>
+                  ))}
+
+                  {/* Monthly section header */}
+                  <tr className="bg-blue-50">
+                    <td colSpan={6} className="py-2 px-3 text-xs font-extrabold text-[#1a3272] border-b border-blue-100 tracking-wide">
+                      🗓️ باقات شهرية — التأمين والفيزا من الشهر الرابع
+                    </td>
+                  </tr>
+                  {ADULT_FEES.filter(r => !r.weekly).map((row, i) => (
+                    <tr key={`m-${i}`} className={i % 2 === 0 ? "bg-white hover:bg-blue-50/20 transition-colors" : "bg-blue-50/20 hover:bg-blue-50/40 transition-colors"}>
                       <td className="py-2.5 px-3 font-medium text-gray-800 border-b border-gray-50">{row.duration}</td>
                       <td className="py-2.5 px-3 text-gray-600 border-b border-gray-50">{RM(row.course)}</td>
                       <td className="py-2.5 px-3 text-gray-600 border-b border-gray-50">{RM(row.reg)}</td>
                       <td className="py-2.5 px-3 text-gray-500 border-b border-gray-50">{row.ins ? RM(row.ins) : "—"}</td>
                       <td className="py-2.5 px-3 text-gray-500 border-b border-gray-50">{row.visa ? RM(row.visa) : "—"}</td>
-                      <td className="py-2.5 px-3 font-extrabold text-[#1a3272] border-b border-gray-50">{RM(row.total)} <span className="text-xs font-normal text-gray-400">RM</span></td>
+                      <td className="py-2.5 px-3 font-extrabold text-[#1a3272] border-b border-gray-50">
+                        {RM(row.total)} <span className="text-xs font-normal text-gray-400">RM</span>
+                        <span className="block text-xs text-blue-400 font-normal">≈ {EUR(row.total)} €</span>
+                      </td>
                     </tr>
                   ))}
                 </tbody>
               </table>
             </div>
-            <div className="px-6 pb-4">
-              <p className="text-xs text-gray-400">* جميع الأسعار بالرينجت الماليزي — التأمين والفيزا يُضافان اعتباراً من الشهر الرابع</p>
+            <div className="px-6 pb-4 flex flex-wrap gap-4 text-xs text-gray-400">
+              <span>* جميع الأسعار بالرينجت الماليزي (MYR)</span>
+              <span>* التأمين والفيزا يُضافان اعتباراً من الشهر الرابع</span>
+              <span>* الباقات الأسبوعية لا تشمل فيزا دراسية</span>
             </div>
           </div>
         )}
