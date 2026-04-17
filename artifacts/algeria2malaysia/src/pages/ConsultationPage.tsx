@@ -66,7 +66,12 @@ function Select({ children, ...props }: React.SelectHTMLAttributes<HTMLSelectEle
   );
 }
 
+function cleanPhone(phone: string): string {
+  return phone.replace(/[\s\-().]/g, "");
+}
+
 function buildHtmlMessage(form: FormData): string {
+  const waLink = `https://wa.me/${cleanPhone(form.phone)}`;
   const row = (label: string, value: string) => `
     <tr>
       <td style="padding:10px 16px;background:#f8fdf9;font-weight:700;color:#1a5c35;width:40%;border-bottom:1px solid #e2f0e8;font-family:Arial,sans-serif;font-size:14px;">${label}</td>
@@ -142,8 +147,8 @@ function buildHtmlMessage(form: FormData): string {
 
         <!-- CTA -->
         <tr><td style="padding:28px 24px;text-align:center;">
-          <a href="https://wa.me/601112200603" style="display:inline-block;background:linear-gradient(135deg,#1a7a45,#25a05a);color:#ffffff;font-size:15px;font-weight:800;padding:14px 36px;border-radius:12px;text-decoration:none;box-shadow:0 4px 14px rgba(26,122,69,0.35);">
-            تواصل عبر واتساب 💬
+          <a href="${waLink}" style="display:inline-block;background:linear-gradient(135deg,#1a7a45,#25a05a);color:#ffffff;font-size:15px;font-weight:800;padding:14px 36px;border-radius:12px;text-decoration:none;box-shadow:0 4px 14px rgba(26,122,69,0.35);">
+            تواصل مع الطالب عبر الواتساب لتأكيد الاستشارة
           </a>
         </td></tr>
 
