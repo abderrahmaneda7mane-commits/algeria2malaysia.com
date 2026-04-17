@@ -17,6 +17,7 @@ interface FormData {
   specialty: string;
   currentLevel: string;
   lastDegree: string;
+  bacGrade: string;
   budget: string;
   englishLevel: string;
   ielts: string;
@@ -26,7 +27,7 @@ interface FormData {
 
 const EMPTY: FormData = {
   fullName: "", email: "", phone: "",
-  studyField: "", specialty: "", currentLevel: "", lastDegree: "",
+  studyField: "", specialty: "", currentLevel: "", lastDegree: "", bacGrade: "",
   budget: "", englishLevel: "", ielts: "", whyMalaysia: "", priority: "",
 };
 
@@ -63,6 +64,104 @@ function Select({ children, ...props }: React.SelectHTMLAttributes<HTMLSelectEle
       {children}
     </select>
   );
+}
+
+function buildHtmlMessage(form: FormData): string {
+  const row = (label: string, value: string) => `
+    <tr>
+      <td style="padding:10px 16px;background:#f8fdf9;font-weight:700;color:#1a5c35;width:40%;border-bottom:1px solid #e2f0e8;font-family:Arial,sans-serif;font-size:14px;">${label}</td>
+      <td style="padding:10px 16px;color:#333;border-bottom:1px solid #e2f0e8;font-family:Arial,sans-serif;font-size:14px;">${value || "—"}</td>
+    </tr>`;
+
+  return `
+<!DOCTYPE html>
+<html dir="rtl" lang="ar">
+<head><meta charset="UTF-8"></head>
+<body style="margin:0;padding:0;background:#f0f4f0;font-family:Arial,sans-serif;">
+  <table width="100%" cellpadding="0" cellspacing="0" style="background:#f0f4f0;padding:32px 0;">
+    <tr><td align="center">
+      <table width="600" cellpadding="0" cellspacing="0" style="background:#ffffff;border-radius:16px;overflow:hidden;box-shadow:0 4px 24px rgba(0,0,0,0.08);max-width:600px;">
+
+        <!-- Header -->
+        <tr>
+          <td style="background:linear-gradient(135deg,#1a7a45,#25a05a);padding:32px 24px;text-align:center;">
+            <p style="margin:0 0 4px 0;color:rgba(255,255,255,0.8);font-size:13px;letter-spacing:1px;">ALGERIA 2 MALAYSIA</p>
+            <h1 style="margin:0;color:#ffffff;font-size:24px;font-weight:800;">طلب استشارة مجانية جديد 🎓</h1>
+            <p style="margin:12px 0 0 0;color:rgba(255,255,255,0.85);font-size:14px;">وصل طلب جديد من خلال الموقع — يرجى التواصل في أقرب وقت</p>
+          </td>
+        </tr>
+
+        <!-- Section: Personal -->
+        <tr><td style="padding:24px 24px 0;">
+          <p style="margin:0 0 8px 0;font-size:13px;font-weight:800;color:#1a7a45;text-transform:uppercase;letter-spacing:1px;">👤 المعلومات الشخصية</p>
+        </td></tr>
+        <tr><td style="padding:0 24px;">
+          <table width="100%" cellpadding="0" cellspacing="0" style="border-radius:10px;overflow:hidden;border:1px solid #e2f0e8;">
+            ${row("الاسم الكامل", form.fullName)}
+            ${row("البريد الإلكتروني", form.email)}
+            ${row("رقم الهاتف (واتساب)", form.phone)}
+          </table>
+        </td></tr>
+
+        <!-- Section: Academic -->
+        <tr><td style="padding:24px 24px 0;">
+          <p style="margin:0 0 8px 0;font-size:13px;font-weight:800;color:#1a7a45;text-transform:uppercase;letter-spacing:1px;">📚 المسار الأكاديمي</p>
+        </td></tr>
+        <tr><td style="padding:0 24px;">
+          <table width="100%" cellpadding="0" cellspacing="0" style="border-radius:10px;overflow:hidden;border:1px solid #e2f0e8;">
+            ${row("مجال الدراسة", form.studyField)}
+            ${row("التخصص", form.specialty)}
+            ${row("المستوى الدراسي الحالي", form.currentLevel)}
+            ${row("آخر شهادة", form.lastDegree)}
+            ${row("معدل الباكالوريا", form.bacGrade)}
+          </table>
+        </td></tr>
+
+        <!-- Section: Extra -->
+        <tr><td style="padding:24px 24px 0;">
+          <p style="margin:0 0 8px 0;font-size:13px;font-weight:800;color:#1a7a45;text-transform:uppercase;letter-spacing:1px;">⭐ تفاصيل إضافية</p>
+        </td></tr>
+        <tr><td style="padding:0 24px;">
+          <table width="100%" cellpadding="0" cellspacing="0" style="border-radius:10px;overflow:hidden;border:1px solid #e2f0e8;">
+            ${row("الميزانية السنوية", form.budget)}
+            ${row("مستوى الإنجليزية", form.englishLevel)}
+            ${row("شهادة IELTS", form.ielts)}
+            ${row("الأولوية", form.priority)}
+          </table>
+        </td></tr>
+
+        <!-- Why Malaysia -->
+        <tr><td style="padding:24px 24px 0;">
+          <p style="margin:0 0 8px 0;font-size:13px;font-weight:800;color:#1a7a45;text-transform:uppercase;letter-spacing:1px;">💬 لماذا ماليزيا؟</p>
+        </td></tr>
+        <tr><td style="padding:0 24px;">
+          <div style="background:#f8fdf9;border:1px solid #e2f0e8;border-radius:10px;padding:14px 16px;color:#444;font-size:14px;line-height:1.7;font-family:Arial,sans-serif;">
+            ${form.whyMalaysia || "لم يُذكر"}
+          </div>
+        </td></tr>
+
+        <!-- CTA -->
+        <tr><td style="padding:28px 24px;text-align:center;">
+          <a href="https://wa.me/601112200603" style="display:inline-block;background:linear-gradient(135deg,#1a7a45,#25a05a);color:#ffffff;font-size:15px;font-weight:800;padding:14px 36px;border-radius:12px;text-decoration:none;box-shadow:0 4px 14px rgba(26,122,69,0.35);">
+            تواصل عبر واتساب 💬
+          </a>
+        </td></tr>
+
+        <!-- Footer -->
+        <tr>
+          <td style="background:#f8fdf9;border-top:1px solid #e2f0e8;padding:16px 24px;text-align:center;">
+            <p style="margin:0;color:#aaa;font-size:12px;font-family:Arial,sans-serif;">
+              Algeria2Malaysia — الجزائر إلى ماليزيا<br>
+              هذا البريد أُرسل تلقائياً من نموذج الاستشارة على الموقع
+            </p>
+          </td>
+        </tr>
+
+      </table>
+    </td></tr>
+  </table>
+</body>
+</html>`;
 }
 
 export default function ConsultationPage() {
@@ -112,17 +211,8 @@ export default function ConsultationPage() {
           to_email:      "algeria2malaysia@gmail.com",
           reply_to:      form.email,
           full_name:     form.fullName,
-          email:         form.email,
-          phone:         form.phone,
-          study_field:   form.studyField,
-          specialty:     form.specialty || "—",
-          current_level: form.currentLevel,
-          last_degree:   form.lastDegree,
-          budget:        form.budget || "—",
-          english_level: form.englishLevel || "—",
-          ielts:         form.ielts || "—",
-          why_malaysia:  form.whyMalaysia || "—",
-          priority:      form.priority || "—",
+          subject:       `طلب استشارة جديد — ${form.fullName}`,
+          message:       buildHtmlMessage(form),
         },
         { publicKey: EMAILJS_PUBLIC_KEY }
       );
@@ -267,6 +357,9 @@ export default function ConsultationPage() {
                     <option>دكتوراه</option>
                     <option>أخرى</option>
                   </Select>
+                </Field>
+                <Field label="معدل الباكالوريا">
+                  <Input value={form.bacGrade} onChange={set("bacGrade")} placeholder="مثال: 14.50 / 20" />
                 </Field>
               </div>
             )}
