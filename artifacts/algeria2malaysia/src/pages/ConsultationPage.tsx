@@ -1,6 +1,8 @@
 import { useEffect } from "react";
 import { navigate } from "../hooks/useNavigate";
-import { ArrowRight, Clock, CheckCircle, Calendar } from "lucide-react";
+import { ArrowRight, Clock, CheckCircle, Calendar, ExternalLink, Home } from "lucide-react";
+
+const ZCAL_URL = "https://zcal.co/i/DNzrLfY_";
 
 export default function ConsultationPage() {
   useEffect(() => {
@@ -76,19 +78,44 @@ export default function ConsultationPage() {
       {/* zcal embed */}
       <div className="max-w-3xl mx-auto px-4 pb-12">
         <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+
+          {/* Card header */}
           <div className="border-b border-gray-100 px-6 py-4 text-center">
             <p className="text-gray-800 font-bold text-base">اختر الوقت المناسب لك</p>
             <p className="text-gray-400 text-sm mt-0.5">سيتواصل معك أحد مستشارينا في الموعد المحدد</p>
           </div>
 
+          {/* zcal widget */}
           <div className="p-4 md:p-6">
             <div
               className="zcal-inline-widget"
               data-zcal-options='{"showBackground":1}'
             >
-              <a href="https://zcal.co/i/DNzrLfY_">
-                استشارة الدراسة في ماليزيا - Schedule a meeting
+              {/* Styled fallback button — zcal replaces this with the calendar widget */}
+              <a
+                href={ZCAL_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex items-center justify-center gap-3 w-full bg-gradient-to-l from-green-600 to-green-700 hover:from-green-500 hover:to-green-600 text-white font-bold text-lg rounded-2xl py-5 px-6 shadow-lg hover:shadow-xl transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0"
+              >
+                <Calendar size={22} className="flex-shrink-0" />
+                <span>احجز موعد استشارتك الآن</span>
+                <ExternalLink size={17} className="flex-shrink-0 opacity-70 group-hover:opacity-100 transition-opacity" />
               </a>
+            </div>
+          </div>
+
+          {/* Back button — for users returning from external zcal page */}
+          <div className="px-6 pb-6 pt-0">
+            <div className="border-t border-dashed border-gray-200 pt-5 text-center">
+              <p className="text-gray-400 text-xs mb-3">بعد إتمام الحجز في الصفحة الخارجية</p>
+              <button
+                onClick={() => navigate("home")}
+                className="inline-flex items-center justify-center gap-2 bg-gray-50 hover:bg-green-50 border border-gray-200 hover:border-green-300 text-gray-600 hover:text-green-700 font-semibold text-sm rounded-xl py-2.5 px-6 transition-all duration-200"
+              >
+                <Home size={15} />
+                العودة للصفحة الرئيسية
+              </button>
             </div>
           </div>
         </div>
