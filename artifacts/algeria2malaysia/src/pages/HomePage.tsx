@@ -430,14 +430,38 @@ export default function HomePage() {
             ))}
           </div>
 
-          {/* Smart Institute Finder */}
-          <div className="bg-gradient-to-br from-green-50 to-white border border-green-100 rounded-3xl p-6 sm:p-8">
-            <div className="text-center mb-6">
-              <div className="inline-block bg-green-100 text-green-700 rounded-full px-4 py-1 text-sm font-semibold mb-3">اكتشف المعهد المناسب لك</div>
-              <h3 className="text-2xl font-extrabold text-gray-900 mb-1">أجب على 3 أسئلة — نجد لك الأنسب</h3>
-              <p className="text-gray-400 text-sm">نظام ذكي يحلل احتياجاتك ويقترح أفضل معهد حسب هدفك وميزانيتك ومدة إقامتك</p>
-            </div>
-            <InstituteQuiz />
+          {/* Track selector */}
+          <div className="grid md:grid-cols-2 gap-4">
+            <button
+              onClick={() => go("apply")}
+              className="text-right p-6 rounded-2xl border-2 border-green-200 bg-green-50 hover:border-green-400 hover:bg-green-100 transition-all group"
+            >
+              <div className="flex items-center gap-4">
+                <div className="w-14 h-14 rounded-2xl bg-white flex items-center justify-center flex-shrink-0 shadow-sm">
+                  <BookOpen size={26} className="text-green-600" />
+                </div>
+                <div className="flex-1">
+                  <div className="font-extrabold text-gray-900 text-base">معهد اللغة الإنجليزية</div>
+                  <div className="text-gray-500 text-sm mt-0.5">IELTS · عام · أعمال · أطفال</div>
+                  <div className="text-green-600 text-xs font-bold mt-1.5">اكتشف أنسب معهد لك ←</div>
+                </div>
+              </div>
+            </button>
+            <button
+              onClick={() => go("apply", { type: "university" })}
+              className="text-right p-6 rounded-2xl border-2 border-blue-200 bg-blue-50 hover:border-blue-400 hover:bg-blue-100 transition-all group"
+            >
+              <div className="flex items-center gap-4">
+                <div className="w-14 h-14 rounded-2xl bg-white flex items-center justify-center flex-shrink-0 shadow-sm">
+                  <GraduationCap size={26} className="text-blue-600" />
+                </div>
+                <div className="flex-1">
+                  <div className="font-extrabold text-gray-900 text-base">القبول الجامعي</div>
+                  <div className="text-gray-500 text-sm mt-0.5">بكالوريوس · ماستر · دكتوراه</div>
+                  <div className="text-blue-600 text-xs font-bold mt-1.5">ابدأ نموذج القبول ←</div>
+                </div>
+              </div>
+            </button>
           </div>
         </div>
       </section>
@@ -484,13 +508,28 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Institutes Preview */}
+      {/* Institutes Track */}
       <section id="institutes" className="py-20 bg-white">
         <div className="max-w-6xl mx-auto px-4">
-          <div className="text-center mb-14">
-            <div className="inline-block bg-green-100 text-green-700 rounded-full px-4 py-1 text-sm font-semibold mb-4">شركاؤنا</div>
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">معاهدنا المعتمدة</h2>
-            <p className="text-gray-600">معاهد لغة إنجليزية معتمدة في قلب كوالالمبور</p>
+
+          {/* Track label */}
+          <div className="flex items-center gap-3 mb-3">
+            <div className="w-1.5 h-10 bg-green-500 rounded-full"></div>
+            <div>
+              <div className="text-xs font-bold text-green-600 uppercase tracking-widest">المسار الأول</div>
+              <h2 className="text-2xl md:text-3xl font-extrabold text-gray-900">معاهد اللغة الإنجليزية</h2>
+            </div>
+          </div>
+          <p className="text-gray-500 mb-10 mr-5">4 معاهد معتمدة في قلب كوالالمبور — IELTS، إنجليزي عام، أعمال، وأطفال</p>
+
+          {/* Smart finder embedded */}
+          <div className="bg-gradient-to-br from-green-50 to-white border border-green-100 rounded-3xl p-6 sm:p-8 mb-12">
+            <div className="text-center mb-6">
+              <div className="inline-block bg-green-100 text-green-700 rounded-full px-4 py-1 text-sm font-semibold mb-2">اكتشف الأنسب لك</div>
+              <h3 className="text-xl font-extrabold text-gray-900 mb-1">أجب على 3 أسئلة — نجد لك أفضل معهد</h3>
+              <p className="text-gray-400 text-sm">بناءً على هدفك وميزانيتك ومدة إقامتك</p>
+            </div>
+            <InstituteQuiz />
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -600,13 +639,43 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Partner Universities */}
-      <section id="universities" className="py-20 bg-gray-50">
+      {/* Universities Track */}
+      <section id="universities" className="py-20 bg-slate-50">
         <div className="max-w-6xl mx-auto px-4">
-          <div className="text-center mb-14">
-            <div className="inline-block bg-green-100 text-green-700 rounded-full px-4 py-1 text-sm font-semibold mb-4">جامعاتنا الشريكة</div>
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">12 جامعة ماليزية معتمدة</h2>
-            <p className="text-gray-600 max-w-2xl mx-auto">نساعدك على الالتحاق بأفضل الجامعات الماليزية المعترف بها دولياً</p>
+
+          {/* Track label */}
+          <div className="flex items-center gap-3 mb-3">
+            <div className="w-1.5 h-10 bg-blue-500 rounded-full"></div>
+            <div>
+              <div className="text-xs font-bold text-blue-600 uppercase tracking-widest">المسار الثاني</div>
+              <h2 className="text-2xl md:text-3xl font-extrabold text-gray-900">القبول الجامعي</h2>
+            </div>
+          </div>
+          <p className="text-gray-500 mb-10 mr-5">12 جامعة ماليزية معتمدة — بكالوريوس، ماستر، دكتوراه — نتولى القبول والتأشيرة كاملاً</p>
+
+          {/* University form CTA banner */}
+          <div className="bg-gradient-to-r from-blue-700 to-blue-900 rounded-3xl p-6 sm:p-8 mb-12 flex flex-col sm:flex-row items-center gap-6">
+            <div className="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center flex-shrink-0">
+              <GraduationCap size={32} className="text-white" />
+            </div>
+            <div className="flex-1 text-center sm:text-right">
+              <h3 className="text-white font-extrabold text-xl mb-1">ابدأ بنموذج القبول الجامعي الرسمي</h3>
+              <p className="text-blue-200 text-sm">أكثر من 2,000 تخصص — فريقنا يراجع طلبك ويتواصل معك خلال 24 ساعة</p>
+            </div>
+            <div className="flex flex-col sm:flex-row gap-3 flex-shrink-0">
+              <button
+                onClick={() => go("apply", { type: "university" })}
+                className="bg-white text-blue-800 font-bold text-sm rounded-xl px-5 py-3 hover:bg-blue-50 transition-all"
+              >
+                📋 ابدأ نموذج القبول
+              </button>
+              <button
+                onClick={() => go("universities")}
+                className="border border-white/40 text-white font-bold text-sm rounded-xl px-5 py-3 hover:bg-white/10 transition-all"
+              >
+                استكشف الجامعات
+              </button>
+            </div>
           </div>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">

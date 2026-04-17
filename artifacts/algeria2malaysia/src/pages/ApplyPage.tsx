@@ -5,7 +5,7 @@ import type { Goal, RoomType } from "../data/institutes";
 import { useNavigate } from "../hooks/useNavigate";
 import InstituteQuiz from "../components/InstituteQuiz";
 
-type Step = "type" | "goal" | "budget" | "suggestion" | "accommodation" | "intake" | "redirect" | "university-redirect";
+type Step = "type" | "institute-quiz" | "goal" | "budget" | "suggestion" | "accommodation" | "intake" | "redirect" | "university-redirect";
 
 interface FormState {
   type: "institute" | "university" | null;
@@ -115,22 +115,85 @@ export default function ApplyPage({ initialType }: { initialType?: "institute" |
 
   if (step === "type") {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-green-900 via-green-800 to-green-700 py-10 px-4" dir="rtl">
-        <div className="w-full max-w-lg mx-auto">
+      <div className="min-h-screen bg-gradient-to-br from-green-900 via-green-800 to-green-700 flex items-center justify-center py-10 px-4" dir="rtl">
+        <div className="w-full max-w-lg">
           <button onClick={() => go("home")} className="flex items-center gap-2 text-green-200 hover:text-white text-sm mb-6 transition-colors">
             <ArrowRight size={16} /> الرئيسية
           </button>
 
           <div className="bg-white rounded-3xl shadow-2xl overflow-hidden">
-            <div className="bg-gradient-to-r from-green-600 to-green-500 px-8 py-6 text-center">
+            <div className="bg-gradient-to-r from-green-600 to-green-500 px-8 py-7 text-center">
               <div className="inline-flex items-center gap-2 bg-white/20 rounded-full px-4 py-1.5 mb-3">
                 <span className="text-white text-xs font-medium">Algeria2Malaysia</span>
               </div>
               <h1 className="text-2xl font-bold text-white mb-1">ابدأ رحلتك التعليمية</h1>
+              <p className="text-green-100 text-sm">اختر المسار الذي تريده في ماليزيا</p>
+            </div>
+
+            <div className="px-7 py-7 flex flex-col gap-4">
+              {/* Institute path */}
+              <button
+                onClick={() => setStep("institute-quiz")}
+                className="w-full text-right p-5 rounded-2xl border-2 border-gray-100 hover:border-green-400 hover:bg-green-50 transition-all group"
+              >
+                <div className="flex items-center gap-4">
+                  <div className="w-14 h-14 rounded-2xl bg-green-50 group-hover:bg-green-100 flex items-center justify-center flex-shrink-0 transition-colors">
+                    <BookOpen size={26} className="text-green-600" />
+                  </div>
+                  <div className="flex-1">
+                    <div className="font-extrabold text-gray-900 text-base">معهد اللغة الإنجليزية</div>
+                    <div className="text-gray-500 text-sm mt-0.5">IELTS · إنجليزي عام · أعمال · أطفال</div>
+                    <div className="text-green-600 text-xs font-semibold mt-1">✦ نساعدك تختار الأنسب لك</div>
+                  </div>
+                  <ArrowLeft size={18} className="text-gray-300 group-hover:text-green-500 group-hover:-translate-x-1 transition-all flex-shrink-0" />
+                </div>
+              </button>
+
+              {/* University path */}
+              <button
+                onClick={() => setStep("university-redirect")}
+                className="w-full text-right p-5 rounded-2xl border-2 border-gray-100 hover:border-blue-400 hover:bg-blue-50 transition-all group"
+              >
+                <div className="flex items-center gap-4">
+                  <div className="w-14 h-14 rounded-2xl bg-blue-50 group-hover:bg-blue-100 flex items-center justify-center flex-shrink-0 transition-colors">
+                    <GraduationCap size={26} className="text-blue-600" />
+                  </div>
+                  <div className="flex-1">
+                    <div className="font-extrabold text-gray-900 text-base">القبول الجامعي</div>
+                    <div className="text-gray-500 text-sm mt-0.5">بكالوريوس · ماستر · دكتوراه</div>
+                    <div className="text-blue-600 text-xs font-semibold mt-1">✦ تعبئة نموذج القبول الرسمي</div>
+                  </div>
+                  <ArrowLeft size={18} className="text-gray-300 group-hover:text-blue-500 group-hover:-translate-x-1 transition-all flex-shrink-0" />
+                </div>
+              </button>
+
+              <p className="text-center text-xs text-gray-400 pt-1">
+                كلا المسارين مجانيان — بدون رسوم استشارة
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  if (step === "institute-quiz") {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-green-900 via-green-800 to-green-700 py-10 px-4" dir="rtl">
+        <div className="w-full max-w-lg mx-auto">
+          <button onClick={() => setStep("type")} className="flex items-center gap-2 text-green-200 hover:text-white text-sm mb-6 transition-colors">
+            <ArrowRight size={16} /> رجوع
+          </button>
+          <div className="bg-white rounded-3xl shadow-2xl overflow-hidden">
+            <div className="bg-gradient-to-r from-green-600 to-green-500 px-8 py-6 text-center">
+              <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-3">
+                <BookOpen size={24} className="text-white" />
+              </div>
+              <h1 className="text-xl font-bold text-white mb-1">معهد اللغة الإنجليزية</h1>
               <p className="text-green-100 text-sm">أجب على 3 أسئلة — نجد لك المعهد الأنسب</p>
             </div>
             <div className="px-5 py-6">
-              <InstituteQuiz onUniversity={() => setStep("university-redirect")} />
+              <InstituteQuiz />
             </div>
           </div>
         </div>

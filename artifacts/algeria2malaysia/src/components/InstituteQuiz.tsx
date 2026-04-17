@@ -2,7 +2,7 @@ import { useState } from "react";
 import { ArrowLeft, RotateCcw, CheckCircle, ChevronLeft, Sparkles, Info } from "lucide-react";
 import { useNavigate } from "../hooks/useNavigate";
 
-type Goal     = "general" | "ielts" | "business" | "kids" | "university";
+type Goal     = "general" | "ielts" | "business" | "kids";
 type Duration = "short" | "mid" | "long";
 type Budget   = "low" | "mid" | "high";
 
@@ -291,7 +291,7 @@ function buildRecommendations(a: Answers): ScoreEntry[] {
 }
 
 // ─── Answer labels (for summary bar) ──────────────────────
-const GOAL_LABELS: Record<Goal, string>     = { general: "إنجليزية عامة", ielts: "IELTS", business: "أعمال", kids: "أطفال/ناشئون", university: "جامعة" };
+const GOAL_LABELS: Record<Goal, string>     = { general: "إنجليزية عامة", ielts: "IELTS", business: "أعمال", kids: "أطفال/ناشئون" };
 const DUR_LABELS:  Record<Duration, string> = { short: "1–3 أشهر", mid: "4–6 أشهر", long: "7+ أشهر" };
 const BUD_LABELS:  Record<Budget, string>   = { low: "< 10,000 RM", mid: "10–25,000 RM", high: "> 25,000 RM" };
 
@@ -302,11 +302,10 @@ const STEPS = [
     q: "ما هدفك الأساسي من الدراسة؟",
     sub: "اختر ما يصف هدفك بدقة",
     options: [
-      { value: "general",    label: "تحسين الإنجليزية العامة",   icon: "🗣️", desc: "بناء مهارات التواصل والطلاقة" },
-      { value: "ielts",      label: "التحضير لاختبار IELTS",     icon: "📋", desc: "الحصول على درجة مرتفعة للجامعة أو الهجرة" },
-      { value: "business",   label: "إنجليزية الأعمال",           icon: "💼", desc: "للبيئات المهنية والشركات" },
-      { value: "kids",       label: "برامج الأطفال والناشئين",    icon: "🎒", desc: "من 7 إلى 17 سنة" },
-      { value: "university", label: "القبول في جامعة ماليزية",   icon: "🎓", desc: "بكالوريوس أو ماستر أو دكتوراه" },
+      { value: "general",  label: "تحسين الإنجليزية العامة",  icon: "🗣️", desc: "بناء مهارات التواصل والطلاقة" },
+      { value: "ielts",    label: "التحضير لاختبار IELTS",    icon: "📋", desc: "الحصول على درجة مرتفعة للجامعة أو الهجرة" },
+      { value: "business", label: "إنجليزية الأعمال",          icon: "💼", desc: "للبيئات المهنية والشركات" },
+      { value: "kids",     label: "برامج الأطفال والناشئين",   icon: "🎒", desc: "من 7 إلى 17 سنة" },
     ],
   },
   {
@@ -332,28 +331,22 @@ const STEPS = [
 ];
 
 // ─── Props ─────────────────────────────────────────────────
-interface Props { onUniversity?: () => void; }
+interface Props { }
 
-export default function InstituteQuiz({ onUniversity }: Props = {}) {
+export default function InstituteQuiz(_props: Props = {}) {
   const { go } = useNavigate();
   const [step, setStep]       = useState(0);
   const [answers, setAnswers] = useState<Answers>({});
   const [done, setDone]       = useState(false);
 
   const currentStep = STEPS[step];
-  const activeSteps = answers.goal === "general" ? 3 : 1;
-  const progress    = done ? 100 : Math.round((step / (answers.goal === "general" ? 3 : 1)) * 100);
 
   function pick(value: string) {
     const newAnswers = { ...answers, [currentStep.key]: value } as Answers;
     setAnswers(newAnswers);
 
-    if (currentStep.key === "goal") {
-      if (value === "university") {
-        if (onUniversity) { onUniversity(); return; }
-        setDone(true); return;
-      }
-      if (value !== "general") { setDone(true); return; }
+    if (currentStep.key === "goal" && value !== "general") {
+      setDone(true); return;
     }
 
     if (step < STEPS.length - 1) { setStep(step + 1); }
@@ -363,24 +356,6 @@ export default function InstituteQuiz({ onUniversity }: Props = {}) {
   function reset() { setStep(0); setAnswers({}); setDone(false); }
 
   const recs = buildRecommendations(answers);
-
-  // ── University result ──
-  if (done && answers.goal === "university") {
-    return (
-      <div className="rounded-2xl border border-gray-200 bg-white p-7 text-center">
-        <div className="text-5xl mb-4">🎓</div>
-        <h3 className="text-xl font-extrabold text-gray-900 mb-2">القبول الجامعي في ماليزيا</h3>
-        <p className="text-gray-500 text-sm mb-6 max-w-xs mx-auto">شراكات مع أكثر من 12 جامعة — نتولى كل شيء من القبول حتى التأشيرة</p>
-        <div className="flex flex-col sm:flex-row gap-3 justify-center">
-          <button onClick={() => go("universities")} className="bg-gray-900 hover:bg-gray-800 text-white font-bold text-sm rounded-xl px-6 py-3 transition-all">استكشف الجامعات</button>
-          <button onClick={() => go("apply", { type: "university" })} className="bg-green-600 hover:bg-green-700 text-white font-bold text-sm rounded-xl px-6 py-3 transition-all">ابدأ طلب القبول</button>
-        </div>
-        <button onClick={reset} className="mt-5 flex items-center gap-1.5 text-xs text-gray-400 hover:text-gray-600 transition-colors mx-auto">
-          <RotateCcw size={12} /> البدء من جديد
-        </button>
-      </div>
-    );
-  }
 
   // ── Main results ──
   if (done) {
