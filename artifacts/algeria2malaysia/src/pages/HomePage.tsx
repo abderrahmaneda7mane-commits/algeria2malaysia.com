@@ -538,8 +538,8 @@ export default function HomePage() {
                 from: "2,618 RM",
                 fromEur: "≈ 524 €",
                 highlights: ["برنامج IEP مكثف", "تحضير IELTS", "دروس خاصة VIP"],
-                onClick: () => go("apply", { type: "institute" }),
-                btnLabel: "عرض الأسعار والتسجيل",
+                onClick: () => go("bigben-institute"),
+                btnLabel: "عرض الأسعار التفصيلية",
               },
               {
                 name: "Erican Language Centre",
