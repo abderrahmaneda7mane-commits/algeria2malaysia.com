@@ -174,8 +174,10 @@ export default function HomePage() {
         <div className="relative z-10 max-w-5xl mx-auto px-4 text-center text-white py-20">
           <div className="flex justify-center mb-8">
             <div className="relative">
-              {/* Soft pulse ring */}
-              <div className="absolute -inset-2 rounded-full bg-white/15 animate-pulse" style={{ animationDuration: "2.5s" }} />
+              {/* Outer ping ring — green */}
+              <div className="absolute inset-0 rounded-full bg-green-400/40 scale-125 animate-ping" style={{ animationDuration: "3s" }} />
+              {/* Mid glow ring — green */}
+              <div className="absolute inset-0 rounded-full bg-gradient-to-br from-green-400/50 to-green-300/20 blur-sm" style={{ transform: "scale(1.15)" }} />
               {/* Logo container */}
               <div className="relative w-36 h-36 rounded-full overflow-hidden bg-white shadow-2xl border-4 border-white/80 p-1.5">
                 <img
