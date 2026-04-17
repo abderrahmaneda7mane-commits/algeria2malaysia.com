@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ArrowLeft, RotateCcw, CheckCircle, ChevronLeft } from "lucide-react";
+import { ArrowLeft, RotateCcw, CheckCircle, ChevronLeft, Sparkles, Info } from "lucide-react";
 import { useNavigate } from "../hooks/useNavigate";
 
 type Goal     = "general" | "ielts" | "business" | "kids" | "university";
@@ -14,112 +14,325 @@ interface Answers {
 
 type InstId = "stratford" | "bigben" | "erican" | "sheffield";
 
-const INSTITUTES: Record<InstId, {
-  nameAr: string; name: string; logo: string; color: string; btnColor: string;
-  tagline: string; page: string; from: string;
-}> = {
+interface InstMeta {
+  nameAr: string;
+  name: string;
+  logo: string;
+  borderColor: string;
+  headerBg: string;
+  btnColor: string;
+  page: string;
+  from: string;
+}
+
+const INST_META: Record<InstId, InstMeta> = {
   stratford: {
     nameAr: "معهد ستراتفورد",
     name: "Stratford International",
     logo: "/stratford-logo.png",
-    color: "border-teal-300 bg-teal-50",
+    borderColor: "border-teal-200",
+    headerBg: "bg-teal-50",
     btnColor: "bg-teal-600 hover:bg-teal-700",
-    tagline: "الأنسب للمبتدئين — برامج مرنة تبدأ من شهر واحد",
     page: "stratford-institute",
-    from: "950 RM",
+    from: "950 RM / شهر",
   },
   bigben: {
     nameAr: "مجموعة بيغ بان",
     name: "Big Ben Education",
     logo: "/bigben-logo.png",
-    color: "border-rose-300 bg-rose-50",
+    borderColor: "border-rose-200",
+    headerBg: "bg-rose-50",
     btnColor: "bg-[#7a1a2e] hover:bg-[#5a1020]",
-    tagline: "معتمد Pearson — IEP مكثف وتحضير IELTS احترافي",
     page: "bigben-institute",
-    from: "2,618 RM",
+    from: "2,618 RM / شهر",
   },
   erican: {
     nameAr: "مركز إيريكان",
     name: "Erican Language Centre",
     logo: "/erican-logo.png",
-    color: "border-violet-300 bg-violet-50",
+    borderColor: "border-violet-200",
+    headerBg: "bg-violet-50",
     btnColor: "bg-[#5a2a9a] hover:bg-[#3d1a6e]",
-    tagline: "معتمد Cambridge وIDP — 6 برامج متخصصة للجميع",
     page: "erican-institute",
-    from: "2,800 RM",
+    from: "2,800 RM / شهر",
   },
   sheffield: {
     nameAr: "أكاديمية شيفيلد",
     name: "Sheffield Academy",
     logo: "/sheffield-logo.png",
-    color: "border-blue-300 bg-blue-50",
+    borderColor: "border-blue-200",
+    headerBg: "bg-blue-50",
     btnColor: "bg-[#1a3272] hover:bg-[#0d1f4e]",
-    tagline: "عروض حصرية + IELTS مجاني — أفضل قيمة مقابل السعر",
     page: "sheffield-institute",
-    from: "3,400 RM",
+    from: "3,400 RM / شهر",
   },
 };
 
-function recommend(a: Answers): InstId[] {
-  if (a.goal === "university")  return [];
-  if (a.goal === "kids")        return ["sheffield", "erican"];
-  if (a.goal === "ielts")       return ["bigben", "sheffield", "erican"];
-  if (a.goal === "business")    return ["erican", "bigben", "sheffield"];
-
-  // general english
-  if (a.duration === "short") {
-    if (a.budget === "low")  return ["stratford", "sheffield"];
-    if (a.budget === "mid")  return ["stratford", "sheffield", "bigben"];
-    return ["stratford", "sheffield", "bigben", "erican"];
-  }
-  if (a.duration === "mid") {
-    if (a.budget === "low")  return ["sheffield", "stratford"];
-    if (a.budget === "mid")  return ["sheffield", "bigben", "erican"];
-    return ["sheffield", "bigben", "erican"];
-  }
-  // long
-  if (a.budget === "low")  return ["sheffield", "bigben"];
-  return ["sheffield", "bigben", "erican"];
+// ─── Score Entry ───────────────────────────────────────────
+interface ScoreEntry {
+  id: InstId;
+  score: number;
+  program: string;
+  reason: string;
+  highlights: string[];
 }
 
+function buildRecommendations(a: Answers): ScoreEntry[] {
+  // ── IELTS ──────────────────────────────────────────────
+  if (a.goal === "ielts") {
+    return [
+      {
+        id: "bigben", score: 96,
+        program: "IELTS Preparation + IEP (Pearson)",
+        reason: "بيغ بان متخصص بـ IELTS بشهادة Pearson الدولية — برنامج IEP المكثف يرفع درجتك في وقت قياسي مع مدرسين معتمدين",
+        highlights: ["Pearson معتمد", "IEP مكثف", "نتائج مضمونة"],
+      },
+      {
+        id: "sheffield", score: 88,
+        program: "IELTS Preparation + اختبار مجاني",
+        reason: "شيفيلد يمنحك اختبار IELTS مجاناً مع أي تسجيل — توفير فعلي يصل إلى 800 RM، مع دعم كامل للتأشيرة",
+        highlights: ["IELTS مجاني ✓", "توفير 800 RM", "تأشيرة طالب"],
+      },
+      {
+        id: "erican", score: 78,
+        program: "IELTS Preparation (IDP & Cambridge)",
+        reason: "إيريكان معتمد من IDP وCambridge — بيئة أكاديمية صارمة لمن يريد أعلى درجة بأعلى مستوى تدريسي",
+        highlights: ["IDP & Cambridge", "7 مستويات", "بيئة أكاديمية"],
+      },
+    ];
+  }
+
+  // ── Kids ───────────────────────────────────────────────
+  if (a.goal === "kids") {
+    return [
+      {
+        id: "sheffield", score: 94,
+        program: "Kids English Course (7–17 سنة)",
+        reason: "شيفيلد لديها برنامج مخصص للأطفال والمراهقين بمناهج حديثة ومعلمين متخصصين في تعليم الأطفال",
+        highlights: ["مناهج خاصة بالأطفال", "7–17 سنة", "بيئة آمنة"],
+      },
+      {
+        id: "erican", score: 86,
+        program: "Cambridge Young Learners Program",
+        reason: "إيريكان معتمد من Cambridge للناشئين — منهج دولي يمنح الطفل شهادة Cambridge معترفاً بها",
+        highlights: ["Cambridge معتمد", "شهادة دولية", "تعلم تفاعلي"],
+      },
+    ];
+  }
+
+  // ── Business English ────────────────────────────────────
+  if (a.goal === "business") {
+    return [
+      {
+        id: "erican", score: 95,
+        program: "Business English (Cambridge Certified)",
+        reason: "إيريكان هو المركز الوحيد في كوالالمبور بمنهج Cambridge للأعمال — يدرّبك على العروض والمفاوضات والكتابة المهنية",
+        highlights: ["Cambridge معتمد", "محاكاة بيئة عمل", "كتابة ومحادثة مهنية"],
+      },
+      {
+        id: "bigben", score: 82,
+        program: "VIP Business English Program",
+        reason: "برنامج VIP من بيغ بان مصمم للمهنيين — حصص مكثفة وتدريب على الاجتماعات والعروض التقديمية",
+        highlights: ["برنامج VIP", "Pearson معتمد", "مجموعات صغيرة"],
+      },
+    ];
+  }
+
+  // ── General English: score by duration + budget ─────────
+  const results: ScoreEntry[] = [];
+
+  if (a.duration === "short") {
+    if (a.budget === "low") {
+      results.push({
+        id: "stratford", score: 97,
+        program: "General English (1–3 أشهر)",
+        reason: "الأرخص بكوالالمبور — يبدأ من 950 RM/شهر. لفترة 1-3 أشهر لا تحتاج تأشيرة طالب، وستراتفورد مثالي لهذه الحالة بالضبط",
+        highlights: ["من 950 RM/شهر", "بدون تأشيرة طالب", "تسجيل مرن"],
+      });
+      results.push({
+        id: "sheffield", score: 74,
+        program: "General English + Free IELTS",
+        reason: "إذا احتجت IELTS لاحقاً، شيفيلد يمنحه مجاناً مع التسجيل — قيمة مضافة لا تجدها في غيره",
+        highlights: ["IELTS مجاني", "أسعار تنافسية"],
+      });
+    } else if (a.budget === "mid") {
+      results.push({
+        id: "stratford", score: 92,
+        program: "General English (1–3 أشهر)",
+        reason: "بميزانيتك المتوسطة، ستراتفورد يوفر عليك الكثير لفترة قصيرة دون التنازل عن جودة التعليم",
+        highlights: ["من 950 RM/شهر", "تسجيل مرن", "قريب من المركز"],
+      });
+      results.push({
+        id: "sheffield", score: 84,
+        program: "General English + Free IELTS",
+        reason: "شيفيلد مع عروضه الحصرية هو الأفضل قيمة — IELTS مجاني بونص حقيقي",
+        highlights: ["IELTS مجاني", "عروض حصرية"],
+      });
+      results.push({
+        id: "bigben", score: 68,
+        program: "IEP Short Intensive",
+        reason: "بيغ بان IEP مكثف لمن يريد تقدماً سريعاً ومحسوساً خلال شهر أو شهرين بمنهج Pearson",
+        highlights: ["Pearson معتمد", "مكثف وسريع"],
+      });
+    } else {
+      results.push({
+        id: "sheffield", score: 89,
+        program: "General English Premium + Free IELTS",
+        reason: "بميزانيتك المرتفعة، شيفيلد يمنحك أفضل الباقات: IELTS مجاني + عروض VIP + دعم تأشيرة",
+        highlights: ["IELTS مجاني", "باقات VIP", "دعم تأشيرة"],
+      });
+      results.push({
+        id: "bigben", score: 84,
+        program: "IEP Intensive Program",
+        reason: "بيغ بان IEP المكثف بـ Pearson — لو هدفك رفع مستواك بسرعة ملحوظة هو الخيار الأول",
+        highlights: ["Pearson معتمد", "نتائج سريعة", "IEP مكثف"],
+      });
+      results.push({
+        id: "erican", score: 73,
+        program: "General English (Cambridge)",
+        reason: "إيريكان Cambridge — شهادة دولية معترف بها مع برنامج عام شامل",
+        highlights: ["Cambridge معتمد", "شهادة دولية"],
+      });
+    }
+  }
+
+  if (a.duration === "mid") {
+    if (a.budget === "low") {
+      results.push({
+        id: "sheffield", score: 95,
+        program: "6-Month Special Offer + Free IELTS",
+        reason: "شيفيلد له أفضل عرض لـ 6 أشهر في كوالالمبور + IELTS مجاني + دعم تأشيرة الطالب. لا يوجد خيار أفضل بهذه الميزانية",
+        highlights: ["عرض 6 أشهر حصري", "IELTS مجاني ✓", "تأشيرة طالب ✓"],
+      });
+      results.push({
+        id: "bigben", score: 69,
+        program: "IEP 4–6 Months",
+        reason: "بيغ بان IEP لمدة 4-6 أشهر — Pearson معتمد بتكلفة معقولة مع دعم تأشيرة الطالب",
+        highlights: ["Pearson معتمد", "تأشيرة طالب ✓"],
+      });
+    } else if (a.budget === "mid") {
+      results.push({
+        id: "sheffield", score: 96,
+        program: "Medium-Term Package + Free IELTS",
+        reason: "الأفضل قيمة لـ 4-6 أشهر بكوالالمبور — عروض شيفيلد الحصرية + IELTS مجاني + دعم تأشيرة كاملة",
+        highlights: ["IELTS مجاني", "أفضل سعر", "تأشيرة طالب ✓"],
+      });
+      results.push({
+        id: "bigben", score: 84,
+        program: "IEP Intensive 4–6 Months (Pearson)",
+        reason: "بيغ بان IEP المكثف لـ 4-6 أشهر — برنامج Pearson المنظم يضمن تقدماً حقيقياً وقابلاً للقياس",
+        highlights: ["Pearson معتمد", "IEP مكثف", "تقدم مضمون"],
+      });
+      results.push({
+        id: "erican", score: 74,
+        program: "General English (Cambridge Certified)",
+        reason: "إيريكان Cambridge لمن يريد شهادة دولية معترف بها بجانب الدراسة",
+        highlights: ["Cambridge معتمد", "شهادة دولية"],
+      });
+    } else {
+      results.push({
+        id: "bigben", score: 93,
+        program: "IEP Premium (Pearson) 4–6 Months",
+        reason: "بميزانيتك المرتفعة، بيغ بان IEP Premium هو الأفضل — أفضل مدرسين Pearson مع برنامج مكثف منظم",
+        highlights: ["Pearson معتمد", "IEP Premium", "تأشيرة طالب ✓"],
+      });
+      results.push({
+        id: "erican", score: 85,
+        program: "Comprehensive English (Cambridge) 6 Months",
+        reason: "إيريكان Cambridge المتكامل — 6 برامج متخصصة مع شهادة دولية معترف بها لدى أصحاب العمل",
+        highlights: ["Cambridge & IDP", "6 برامج", "شهادة دولية"],
+      });
+      results.push({
+        id: "sheffield", score: 77,
+        program: "Premium Package + Free IELTS",
+        reason: "شيفيلد مع الميزانية المرتفعة يتيح لك أفضل الباقات + IELTS مجاني كـ bonus",
+        highlights: ["IELTS مجاني", "باقات VIP"],
+      });
+    }
+  }
+
+  if (a.duration === "long") {
+    if (a.budget === "low") {
+      results.push({
+        id: "sheffield", score: 91,
+        program: "Long-Term Program + Student Visa Support",
+        reason: "شيفيلد لديه أفضل عروض طويلة الأمد بكوالالمبور — دعم كامل لتأشيرة الطالب + IELTS مجاني لمن يريد الحصول عليه",
+        highlights: ["أفضل سعر طويل", "تأشيرة طالب ✓", "IELTS مجاني"],
+      });
+      results.push({
+        id: "bigben", score: 72,
+        program: "IEP Annual Program",
+        reason: "بيغ بان IEP لسنة كاملة — برنامج Pearson المنظم يضمن تقدماً مستمراً مع دعم تأشيرة الطالب",
+        highlights: ["Pearson معتمد", "تأشيرة طالب ✓", "منهج سنوي"],
+      });
+    } else {
+      results.push({
+        id: "bigben", score: 95,
+        program: "IEP Annual Program (Pearson Certified)",
+        reason: "بيغ بان IEP السنوي هو الأفضل للإقامة الطويلة — برنامج Pearson الأكاديمي يضمن تقدماً حقيقياً مع تأشيرة طالب كاملة",
+        highlights: ["Pearson معتمد", "تأشيرة طالب ✓", "تقدم مضمون"],
+      });
+      results.push({
+        id: "erican", score: 88,
+        program: "Comprehensive Annual Program (Cambridge)",
+        reason: "إيريكان Cambridge لسنة كاملة — 6 برامج متخصصة يمكنك الانتقال بينها مع شهادة دولية في النهاية",
+        highlights: ["Cambridge & IDP", "6 برامج", "شهادة دولية"],
+      });
+      results.push({
+        id: "sheffield", score: 79,
+        program: "Long-Term Premium + Free IELTS",
+        reason: "شيفيلد طويل الأمد مع IELTS مجاني — قيمة ممتازة للإقامة السنوية وأسعار تنافسية",
+        highlights: ["IELTS مجاني", "تأشيرة طالب ✓"],
+      });
+    }
+  }
+
+  return results.filter(e => e.score >= 60).sort((a, b) => b.score - a.score).slice(0, 3);
+}
+
+// ─── Answer labels (for summary bar) ──────────────────────
+const GOAL_LABELS: Record<Goal, string>     = { general: "إنجليزية عامة", ielts: "IELTS", business: "أعمال", kids: "أطفال/ناشئون", university: "جامعة" };
+const DUR_LABELS:  Record<Duration, string> = { short: "1–3 أشهر", mid: "4–6 أشهر", long: "7+ أشهر" };
+const BUD_LABELS:  Record<Budget, string>   = { low: "< 10,000 RM", mid: "10–25,000 RM", high: "> 25,000 RM" };
+
+// ─── Questions ─────────────────────────────────────────────
 const STEPS = [
   {
     key: "goal",
-    q: "ما هو هدفك من الدراسة؟",
+    q: "ما هدفك الأساسي من الدراسة؟",
     sub: "اختر ما يصف هدفك بدقة",
     options: [
-      { value: "general",    label: "تحسين الإنجليزية العامة",   icon: "🗣️",  desc: "بناء مهارات التواصل والطلاقة" },
-      { value: "ielts",      label: "التحضير لـ IELTS",           icon: "📋",  desc: "تحقيق درجة مرتفعة في الاختبار" },
-      { value: "business",   label: "إنجليزية الأعمال",           icon: "💼",  desc: "للبيئات المهنية والشركات" },
-      { value: "kids",       label: "برامج الأطفال والناشئين",    icon: "🎒",  desc: "من 6 إلى 17 سنة" },
-      { value: "university", label: "القبول في جامعة ماليزية",   icon: "🎓",  desc: "بكالوريوس أو ماستر أو دكتوراه" },
+      { value: "general",    label: "تحسين الإنجليزية العامة",   icon: "🗣️", desc: "بناء مهارات التواصل والطلاقة" },
+      { value: "ielts",      label: "التحضير لاختبار IELTS",     icon: "📋", desc: "الحصول على درجة مرتفعة للجامعة أو الهجرة" },
+      { value: "business",   label: "إنجليزية الأعمال",           icon: "💼", desc: "للبيئات المهنية والشركات" },
+      { value: "kids",       label: "برامج الأطفال والناشئين",    icon: "🎒", desc: "من 7 إلى 17 سنة" },
+      { value: "university", label: "القبول في جامعة ماليزية",   icon: "🎓", desc: "بكالوريوس أو ماستر أو دكتوراه" },
     ],
   },
   {
     key: "duration",
     q: "كم مدة الدراسة المتوقعة؟",
-    sub: "تساعدنا على اختيار الباقة الأنسب",
+    sub: "ملاحظة: 4 أشهر فأكثر تستلزم تأشيرة طالب",
     options: [
-      { value: "short", label: "1 إلى 3 أشهر",   icon: "⚡", desc: "برامج مكثفة قصيرة" },
-      { value: "mid",   label: "4 إلى 6 أشهر",   icon: "📅", desc: "برامج متوسطة الأمد" },
-      { value: "long",  label: "7 أشهر فأكثر",   icon: "🗓️", desc: "إقامة طلابية كاملة" },
+      { value: "short", label: "1 إلى 3 أشهر",  icon: "⚡", desc: "تأشيرة سياحية تكفي — لا تأشيرة طالب" },
+      { value: "mid",   label: "4 إلى 6 أشهر",  icon: "📅", desc: "تأشيرة طالب ضرورية — نتولى إجراءاتها" },
+      { value: "long",  label: "7 أشهر فأكثر",  icon: "🗓️", desc: "إقامة طلابية كاملة — تأشيرة طالب" },
     ],
   },
   {
     key: "budget",
-    q: "ما ميزانيتك التقريبية؟",
-    sub: "شاملة رسوم الدراسة والتأشيرة",
+    q: "ما ميزانيتك التقريبية للدراسة؟",
+    sub: "رسوم التسجيل فقط — بدون احتساب السكن والمعيشة",
     options: [
-      { value: "low",  label: "أقل من 10,000 RM",          icon: "💰", desc: "≈ أقل من 2,000 €" },
-      { value: "mid",  label: "10,000 – 25,000 RM",         icon: "💳", desc: "≈ 2,000 – 5,000 €" },
-      { value: "high", label: "أكثر من 25,000 RM",          icon: "💎", desc: "≈ أكثر من 5,000 €" },
+      { value: "low",  label: "أقل من 10,000 RM",    icon: "💰", desc: "≈ أقل من 2,000 €" },
+      { value: "mid",  label: "10,000 – 25,000 RM",  icon: "💳", desc: "≈ 2,000 – 5,000 €" },
+      { value: "high", label: "أكثر من 25,000 RM",   icon: "💎", desc: "≈ أكثر من 5,000 €" },
     ],
   },
 ];
 
-interface Props {
-  onUniversity?: () => void;
-}
+// ─── Props ─────────────────────────────────────────────────
+interface Props { onUniversity?: () => void; }
 
 export default function InstituteQuiz({ onUniversity }: Props = {}) {
   const { go } = useNavigate();
@@ -128,186 +341,205 @@ export default function InstituteQuiz({ onUniversity }: Props = {}) {
   const [done, setDone]       = useState(false);
 
   const currentStep = STEPS[step];
-  const progress    = ((step) / STEPS.length) * 100;
+  const activeSteps = answers.goal === "general" ? 3 : 1;
+  const progress    = done ? 100 : Math.round((step / (answers.goal === "general" ? 3 : 1)) * 100);
 
   function pick(value: string) {
     const newAnswers = { ...answers, [currentStep.key]: value } as Answers;
     setAnswers(newAnswers);
 
-    // University → delegate to parent or show result
-    if (currentStep.key === "goal" && value === "university") {
-      if (onUniversity) { onUniversity(); return; }
-      setAnswers(newAnswers);
-      setDone(true);
-      return;
+    if (currentStep.key === "goal") {
+      if (value === "university") {
+        if (onUniversity) { onUniversity(); return; }
+        setDone(true); return;
+      }
+      if (value !== "general") { setDone(true); return; }
     }
-    // IELTS / kids / business → skip duration+budget
-    if (currentStep.key === "goal" && (value === "ielts" || value === "kids" || value === "business")) {
-      setAnswers(newAnswers);
-      setDone(true);
-      return;
-    }
-    // Last step
-    if (step === STEPS.length - 1) {
-      setDone(true);
-      return;
-    }
-    setStep(step + 1);
+
+    if (step < STEPS.length - 1) { setStep(step + 1); }
+    else { setDone(true); }
   }
 
-  function reset() {
-    setStep(0);
-    setAnswers({});
-    setDone(false);
-  }
+  function reset() { setStep(0); setAnswers({}); setDone(false); }
 
-  const results = recommend(answers);
+  const recs = buildRecommendations(answers);
 
-  // ── Results screen ──
-  if (done) {
-    if (answers.goal === "university") {
-      return (
-        <div className="bg-white rounded-3xl border border-gray-200 shadow-sm p-8 text-center">
-          <div className="text-5xl mb-4">🎓</div>
-          <h3 className="text-xl font-extrabold text-gray-900 mb-2">القبول الجامعي في ماليزيا</h3>
-          <p className="text-gray-500 text-sm mb-6 max-w-sm mx-auto">
-            لدينا شراكات مع أكثر من 12 جامعة معترف بها — نتولى كل شيء من القبول حتى التأشيرة
-          </p>
-          <div className="flex flex-col sm:flex-row gap-3 justify-center">
-            <button
-              onClick={() => go("universities")}
-              className="bg-gray-900 hover:bg-gray-800 text-white font-bold text-sm rounded-xl px-6 py-3 transition-all"
-            >
-              استكشف الجامعات
-            </button>
-            <button
-              onClick={() => go("apply", { type: "university" })}
-              className="bg-green-600 hover:bg-green-700 text-white font-bold text-sm rounded-xl px-6 py-3 transition-all"
-            >
-              ابدأ طلب القبول
-            </button>
-          </div>
-          <button onClick={reset} className="mt-5 flex items-center gap-1.5 text-xs text-gray-400 hover:text-gray-600 transition-colors mx-auto">
-            <RotateCcw size={12} /> البدء من جديد
-          </button>
+  // ── University result ──
+  if (done && answers.goal === "university") {
+    return (
+      <div className="rounded-2xl border border-gray-200 bg-white p-7 text-center">
+        <div className="text-5xl mb-4">🎓</div>
+        <h3 className="text-xl font-extrabold text-gray-900 mb-2">القبول الجامعي في ماليزيا</h3>
+        <p className="text-gray-500 text-sm mb-6 max-w-xs mx-auto">شراكات مع أكثر من 12 جامعة — نتولى كل شيء من القبول حتى التأشيرة</p>
+        <div className="flex flex-col sm:flex-row gap-3 justify-center">
+          <button onClick={() => go("universities")} className="bg-gray-900 hover:bg-gray-800 text-white font-bold text-sm rounded-xl px-6 py-3 transition-all">استكشف الجامعات</button>
+          <button onClick={() => go("apply", { type: "university" })} className="bg-green-600 hover:bg-green-700 text-white font-bold text-sm rounded-xl px-6 py-3 transition-all">ابدأ طلب القبول</button>
         </div>
-      );
-    }
+        <button onClick={reset} className="mt-5 flex items-center gap-1.5 text-xs text-gray-400 hover:text-gray-600 transition-colors mx-auto">
+          <RotateCcw size={12} /> البدء من جديد
+        </button>
+      </div>
+    );
+  }
 
+  // ── Main results ──
+  if (done) {
     return (
       <div className="space-y-4">
-        <div className="flex items-center justify-between mb-2">
+        {/* Header */}
+        <div className="flex items-start justify-between">
           <div>
-            <h3 className="font-extrabold text-gray-900 text-lg">المعاهد المناسبة لك</h3>
-            <p className="text-gray-400 text-xs mt-0.5">بناءً على إجاباتك — مرتبة من الأنسب</p>
+            <div className="flex items-center gap-2 mb-1">
+              <Sparkles size={16} className="text-green-600" />
+              <h3 className="font-extrabold text-gray-900 text-lg">المعاهد الأنسب لك</h3>
+            </div>
+            {/* Selections summary */}
+            <div className="flex flex-wrap gap-1.5 mt-1">
+              {answers.goal     && <span className="bg-green-100 text-green-800 text-xs font-semibold px-2.5 py-0.5 rounded-full">{GOAL_LABELS[answers.goal]}</span>}
+              {answers.duration && <span className="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded-full">{DUR_LABELS[answers.duration]}</span>}
+              {answers.budget   && <span className="bg-amber-100 text-amber-800 text-xs font-semibold px-2.5 py-0.5 rounded-full">{BUD_LABELS[answers.budget]}</span>}
+            </div>
           </div>
-          <button onClick={reset} className="flex items-center gap-1.5 text-xs text-gray-400 hover:text-gray-600 transition-colors border border-gray-200 rounded-lg px-3 py-1.5">
-            <RotateCcw size={12} /> تغيير الإجابات
+          <button onClick={reset} className="flex items-center gap-1.5 text-xs text-gray-400 hover:text-gray-600 border border-gray-200 rounded-lg px-3 py-1.5 transition-all hover:border-gray-300 flex-shrink-0">
+            <RotateCcw size={12} /> تغيير
           </button>
         </div>
 
-        {results.map((id, i) => {
-          const inst = INSTITUTES[id];
+        {/* Result cards */}
+        {recs.map((rec, i) => {
+          const meta = INST_META[rec.id];
           return (
-            <div key={id} className={`rounded-2xl border-2 ${inst.color} p-5 flex flex-col sm:flex-row items-start sm:items-center gap-4`}>
-              {i === 0 && (
-                <div className="absolute -mt-3 -mr-3 bg-green-500 text-white text-xs font-bold px-2.5 py-0.5 rounded-full hidden sm:block" style={{ position: "static" }}>
+            <div key={rec.id} className={`rounded-2xl border-2 ${meta.borderColor} overflow-hidden`}>
+              {/* Top bar */}
+              <div className={`${meta.headerBg} px-4 py-3 flex items-center justify-between`}>
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 bg-white rounded-xl border border-white/60 flex items-center justify-center p-1 shadow-sm flex-shrink-0">
+                    <img src={meta.logo} alt={meta.name} className="max-w-full max-h-full object-contain" />
+                  </div>
+                  <div>
+                    <div className="font-extrabold text-gray-900 text-sm leading-tight">{meta.nameAr}</div>
+                    <div className="text-gray-500 text-xs">{rec.program}</div>
+                  </div>
                 </div>
-              )}
-              <div className="flex items-center gap-3 flex-1">
-                <div className="w-14 h-14 bg-white rounded-xl border border-gray-100 flex items-center justify-center flex-shrink-0 p-1.5 shadow-sm">
-                  <img src={inst.logo} alt={inst.name} className="max-w-full max-h-full object-contain" />
-                </div>
-                <div>
-                  {i === 0 && <span className="inline-block bg-green-500 text-white text-xs font-bold px-2 py-0.5 rounded-full mb-1">الأنسب لك</span>}
-                  <div className="font-extrabold text-gray-900 text-base">{inst.nameAr}</div>
-                  <div className="text-gray-500 text-xs">{inst.tagline}</div>
-                  <div className="text-green-700 font-bold text-sm mt-1">تبدأ من {inst.from}</div>
+                <div className="text-right flex-shrink-0">
+                  {i === 0
+                    ? <span className="bg-green-500 text-white text-xs font-bold px-2.5 py-1 rounded-full">الأنسب ✓</span>
+                    : <span className="bg-gray-100 text-gray-600 text-xs font-semibold px-2.5 py-1 rounded-full">بديل جيد</span>
+                  }
                 </div>
               </div>
-              <div className="flex gap-2 w-full sm:w-auto flex-shrink-0">
-                <button
-                  onClick={() => go(inst.page as any)}
-                  className={`flex-1 sm:flex-none ${inst.btnColor} text-white text-xs font-bold rounded-xl px-4 py-2.5 transition-all flex items-center gap-1.5 justify-center`}
-                >
-                  عرض الأسعار
-                  <ChevronLeft size={14} />
-                </button>
-                <a
-                  href="https://wa.me/601112200603"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex-1 sm:flex-none bg-[#25d366] hover:bg-[#1da851] text-white text-xs font-bold rounded-xl px-4 py-2.5 transition-all text-center"
-                >
-                  واتساب
-                </a>
+
+              {/* Body */}
+              <div className="px-4 py-3 bg-white">
+                {/* Match score bar */}
+                <div className="flex items-center gap-2 mb-3">
+                  <div className="flex-1 h-2 bg-gray-100 rounded-full overflow-hidden">
+                    <div
+                      className={`h-full rounded-full transition-all ${i === 0 ? "bg-green-500" : "bg-blue-400"}`}
+                      style={{ width: `${rec.score}%` }}
+                    />
+                  </div>
+                  <span className={`text-xs font-bold flex-shrink-0 ${i === 0 ? "text-green-600" : "text-blue-600"}`}>توافق {rec.score}%</span>
+                </div>
+
+                {/* Reason */}
+                <div className="flex gap-2 mb-3">
+                  <Info size={14} className="text-gray-400 flex-shrink-0 mt-0.5" />
+                  <p className="text-gray-700 text-xs leading-relaxed">{rec.reason}</p>
+                </div>
+
+                {/* Highlights */}
+                <div className="flex flex-wrap gap-1.5 mb-3">
+                  {rec.highlights.map((h) => (
+                    <span key={h} className="bg-gray-100 text-gray-700 text-xs font-medium px-2 py-0.5 rounded-full">{h}</span>
+                  ))}
+                  <span className="bg-gray-100 text-gray-700 text-xs font-medium px-2 py-0.5 rounded-full">تبدأ من {meta.from}</span>
+                </div>
+
+                {/* Actions */}
+                <div className="flex gap-2">
+                  <button
+                    onClick={() => go(meta.page as any)}
+                    className={`flex-1 ${meta.btnColor} text-white text-xs font-bold rounded-xl px-3 py-2.5 transition-all flex items-center gap-1 justify-center`}
+                  >
+                    عرض الأسعار والبرامج
+                    <ChevronLeft size={13} />
+                  </button>
+                  <a
+                    href="https://wa.me/601112200603"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="bg-[#25d366] hover:bg-[#1da851] text-white text-xs font-bold rounded-xl px-4 py-2.5 transition-all text-center flex-shrink-0"
+                  >
+                    واتساب
+                  </a>
+                </div>
               </div>
             </div>
           );
         })}
 
-        {results.length === 0 && (
-          <div className="text-center py-8 text-gray-400 text-sm">لم يتم العثور على نتائج مطابقة</div>
+        {recs.length === 0 && (
+          <div className="text-center py-8 text-gray-400 text-sm">لم يتم العثور على معهد مناسب — حاول تغيير الإجابات</div>
         )}
       </div>
     );
   }
 
   // ── Question screen ──
+  const totalSteps = answers.goal === "general" || !answers.goal ? 3 : 1;
   return (
-    <div className="bg-white rounded-3xl border border-gray-200 shadow-sm overflow-hidden">
-      {/* Progress */}
+    <div className="bg-white rounded-2xl border border-gray-200 overflow-hidden">
+      {/* Progress bar */}
       <div className="h-1.5 bg-gray-100">
-        <div
-          className="h-full bg-green-500 transition-all duration-500"
-          style={{ width: `${progress}%` }}
-        />
+        <div className="h-full bg-green-500 transition-all duration-500" style={{ width: `${Math.round((step / totalSteps) * 100)}%` }} />
       </div>
 
-      <div className="p-6 sm:p-8">
-        {/* Step indicator */}
+      <div className="p-5 sm:p-7">
+        {/* Step dots */}
         <div className="flex items-center gap-2 mb-5">
-          {STEPS.map((s, i) => (
+          {STEPS.slice(0, answers.goal && answers.goal !== "general" ? 1 : 3).map((_, i) => (
             <div key={i} className="flex items-center gap-2">
               <div className={`w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold transition-all ${
                 i < step ? "bg-green-500 text-white" :
-                i === step ? "bg-green-600 text-white ring-2 ring-green-200" :
+                i === step ? "bg-green-600 text-white ring-2 ring-green-100" :
                 "bg-gray-100 text-gray-400"
               }`}>
                 {i < step ? <CheckCircle size={12} /> : i + 1}
               </div>
-              {i < STEPS.length - 1 && <div className={`h-0.5 w-6 rounded ${i < step ? "bg-green-400" : "bg-gray-200"}`} />}
+              {i < (answers.goal && answers.goal !== "general" ? 0 : 2) && (
+                <div className={`h-0.5 w-6 rounded ${i < step ? "bg-green-400" : "bg-gray-200"}`} />
+              )}
             </div>
           ))}
-          <span className="text-xs text-gray-400 mr-1">خطوة {step + 1} من {STEPS.length}</span>
+          <span className="text-xs text-gray-400 mr-auto">
+            {step < totalSteps - 1 ? `${totalSteps - step - 1} سؤال متبقي` : "آخر سؤال"}
+          </span>
         </div>
 
-        <h3 className="text-xl font-extrabold text-gray-900 mb-1">{currentStep.q}</h3>
-        <p className="text-gray-400 text-sm mb-6">{currentStep.sub}</p>
+        <h3 className="text-xl font-extrabold text-gray-900 mb-0.5">{currentStep.q}</h3>
+        <p className="text-gray-400 text-sm mb-5">{currentStep.sub}</p>
 
-        <div className="grid gap-3">
+        <div className="grid gap-2.5">
           {currentStep.options.map((opt) => (
             <button
               key={opt.value}
               onClick={() => pick(opt.value)}
-              className="flex items-center gap-4 text-right p-4 rounded-2xl border-2 border-gray-100 hover:border-green-400 hover:bg-green-50 transition-all group"
+              className="flex items-center gap-3.5 text-right p-4 rounded-2xl border-2 border-gray-100 hover:border-green-400 hover:bg-green-50 transition-all group"
             >
-              <span className="text-2xl flex-shrink-0">{opt.icon}</span>
-              <div className="flex-1">
-                <div className="font-bold text-gray-900 group-hover:text-green-700 transition-colors">{opt.label}</div>
-                <div className="text-gray-400 text-xs mt-0.5">{opt.desc}</div>
+              <span className="text-xl flex-shrink-0">{opt.icon}</span>
+              <div className="flex-1 min-w-0">
+                <div className="font-bold text-gray-900 group-hover:text-green-700 transition-colors text-sm">{opt.label}</div>
+                <div className="text-gray-400 text-xs mt-0.5 truncate">{opt.desc}</div>
               </div>
-              <ArrowLeft size={16} className="text-gray-300 group-hover:text-green-500 group-hover:-translate-x-1 transition-all flex-shrink-0" />
+              <ArrowLeft size={15} className="text-gray-300 group-hover:text-green-500 group-hover:-translate-x-1 transition-all flex-shrink-0" />
             </button>
           ))}
         </div>
 
         {step > 0 && (
-          <button
-            onClick={() => setStep(step - 1)}
-            className="mt-5 text-xs text-gray-400 hover:text-gray-600 flex items-center gap-1 transition-colors"
-          >
-            <RotateCcw size={12} /> رجوع للسؤال السابق
+          <button onClick={() => setStep(step - 1)} className="mt-4 text-xs text-gray-400 hover:text-gray-600 flex items-center gap-1.5 transition-colors">
+            <RotateCcw size={12} /> السؤال السابق
           </button>
         )}
       </div>
