@@ -412,10 +412,10 @@ export default function ConsultationPage() {
                 <Field label="ما هي ميزانيتك السنوية المتوقعة؟">
                   <Select value={form.budget} onChange={set("budget")}>
                     <option value="">اختر الميزانية...</option>
-                    <option>أقل من 15,000 RM</option>
-                    <option>15,000 – 25,000 RM</option>
-                    <option>25,000 – 40,000 RM</option>
-                    <option>أكثر من 40,000 RM</option>
+                    <option>أقل من 15,000 RM (≈ أقل من 3,000 €)</option>
+                    <option>15,000 – 25,000 RM (≈ 3,000 – 5,000 €)</option>
+                    <option>25,000 – 40,000 RM (≈ 5,000 – 8,000 €)</option>
+                    <option>أكثر من 40,000 RM (≈ أكثر من 8,000 €)</option>
                     <option>لا أعرف بعد</option>
                   </Select>
                 </Field>
