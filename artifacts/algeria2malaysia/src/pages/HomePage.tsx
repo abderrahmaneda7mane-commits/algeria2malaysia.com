@@ -532,108 +532,145 @@ export default function HomePage() {
             <InstituteQuiz />
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {[
               {
                 name: "Stratford International",
                 nameAr: "معهد ستراتفورد",
                 badge: "إنجليزي مكثف",
-                color: "bg-teal-600",
+                badgeColor: "bg-teal-600",
+                borderColor: "border-teal-200",
+                accentColor: "bg-teal-600",
                 logo: "/stratford-logo.png",
-                desc: "برامج مكثفة 4-6 ساعات/يوم في موقع متميز بـ KLCC — 3 برامج للاختيار",
+                desc: "برامج مكثفة 4-6 ساعات/يوم في موقع متميز بـ KLCC",
                 from: "950 RM",
                 fromEur: "≈ 190 €",
-                highlights: ["إنجليزي للتواصل 2 ساعة/يوم", "مكثف 4 ساعات/يوم", "مكثف بلس 6 ساعات/يوم"],
+                highlights: ["إنجليزي للتواصل", "مكثف 4 ساعات/يوم", "مكثف بلس 6 ساعات"],
                 onClick: () => go("stratford-institute"),
-                btnLabel: "عرض الأسعار التفصيلية",
+                btnLabel: "عرض الأسعار",
               },
               {
                 name: "Big Ben Education",
                 nameAr: "مجموعة بيغ بن",
                 badge: "IELTS & IEP",
-                color: "bg-red-800",
+                badgeColor: "bg-red-800",
+                borderColor: "border-red-200",
+                accentColor: "bg-red-800",
                 logo: "/bigben-logo.png",
-                desc: "المعهد الوحيد في ماليزيا المعتمد من Pearson. IELTS وبرامج أكاديمية متكاملة",
+                desc: "المعتمد من Pearson — IELTS وبرامج أكاديمية متكاملة",
                 from: "2,618 RM",
                 fromEur: "≈ 524 €",
                 highlights: ["برنامج IEP مكثف", "تحضير IELTS", "دروس خاصة VIP"],
                 onClick: () => go("bigben-institute"),
-                btnLabel: "عرض الأسعار التفصيلية",
+                btnLabel: "عرض الأسعار",
               },
               {
                 name: "Erican Language Centre",
                 nameAr: "مركز إيريكان",
                 badge: "Cambridge & IELTS",
-                color: "bg-orange-600",
+                badgeColor: "bg-purple-700",
+                borderColor: "border-purple-200",
+                accentColor: "bg-purple-700",
                 logo: "/erican-logo.png",
-                desc: "مركز معتمد لامتحانات Cambridge وIDP IELTS. 400,000+ متعلم",
+                desc: "معتمد Cambridge وIDP IELTS — 400,000+ متعلم",
                 from: "2,000 RM",
                 fromEur: "≈ 400 €",
                 highlights: ["برنامج دولي مكثف", "تحضير IELTS", "Cambridge معتمد"],
                 onClick: () => go("erican-institute"),
-                btnLabel: "عرض الأسعار التفصيلية",
+                btnLabel: "عرض الأسعار",
               },
               {
                 name: "Sheffield Academy",
                 nameAr: "أكاديمية شيفيلد",
                 badge: "عروض حصرية",
-                color: "bg-[#1a3272]",
+                badgeColor: "bg-[#1a3272]",
+                borderColor: "border-blue-200",
+                accentColor: "bg-[#1a3272]",
                 logo: "/sheffield-logo.png",
-                desc: "عروض ترويجية استثنائية تشمل IELTS مجاني وأشهر مجانية وخصومات تصل إلى 30%",
+                desc: "خصومات تصل 30% + IELTS مجاني + أشهر مجانية",
                 from: "3,400 RM",
                 fromEur: "≈ 680 €",
-                highlights: ["2 شهر + شهر مجاني", "خصم 25% على 8 أشهر", "IELTS مجاني مع الباقات"],
+                highlights: ["2 شهر + شهر مجاني", "خصم 25% على 8 أشهر", "IELTS مجاني"],
                 onClick: () => go("sheffield-institute"),
-                btnLabel: "عرض العروض والأسعار",
+                btnLabel: "عرض العروض",
               },
             ].map((inst) => (
-              <div key={inst.name} className="border border-gray-200 rounded-2xl overflow-hidden hover:shadow-lg transition-all hover:border-green-200 group flex flex-col">
-                <div className={`${inst.color} h-2`}></div>
-                <div className="p-6 flex flex-col flex-1">
-                  <div className="flex items-center gap-4 mb-4">
-                    <div className="w-16 h-16 rounded-xl bg-white border border-gray-100 shadow-sm flex items-center justify-center overflow-hidden flex-shrink-0 p-1">
+              <div
+                key={inst.name}
+                onClick={inst.onClick}
+                className={`border ${inst.borderColor} rounded-2xl overflow-hidden hover:shadow-xl transition-all cursor-pointer group flex flex-col bg-white`}
+              >
+                {/* accent top bar */}
+                <div className={`${inst.accentColor} h-1.5`}></div>
+
+                {/* Mobile: horizontal row | Desktop: vertical card */}
+                <div className="p-4 sm:p-5 flex flex-row sm:flex-col gap-4 flex-1">
+
+                  {/* Logo + price (left col on mobile) */}
+                  <div className="flex flex-col items-center gap-2 flex-shrink-0 w-16 sm:w-auto">
+                    <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-xl bg-white border border-gray-100 shadow-sm flex items-center justify-center overflow-hidden p-1">
                       <img src={inst.logo} alt={inst.name} className="w-full h-full object-contain" />
                     </div>
-                    <div>
-                      <div className={`inline-block ${inst.color} text-white text-xs font-semibold px-3 py-1 rounded-full mb-1`}>{inst.badge}</div>
-                      <h3 className="font-bold text-gray-900 text-lg leading-tight">{inst.nameAr}</h3>
-                      <p className="text-gray-400 text-xs">{inst.name}</p>
+                    {/* Price below logo on mobile */}
+                    <div className="text-center sm:hidden">
+                      <div className="text-green-700 font-extrabold text-sm leading-tight">{inst.from}</div>
+                      <div className="text-gray-400 text-xs">{inst.fromEur}</div>
                     </div>
                   </div>
-                  <p className="text-gray-600 text-sm leading-relaxed mb-3">{inst.desc}</p>
-                  <ul className="mb-4 space-y-1">
-                    {inst.highlights.map((h) => (
-                      <li key={h} className="flex items-center gap-2 text-xs text-gray-600">
-                        <CheckCircle size={13} className="text-green-500 flex-shrink-0" />
-                        {h}
-                      </li>
-                    ))}
-                  </ul>
-                  <div className="mt-auto">
-                    <div className="flex items-center justify-between mb-3">
-                      <div className="text-green-700 font-bold text-sm">تبدأ من {inst.from}</div>
-                      <div className="text-green-500 text-xs">{inst.fromEur}</div>
+
+                  {/* Main content */}
+                  <div className="flex-1 min-w-0 flex flex-col">
+                    <span className={`inline-block self-start ${inst.badgeColor} text-white text-xs font-bold px-2.5 py-0.5 rounded-full mb-1.5`}>
+                      {inst.badge}
+                    </span>
+                    <h3 className="font-extrabold text-gray-900 text-base sm:text-lg leading-tight mb-0.5">{inst.nameAr}</h3>
+                    <p className="text-gray-400 text-xs mb-2">{inst.name}</p>
+                    <p className="text-gray-500 text-xs sm:text-sm leading-relaxed mb-3 line-clamp-2 sm:line-clamp-none">{inst.desc}</p>
+
+                    <ul className="space-y-1 mb-3 hidden sm:block">
+                      {inst.highlights.map((h) => (
+                        <li key={h} className="flex items-center gap-2 text-xs text-gray-600">
+                          <CheckCircle size={12} className="text-green-500 flex-shrink-0" />
+                          {h}
+                        </li>
+                      ))}
+                    </ul>
+
+                    {/* Price row (desktop) */}
+                    <div className="mt-auto hidden sm:flex items-center justify-between mb-3">
+                      <span className="text-green-700 font-extrabold text-sm">من {inst.from}</span>
+                      <span className="text-green-500 text-xs">{inst.fromEur}</span>
                     </div>
+
+                    {/* CTA button */}
                     <button
-                      onClick={inst.onClick}
-                      className="w-full bg-green-600 hover:bg-green-700 text-white text-sm font-bold py-2.5 rounded-xl transition-all"
+                      onClick={(e) => { e.stopPropagation(); inst.onClick(); }}
+                      className={`w-full sm:w-full ${inst.accentColor} hover:opacity-90 text-white text-xs sm:text-sm font-bold py-2 sm:py-2.5 rounded-xl transition-all mt-auto flex items-center justify-center gap-1.5 group-hover:gap-2.5`}
                     >
-                      {inst.btnLabel}
+                      <span>{inst.btnLabel}</span>
+                      <ArrowLeft size={13} className="transition-transform group-hover:-translate-x-0.5" />
                     </button>
                   </div>
+
                 </div>
               </div>
             ))}
           </div>
 
-          <div className="text-center mt-10">
+          <div className="mt-10 flex flex-col sm:flex-row gap-3 justify-center items-center">
             <button
               onClick={() => go("apply")}
-              className="bg-green-700 hover:bg-green-800 text-white px-8 py-4 rounded-full font-bold text-lg transition-all shadow-lg flex items-center gap-2 mx-auto group"
+              className="w-full sm:w-auto bg-green-600 hover:bg-green-700 active:bg-green-800 text-white px-8 py-4 rounded-2xl font-extrabold text-base transition-all shadow-lg shadow-green-200 flex items-center justify-center gap-2 group"
             >
-              <BookOpen size={20} />
-              <span>اختر معهدك الآن</span>
-              <ArrowLeft size={18} className="group-hover:-translate-x-1 transition-transform" />
+              <BookOpen size={19} />
+              <span>ابدأ طلب التسجيل</span>
+              <ArrowLeft size={17} className="group-hover:-translate-x-1 transition-transform" />
+            </button>
+            <button
+              onClick={() => go("apply")}
+              className="w-full sm:w-auto border-2 border-green-600 text-green-700 hover:bg-green-50 px-8 py-4 rounded-2xl font-bold text-base transition-all flex items-center justify-center gap-2"
+            >
+              استشارة مجانية
             </button>
           </div>
         </div>
