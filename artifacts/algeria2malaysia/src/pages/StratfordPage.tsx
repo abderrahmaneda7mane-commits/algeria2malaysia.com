@@ -148,9 +148,9 @@ export default function StratfordPage() {
         <div className="max-w-4xl mx-auto">
           <button
             onClick={() => go("home", { scrollTo: "institutes" })}
-            className="flex items-center gap-2 text-white/70 hover:text-white transition-colors mb-6 group"
+            className="flex items-center gap-2 bg-white/20 hover:bg-white/30 text-white font-semibold text-sm px-4 py-2 rounded-xl transition-all mb-6 group border border-white/30"
           >
-            <ArrowLeft size={18} className="group-hover:-translate-x-1 transition-transform" />
+            <ArrowLeft size={16} className="group-hover:-translate-x-1 transition-transform" />
             <span>العودة للرئيسية</span>
           </button>
 
