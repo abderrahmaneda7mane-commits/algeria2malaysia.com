@@ -164,8 +164,11 @@ function buildHtmlMessage(form: FormData): string {
 </html>`;
 }
 
+const SUBMITTED_KEY = "a2m_consultation_submitted";
+
 export default function ConsultationPage() {
   const [showBooking, setShowBooking] = useState(false);
+  const [submitted, setSubmitted] = useState(() => localStorage.getItem(SUBMITTED_KEY) === "1");
   const [step, setStep] = useState(0);
   const [form, setForm] = useState<FormData>(EMPTY);
   const [loading, setLoading] = useState(false);
@@ -216,6 +219,8 @@ export default function ConsultationPage() {
         },
         { publicKey: EMAILJS_PUBLIC_KEY }
       );
+      localStorage.setItem(SUBMITTED_KEY, "1");
+      setSubmitted(true);
       setShowBooking(true);
     } catch (err: unknown) {
       console.error("EmailJS error:", err);
@@ -223,6 +228,47 @@ export default function ConsultationPage() {
     } finally {
       setLoading(false);
     }
+  }
+
+  if (submitted && !showBooking) {
+    return (
+      <div
+        className="min-h-screen flex items-center justify-center px-4"
+        style={{ background: "linear-gradient(160deg, #f0faf4 0%, #ffffff 50%, #f5f9ff 100%)" }}
+        dir="rtl"
+      >
+        <div className="max-w-md w-full text-center">
+          <div className="bg-white rounded-2xl shadow-sm border border-green-100 p-8 md:p-10">
+            <div className="flex justify-center mb-5">
+              <div className="w-20 h-20 rounded-full bg-green-100 flex items-center justify-center">
+                <CheckCircle size={40} className="text-green-600" />
+              </div>
+            </div>
+            <h2 className="text-xl font-extrabold text-gray-800 mb-3">تم استلام طلبك! 🎉</h2>
+            <p className="text-gray-600 text-sm leading-relaxed mb-6">
+              تم إرسال تفاصيلك للفريق.<br />
+              سيتم التواصل معك قريباً عبر الواتساب لتأكيد استشارتك.
+            </p>
+            <a
+              href="https://wa.me/601112200603"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white font-bold text-sm rounded-xl px-6 py-3 transition-all shadow-sm mb-4"
+            >
+              تواصل معنا مباشرة عبر واتساب
+            </a>
+            <div>
+              <button
+                onClick={() => navigate("home")}
+                className="text-gray-400 hover:text-green-700 text-sm transition-colors"
+              >
+                العودة للرئيسية
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
   }
 
   return (
