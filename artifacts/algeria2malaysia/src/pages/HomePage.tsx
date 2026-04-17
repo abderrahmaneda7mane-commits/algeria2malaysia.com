@@ -551,8 +551,8 @@ export default function HomePage() {
                 from: "2,000 RM",
                 fromEur: "≈ 400 €",
                 highlights: ["برنامج دولي مكثف", "تحضير IELTS", "Cambridge معتمد"],
-                onClick: () => go("apply", { type: "institute" }),
-                btnLabel: "عرض الأسعار والتسجيل",
+                onClick: () => go("erican-institute"),
+                btnLabel: "عرض الأسعار التفصيلية",
               },
             ].map((inst) => (
               <div key={inst.name} className="border border-gray-200 rounded-2xl overflow-hidden hover:shadow-lg transition-all hover:border-green-200 group flex flex-col">
