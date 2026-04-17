@@ -244,7 +244,7 @@ export default function ConsultationPage() {
                 <CheckCircle size={40} className="text-green-600" />
               </div>
             </div>
-            <h2 className="text-xl font-extrabold text-gray-800 mb-3">تم استلام طلبك! 🎉</h2>
+            <h2 className="text-xl font-extrabold text-gray-800 mb-3">تم استلام طلبك!</h2>
             <p className="text-gray-600 text-sm leading-relaxed mb-6">
               تم إرسال تفاصيلك للفريق.<br />
               سيتم التواصل معك قريباً عبر الواتساب لتأكيد استشارتك.
