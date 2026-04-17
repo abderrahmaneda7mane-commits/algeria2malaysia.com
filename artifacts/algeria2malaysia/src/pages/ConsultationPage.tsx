@@ -249,22 +249,13 @@ export default function ConsultationPage() {
               تم إرسال تفاصيلك للفريق.<br />
               سيتم التواصل معك قريباً عبر الواتساب لتأكيد استشارتك.
             </p>
-            <a
-              href="https://wa.me/601112200603"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white font-bold text-sm rounded-xl px-6 py-3 transition-all shadow-sm mb-4"
+            <button
+              onClick={() => navigate("home")}
+              className="inline-flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white font-bold text-sm rounded-xl px-8 py-3.5 transition-all shadow-md hover:shadow-lg"
             >
-              تواصل معنا مباشرة عبر واتساب
-            </a>
-            <div>
-              <button
-                onClick={() => navigate("home")}
-                className="text-gray-400 hover:text-green-700 text-sm transition-colors"
-              >
-                العودة للرئيسية
-              </button>
-            </div>
+              <ArrowRight size={16} />
+              العودة للرئيسية
+            </button>
           </div>
         </div>
       </div>
