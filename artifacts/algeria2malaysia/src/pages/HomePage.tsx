@@ -520,35 +520,41 @@ export default function HomePage() {
                 nameAr: "معهد ستراتفورد",
                 badge: "إنجليزي مكثف",
                 color: "bg-teal-600",
+                borderColor: "border-teal-500",
                 logo: "/stratford-logo.png",
-                desc: "برامج مكثفة 4-6 ساعات/يوم في موقع متميز بـ KLCC",
-                from: "2,500 RM",
-                fromEur: "≈ 500 €",
+                desc: "برامج مكثفة 4-6 ساعات/يوم في موقع متميز بـ KLCC — 3 برامج للاختيار",
+                from: "950 RM",
+                fromEur: "≈ 190 €",
+                highlights: ["إنجليزي للتواصل 2 ساعة/يوم", "مكثف 4 ساعات/يوم", "مكثف بلس 6 ساعات/يوم"],
               },
               {
                 name: "Big Ben Education",
                 nameAr: "مجموعة بيغ بن",
                 badge: "IELTS & IEP",
                 color: "bg-red-800",
+                borderColor: "border-red-700",
                 logo: "/bigben-logo.png",
                 desc: "المعهد الوحيد في ماليزيا المعتمد من Pearson. IELTS وبرامج أكاديمية متكاملة",
                 from: "2,618 RM",
                 fromEur: "≈ 524 €",
+                highlights: ["برنامج IEP مكثف", "تحضير IELTS", "دروس خاصة VIP"],
               },
               {
                 name: "Erican Language Centre",
                 nameAr: "مركز إيريكان",
                 badge: "Cambridge & IELTS",
                 color: "bg-orange-600",
+                borderColor: "border-orange-500",
                 logo: "/erican-logo.png",
                 desc: "مركز معتمد لامتحانات Cambridge وIDP IELTS. 400,000+ متعلم",
                 from: "2,000 RM",
                 fromEur: "≈ 400 €",
+                highlights: ["برنامج دولي مكثف", "تحضير IELTS", "Cambridge معتمد"],
               },
             ].map((inst) => (
-              <div key={inst.name} className="border border-gray-200 rounded-2xl overflow-hidden hover:shadow-lg transition-all hover:border-green-200 group">
+              <div key={inst.name} className="border border-gray-200 rounded-2xl overflow-hidden hover:shadow-lg transition-all hover:border-green-200 group flex flex-col">
                 <div className={`${inst.color} h-2`}></div>
-                <div className="p-6">
+                <div className="p-6 flex flex-col flex-1">
                   <div className="flex items-center gap-4 mb-4">
                     <div className="w-16 h-16 rounded-xl bg-white border border-gray-100 shadow-sm flex items-center justify-center overflow-hidden flex-shrink-0 p-1">
                       <img src={inst.logo} alt={inst.name} className="w-full h-full object-contain" />
@@ -559,10 +565,26 @@ export default function HomePage() {
                       <p className="text-gray-400 text-xs">{inst.name}</p>
                     </div>
                   </div>
-                  <p className="text-gray-600 text-sm leading-relaxed mb-4">{inst.desc}</p>
-                  <div className="flex items-center justify-between">
-                    <div className="text-green-700 font-bold text-sm">تبدأ من {inst.from}</div>
-                    <div className="text-green-500 text-xs">{inst.fromEur}</div>
+                  <p className="text-gray-600 text-sm leading-relaxed mb-3">{inst.desc}</p>
+                  <ul className="mb-4 space-y-1">
+                    {inst.highlights.map((h) => (
+                      <li key={h} className="flex items-center gap-2 text-xs text-gray-600">
+                        <CheckCircle size={13} className="text-green-500 flex-shrink-0" />
+                        {h}
+                      </li>
+                    ))}
+                  </ul>
+                  <div className="mt-auto">
+                    <div className="flex items-center justify-between mb-3">
+                      <div className="text-green-700 font-bold text-sm">تبدأ من {inst.from}</div>
+                      <div className="text-green-500 text-xs">{inst.fromEur}</div>
+                    </div>
+                    <button
+                      onClick={() => go("apply", { type: "institute" })}
+                      className="w-full bg-green-600 hover:bg-green-700 text-white text-sm font-bold py-2.5 rounded-xl transition-all"
+                    >
+                      عرض الأسعار والتسجيل
+                    </button>
                   </div>
                 </div>
               </div>
