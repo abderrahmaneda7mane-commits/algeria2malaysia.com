@@ -1,26 +1,12 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { navigate } from "../hooks/useNavigate";
-import { ArrowRight, Clock, CheckCircle, Calendar, ExternalLink, Home, X } from "lucide-react";
+import { ArrowRight, Clock, CheckCircle, Calendar } from "lucide-react";
 
 const ZCAL_URL = "https://zcal.co/i/DNzrLfY_";
 
 export default function ConsultationPage() {
-  const [showIframe, setShowIframe] = useState(false);
-
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
-
-    if (document.getElementById("zcal-script")) return;
-    const script = document.createElement("script");
-    script.id = "zcal-script";
-    script.src = "https://static.zcal.co/embed/v1/embed.js";
-    script.async = true;
-    document.body.appendChild(script);
-
-    return () => {
-      const existing = document.getElementById("zcal-script");
-      if (existing) existing.remove();
-    };
   }, []);
 
   const benefits = [
@@ -31,44 +17,7 @@ export default function ConsultationPage() {
   ];
 
   return (
-    <>
-      {/* ── Full-screen iframe overlay with custom back bar ── */}
-      {showIframe && (
-        <div className="fixed inset-0 z-[9999] flex flex-col bg-white" dir="rtl">
-          {/* Top bar */}
-          <div className="flex items-center justify-between bg-white border-b border-gray-200 px-4 py-3 shadow-sm flex-shrink-0">
-            <button
-              onClick={() => setShowIframe(false)}
-              className="flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white font-bold text-sm rounded-xl px-4 py-2 transition-all shadow-sm"
-            >
-              <ArrowRight size={16} />
-              الرجوع
-            </button>
-            <div className="flex items-center gap-2 text-gray-700 font-semibold text-sm">
-              <Calendar size={16} className="text-green-600" />
-              احجز استشارة مجانية — 30 دقيقة
-            </div>
-            <button
-              onClick={() => navigate("home")}
-              className="flex items-center gap-1.5 text-gray-400 hover:text-gray-700 text-sm transition-colors"
-            >
-              <Home size={15} />
-              <span className="hidden sm:inline">الرئيسية</span>
-            </button>
-          </div>
-
-          {/* iframe */}
-          <iframe
-            src={ZCAL_URL}
-            title="حجز استشارة مجانية"
-            className="flex-1 w-full border-none"
-            allow="camera; microphone"
-          />
-        </div>
-      )}
-
-      {/* ── Main consultation page ── */}
-      <div
+    <div
         className="min-h-screen"
         style={{ background: "linear-gradient(160deg, #f0faf4 0%, #ffffff 50%, #f5f9ff 100%)" }}
         dir="rtl"
@@ -126,27 +75,14 @@ export default function ConsultationPage() {
             </div>
 
             <div className="p-6">
-              {/* zcal inline widget (loads automatically via script) */}
-              <div
-                className="zcal-inline-widget mb-5"
-                data-zcal-options='{"showBackground":1}'
-              >
-                {/* Fallback — replaced by zcal widget when script loads */}
-                <a href={ZCAL_URL} style={{ display: "none" }}>
-                  استشارة الدراسة في ماليزيا
-                </a>
-              </div>
-
-              {/* Main booking button — opens iframe overlay */}
               <button
-                onClick={() => setShowIframe(true)}
+                onClick={() => window.open(ZCAL_URL, "_blank")}
                 className="group flex items-center justify-center gap-3 w-full bg-gradient-to-l from-green-600 to-green-700 hover:from-green-500 hover:to-green-600 text-white font-bold text-lg rounded-2xl py-5 px-6 shadow-lg hover:shadow-xl transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0"
               >
                 <Calendar size={22} className="flex-shrink-0" />
                 <span>احجز موعد استشارتك الآن</span>
                 <ArrowRight size={18} className="flex-shrink-0 opacity-70 group-hover:opacity-100 transition-opacity" />
               </button>
-
             </div>
           </div>
 
@@ -159,6 +95,5 @@ export default function ConsultationPage() {
           </div>
         </div>
       </div>
-    </>
   );
 }
