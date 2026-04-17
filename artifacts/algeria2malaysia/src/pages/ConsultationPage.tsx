@@ -1,6 +1,11 @@
 import { useEffect, useState } from "react";
+import emailjs from "@emailjs/browser";
 import { navigate } from "../hooks/useNavigate";
 import { ArrowRight, ArrowLeft, Clock, CheckCircle, Calendar, Send, User, BookOpen, Star } from "lucide-react";
+
+const EMAILJS_PUBLIC_KEY  = import.meta.env.VITE_EMAILJS_PUBLIC_KEY  as string;
+const EMAILJS_SERVICE_ID  = import.meta.env.VITE_EMAILJS_SERVICE_ID  as string;
+const EMAILJS_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID as string;
 
 const ZCAL_URL = "https://zcal.co/i/DNzrLfY_";
 
@@ -100,14 +105,28 @@ export default function ConsultationPage() {
     setLoading(true);
     setError("");
     try {
-      const res = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form),
-      });
-      if (!res.ok) throw new Error("فشل الإرسال");
+      await emailjs.send(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID,
+        {
+          full_name:     form.fullName,
+          email:         form.email,
+          phone:         form.phone,
+          study_field:   form.studyField,
+          specialty:     form.specialty || "—",
+          current_level: form.currentLevel,
+          last_degree:   form.lastDegree,
+          budget:        form.budget || "—",
+          english_level: form.englishLevel || "—",
+          ielts:         form.ielts || "—",
+          why_malaysia:  form.whyMalaysia || "—",
+          priority:      form.priority || "—",
+        },
+        { publicKey: EMAILJS_PUBLIC_KEY }
+      );
       setShowBooking(true);
-    } catch {
+    } catch (err: unknown) {
+      console.error("EmailJS error:", err);
       setError("حدث خطأ أثناء إرسال البيانات. يرجى المحاولة مرة أخرى.");
     } finally {
       setLoading(false);
