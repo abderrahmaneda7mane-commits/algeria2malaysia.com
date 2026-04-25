@@ -340,10 +340,10 @@ export default function UniversitiesPage() {
       <div className="bg-gradient-to-br from-green-900 to-green-700 text-white py-20 px-4 text-center">
         <button
           onClick={() => go("home")}
-          className="inline-flex items-center gap-2 text-green-300 hover:text-white text-sm mb-6 transition-colors"
+          className="inline-flex items-center gap-2 bg-white/15 hover:bg-white/25 border border-white/30 text-white font-semibold text-sm px-5 py-2.5 rounded-full mb-8 transition-all backdrop-blur-sm shadow-sm"
         >
           <ArrowLeft size={16} className="rotate-180" />
-          العودة للرئيسية
+          العودة إلى الصفحة الرئيسية
         </button>
         <div className="inline-block bg-white/20 backdrop-blur-sm border border-white/30 rounded-full px-4 py-1 text-sm font-medium mb-4">
           🎓 جامعاتنا الشريكة

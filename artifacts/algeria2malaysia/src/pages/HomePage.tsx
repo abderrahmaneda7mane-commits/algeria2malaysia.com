@@ -847,25 +847,26 @@ export default function HomePage() {
       </section>
 
       {/* ═══ Article / Guide Section ═══ */}
-      <section id="guide" className="py-20 bg-white">
+      <section id="guide" className="py-20 bg-gray-50">
         <div className="max-w-3xl mx-auto px-4">
 
           {/* Article header */}
-          <div className="mb-10">
-            <div className="inline-flex items-center gap-2 bg-green-100 text-green-700 rounded-full px-4 py-1.5 text-sm font-semibold mb-5">
+          <div className="mb-12 text-center">
+            <div className="inline-flex items-center gap-2 bg-green-100 text-green-700 rounded-full px-5 py-2 text-sm font-bold mb-6 shadow-sm">
               📖 الدليل الكامل 2026
             </div>
-            <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 mb-4 leading-snug">
+            <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 mb-5 leading-snug">
               الدراسة في ماليزيا من الجزائر
             </h2>
-            <p className="text-gray-500 text-[15px] leading-relaxed">
+            <p className="text-gray-500 text-[15px] leading-relaxed max-w-2xl mx-auto">
               إذا كنت طالباً جزائرياً وتفكر في إكمال دراستك في الخارج، فماليزيا تعتبر واحدة من أفضل الخيارات حالياً من حيث التكلفة، جودة التعليم، وسهولة الإجراءات.
-              <br />في هذا الدليل، نشرح لك كل شيء خطوة بخطوة — من التقديم إلى التكاليف والحياة هناك.
+              في هذا الدليل، نشرح لك كل شيء خطوة بخطوة — من التقديم إلى التكاليف والحياة هناك.
             </p>
           </div>
 
           {/* Article body */}
-          <article className="space-y-10 text-gray-700 text-[15px] leading-relaxed">
+          <div className="bg-white rounded-3xl shadow-sm border border-gray-100 p-8 md:p-10">
+          <article className="space-y-8 text-gray-700 text-[15px] leading-relaxed">
 
             {/* Block 1 */}
             <div>
@@ -873,17 +874,17 @@ export default function HomePage() {
                 <span className="w-7 h-7 rounded-full bg-green-100 text-green-700 text-sm font-bold flex items-center justify-center flex-shrink-0">1</span>
                 لماذا الدراسة في ماليزيا خيار ذكي للجزائريين؟
               </h3>
-              <p>
-                ماليزيا دولة مسلمة، مما يسهّل التأقلم من ناحية الأكل ونمط الحياة. بالإضافة إلى ذلك، تتميز بتكاليفها المعقولة وجودة تعليم عالية معترف بها دولياً.
-                يمكنك تصفح{" "}
-                <button
-                  onClick={() => go("search")}
-                  className="inline-flex items-center gap-0.5 bg-green-50 text-green-700 font-semibold px-2 py-0.5 rounded-md border border-green-200 hover:bg-green-100 hover:border-green-400 transition-all cursor-pointer text-[14px]"
-                >
-                  التخصصات المتاحة ↗
-                </button>{" "}
-                وستجد مئات الخيارات تناسب كل المجالات.
+              <p className="mb-3">
+                ماليزيا دولة مسلمة، مما يسهّل التأقلم من ناحية الأكل ونمط الحياة. تتميز بتكاليفها المعقولة وجودة تعليم عالية معترف بها دولياً، مع مجتمع طلابي دولي نابض بالحياة.
               </p>
+              <button
+                onClick={() => go("universities")}
+                className="group inline-flex items-center gap-2 bg-green-700 text-white font-semibold px-5 py-2.5 rounded-xl hover:bg-green-800 transition-all shadow-sm hover:shadow-md text-[14px]"
+              >
+                <GraduationCap size={16} />
+                <span>استعرض الجامعات والتخصصات المتاحة في ماليزيا</span>
+                <ArrowLeft size={14} className="group-hover:-translate-x-1 transition-transform" />
+              </button>
             </div>
 
             {/* Block 2 */}
@@ -919,12 +920,12 @@ export default function HomePage() {
               <p className="mt-4">
                 للاطلاع على{" "}
                 <button
-                  onClick={() => go("apply")}
+                  onClick={() => go("universities")}
                   className="inline-flex items-center gap-0.5 bg-green-50 text-green-700 font-semibold px-2 py-0.5 rounded-md border border-green-200 hover:bg-green-100 hover:border-green-400 transition-all cursor-pointer text-[14px]"
                 >
                   أسعار الجامعات بالتفصيل ↗
                 </button>{" "}
-                ابدأ مسار التقديم وسنوضح لك كل شيء حسب وضعك.
+                تفضل بزيارة صفحة الجامعات — فيها كل التفاصيل حسب كل مؤسسة.
               </p>
             </div>
 
@@ -960,9 +961,30 @@ export default function HomePage() {
               <p>
                 نعم، يحتاج الطالب إلى{" "}
                 <span className="bg-blue-50 border border-blue-200 text-blue-800 font-bold px-2 py-0.5 rounded-md">فيزا طالب</span>{" "}
-                عند الدراسة في الجامعات. لكن في معاهد اللغة، يمكن الدراسة أول{" "}
-                <span className="font-bold text-green-700">3 أشهر بدون فيزا</span>، وبعدها تبدأ إجراءات الإقامة.
-                الإجراءات بسيطة إذا كانت ملفاتك مكتملة — فريقنا يتولى كل شيء معك.
+                عند الدراسة في{" "}
+                <button
+                  onClick={() => go("universities")}
+                  className="inline-flex items-center gap-0.5 bg-green-50 text-green-700 font-semibold px-2 py-0.5 rounded-md border border-green-200 hover:bg-green-100 hover:border-green-400 transition-all cursor-pointer text-[14px]"
+                >
+                  الجامعات ↗
+                </button>
+                . لكن في{" "}
+                <button
+                  onClick={() => go("institutes")}
+                  className="inline-flex items-center gap-0.5 bg-green-50 text-green-700 font-semibold px-2 py-0.5 rounded-md border border-green-200 hover:bg-green-100 hover:border-green-400 transition-all cursor-pointer text-[14px]"
+                >
+                  المعاهد ↗
+                </button>
+                ، يمكن الدراسة أول{" "}
+                <span className="font-bold text-green-700">3 أشهر بدون فيزا</span>، وبعدها تبدأ إجراءات الإقامة.{" "}
+                الإجراءات بسيطة إذا كانت ملفاتك مكتملة — فريقنا في{" "}
+                <button
+                  onClick={() => go("about")}
+                  className="inline-flex items-center gap-0.5 bg-green-50 text-green-700 font-semibold px-2 py-0.5 rounded-md border border-green-200 hover:bg-green-100 hover:border-green-400 transition-all cursor-pointer text-[14px]"
+                >
+                  من نحن ↗
+                </button>
+                {" "}يتولى كل شيء معك.
               </p>
             </div>
 
@@ -1004,9 +1026,10 @@ export default function HomePage() {
             </div>
 
           </article>
+          </div>
 
           {/* Article CTA */}
-          <div className="mt-12 bg-gradient-to-br from-green-700 to-emerald-600 rounded-2xl p-8 text-center text-white shadow-xl">
+          <div className="mt-10 bg-gradient-to-br from-green-700 to-emerald-600 rounded-2xl p-8 text-center text-white shadow-xl">
             <h3 className="text-xl font-extrabold mb-2">جاهز تبدأ رحلتك؟</h3>
             <p className="text-green-100 text-sm mb-6 max-w-md mx-auto">
               فريقنا يرافقك من أول خطوة حتى تطأ أرض ماليزيا — استشارة مجانية 100%
@@ -1019,10 +1042,10 @@ export default function HomePage() {
                 📅 احجز استشارتك المجانية
               </button>
               <button
-                onClick={() => go("search")}
+                onClick={() => go("universities")}
                 className="border-2 border-white/50 text-white font-semibold px-7 py-3 rounded-full hover:bg-white/10 transition-all text-sm"
               >
-                🔍 تصفح التخصصات
+                🎓 استعرض الجامعات
               </button>
             </div>
           </div>
