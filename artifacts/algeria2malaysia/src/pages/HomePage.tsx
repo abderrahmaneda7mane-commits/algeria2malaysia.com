@@ -970,7 +970,7 @@ export default function HomePage() {
                 </button>
                 . لكن في{" "}
                 <button
-                  onClick={() => go("institutes")}
+                  onClick={() => document.getElementById("institutes")?.scrollIntoView({ behavior: "smooth" })}
                   className="inline-flex items-center gap-0.5 bg-green-50 text-green-700 font-semibold px-2 py-0.5 rounded-md border border-green-200 hover:bg-green-100 hover:border-green-400 transition-all cursor-pointer text-[14px]"
                 >
                   المعاهد ↗
@@ -979,7 +979,7 @@ export default function HomePage() {
                 <span className="font-bold text-green-700">3 أشهر بدون فيزا</span>، وبعدها تبدأ إجراءات الإقامة.{" "}
                 الإجراءات بسيطة إذا كانت ملفاتك مكتملة — فريقنا في{" "}
                 <button
-                  onClick={() => go("about")}
+                  onClick={() => document.getElementById("about")?.scrollIntoView({ behavior: "smooth" })}
                   className="inline-flex items-center gap-0.5 bg-green-50 text-green-700 font-semibold px-2 py-0.5 rounded-md border border-green-200 hover:bg-green-100 hover:border-green-400 transition-all cursor-pointer text-[14px]"
                 >
                   من نحن ↗
