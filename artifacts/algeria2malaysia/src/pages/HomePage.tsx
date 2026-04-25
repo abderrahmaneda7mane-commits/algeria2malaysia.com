@@ -1219,7 +1219,7 @@ export default function HomePage() {
             </a>
 
             <a
-              href="https://www.facebook.com/profile.php?id=61586106531700"
+              href="https://www.facebook.com/algeria2malaysia"
               target="_blank"
               rel="noopener noreferrer"
               className="flex flex-col items-center gap-1.5 group"

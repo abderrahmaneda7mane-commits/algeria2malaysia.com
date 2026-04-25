@@ -37,8 +37,8 @@ export default function Navbar() {
           className="flex items-center gap-3 cursor-pointer flex-shrink-0 group"
           onClick={() => handleNavLink("hero", null)}
         >
-          <div className="w-12 h-12 rounded-full overflow-hidden border-[2.5px] border-green-500 shadow-md bg-white flex-shrink-0 group-hover:shadow-green-200 transition-shadow">
-            <img src="/logo-hq.jpg" alt="Algeria2Malaysia" className="w-full h-full object-contain" />
+          <div className="w-14 h-14 flex-shrink-0 group-hover:scale-105 transition-transform">
+            <img src="/logo-hq.jpg" alt="Algeria2Malaysia" className="w-full h-full object-contain drop-shadow-sm" />
           </div>
           <div className="hidden sm:flex flex-col">
             <span className="text-green-800 font-extrabold text-[16px] leading-snug tracking-tight">Algeria2Malaysia</span>
