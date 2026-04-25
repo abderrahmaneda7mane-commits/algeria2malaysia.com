@@ -340,9 +340,14 @@ export default function HomePage() {
       <section id="why" className="py-20 bg-gray-50">
         <div className="max-w-6xl mx-auto px-4">
           <div className="text-center mb-14">
-            <div className="inline-block bg-green-100 text-green-700 rounded-full px-4 py-1 text-sm font-semibold mb-4">لماذا ماليزيا؟</div>
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">أفضل وجهة دراسية بتكلفة معقولة</h2>
-            <p className="text-gray-600 max-w-2xl mx-auto">ماليزيا تجمع بين الجودة الأكاديمية والتكلفة المناسبة في بيئة إسلامية آمنة</p>
+            <h2 className="text-4xl md:text-6xl font-extrabold text-gray-900 mb-4 leading-tight">
+              لماذا{" "}
+              <span className="bg-gradient-to-l from-green-600 to-emerald-500 bg-clip-text text-transparent">
+                ماليزيا؟
+              </span>
+            </h2>
+            <p className="text-green-700 font-semibold text-base md:text-lg mb-3">أفضل وجهة دراسية بتكلفة معقولة</p>
+            <p className="text-gray-500 max-w-2xl mx-auto text-[15px]">ماليزيا تجمع بين الجودة الأكاديمية والتكلفة المناسبة في بيئة إسلامية آمنة</p>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
