@@ -212,11 +212,11 @@ export default function HomePage() {
               {/* Mid glow ring — green */}
               <div className="absolute inset-0 rounded-full bg-gradient-to-br from-green-400/50 to-green-300/20 blur-sm" style={{ transform: "scale(1.15)" }} />
               {/* Logo container */}
-              <div className="relative w-36 h-36 rounded-full overflow-hidden bg-white shadow-2xl border-4 border-white/80 p-1.5">
+              <div className="relative w-36 h-36 rounded-full overflow-hidden shadow-2xl border-4 border-white/80">
                 <img
                   src="/logo-hq.jpg"
                   alt="Algeria2Malaysia"
-                  className="w-full h-full object-contain rounded-full"
+                  className="w-full h-full object-cover scale-[1.18]"
                 />
               </div>
             </div>
