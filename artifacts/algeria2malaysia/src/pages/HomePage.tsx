@@ -846,6 +846,190 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* ═══ Article / Guide Section ═══ */}
+      <section id="guide" className="py-20 bg-white">
+        <div className="max-w-3xl mx-auto px-4">
+
+          {/* Article header */}
+          <div className="mb-10">
+            <div className="inline-flex items-center gap-2 bg-green-100 text-green-700 rounded-full px-4 py-1.5 text-sm font-semibold mb-5">
+              📖 الدليل الكامل 2026
+            </div>
+            <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 mb-4 leading-snug">
+              الدراسة في ماليزيا من الجزائر
+            </h2>
+            <p className="text-gray-500 text-[15px] leading-relaxed">
+              إذا كنت طالباً جزائرياً وتفكر في إكمال دراستك في الخارج، فماليزيا تعتبر واحدة من أفضل الخيارات حالياً من حيث التكلفة، جودة التعليم، وسهولة الإجراءات.
+              <br />في هذا الدليل، نشرح لك كل شيء خطوة بخطوة — من التقديم إلى التكاليف والحياة هناك.
+            </p>
+          </div>
+
+          {/* Article body */}
+          <article className="space-y-10 text-gray-700 text-[15px] leading-relaxed">
+
+            {/* Block 1 */}
+            <div>
+              <h3 className="text-xl font-bold text-gray-900 mb-3 flex items-center gap-2">
+                <span className="w-7 h-7 rounded-full bg-green-100 text-green-700 text-sm font-bold flex items-center justify-center flex-shrink-0">1</span>
+                لماذا الدراسة في ماليزيا خيار ذكي للجزائريين؟
+              </h3>
+              <p>
+                ماليزيا دولة مسلمة، مما يسهّل التأقلم من ناحية الأكل ونمط الحياة. بالإضافة إلى ذلك، تتميز بتكاليفها المعقولة وجودة تعليم عالية معترف بها دولياً.
+                يمكنك تصفح{" "}
+                <button
+                  onClick={() => go("search")}
+                  className="inline-flex items-center gap-0.5 bg-green-50 text-green-700 font-semibold px-2 py-0.5 rounded-md border border-green-200 hover:bg-green-100 hover:border-green-400 transition-all cursor-pointer text-[14px]"
+                >
+                  التخصصات المتاحة ↗
+                </button>{" "}
+                وستجد مئات الخيارات تناسب كل المجالات.
+              </p>
+            </div>
+
+            {/* Block 2 */}
+            <div>
+              <h3 className="text-xl font-bold text-gray-900 mb-3 flex items-center gap-2">
+                <span className="w-7 h-7 rounded-full bg-green-100 text-green-700 text-sm font-bold flex items-center justify-center flex-shrink-0">2</span>
+                كم تكلفة الدراسة في ماليزيا؟
+              </h3>
+              <p className="mb-4">
+                تختلف التكلفة حسب قوة الجامعة والتخصص، لكن في المتوسط تكون حوالي{" "}
+                <span className="bg-yellow-50 border border-yellow-200 text-yellow-800 font-bold px-2 py-0.5 rounded-md">6,000 € سنوياً</span>.
+                تبقى ماليزيا خياراً ذكياً مقارنة بأوروبا وكندا وأستراليا.
+              </p>
+
+              {/* Cost breakdown */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                {[
+                  { label: "الرسوم الجامعية السنوية",  value: "3,000 – 8,000 €",   icon: "🎓" },
+                  { label: "السكن الشهري",              value: "150 – 300 €/شهر",   icon: "🏠" },
+                  { label: "المصاريف المعيشية",          value: "100 – 200 €/شهر",   icon: "🛒" },
+                  { label: "الإجمالي التقريبي سنوياً",  value: "≈ 5,000 – 9,000 €", icon: "📊" },
+                ].map((item, i) => (
+                  <div key={i} className="flex items-center gap-3 bg-gray-50 border border-gray-100 rounded-xl px-4 py-3">
+                    <span className="text-xl">{item.icon}</span>
+                    <div>
+                      <div className="text-[12px] text-gray-500 font-medium">{item.label}</div>
+                      <div className="text-[14px] font-bold text-gray-800">{item.value}</div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              <p className="mt-4">
+                للاطلاع على{" "}
+                <button
+                  onClick={() => go("apply")}
+                  className="inline-flex items-center gap-0.5 bg-green-50 text-green-700 font-semibold px-2 py-0.5 rounded-md border border-green-200 hover:bg-green-100 hover:border-green-400 transition-all cursor-pointer text-[14px]"
+                >
+                  أسعار الجامعات بالتفصيل ↗
+                </button>{" "}
+                ابدأ مسار التقديم وسنوضح لك كل شيء حسب وضعك.
+              </p>
+            </div>
+
+            {/* Block 3 */}
+            <div>
+              <h3 className="text-xl font-bold text-gray-900 mb-3 flex items-center gap-2">
+                <span className="w-7 h-7 rounded-full bg-green-100 text-green-700 text-sm font-bold flex items-center justify-center flex-shrink-0">3</span>
+                ما هي الوثائق المطلوبة؟
+              </h3>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                {[
+                  "شهادة البكالوريا أو الشهادة الجامعية",
+                  "كشف النقاط (Transcript)",
+                  "جواز السفر — نسخة واضحة",
+                  "صور شخصية بخلفية بيضاء",
+                  "ترجمة جميع الوثائق إلى الإنجليزية",
+                  "شهادة لغة مثل IELTS (أحياناً)",
+                ].map((doc, i) => (
+                  <div key={i} className="flex items-center gap-2 bg-gray-50 border border-gray-100 rounded-xl px-4 py-2.5 text-[14px]">
+                    <CheckCircle size={15} className="text-green-500 flex-shrink-0" />
+                    <span>{doc}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Block 4 */}
+            <div>
+              <h3 className="text-xl font-bold text-gray-900 mb-3 flex items-center gap-2">
+                <span className="w-7 h-7 rounded-full bg-green-100 text-green-700 text-sm font-bold flex items-center justify-center flex-shrink-0">4</span>
+                هل يحتاج الجزائري فيزا للدراسة في ماليزيا؟
+              </h3>
+              <p>
+                نعم، يحتاج الطالب إلى{" "}
+                <span className="bg-blue-50 border border-blue-200 text-blue-800 font-bold px-2 py-0.5 rounded-md">فيزا طالب</span>{" "}
+                عند الدراسة في الجامعات. لكن في معاهد اللغة، يمكن الدراسة أول{" "}
+                <span className="font-bold text-green-700">3 أشهر بدون فيزا</span>، وبعدها تبدأ إجراءات الإقامة.
+                الإجراءات بسيطة إذا كانت ملفاتك مكتملة — فريقنا يتولى كل شيء معك.
+              </p>
+            </div>
+
+            {/* Block 5 — Steps */}
+            <div>
+              <h3 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
+                <span className="w-7 h-7 rounded-full bg-green-100 text-green-700 text-sm font-bold flex items-center justify-center flex-shrink-0">5</span>
+                كيف تقدم للدراسة في ماليزيا؟
+              </h3>
+              <div className="space-y-2">
+                {[
+                  { step: "1", label: "اختيار الجامعة أو المعهد المناسب" },
+                  { step: "2", label: "إرسال الوثائق المطلوبة" },
+                  { step: "3", label: "الحصول على خطاب القبول" },
+                  { step: "4", label: "بدء إجراءات فيزا الطالب" },
+                  { step: "5", label: "السفر والوصول إلى ماليزيا" },
+                ].map((item) => (
+                  <div key={item.step} className="flex items-center gap-3 bg-gray-50 border border-gray-100 rounded-xl px-4 py-3">
+                    <div className="w-7 h-7 rounded-full bg-green-600 text-white text-sm font-bold flex items-center justify-center flex-shrink-0">{item.step}</div>
+                    <span className="font-medium text-gray-800">{item.label}</span>
+                  </div>
+                ))}
+              </div>
+              <p className="mt-4 text-gray-500 text-sm">
+                ⏱️ المدة: من <strong className="text-gray-700">3 أيام عمل</strong> إلى <strong className="text-gray-700">6 أسابيع</strong> حسب الجامعة والتخصص.
+              </p>
+            </div>
+
+            {/* Block 6 — Extra info */}
+            <div className="grid sm:grid-cols-2 gap-4">
+              <div className="bg-green-50 border border-green-100 rounded-2xl p-5">
+                <div className="text-lg font-bold text-green-800 mb-2">💼 هل يمكن العمل أثناء الدراسة؟</div>
+                <p className="text-sm text-green-700">نعم، يمكن العمل بدوام جزئي في فترات معينة خارج وقت الدراسة.</p>
+              </div>
+              <div className="bg-blue-50 border border-blue-100 rounded-2xl p-5">
+                <div className="text-lg font-bold text-blue-800 mb-2">🕌 هل ماليزيا مناسبة لك؟</div>
+                <p className="text-sm text-blue-700">جودة تعليم + تكلفة مناسبة + بيئة مسلمة = ماليزيا خيار ممتاز.</p>
+              </div>
+            </div>
+
+          </article>
+
+          {/* Article CTA */}
+          <div className="mt-12 bg-gradient-to-br from-green-700 to-emerald-600 rounded-2xl p-8 text-center text-white shadow-xl">
+            <h3 className="text-xl font-extrabold mb-2">جاهز تبدأ رحلتك؟</h3>
+            <p className="text-green-100 text-sm mb-6 max-w-md mx-auto">
+              فريقنا يرافقك من أول خطوة حتى تطأ أرض ماليزيا — استشارة مجانية 100%
+            </p>
+            <div className="flex flex-col sm:flex-row gap-3 justify-center">
+              <button
+                onClick={() => go("consultation")}
+                className="bg-white text-green-800 font-bold px-7 py-3 rounded-full hover:bg-green-50 transition-all shadow-md text-sm"
+              >
+                📅 احجز استشارتك المجانية
+              </button>
+              <button
+                onClick={() => go("search")}
+                className="border-2 border-white/50 text-white font-semibold px-7 py-3 rounded-full hover:bg-white/10 transition-all text-sm"
+              >
+                🔍 تصفح التخصصات
+              </button>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
       {/* FAQ Section */}
       <section id="faq" className="py-20 bg-gray-50">
         <div className="max-w-3xl mx-auto px-4">
