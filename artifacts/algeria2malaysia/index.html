@@ -36,26 +36,97 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet" />
 
-    <!-- ═══ Structured Data — Organization ═══ -->
+    <!-- ═══════════════════════════════════════════
+         SCHEMA 1 — WebSite (Sitelinks Search Box)
+    ════════════════════════════════════════════════ -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "@id": "https://algeria2malaysia.replit.app/#website",
+      "name": "Algeria2Malaysia — الجزائر إلى ماليزيا",
+      "alternateName": "Algeria2Malaysia",
+      "url": "https://algeria2malaysia.replit.app/",
+      "description": "الموقع الرسمي لوكالة Algeria2Malaysia — نساعد الطلاب الجزائريين على الدراسة في الجامعات والمعاهد الماليزية",
+      "inLanguage": "ar",
+      "publisher": {
+        "@id": "https://algeria2malaysia.replit.app/#organization"
+      }
+    }
+    </script>
+
+    <!-- ═══════════════════════════════════════════
+         SCHEMA 2 — Organization (Enhanced)
+    ════════════════════════════════════════════════ -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "EducationalOrganization",
+      "@id": "https://algeria2malaysia.replit.app/#organization",
       "name": "Algeria2Malaysia",
-      "alternateName": "الجزائر إلى ماليزيا",
+      "alternateName": ["الجزائر إلى ماليزيا", "Algeria to Malaysia"],
       "url": "https://algeria2malaysia.replit.app/",
-      "logo": "https://algeria2malaysia.replit.app/logo-hq.jpg",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://algeria2malaysia.replit.app/logo-hq.jpg",
+        "width": 200,
+        "height": 200
+      },
       "image": "https://algeria2malaysia.replit.app/opengraph.jpg",
-      "description": "وكالة متخصصة في مساعدة الطلاب الجزائريين على الدراسة في الجامعات والمعاهد الماليزية",
+      "description": "وكالة متخصصة في مساعدة الطلاب الجزائريين على الدراسة في الجامعات والمعاهد الماليزية — قبول جامعي، فيزا، سكن، واستشارة مجانية 100%",
+      "foundingDate": "2024",
+      "areaServed": [
+        { "@type": "Country", "name": "Algeria" },
+        { "@type": "Country", "name": "Malaysia" }
+      ],
+      "serviceType": ["Educational Consulting", "University Admission", "Student Visa Assistance"],
+      "knowsLanguage": ["Arabic", "French", "English", "Malay"],
       "address": {
         "@type": "PostalAddress",
-        "addressCountry": "DZ"
+        "addressCountry": "DZ",
+        "addressLocality": "Algeria"
       },
-      "contactPoint": {
-        "@type": "ContactPoint",
-        "telephone": "+601112200603",
-        "contactType": "customer service",
-        "availableLanguage": ["Arabic", "French", "English"]
+      "contactPoint": [
+        {
+          "@type": "ContactPoint",
+          "telephone": "+601112200603",
+          "contactType": "customer service",
+          "contactOption": "TollFree",
+          "availableLanguage": ["Arabic", "French", "English"],
+          "areaServed": "DZ"
+        }
+      ],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "خدمات الدراسة في ماليزيا للجزائريين",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "استشارة دراسية مجانية",
+              "description": "استشارة مجانية لمساعدة الطالب الجزائري في اختيار الجامعة والتخصص المناسب في ماليزيا"
+            },
+            "price": "0",
+            "priceCurrency": "DZD"
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "خدمة القبول الجامعي",
+              "description": "مساعدة في إعداد ملف القبول والتقديم لأفضل الجامعات الماليزية"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "خدمة فيزا الطالب",
+              "description": "مساعدة في إجراءات فيزا الطالب لماليزيا خطوة بخطوة"
+            }
+          }
+        ]
       },
       "sameAs": [
         "https://www.instagram.com/algeria2malaysia",
@@ -65,7 +136,69 @@
     }
     </script>
 
-    <!-- ═══ Structured Data — FAQ ═══ -->
+    <!-- ═══════════════════════════════════════════
+         SCHEMA 3 — Article (الدليل الكامل 2026)
+    ════════════════════════════════════════════════ -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "@id": "https://algeria2malaysia.replit.app/#article-guide-2026",
+      "headline": "الدراسة في ماليزيا من الجزائر — الدليل الكامل 2026",
+      "alternativeHeadline": "كيف تدرس في ماليزيا من الجزائر خطوة بخطوة",
+      "description": "دليل شامل ومفصّل للطلاب الجزائريين الراغبين في الدراسة بماليزيا — يشمل التكاليف، قائمة الجامعات، متطلبات الفيزا، الوثائق المطلوبة، وخطوات التقديم من الألف للياء.",
+      "image": {
+        "@type": "ImageObject",
+        "url": "https://algeria2malaysia.replit.app/opengraph.jpg",
+        "width": 1200,
+        "height": 630
+      },
+      "author": {
+        "@type": "Organization",
+        "@id": "https://algeria2malaysia.replit.app/#organization",
+        "name": "Algeria2Malaysia",
+        "url": "https://algeria2malaysia.replit.app/"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "@id": "https://algeria2malaysia.replit.app/#organization",
+        "name": "Algeria2Malaysia",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://algeria2malaysia.replit.app/logo-hq.jpg",
+          "width": 200,
+          "height": 200
+        }
+      },
+      "datePublished": "2026-01-15",
+      "dateModified": "2026-04-25",
+      "inLanguage": "ar",
+      "keywords": [
+        "الدراسة في ماليزيا من الجزائر",
+        "كم تكلفة الدراسة في ماليزيا",
+        "الجامعات في ماليزيا للجزائريين",
+        "فيزا ماليزيا للطلاب الجزائريين",
+        "الوثائق المطلوبة للدراسة في ماليزيا",
+        "خطوات التقديم لجامعة ماليزية"
+      ],
+      "articleSection": "دليل الدراسة في الخارج",
+      "wordCount": 1200,
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://algeria2malaysia.replit.app/#guide"
+      },
+      "about": [
+        { "@type": "Thing", "name": "الدراسة في ماليزيا" },
+        { "@type": "Thing", "name": "القبول الجامعي في ماليزيا" },
+        { "@type": "Thing", "name": "تكلفة الدراسة في ماليزيا" },
+        { "@type": "Thing", "name": "فيزا الطالب في ماليزيا" }
+      ]
+    }
+    </script>
+
+    <!-- ═══════════════════════════════════════════
+         SCHEMA 4 — FAQPage (Enhanced — 8 أسئلة)
+    ════════════════════════════════════════════════ -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -76,15 +209,15 @@
           "name": "هل يحتاج الجزائري فيزا للدراسة في ماليزيا؟",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "نعم، يحتاج الطالب الجزائري إلى فيزا طالب عند الدراسة في الجامعات. لكن بالنسبة لمعاهد اللغة، يمكن الدراسة خلال أول 3 أشهر بدون فيزا، وبعدها يتم البدء في إجراءات الفيزا إذا أراد الاستمرار. الإجراءات عادة بسيطة إذا كانت ملفاتك مكتملة."
+            "text": "نعم، يحتاج الطالب الجزائري إلى فيزا طالب (Student Pass) عند الدراسة في الجامعات الماليزية. أما في معاهد اللغة، يمكن الدراسة خلال أول 3 أشهر بدون فيزا بموجب التأشيرة السياحية، وبعدها تبدأ إجراءات الإقامة. الإجراءات بسيطة إذا كانت ملفاتك مكتملة — فريق Algeria2Malaysia يتولى كل شيء معك."
           }
         },
         {
           "@type": "Question",
-          "name": "كم تكلفة الدراسة في ماليزيا؟",
+          "name": "كم تكلفة الدراسة في ماليزيا للجزائريين؟",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "تختلف تكلفة الدراسة حسب قوة الجامعة والتخصص، لكن في المتوسط تكون حوالي 6000 يورو سنوياً. وقد تزيد أو تنقص حسب البرنامج، لكن ماليزيا تبقى خياراً ذكياً من حيث الجودة مقابل السعر مقارنة بدول أخرى."
+            "text": "تختلف التكلفة حسب الجامعة والتخصص. في المتوسط: الرسوم الجامعية السنوية بين 3,000 و8,000 يورو، السكن الشهري 150–300 يورو، والمصاريف المعيشية 100–200 يورو شهرياً. الإجمالي التقريبي سنوياً حوالي 5,000–9,000 يورو. ماليزيا تبقى خياراً ذكياً مقارنة بأوروبا أو كندا."
           }
         },
         {
@@ -92,7 +225,7 @@
           "name": "هل ماليزيا مناسبة للطلاب الجزائريين؟",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "نعم، ماليزيا تعتبر من أفضل الوجهات للطلاب الجزائريين بفضل تكاليفها المعقولة، جودة التعليم، والبيئة المريحة للعيش. كما أنها دولة مسلمة، مما يجعل التأقلم فيها أسهل من ناحية الأكل ونمط الحياة."
+            "text": "نعم، ماليزيا من أفضل الوجهات للطلاب الجزائريين: دولة مسلمة تسهّل التأقلم، تكاليف معيشة منخفضة مقارنة بالغرب، جامعات معترف بها دولياً، ولا حاجة لـ IELTS في بعض المعاهد. يدرس فيها حالياً آلاف الطلاب الجزائريين."
           }
         },
         {
@@ -100,20 +233,74 @@
           "name": "ما هي الوثائق المطلوبة للدراسة في ماليزيا؟",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "تشمل الوثائق: شهادة البكالوريا أو شهادة جامعية، كشف النقاط، جواز السفر، صور شخصية بخلفية بيضاء، ترجمة جميع الوثائق إلى اللغة الإنجليزية، وشهادة لغة مثل IELTS في بعض الحالات."
+            "text": "الوثائق الأساسية هي: شهادة البكالوريا أو الشهادة الجامعية، كشف النقاط (Transcript)، جواز السفر ساري المفعول، صور شخصية بخلفية بيضاء، ترجمة معتمدة لجميع الوثائق إلى الإنجليزية، وشهادة IELTS في بعض الجامعات (ليست دائماً مطلوبة). فريقنا يساعدك في إعداد كل الملف."
           }
         },
         {
           "@type": "Question",
-          "name": "كم تستغرق إجراءات القبول؟",
+          "name": "كم تستغرق إجراءات القبول في ماليزيا؟",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "يعتمد ذلك على الجامعة والتخصص. أحياناً يتم القبول خلال 3 أيام عمل للبكالوريوس، وفي حالات أخرى قد يستغرق من أسبوع إلى 6 أسابيع. كلما كانت الملفات جاهزة، كانت الإجراءات أسرع."
+            "text": "تستغرق إجراءات القبول من 3 أيام عمل حتى 6 أسابيع حسب الجامعة والتخصص. كلما كانت ملفاتك مكتملة وجاهزة، كانت العملية أسرع. نتولى نحن متابعة الطلب مع الجامعة لضمان أسرع رد ممكن."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "هل يمكن العمل أثناء الدراسة في ماليزيا؟",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "نعم، يمكن للطلاب الدوليين العمل بدوام جزئي (20 ساعة في الأسبوع) خلال فترة الدراسة بشرط الحصول على إذن من الجامعة والجهات المختصة. هذا يساعد على تغطية بعض تكاليف المعيشة."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "ما هي أفضل الجامعات في ماليزيا للجزائريين؟",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "من أفضل الجامعات الماليزية الموصى بها للطلاب الجزائريين: APU (قوية في IT والذكاء الاصطناعي)، Taylor's University (الأعلى تصنيفاً)، MMU (تقنية المعلومات)، UniKL (الهندسة)، Sunway (الأعمال والطب)، وUPM (الجامعة الحكومية). Algeria2Malaysia شريك رسمي مع وكلاء معتمدين لدى هذه الجامعات."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "ما الفرق بين الجامعة والمعهد في ماليزيا؟",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "الجامعة تمنح شهادات معترف بها دولياً (بكالوريوس، ماستر، دكتوراه) وتستغرق عادةً 3–4 سنوات، وتتطلب فيزا طالب. المعهد (كمعاهد اللغة) يتيح دراسة الإنجليزية أو التأهيل للجامعة، وقد يبدأ الطالب بدون IELTS، ويستطيع الدراسة أول 3 أشهر بتأشيرة سياحية."
           }
         }
       ]
     }
     </script>
+
+    <!-- ═══════════════════════════════════════════
+         SCHEMA 5 — Service (الاستشارة المجانية)
+    ════════════════════════════════════════════════ -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "@id": "https://algeria2malaysia.replit.app/#consultation-service",
+      "name": "استشارة دراسية مجانية للجزائريين",
+      "description": "استشارة مجانية مع خبراء Algeria2Malaysia لمساعدة الطلاب الجزائريين في اختيار الجامعة أو المعهد المناسب في ماليزيا — نحدد الجامعة، نشرح التكاليف، ونبدأ الملف فوراً.",
+      "provider": {
+        "@id": "https://algeria2malaysia.replit.app/#organization"
+      },
+      "serviceType": "Educational Consulting",
+      "areaServed": {
+        "@type": "Country",
+        "name": "Algeria"
+      },
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "DZD",
+        "description": "استشارة مجانية 100% بدون أي رسوم",
+        "availability": "https://schema.org/InStock"
+      },
+      "url": "https://algeria2malaysia.replit.app/"
+    }
+    </script>
+
   </head>
   <body>
     <div id="root"></div>
