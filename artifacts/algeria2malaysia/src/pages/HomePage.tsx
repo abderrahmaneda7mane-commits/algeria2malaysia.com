@@ -1020,7 +1020,7 @@ export default function HomePage() {
                 <p className="text-sm text-green-700">نعم، يمكن العمل بدوام جزئي في فترات معينة خارج وقت الدراسة.</p>
               </div>
               <div className="bg-blue-50 border border-blue-100 rounded-2xl p-5">
-                <div className="text-lg font-bold text-blue-800 mb-2">🕌 هل ماليزيا مناسبة لك؟</div>
+                <div className="text-lg font-bold text-blue-800 mb-2">🌟 هل ماليزيا مناسبة لك؟</div>
                 <p className="text-sm text-blue-700">جودة تعليم + تكلفة مناسبة + بيئة مسلمة = ماليزيا خيار ممتاز.</p>
               </div>
             </div>
