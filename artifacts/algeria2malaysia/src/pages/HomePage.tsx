@@ -864,15 +864,15 @@ export default function HomePage() {
             </div>
 
             {/* Main title */}
-            <h2 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-3 leading-tight">
+            <h2 className="text-3xl md:text-5xl font-extrabold text-gray-900 mb-3 leading-tight">
               الدليل الكامل
-              <span className="inline-block mr-3 bg-gradient-to-l from-green-600 to-emerald-500 bg-clip-text text-transparent">
+              <span className="inline-block mr-2 md:mr-3 bg-gradient-to-l from-green-600 to-emerald-500 bg-clip-text text-transparent">
                 2026
               </span>
             </h2>
 
             {/* Subtitle */}
-            <p className="text-green-700 font-semibold text-lg mb-5 tracking-wide">
+            <p className="text-green-700 font-semibold text-base md:text-lg mb-5">
               الدراسة في ماليزيا من الجزائر — خطوة بخطوة
             </p>
 
@@ -890,7 +890,7 @@ export default function HomePage() {
           </div>
 
           {/* Article body */}
-          <div className="bg-white rounded-3xl shadow-sm border border-gray-100 p-8 md:p-10">
+          <div className="bg-white rounded-3xl shadow-sm border border-gray-100 p-5 md:p-10">
           <article className="space-y-8 text-gray-700 text-[15px] leading-relaxed">
 
             {/* Block 1 */}
@@ -904,11 +904,11 @@ export default function HomePage() {
               </p>
               <button
                 onClick={() => go("universities")}
-                className="group inline-flex items-center gap-2 bg-green-700 text-white font-semibold px-5 py-2.5 rounded-xl hover:bg-green-800 transition-all shadow-sm hover:shadow-md text-[14px]"
+                className="group flex w-full sm:w-auto sm:inline-flex items-center justify-center gap-2 bg-green-700 text-white font-semibold px-5 py-2.5 rounded-xl hover:bg-green-800 transition-all shadow-sm hover:shadow-md text-[14px]"
               >
-                <GraduationCap size={16} />
-                <span>استعرض الجامعات والتخصصات المتاحة في ماليزيا</span>
-                <ArrowLeft size={14} className="group-hover:-translate-x-1 transition-transform" />
+                <GraduationCap size={16} className="flex-shrink-0" />
+                <span>استعرض الجامعات والتخصصات المتاحة</span>
+                <ArrowLeft size={14} className="flex-shrink-0 group-hover:-translate-x-1 transition-transform" />
               </button>
             </div>
 
