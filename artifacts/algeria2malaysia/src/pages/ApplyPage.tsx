@@ -3,6 +3,7 @@ import { ArrowRight, ArrowLeft, CheckCircle, BookOpen, Building2, DollarSign, Ta
 import { INSTITUTES, ACCOMMODATION_OPTIONS, suggestInstitutes, GOOGLE_FORM_LINKS, toEur } from "../data/institutes";
 import type { Goal, RoomType } from "../data/institutes";
 import { useNavigate } from "../hooks/useNavigate";
+import { useSEO } from "../hooks/useSEO";
 import InstituteQuiz from "../components/InstituteQuiz";
 import { useLanguage } from "../i18n/LanguageContext";
 import { translations as T } from "../i18n/translations";
@@ -87,6 +88,10 @@ function Card({
 }
 
 export default function ApplyPage({ initialType }: { initialType?: "institute" | "university" }) {
+  useSEO({
+    title: "قدّم لجامعة ماليزية الآن | سريع وسهل",
+    description: "ابدأ ملفك اليوم — فريقنا يراجعه ويختار لك الجامعة الأنسب خلال 48 ساعة. بدون تعقيد، بدون رسوم خفية. قدّم الآن!",
+  });
   const { go } = useNavigate();
   const { t, dir } = useLanguage();
   const [form, setForm] = useState<FormState>({ ...initialState, type: initialType || null });

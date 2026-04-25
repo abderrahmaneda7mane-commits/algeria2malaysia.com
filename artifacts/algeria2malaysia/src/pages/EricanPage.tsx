@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { ArrowLeft, MapPin, Clock, CheckCircle, Calendar, ExternalLink, BookOpen } from "lucide-react";
 import { useNavigate } from "../hooks/useNavigate";
+import { useSEO } from "../hooks/useSEO";
 
 const EUR = (rm: number) => Math.round(rm / 5).toLocaleString();
 const RM  = (rm: number) => rm.toLocaleString();
@@ -77,6 +78,10 @@ const INCLUDES = [
 const TABS = ["الأسعار والباقات", "البرامج المتاحة"];
 
 export default function EricanPage() {
+  useSEO({
+    title: "معهد Erican ماليزيا | برامج احترافية",
+    description: "Erican من أعرق معاهد ماليزيا — برامج متخصصة تؤهلك للجامعة أو سوق العمل. قبول سريع وأسعار تناسب الطلاب الجزائريين.",
+  });
   const { go } = useNavigate();
   const [activeTab, setActiveTab] = useState(0);
 

@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { ArrowLeft, CheckCircle, GraduationCap, MapPin, BookOpen, BarChart2 } from "lucide-react";
 import { useNavigate, getNavState } from "../hooks/useNavigate";
+import { useSEO } from "../hooks/useSEO";
 import PriceDisclaimer from "../components/PriceDisclaimer";
 
 const WA_LINK = "https://wa.me/601112200603";
@@ -322,6 +323,10 @@ const accentMap: Record<string, { border: string; badge: string; text: string; b
 };
 
 export default function UniversitiesPage() {
+  useSEO({
+    title: "12 جامعة ماليزية للجزائريين | أسعار 2026",
+    description: "اختر من 12 جامعة ماليزية معتمدة — أسعار شفافة، تخصصات لكل المستويات، وقبول سريع. مئات الطلاب الجزائريين يثقون بنا. شاهد الأسعار والتخصصات الآن!",
+  });
   const { go } = useNavigate();
 
   useEffect(() => {

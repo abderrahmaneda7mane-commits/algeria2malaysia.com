@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import emailjs from "@emailjs/browser";
 import { navigate } from "../hooks/useNavigate";
+import { useSEO } from "../hooks/useSEO";
 import { ArrowRight, ArrowLeft, Clock, CheckCircle, Calendar, Send, User, BookOpen, Star } from "lucide-react";
 
 const EMAILJS_PUBLIC_KEY  = import.meta.env.VITE_EMAILJS_PUBLIC_KEY  as string;
@@ -172,6 +173,10 @@ function buildHtmlMessage(form: FormData): string {
 const SUBMITTED_KEY = "a2m_consultation_submitted";
 
 export default function ConsultationPage() {
+  useSEO({
+    title: "احجز استشارة مجانية | ادرس في ماليزيا",
+    description: "15 دقيقة مجانية مع خبيرنا — نحدد أفضل جامعة لك، نشرح التكاليف ونبدأ ملفك فوراً. احجز موعدك الآن قبل امتلاء المواعيد!",
+  });
   const [showBooking, setShowBooking] = useState(false);
   const [submitted, setSubmitted] = useState(() => localStorage.getItem(SUBMITTED_KEY) === "1");
   const [step, setStep] = useState(0);

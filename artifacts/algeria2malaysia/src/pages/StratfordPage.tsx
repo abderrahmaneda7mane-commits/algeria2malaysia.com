@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { ArrowLeft, MapPin, Clock, CheckCircle, Calendar, ExternalLink } from "lucide-react";
 import { useNavigate } from "../hooks/useNavigate";
+import { useSEO } from "../hooks/useSEO";
 
 const EUR = (rm: number) => Math.round(rm / 5).toLocaleString();
 const RM  = (rm: number) => rm.toLocaleString();
@@ -132,6 +133,10 @@ const colorMap: Record<string, { header: string; tab: string; tabActive: string;
 };
 
 export default function StratfordPage() {
+  useSEO({
+    title: "معهد Stratford ماليزيا | بدون شرط IELTS",
+    description: "ادرس في Stratford بكوالالمبور — قبول سريع بدون IELTS، أسعار مناسبة، ومثالي لبداية رحلتك الدراسية من الجزائر. اعرف التفاصيل الآن!",
+  });
   const { go } = useNavigate();
   const [activeProgram, setActiveProgram] = useState(0);
 

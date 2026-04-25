@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { ArrowLeft, MapPin, Clock, CheckCircle, Calendar, ExternalLink, Star } from "lucide-react";
 import { useNavigate } from "../hooks/useNavigate";
+import { useSEO } from "../hooks/useSEO";
 
 const EUR = (rm: number) => Math.round(rm / 5).toLocaleString();
 const RM  = (rm: number) => rm.toLocaleString();
@@ -142,6 +143,10 @@ const colorMap: Record<string, { header: string; tabActive: string; row: string;
 };
 
 export default function BigBenPage() {
+  useSEO({
+    title: "معهد Big Ben ماليزيا | ابدأ بدون شروط",
+    description: "برامج إنجليزية مرنة في Big Ben — ابدأ في أي وقت بدون امتحانات مسبقة. خيار مثالي للجزائريين القادمين لأول مرة لماليزيا.",
+  });
   const { go } = useNavigate();
   const [activeProgram, setActiveProgram] = useState(0);
 

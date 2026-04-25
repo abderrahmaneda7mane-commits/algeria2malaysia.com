@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { GraduationCap, Globe, DollarSign, Shield, Star, CheckCircle, ArrowLeft, Building2, BookOpen, Users, Award, Phone, MapPin, Wifi, Home, Plane, MessageCircle, ChevronDown } from "lucide-react";
 import { useNavigate, getNavState } from "../hooks/useNavigate";
+import { useSEO } from "../hooks/useSEO";
 import InstituteQuiz from "../components/InstituteQuiz";
 import { useLanguage } from "../i18n/LanguageContext";
 import { translations as T } from "../i18n/translations";
@@ -161,6 +162,10 @@ function FaqItem({ question, answer }: { question: string; answer: React.ReactNo
 }
 
 export default function HomePage() {
+  useSEO({
+    title: "الدراسة في ماليزيا من الجزائر | مجانية ومضمونة",
+    description: "خطوة بخطوة نرافقك من القبول حتى الوصول — جامعات ومعاهد بأسعار تناسبك. استشارة مجانية 100% لكل طالب جزائري. سجّل الآن ولا تفوّت الفرصة!",
+  });
   const { go } = useNavigate();
   const { t, dir } = useLanguage();
 

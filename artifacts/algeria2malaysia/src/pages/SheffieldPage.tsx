@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { ArrowLeft, MapPin, Clock, CheckCircle, Calendar, ExternalLink, Star, Gift } from "lucide-react";
 import { useNavigate } from "../hooks/useNavigate";
+import { useSEO } from "../hooks/useSEO";
 
 const EUR = (rm: number) => Math.round(rm / 5).toLocaleString();
 const RM  = (rm: number) => rm.toLocaleString();
@@ -109,6 +110,10 @@ const OFFERS = [
 const TABS = ["العروض الترويجية", "رسوم البالغين", "رسوم الأطفال"];
 
 export default function SheffieldPage() {
+  useSEO({
+    title: "معهد Sheffield ماليزيا | دراسة مضمونة",
+    description: "تأهّل للجامعة أو طوّر لغتك في Sheffield الماليزي — برامج مرنة ونتائج مضمونة. خيار ذكي للطلاب الجزائريين الطموحين.",
+  });
   const { go } = useNavigate();
   const [activeTab, setActiveTab] = useState(0);
 

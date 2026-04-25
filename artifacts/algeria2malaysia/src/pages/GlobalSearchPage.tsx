@@ -5,6 +5,7 @@ import {
   BarChart2, ArrowUpDown, TrendingDown
 } from "lucide-react";
 import { useNavigate } from "../hooks/useNavigate";
+import { useSEO } from "../hooks/useSEO";
 import { supabase } from "../lib/supabase";
 import PriceDisclaimer from "../components/PriceDisclaimer";
 
@@ -63,6 +64,10 @@ function extractKeyword(name: string): string {
 }
 
 export default function GlobalSearchPage() {
+  useSEO({
+    title: "تصفح تخصصات ماليزيا 2026 | ابحث مجاناً",
+    description: "200+ تخصص في 12 جامعة ماليزية معتمدة — اعثر على تخصصك وشاهد الأسعار والمتطلبات فوراً. دليل شامل للطلاب الجزائريين 2026.",
+  });
   const { go } = useNavigate();
   const inputRef = useRef<HTMLInputElement>(null);
 

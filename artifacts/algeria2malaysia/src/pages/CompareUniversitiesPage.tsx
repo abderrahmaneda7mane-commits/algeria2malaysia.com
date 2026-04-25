@@ -4,6 +4,7 @@ import {
   Star, BookOpen, FileText, X, BarChart2, Building2
 } from "lucide-react";
 import { useNavigate } from "../hooks/useNavigate";
+import { useSEO } from "../hooks/useSEO";
 import PriceDisclaimer from "../components/PriceDisclaimer";
 
 function fmtEur(rm: number) { return Math.round(rm / 5).toLocaleString(); }
@@ -209,6 +210,10 @@ const MAX_SELECT = 3;
 type Uni = typeof UNIVERSITIES[0];
 
 export default function CompareUniversitiesPage() {
+  useSEO({
+    title: "قارن جامعات ماليزيا | اختر الأفضل لك",
+    description: "مقارنة مباشرة بين 12 جامعة ماليزية — أسعار، تخصصات، وتصنيف عالمي في مكان واحد. اتخذ قرارك بثقة قبل أن تُقدّم.",
+  });
   const { go } = useNavigate();
   const [selected, setSelected] = useState<string[]>([]);
   const [comparing, setComparing] = useState(false);
