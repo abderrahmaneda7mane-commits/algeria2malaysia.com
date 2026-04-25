@@ -1204,8 +1204,8 @@ export default function HomePage() {
       <footer className="bg-green-900 text-white py-12">
         <div className="max-w-5xl mx-auto px-4 text-center">
           <div className="flex justify-center mb-4">
-            <div className="w-16 h-16 rounded-full bg-white p-1 shadow-xl border-2 border-white/60">
-              <img src="/logo-hq.jpg" alt="Algeria2Malaysia" className="w-full h-full object-contain rounded-full" />
+            <div className="w-16 h-16 rounded-full overflow-hidden shadow-xl border-2 border-white/60">
+              <img src="/logo-hq.jpg" alt="Algeria2Malaysia" className="w-full h-full object-cover scale-[1.22]" />
             </div>
           </div>
           <div className="text-xl font-bold mb-1">Algeria2Malaysia</div>
