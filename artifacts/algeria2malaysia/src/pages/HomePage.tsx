@@ -857,15 +857,35 @@ export default function HomePage() {
 
           {/* Article header */}
           <div className="mb-12 text-center">
-            <div className="inline-flex items-center gap-2 bg-green-100 text-green-700 rounded-full px-5 py-2 text-sm font-bold mb-6 shadow-sm">
-              📖 الدليل الكامل 2026
+
+            {/* Icon */}
+            <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-green-500 to-emerald-600 shadow-lg mb-5 text-3xl">
+              📖
             </div>
-            <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 mb-5 leading-snug">
-              الدراسة في ماليزيا من الجزائر
+
+            {/* Main title */}
+            <h2 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-3 leading-tight">
+              الدليل الكامل
+              <span className="inline-block mr-3 bg-gradient-to-l from-green-600 to-emerald-500 bg-clip-text text-transparent">
+                2026
+              </span>
             </h2>
+
+            {/* Subtitle */}
+            <p className="text-green-700 font-semibold text-lg mb-5 tracking-wide">
+              الدراسة في ماليزيا من الجزائر — خطوة بخطوة
+            </p>
+
+            {/* Divider */}
+            <div className="flex items-center justify-center gap-3 mb-6">
+              <div className="h-px w-16 bg-gradient-to-r from-transparent to-green-300" />
+              <div className="w-2 h-2 rounded-full bg-green-400" />
+              <div className="h-px w-16 bg-gradient-to-l from-transparent to-green-300" />
+            </div>
+
             <p className="text-gray-500 text-[15px] leading-relaxed max-w-2xl mx-auto">
-              إذا كنت طالباً جزائرياً وتفكر في إكمال دراستك في الخارج، فماليزيا تعتبر واحدة من أفضل الخيارات حالياً من حيث التكلفة، جودة التعليم، وسهولة الإجراءات.
-              في هذا الدليل، نشرح لك كل شيء خطوة بخطوة — من التقديم إلى التكاليف والحياة هناك.
+              إذا كنت طالباً جزائرياً وتفكر في إكمال دراستك في الخارج، فماليزيا تعتبر واحدة من أفضل الخيارات من حيث التكلفة، جودة التعليم، وسهولة الإجراءات.
+              في هذا الدليل، نشرح لك كل شيء من التقديم إلى التكاليف والحياة هناك.
             </p>
           </div>
 
