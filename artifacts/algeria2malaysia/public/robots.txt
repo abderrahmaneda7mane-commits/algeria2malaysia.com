@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://algeria2malaysia.replit.app/sitemap.xml

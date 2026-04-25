@@ -1,5 +1,5 @@
-import { useEffect } from "react";
-import { GraduationCap, Globe, DollarSign, Shield, Star, CheckCircle, ArrowLeft, Building2, BookOpen, Users, Award, Phone, MapPin, Wifi, Home, Plane, MessageCircle } from "lucide-react";
+import { useEffect, useState } from "react";
+import { GraduationCap, Globe, DollarSign, Shield, Star, CheckCircle, ArrowLeft, Building2, BookOpen, Users, Award, Phone, MapPin, Wifi, Home, Plane, MessageCircle, ChevronDown } from "lucide-react";
 import { useNavigate, getNavState } from "../hooks/useNavigate";
 import InstituteQuiz from "../components/InstituteQuiz";
 import { useLanguage } from "../i18n/LanguageContext";
@@ -136,6 +136,29 @@ const UNIVERSITIES = [
     badgeColor: "bg-red-600",
   },
 ];
+
+function FaqItem({ question, answer }: { question: string; answer: React.ReactNode }) {
+  const [open, setOpen] = useState(false);
+  return (
+    <div className={`bg-white rounded-2xl border transition-all duration-200 overflow-hidden ${open ? "border-green-200 shadow-md" : "border-gray-100 shadow-sm"}`}>
+      <button
+        className="w-full flex items-center justify-between gap-4 px-6 py-4 text-right"
+        onClick={() => setOpen(!open)}
+        aria-expanded={open}
+      >
+        <span className="text-[15px] font-bold text-gray-800 text-right">{question}</span>
+        <div className={`flex-shrink-0 w-7 h-7 rounded-full flex items-center justify-center transition-all duration-200 ${open ? "bg-green-600 text-white rotate-180" : "bg-gray-100 text-gray-500"}`}>
+          <ChevronDown size={16} />
+        </div>
+      </button>
+      {open && (
+        <div className="px-6 pb-5 text-[15px] text-gray-600 leading-relaxed border-t border-gray-50 pt-3">
+          {answer}
+        </div>
+      )}
+    </div>
+  );
+}
 
 export default function HomePage() {
   const { go } = useNavigate();
@@ -819,6 +842,106 @@ export default function HomePage() {
                 <p className="text-gray-600 text-sm">{item.desc}</p>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section id="faq" className="py-20 bg-gray-50">
+        <div className="max-w-3xl mx-auto px-4">
+          <div className="text-center mb-12">
+            <div className="inline-block bg-green-100 text-green-700 rounded-full px-4 py-1 text-sm font-semibold mb-4">
+              أسئلة شائعة
+            </div>
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">
+              كل ما تريد معرفته عن الدراسة في ماليزيا
+            </h2>
+            <p className="text-gray-500 text-base max-w-xl mx-auto">
+              أجوبة واضحة وصريحة على الأسئلة التي يطرحها الطلاب الجزائريون
+            </p>
+          </div>
+
+          <div className="space-y-3">
+            {[
+              {
+                q: "هل يحتاج الجزائري فيزا للدراسة في ماليزيا؟",
+                a: (
+                  <span>
+                    نعم، يحتاج الطالب الجزائري إلى <strong>فيزا طالب</strong> عند الدراسة في الجامعات.
+                    <br /><br />
+                    لكن بالنسبة لمعاهد اللغة، يمكن الدراسة خلال <strong>أول 3 أشهر بدون فيزا</strong>، وبعدها يتم البدء في إجراءات الفيزا إذا أراد الاستمرار.
+                    الإجراءات عادة بسيطة إذا كانت ملفاتك مكتملة.
+                  </span>
+                ),
+              },
+              {
+                q: "كم تكلفة الدراسة في ماليزيا؟",
+                a: (
+                  <span>
+                    تختلف التكلفة حسب الجامعة والتخصص، لكن في المتوسط تكون حوالي <strong>6,000 € سنوياً</strong>.
+                    <br /><br />
+                    ماليزيا تبقى خياراً ذكياً من حيث الجودة مقابل السعر مقارنة بأوروبا وكندا وأستراليا.
+                  </span>
+                ),
+              },
+              {
+                q: "هل ماليزيا مناسبة للطلاب الجزائريين؟",
+                a: (
+                  <span>
+                    نعم، ماليزيا تعتبر من <strong>أفضل الوجهات</strong> للطلاب الجزائريين بفضل تكاليفها المعقولة، جودة التعليم العالي، والبيئة المريحة.
+                    <br /><br />
+                    كما أنها <strong>دولة مسلمة</strong>، مما يجعل التأقلم أسهل من ناحية الأكل ونمط الحياة.
+                  </span>
+                ),
+              },
+              {
+                q: "ما هي الوثائق المطلوبة للدراسة في ماليزيا؟",
+                a: (
+                  <ul className="list-none space-y-1.5 mt-1">
+                    {[
+                      "شهادة البكالوريا أو الشهادة الجامعية (حسب البرنامج)",
+                      "كشف النقاط (Transcript)",
+                      "جواز السفر — نسخة واضحة",
+                      "صور شخصية بخلفية بيضاء",
+                      "ترجمة جميع الوثائق إلى اللغة الإنجليزية",
+                      "شهادة لغة مثل IELTS في بعض الحالات",
+                    ].map((item, i) => (
+                      <li key={i} className="flex items-start gap-2 text-gray-700 text-[15px]">
+                        <CheckCircle size={15} className="text-green-500 flex-shrink-0 mt-0.5" />
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                ),
+              },
+              {
+                q: "كم تستغرق إجراءات القبول؟",
+                a: (
+                  <span>
+                    يعتمد على الجامعة والتخصص:
+                    <br /><br />
+                    • أحياناً يتم القبول خلال <strong>3 أيام عمل</strong> (خاصة للبكالوريوس)<br />
+                    • وفي حالات أخرى قد يستغرق من <strong>أسبوع إلى 6 أسابيع</strong>
+                    <br /><br />
+                    كلما كانت الملفات جاهزة، كانت الإجراءات أسرع. فريقنا يتابع معك كل خطوة.
+                  </span>
+                ),
+              },
+            ].map((item, i) => (
+              <FaqItem key={i} question={item.q} answer={item.a} />
+            ))}
+          </div>
+
+          {/* CTA under FAQ */}
+          <div className="mt-10 bg-white border border-green-100 rounded-2xl p-6 text-center shadow-sm">
+            <p className="text-gray-700 font-semibold mb-2">لديك سؤال لم تجد إجابته هنا؟</p>
+            <p className="text-gray-500 text-sm mb-4">تواصل مع فريقنا مباشرة — نرد في أقل من 24 ساعة</p>
+            <button
+              onClick={() => go("consultation")}
+              className="bg-green-700 hover:bg-green-800 text-white px-7 py-3 rounded-full font-bold text-sm transition-all shadow-md"
+            >
+              احجز استشارتك المجانية الآن
+            </button>
           </div>
         </div>
       </section>

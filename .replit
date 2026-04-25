@@ -37,3 +37,4 @@ VITE_EMAILJS_TEMPLATE_ID = "template_a2x8uoj"
 
 [nix]
 channel = "stable-25_05"
+packages = ["zip"]
