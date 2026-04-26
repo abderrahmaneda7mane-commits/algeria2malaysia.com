@@ -924,8 +924,7 @@ export default function HomePage() {
                 كم تكلفة الدراسة في ماليزيا؟
               </h3>
               <p className="mb-4">
-                تختلف التكلفة حسب قوة الجامعة والتخصص، لكن في المتوسط تكون حوالي{" "}
-                <span className="bg-yellow-50 border border-yellow-200 text-yellow-800 font-bold px-2 py-0.5 rounded-md">6,000 € سنوياً</span>.
+                تختلف التكلفة حسب قوة الجامعة والتخصص، لكن في المتوسط تكون حوالي <span className="font-bold text-yellow-700 whitespace-nowrap">6,000 € سنوياً</span>.
                 تبقى ماليزيا خياراً ذكياً مقارنة بأوروبا وكندا وأستراليا.
               </p>
 
@@ -951,9 +950,9 @@ export default function HomePage() {
                 للاطلاع على{" "}
                 <button
                   onClick={() => go("universities")}
-                  className="inline-flex items-center gap-0.5 bg-green-50 text-green-700 font-semibold px-2 py-0.5 rounded-md border border-green-200 hover:bg-green-100 hover:border-green-400 transition-all cursor-pointer text-[14px]"
+                  className="text-blue-600 underline decoration-blue-300 hover:text-blue-800 cursor-pointer"
                 >
-                  أسعار الجامعات بالتفصيل ↗
+                  أسعار الجامعات بالتفصيل
                 </button>{" "}
                 تفضل بزيارة صفحة الجامعات — فيها كل التفاصيل حسب كل مؤسسة.
               </p>
@@ -988,31 +987,31 @@ export default function HomePage() {
                 <span className="w-7 h-7 rounded-full bg-green-100 text-green-700 text-sm font-bold flex items-center justify-center flex-shrink-0">4</span>
                 هل يحتاج الجزائري فيزا للدراسة في ماليزيا؟
               </h3>
-              <p className="mb-4">
-                نعم، يحتاج الطالب إلى <span className="bg-blue-50 border border-blue-200 text-blue-800 font-bold px-2 py-0.5 rounded-md">فيزا طالب</span> عند الدراسة في الجامعات الماليزية.
-                لكن في المعاهد، يمكن الدراسة أول <span className="font-bold text-green-700">3 أشهر بدون فيزا</span>، وبعدها تبدأ إجراءات الإقامة.
-                الإجراءات بسيطة إذا كانت ملفاتك مكتملة — فريقنا يتولى كل شيء معك.
-              </p>
-              <div className="flex flex-wrap gap-2">
+              <p>
+                نعم، يحتاج الطالب إلى <span className="font-bold text-blue-700">فيزا طالب</span> عند الدراسة في{" "}
                 <button
                   onClick={() => go("universities")}
-                  className="flex items-center gap-1 bg-green-50 text-green-700 font-semibold px-3 py-1.5 rounded-lg border border-green-200 hover:bg-green-100 transition-all text-sm"
+                  className="text-blue-600 underline decoration-blue-300 hover:text-blue-800 cursor-pointer"
                 >
-                  🎓 الجامعات
+                  الجامعات
                 </button>
+                . لكن في{" "}
                 <button
                   onClick={() => document.getElementById("institutes")?.scrollIntoView({ behavior: "smooth" })}
-                  className="flex items-center gap-1 bg-green-50 text-green-700 font-semibold px-3 py-1.5 rounded-lg border border-green-200 hover:bg-green-100 transition-all text-sm"
+                  className="text-blue-600 underline decoration-blue-300 hover:text-blue-800 cursor-pointer"
                 >
-                  🏫 المعاهد
+                  المعاهد
                 </button>
+                ، يمكن الدراسة أول <span className="font-bold text-green-700">3 أشهر بدون فيزا</span>، وبعدها تبدأ إجراءات الإقامة.
+                الإجراءات بسيطة إذا كانت ملفاتك مكتملة — فريقنا في{" "}
                 <button
                   onClick={() => document.getElementById("about")?.scrollIntoView({ behavior: "smooth" })}
-                  className="flex items-center gap-1 bg-green-50 text-green-700 font-semibold px-3 py-1.5 rounded-lg border border-green-200 hover:bg-green-100 transition-all text-sm"
+                  className="text-blue-600 underline decoration-blue-300 hover:text-blue-800 cursor-pointer"
                 >
-                  👥 من نحن
+                  من نحن
                 </button>
-              </div>
+                {" "}يتولى كل شيء معك.
+              </p>
             </div>
 
             {/* Block 5 — Steps */}
