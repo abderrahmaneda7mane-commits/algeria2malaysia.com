@@ -1083,13 +1083,19 @@ export default function HomePage() {
       <section id="faq" className="py-20 bg-gray-50">
         <div className="max-w-3xl mx-auto px-4">
           <div className="text-center mb-12">
-            <div className="inline-block bg-green-100 text-green-700 rounded-full px-4 py-1 text-sm font-semibold mb-4">
-              أسئلة شائعة
+            <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-gradient-to-br from-green-500 to-emerald-600 shadow-lg mb-5 text-2xl">
+              ❓
             </div>
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">
-              كل ما تريد معرفته عن الدراسة في ماليزيا
+            <h2 className="text-3xl md:text-5xl font-extrabold text-gray-900 mb-3 leading-tight">
+              أسئلة{" "}
+              <span className="bg-gradient-to-l from-green-600 to-emerald-500 bg-clip-text text-transparent">
+                شائعة
+              </span>
             </h2>
-            <p className="text-gray-500 text-base max-w-xl mx-auto">
+            <p className="text-green-700 font-semibold text-base md:text-lg mb-2">
+              كل ما تريد معرفته عن الدراسة في ماليزيا
+            </p>
+            <p className="text-gray-500 text-[15px] max-w-xl mx-auto">
               أجوبة واضحة وصريحة على الأسئلة التي يطرحها الطلاب الجزائريون
             </p>
           </div>
