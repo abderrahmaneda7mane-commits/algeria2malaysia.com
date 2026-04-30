@@ -635,7 +635,7 @@ export default function HomePage() {
                 badgeColor: "bg-[#e85d26]",
                 borderColor: "border-orange-200",
                 accentColor: "bg-[#e85d26]",
-                logo: "/bright-logo.svg",
+                logo: "/bright-logo.png",
                 desc: "سامر كامب أسبوعي + برامج أطفال 13+ ومنح دراسية مع فيزا",
                 from: "1,365 RM",
                 fromEur: "≈ 273 €",

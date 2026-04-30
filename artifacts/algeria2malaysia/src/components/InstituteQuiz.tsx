@@ -6,7 +6,7 @@ import { translations as T } from "../i18n/translations";
 import type { Lang } from "../i18n/translations";
 
 type Goal     = "general" | "ielts" | "business" | "kids";
-type Duration = "short" | "mid" | "long";
+type Duration = "weekly" | "short" | "mid" | "long";
 type Budget   = "low" | "mid" | "high";
 
 interface Answers {
@@ -72,7 +72,7 @@ const INST_META: Record<InstId, InstMeta> = {
   bright: {
     nameAr: "مركز برايت للغات",
     name: "Bright Language Center",
-    logo: "/bright-logo.svg",
+    logo: "/bright-logo.png",
     borderColor: "border-orange-200",
     headerBg: "bg-orange-50",
     btnColor: "bg-[#e85d26] hover:bg-[#b03a10]",
@@ -153,6 +153,24 @@ function buildRecommendations(a: Answers): ScoreEntry[] {
         program: "VIP Business English Program",
         reason: "برنامج VIP من بيغ بان مصمم للمهنيين — حصص مكثفة وتدريب على الاجتماعات والعروض التقديمية",
         highlights: ["برنامج VIP", "Pearson معتمد", "مجموعات صغيرة"],
+      },
+    ];
+  }
+
+  // ── Weekly (Summer Camp) ────────────────────────────────
+  if (a.duration === "weekly") {
+    return [
+      {
+        id: "bright", score: 99,
+        program: "Summer Camp أسبوعي (1–4 أسابيع)",
+        reason: "برايت هو المعهد الوحيد المتخصص في البرامج الأسبوعية — يبدأ السامر كامب من أسبوع واحد بـ 1,365 RM، مع عروض 7+1 و10+2 مجاناً. لا تحتاج فيزا دراسية",
+        highlights: ["من 1,365 RM/أسبوع", "☀️ سامر كامب", "بدون فيزا"],
+      },
+      {
+        id: "sheffield", score: 72,
+        program: "General English (أسبوعي — بدون فيزا)",
+        reason: "شيفيلد يوفر أيضاً برامج أسبوعية للبالغين — خيار جيد لمن يريد بيئة أكاديمية مع مرونة الأسابيع",
+        highlights: ["بدون فيزا", "بيئة أكاديمية", "مرن"],
       },
     ];
   }
@@ -334,9 +352,10 @@ function buildSteps(t: TFn) {
       key: "duration",
       q: t(T.quiz.q2.q), sub: t(T.quiz.q2.sub),
       options: [
-        { value: "short", label: t(T.quiz.q2.short), icon: "⚡", desc: t(T.quiz.q2.shortD) },
-        { value: "mid",   label: t(T.quiz.q2.mid),   icon: "📅", desc: t(T.quiz.q2.midD) },
-        { value: "long",  label: t(T.quiz.q2.long),  icon: "🗓️", desc: t(T.quiz.q2.longD) },
+        { value: "weekly", label: t(T.quiz.q2.weekly), icon: "☀️", desc: t(T.quiz.q2.weeklyD) },
+        { value: "short",  label: t(T.quiz.q2.short),  icon: "⚡", desc: t(T.quiz.q2.shortD) },
+        { value: "mid",    label: t(T.quiz.q2.mid),    icon: "📅", desc: t(T.quiz.q2.midD) },
+        { value: "long",   label: t(T.quiz.q2.long),   icon: "🗓️", desc: t(T.quiz.q2.longD) },
       ],
     },
     {
@@ -369,6 +388,10 @@ export default function InstituteQuiz(_props: Props = {}) {
     setAnswers(newAnswers);
 
     if (currentStep.key === "goal" && value !== "general") {
+      setDone(true); return;
+    }
+
+    if (currentStep.key === "duration" && value === "weekly") {
       setDone(true); return;
     }
 

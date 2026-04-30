@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { ArrowLeft, MapPin, Clock, CheckCircle, Calendar, ExternalLink, Star, Gift, Sun, Users } from "lucide-react";
+import { ArrowLeft, MapPin, Clock, CheckCircle, Calendar, ExternalLink, Star, Gift, Sun, Users, FileText } from "lucide-react";
 import { useNavigate } from "../hooks/useNavigate";
 import { useSEO } from "../hooks/useSEO";
 
@@ -118,19 +118,11 @@ export default function BrightPage() {
 
           <div className="flex items-center gap-5 mb-6">
             <div className="w-20 h-20 bg-white rounded-2xl flex items-center justify-center flex-shrink-0 p-2 shadow-xl">
-              <img src="/bright-logo.svg" alt="Bright Language Center" className="max-w-full max-h-full object-contain" />
+              <img src="/bright-logo.png" alt="Bright Language Center" className="max-w-full max-h-full object-contain" />
             </div>
             <div>
               <h1 className="text-2xl md:text-3xl font-extrabold leading-tight">Bright Language Center</h1>
               <p className="text-white/80 text-sm mt-1">مركز برايت للغات — كوالالمبور</p>
-              <a
-                href="https://bright.edu.my"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-1 text-white/70 hover:text-white text-xs mt-1 transition-colors"
-              >
-                <ExternalLink size={11} /> bright.edu.my
-              </a>
             </div>
           </div>
 
@@ -441,18 +433,16 @@ export default function BrightPage() {
 
         {/* ── CTA ── */}
         <div className="bg-gradient-to-r from-[#b03a10] to-[#e85d26] rounded-2xl p-6 mb-8 text-white text-center">
-          <h3 className="text-lg font-extrabold mb-2">جاهز للتسجيل في Bright؟</h3>
-          <p className="text-orange-100 text-sm mb-5">تواصل معنا وسنساعدك في اختيار أفضل باقة وإتمام التسجيل خطوة بخطوة</p>
+          <h3 className="text-lg font-extrabold mb-2">مهتم بالتسجيل في Bright؟</h3>
+          <p className="text-orange-100 text-sm mb-5">عبّئ فورم المعاهد وسنقوم بالتواصل معك لاختيار أفضل باقة وإتمام التسجيل</p>
           <div className="flex justify-center">
-            <a
-              href="https://wa.me/601112200603"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center justify-center gap-2 bg-white/20 hover:bg-white/30 border border-white/30 text-white font-bold text-sm rounded-xl px-8 py-3 transition-all"
+            <button
+              onClick={() => go("apply", { type: "institute" })}
+              className="flex items-center justify-center gap-2 bg-white text-[#e85d26] hover:bg-orange-50 font-bold text-sm rounded-xl px-8 py-3 transition-all shadow-md"
             >
-              <ExternalLink size={16} />
-              تواصل عبر واتساب
-            </a>
+              <FileText size={16} />
+              عبّئ فورم المعاهد
+            </button>
           </div>
         </div>
       </div>
