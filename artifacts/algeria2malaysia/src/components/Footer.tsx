@@ -200,9 +200,14 @@ export default function Footer() {
 
         {/* Bottom bar */}
         <div className="border-t border-white/10 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3">
-          <p className="text-gray-500 text-xs">
-            © {new Date().getFullYear()} Algeria2Malaysia — جميع الحقوق محفوظة
-          </p>
+          <div className="flex flex-col gap-1 text-center sm:text-right">
+            <p className="text-gray-500 text-xs">
+              © {new Date().getFullYear()} Algeria2Malaysia — جميع الحقوق محفوظة
+            </p>
+            <p className="text-gray-600 text-xs">
+              Website created and developed by <span className="text-gray-400 font-medium">Abderrahmane Kebaili</span>.
+            </p>
+          </div>
           <div className="flex gap-4">
             <a href="/sitemap.xml" className="text-gray-500 hover:text-green-400 text-xs transition-colors">
               خريطة الموقع
