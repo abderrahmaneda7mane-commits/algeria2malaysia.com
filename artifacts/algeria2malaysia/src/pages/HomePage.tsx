@@ -163,8 +163,10 @@ function FaqItem({ question, answer }: { question: string; answer: React.ReactNo
 
 export default function HomePage() {
   useSEO({
-    title: "الدراسة في ماليزيا من الجزائر | مجانية ومضمونة",
-    description: "خطوة بخطوة نرافقك من القبول حتى الوصول — جامعات ومعاهد بأسعار تناسبك. استشارة مجانية 100% لكل طالب جزائري. سجّل الآن ولا تفوّت الفرصة!",
+    title: "الدراسة في ماليزيا للجزائريين 2025 — Algeria2Malaysia",
+    description: "وكالة Algeria2Malaysia تساعد الطلاب الجزائريين على الدراسة في أفضل جامعات ومعاهد ماليزيا. استشارة مجانية، قبول سريع، مرافقة كاملة من الجزائر حتى كوالالمبور.",
+    canonicalPath: "/",
+    keywords: "دراسة في ماليزيا جزائر، جامعات ماليزيا، معاهد كوالالمبور، Algeria2Malaysia",
   });
   const { go } = useNavigate();
   const { t, dir } = useLanguage();

@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { ArrowLeft, Search, BookOpen, Clock, Calendar, DollarSign, AlertCircle, ChevronRight, ChevronLeft } from "lucide-react";
+import { useSEO } from "../hooks/useSEO";
 import { useNavigate } from "../hooks/useNavigate";
 import { useCourses, PAGE_SIZE } from "../hooks/useCourses";
 import PriceDisclaimer from "../components/PriceDisclaimer";
@@ -30,6 +31,12 @@ function SkeletonCard() {
 }
 
 export default function SunwayCoursesPage() {
+  useSEO({
+    title: "الدراسة في جامعة سونواي ماليزيا 2025 — Algeria2Malaysia",
+    description: "Sunway University: جامعة خاصة راقية في بترالينغ جايا — تخصصات أعمال وطب وهندسة. من أهم الجامعات الماليزية الخاصة.",
+    canonicalPath: "/study-sunway-malaysia",
+    keywords: "سونواي ماليزيا، Sunway University، PJ ماليزيا",
+  });
   const { go } = useNavigate();
   const {
     courses, total, loading, error,

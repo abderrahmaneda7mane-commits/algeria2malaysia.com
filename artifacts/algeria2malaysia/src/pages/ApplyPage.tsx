@@ -89,8 +89,10 @@ function Card({
 
 export default function ApplyPage({ initialType }: { initialType?: "institute" | "university" }) {
   useSEO({
-    title: "قدّم لجامعة ماليزية الآن | سريع وسهل",
-    description: "ابدأ ملفك اليوم — فريقنا يراجعه ويختار لك الجامعة الأنسب خلال 48 ساعة. بدون تعقيد، بدون رسوم خفية. قدّم الآن!",
+    title: "التسجيل والقبول في الجامعات والمعاهد الماليزية — Algeria2Malaysia",
+    description: "ابدأ رحلتك الدراسية الآن — فريقنا يراجع ملفك ويختار أفضل جامعة أو معهد خلال 48 ساعة. تسجيل مجاني بدون تعقيد.",
+    canonicalPath: "/apply",
+    keywords: "تسجيل جامعة ماليزيا، قبول ماليزيا، التقديم للدراسة في ماليزيا",
   });
   const { go } = useNavigate();
   const { t, dir } = useLanguage();

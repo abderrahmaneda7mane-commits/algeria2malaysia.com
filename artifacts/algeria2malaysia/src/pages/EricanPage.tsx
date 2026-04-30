@@ -79,8 +79,10 @@ const TABS = ["الأسعار والباقات", "البرامج المتاحة"
 
 export default function EricanPage() {
   useSEO({
-    title: "معهد Erican ماليزيا | برامج احترافية",
-    description: "Erican من أعرق معاهد ماليزيا — برامج متخصصة تؤهلك للجامعة أو سوق العمل. قبول سريع وأسعار تناسب الطلاب الجزائريين.",
+    title: "كلية إيريكان كوالالمبور — برامج أطفال وإنجليزي عام 2025",
+    description: "Erican College في Cheras KL: برامج للأطفال من 7 سنوات، IELTS، وإنجليزي أكاديمي. 30+ سنة خبرة. يبدأ من 1,500 RM/شهر للطلاب الجزائريين.",
+    canonicalPath: "/english-course-erican-kl",
+    keywords: "معهد إيريكان ماليزيا، Erican College، كورس اطفال كوالالمبور، انجليزي للاطفال ماليزيا",
   });
   const { go } = useNavigate();
   const [activeTab, setActiveTab] = useState(0);

@@ -134,8 +134,10 @@ const colorMap: Record<string, { header: string; tab: string; tabActive: string;
 
 export default function StratfordPage() {
   useSEO({
-    title: "معهد Stratford ماليزيا | بدون شرط IELTS",
-    description: "ادرس في Stratford بكوالالمبور — قبول سريع بدون IELTS، أسعار مناسبة، ومثالي لبداية رحلتك الدراسية من الجزائر. اعرف التفاصيل الآن!",
+    title: "معهد ستراتفورد كوالالمبور — IELTS وإنجليزي عام 2025",
+    description: "معهد Stratford International College في كوالالمبور: كورسات IELTS، إنجليزي عام وأعمال. يبدأ من 1,900 RM/شهر. قبول سريع للطلاب الجزائريين.",
+    canonicalPath: "/english-course-stratford-kl",
+    keywords: "معهد ستراتفورد ماليزيا، IELTS كوالالمبور، كورس انجليزي KL، Stratford College",
   });
   const { go } = useNavigate();
   const [activeProgram, setActiveProgram] = useState(0);

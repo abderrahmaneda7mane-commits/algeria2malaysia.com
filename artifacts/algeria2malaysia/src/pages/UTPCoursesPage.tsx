@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { ArrowLeft, Search, BookOpen, Clock, Calendar, DollarSign, AlertCircle, ChevronRight, ChevronLeft } from "lucide-react";
+import { useSEO } from "../hooks/useSEO";
 import { useNavigate } from "../hooks/useNavigate";
 import { useCourses, PAGE_SIZE } from "../hooks/useCourses";
 import PriceDisclaimer from "../components/PriceDisclaimer";
@@ -20,6 +21,12 @@ function SkeletonCard() {
 }
 
 export default function UTPCoursesPage() {
+  useSEO({
+    title: "الدراسة في جامعة UTP ماليزيا 2025 — Algeria2Malaysia",
+    description: "جامعة UTP Petronas: هندسة نفط وغاز في بيئة صناعية عالمية. خريجوها يعملون في أكبر شركات الطاقة في العالم.",
+    canonicalPath: "/study-utp-malaysia",
+    keywords: "UTP ماليزيا، Petronas University، هندسة نفط ماليزيا",
+  });
   const { go } = useNavigate();
   const { courses, total, loading, error, page, setPage, search, setSearch, durationFilter, setDurationFilter, priceRangeIdx, setPriceRangeIdx, allDurations, totalPages, pageNumbers } = useCourses(UTP_UNIVERSITY_ID, PRICE_RANGES);
   useEffect(() => { window.scrollTo({ top: 0, behavior: "smooth" }); }, [page]);

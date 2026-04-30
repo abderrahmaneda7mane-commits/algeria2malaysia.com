@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { ArrowLeft, Search, BookOpen, Clock, Calendar, DollarSign, AlertCircle, ChevronRight, ChevronLeft } from "lucide-react";
+import { useSEO } from "../hooks/useSEO";
 import { useNavigate } from "../hooks/useNavigate";
 import { useCourses, PAGE_SIZE } from "../hooks/useCourses";
 import PriceDisclaimer from "../components/PriceDisclaimer";
@@ -26,6 +27,12 @@ function SkeletonCard() {
 }
 
 export default function UPMCoursesPage() {
+  useSEO({
+    title: "الدراسة في جامعة UPM ماليزيا 2025 — Algeria2Malaysia",
+    description: "جامعة Putra Malaysia: جامعة بحثية حكومية متخصصة في الزراعة والبيوتكنولوجيا والهندسة. تصنيف QS ضمن 300 جامعة عالمية.",
+    canonicalPath: "/study-upm-malaysia",
+    keywords: "UPM ماليزيا، Putra University، زراعة بيوتك ماليزيا",
+  });
   const { go } = useNavigate();
   const {
     courses, total, loading, error,

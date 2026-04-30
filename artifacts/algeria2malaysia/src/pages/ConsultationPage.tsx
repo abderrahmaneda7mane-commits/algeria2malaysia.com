@@ -174,8 +174,10 @@ const SUBMITTED_KEY = "a2m_consultation_submitted";
 
 export default function ConsultationPage() {
   useSEO({
-    title: "احجز استشارة مجانية | ادرس في ماليزيا",
-    description: "15 دقيقة مجانية مع خبيرنا — نحدد أفضل جامعة لك، نشرح التكاليف ونبدأ ملفك فوراً. احجز موعدك الآن قبل امتلاء المواعيد!",
+    title: "استشارة مجانية للدراسة في ماليزيا — Algeria2Malaysia",
+    description: "احجز استشارتك المجانية مع خبراء Algeria2Malaysia. 15 دقيقة لتحديد أفضل جامعة أو معهد، شرح التكاليف والتأشيرة، وبدء ملف قبولك.",
+    canonicalPath: "/consultation",
+    keywords: "استشارة دراسة ماليزيا مجانية، قبول جامعة ماليزيا، Algeria2Malaysia",
   });
   const [showBooking, setShowBooking] = useState(false);
   const [submitted, setSubmitted] = useState(() => localStorage.getItem(SUBMITTED_KEY) === "1");

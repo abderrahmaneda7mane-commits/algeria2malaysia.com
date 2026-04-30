@@ -1,21 +1,21 @@
 import { useState } from "react";
 import { Menu, X, Search, Calendar, GraduationCap, BookOpen } from "lucide-react";
-import { useNavigate, getNavState, navigate } from "../hooks/useNavigate";
+import { useNavigate, getNavState, navigate, type Page } from "../hooks/useNavigate";
 
-const NAV_LINKS = [
-  { label: "الرئيسية",   sectionId: "hero",       page: null },
-  { label: "من نحن",     sectionId: "about",      page: null },
-  { label: "خدماتنا",   sectionId: "services",   page: null },
-  { label: "الجامعات",  sectionId: null,          page: "universities" as const },
-  { label: "المعاهد",   sectionId: "institutes",  page: null },
-  { label: "تواصل معنا",sectionId: "contact",     page: null },
+const NAV_LINKS: { label: string; sectionId: string | null; page: Page | null }[] = [
+  { label: "الرئيسية",   sectionId: "hero",     page: null },
+  { label: "من نحن",     sectionId: "about",    page: null },
+  { label: "الجامعات",  sectionId: null,        page: "universities" },
+  { label: "المعاهد",   sectionId: null,        page: "institutes" },
+  { label: "المقالات",  sectionId: null,        page: "blog" },
+  { label: "تواصل معنا",sectionId: "contact",  page: null },
 ];
 
 function scrollToSection(id: string) {
   document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
 }
 
-function handleNavLink(sectionId: string | null, page: "universities" | null, onClose?: () => void) {
+function handleNavLink(sectionId: string | null, page: Page | null, onClose?: () => void) {
   onClose?.();
   if (page) { navigate(page); return; }
   if (!sectionId) return;
@@ -124,7 +124,7 @@ export default function Navbar() {
                 className="w-full flex items-center gap-3 py-2.5 text-sm text-gray-700 hover:text-green-700 border-b border-gray-50 last:border-0 text-right"
               >
                 {l.page === "universities" && <GraduationCap size={16} className="text-gray-400 flex-shrink-0" />}
-                {l.label === "المعاهد" && <BookOpen size={16} className="text-gray-400 flex-shrink-0" />}
+                {l.page === "institutes"   && <BookOpen size={16} className="text-gray-400 flex-shrink-0" />}
                 <span className="font-medium">{l.label}</span>
               </button>
             ))}

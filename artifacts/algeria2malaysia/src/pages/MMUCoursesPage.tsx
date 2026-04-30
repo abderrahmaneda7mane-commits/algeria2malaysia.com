@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { ArrowLeft, Search, BookOpen, Clock, Calendar, DollarSign, AlertCircle, ChevronRight, ChevronLeft } from "lucide-react";
+import { useSEO } from "../hooks/useSEO";
 import { useNavigate } from "../hooks/useNavigate";
 import { useCourses, PAGE_SIZE } from "../hooks/useCourses";
 import PriceDisclaimer from "../components/PriceDisclaimer";
@@ -26,6 +27,12 @@ function SkeletonCard() {
 }
 
 export default function MMUCoursesPage() {
+  useSEO({
+    title: "الدراسة في جامعة MMU ماليزيا 2025 — Algeria2Malaysia",
+    description: "جامعة Multimedia University: تخصصات تقنية واتصالات وهندسة. رسوم معقولة وبيئة تقنية متطورة لطلاب الجزائر.",
+    canonicalPath: "/study-mmu-malaysia",
+    keywords: "MMU ماليزيا، Multimedia University، تقنية كوالالمبور",
+  });
   const { go } = useNavigate();
   const {
     courses, total, loading, error,

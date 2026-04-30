@@ -324,8 +324,10 @@ const accentMap: Record<string, { border: string; badge: string; text: string; b
 
 export default function UniversitiesPage() {
   useSEO({
-    title: "12 جامعة ماليزية للجزائريين | أسعار 2026",
-    description: "اختر من 12 جامعة ماليزية معتمدة — أسعار شفافة، تخصصات لكل المستويات، وقبول سريع. مئات الطلاب الجزائريين يثقون بنا. شاهد الأسعار والتخصصات الآن!",
+    title: "أفضل الجامعات الماليزية للجزائريين 2025 — Algeria2Malaysia",
+    description: "دليل 12 جامعة ماليزية معتمدة: APU، تايلورز، MMU، UniKL، UPM وأكثر. تخصصات هندسة وأعمال وطب بأسعار مناسبة. قبول سريع بدون IELTS.",
+    canonicalPath: "/universities",
+    keywords: "جامعات ماليزيا، الدراسة في ماليزيا، APU ماليزيا، تايلورز ماليزيا، جامعات للجزائريين",
   });
   const { go } = useNavigate();
 

@@ -211,8 +211,10 @@ type Uni = typeof UNIVERSITIES[0];
 
 export default function CompareUniversitiesPage() {
   useSEO({
-    title: "قارن جامعات ماليزيا | اختر الأفضل لك",
-    description: "مقارنة مباشرة بين 12 جامعة ماليزية — أسعار، تخصصات، وتصنيف عالمي في مكان واحد. اتخذ قرارك بثقة قبل أن تُقدّم.",
+    title: "مقارنة أفضل الجامعات الماليزية 2025 — Algeria2Malaysia",
+    description: "قارن بين 12 جامعة ماليزية معتمدة: APU، تايلورز، MMU، UPM وأكثر. أسعار، تخصصات، وتصنيف عالمي في جدول واحد.",
+    canonicalPath: "/compare-universities",
+    keywords: "مقارنة جامعات ماليزيا، أفضل جامعة ماليزيا، APU vs تايلورز، جامعات KL",
   });
   const { go } = useNavigate();
   const [selected, setSelected] = useState<string[]>([]);

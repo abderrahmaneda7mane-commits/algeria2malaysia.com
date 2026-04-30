@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { LanguageProvider } from "./i18n/LanguageContext";
 import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 import HomePage from "./pages/HomePage";
 import ApplyPage from "./pages/ApplyPage";
 import ThankYouPage from "./pages/ThankYouPage";
@@ -26,7 +27,9 @@ import BigBenPage from "./pages/BigBenPage";
 import EricanPage from "./pages/EricanPage";
 import SheffieldPage from "./pages/SheffieldPage";
 import BrightPage from "./pages/BrightPage";
-import { getNavState, subscribeNav } from "./hooks/useNavigate";
+import InstituteListPage from "./pages/InstituteListPage";
+import BlogPage from "./pages/BlogPage";
+import { getNavState, subscribeNav, handlePopState } from "./hooks/useNavigate";
 
 function FormReturnPopup({ onClose }: { onClose: () => void }) {
   return (
@@ -62,6 +65,24 @@ function FormReturnPopup({ onClose }: { onClose: () => void }) {
   );
 }
 
+const PAGES_WITH_NAVBAR = new Set([
+  "home", "universities", "institutes", "blog",
+  "upm", "apu", "taylors", "mmu", "unikl", "lincoln",
+  "utp", "utm", "utem", "ucsi", "cityu-courses", "sunway",
+  "search", "compare", "consultation",
+  "stratford-institute", "bigben-institute", "erican-institute",
+  "sheffield-institute", "bright-institute",
+]);
+
+const PAGES_WITH_FOOTER = new Set([
+  "home", "universities", "institutes", "blog",
+  "upm", "apu", "taylors", "mmu", "unikl", "lincoln",
+  "utp", "utm", "utem", "ucsi", "cityu-courses", "sunway",
+  "search", "compare",
+  "stratford-institute", "bigben-institute", "erican-institute",
+  "sheffield-institute", "bright-institute",
+]);
+
 function App() {
   const [nav, setNav] = useState(getNavState);
   const [showFormPopup, setShowFormPopup] = useState(false);
@@ -70,6 +91,13 @@ function App() {
     return subscribeNav(() => setNav(getNavState()));
   }, []);
 
+  // Handle browser back/forward buttons
+  useEffect(() => {
+    window.addEventListener("popstate", handlePopState);
+    return () => window.removeEventListener("popstate", handlePopState);
+  }, []);
+
+  // Handle return from Google Form
   useEffect(() => {
     function handleVisibilityChange() {
       if (document.visibilityState === "visible" && sessionStorage.getItem("formOpened") === "1") {
@@ -82,40 +110,45 @@ function App() {
   }, []);
 
   const { page, state } = nav;
-
-  const showNavbar = page === "home" || page === "universities" || page === "upm" || page === "apu" || page === "taylors" || page === "mmu" || page === "unikl" || page === "lincoln" || page === "utp" || page === "utm" || page === "utem" || page === "ucsi" || page === "cityu-courses" || page === "sunway" || page === "search" || page === "compare" || page === "consultation" || page === "stratford-institute" || page === "bigben-institute" || page === "erican-institute" || page === "sheffield-institute" || page === "bright-institute";
+  const showNavbar = PAGES_WITH_NAVBAR.has(page);
+  const showFooter = PAGES_WITH_FOOTER.has(page);
 
   return (
     <LanguageProvider>
-    <div className="min-h-screen bg-white">
-      {showNavbar && <Navbar />}
-      {page === "home" && <HomePage />}
-      {page === "universities" && <UniversitiesPage />}
-      {page === "apply" && <ApplyPage initialType={state.type} />}
-      {page === "thank-you" && <ThankYouPage />}
-      {page === "uni-apply" && <UniApplyPage />}
-      {page === "upm" && <UPMCoursesPage />}
-      {page === "apu" && <APUCoursesPage />}
-      {page === "taylors" && <TaylorsCoursesPage />}
-      {page === "mmu" && <MMUCoursesPage />}
-      {page === "unikl" && <UniKLCoursesPage />}
-      {page === "lincoln" && <LincolnCoursesPage />}
-      {page === "utp" && <UTPCoursesPage />}
-      {page === "utm" && <UTMCoursesPage />}
-      {page === "utem" && <UTeMCoursesPage />}
-      {page === "ucsi" && <UCSICoursesPage />}
-      {page === "cityu-courses" && <CityUCoursesPage />}
-      {page === "sunway" && <SunwayCoursesPage />}
-      {page === "search" && <GlobalSearchPage />}
-      {page === "compare" && <CompareUniversitiesPage />}
-      {page === "consultation" && <ConsultationPage />}
-      {page === "stratford-institute" && <StratfordPage />}
-      {page === "bigben-institute" && <BigBenPage />}
-      {page === "erican-institute" && <EricanPage />}
-      {page === "sheffield-institute" && <SheffieldPage />}
-      {page === "bright-institute" && <BrightPage />}
-      {showFormPopup && <FormReturnPopup onClose={() => setShowFormPopup(false)} />}
-    </div>
+      <div className="min-h-screen bg-white flex flex-col">
+        {showNavbar && <Navbar />}
+        <main className="flex-1">
+          {page === "home"                && <HomePage />}
+          {page === "universities"        && <UniversitiesPage />}
+          {page === "institutes"          && <InstituteListPage />}
+          {page === "blog"                && <BlogPage />}
+          {page === "apply"               && <ApplyPage initialType={state.type} />}
+          {page === "thank-you"           && <ThankYouPage />}
+          {page === "uni-apply"           && <UniApplyPage />}
+          {page === "upm"                 && <UPMCoursesPage />}
+          {page === "apu"                 && <APUCoursesPage />}
+          {page === "taylors"             && <TaylorsCoursesPage />}
+          {page === "mmu"                 && <MMUCoursesPage />}
+          {page === "unikl"               && <UniKLCoursesPage />}
+          {page === "lincoln"             && <LincolnCoursesPage />}
+          {page === "utp"                 && <UTPCoursesPage />}
+          {page === "utm"                 && <UTMCoursesPage />}
+          {page === "utem"                && <UTeMCoursesPage />}
+          {page === "ucsi"                && <UCSICoursesPage />}
+          {page === "cityu-courses"       && <CityUCoursesPage />}
+          {page === "sunway"              && <SunwayCoursesPage />}
+          {page === "search"              && <GlobalSearchPage />}
+          {page === "compare"             && <CompareUniversitiesPage />}
+          {page === "consultation"        && <ConsultationPage />}
+          {page === "stratford-institute" && <StratfordPage />}
+          {page === "bigben-institute"    && <BigBenPage />}
+          {page === "erican-institute"    && <EricanPage />}
+          {page === "sheffield-institute" && <SheffieldPage />}
+          {page === "bright-institute"    && <BrightPage />}
+        </main>
+        {showFooter && <Footer />}
+        {showFormPopup && <FormReturnPopup onClose={() => setShowFormPopup(false)} />}
+      </div>
     </LanguageProvider>
   );
 }

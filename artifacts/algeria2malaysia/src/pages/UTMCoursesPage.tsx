@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { ArrowLeft, Search, BookOpen, Clock, Calendar, DollarSign, AlertCircle, ChevronRight, ChevronLeft } from "lucide-react";
+import { useSEO } from "../hooks/useSEO";
 import { useNavigate } from "../hooks/useNavigate";
 import { useCourses, PAGE_SIZE } from "../hooks/useCourses";
 import PriceDisclaimer from "../components/PriceDisclaimer";
@@ -11,6 +12,12 @@ const PRICE_RANGES = [{ label: "الكل", min: 0, max: Infinity }, { label: "RM
 function SkeletonCard() { return <div className="bg-white border border-gray-100 rounded-2xl p-5 animate-pulse"><div className="h-5 bg-gray-200 rounded w-3/4 mb-3"></div><div className="h-4 bg-gray-100 rounded w-1/2 mb-4"></div><div className="flex gap-3"><div className="h-4 bg-gray-100 rounded w-1/4"></div><div className="h-4 bg-gray-100 rounded w-1/4"></div></div></div>; }
 
 export default function UTMCoursesPage() {
+  useSEO({
+    title: "الدراسة في جامعة UTM ماليزيا 2025 — Algeria2Malaysia",
+    description: "جامعة Universiti Teknologi Malaysia: جامعة حكومية رائدة في الهندسة والتكنولوجيا. من أقدم وأعرق الجامعات الماليزية.",
+    canonicalPath: "/study-utm-malaysia",
+    keywords: "UTM ماليزيا، Universiti Teknologi Malaysia، هندسة جوهر",
+  });
   const { go } = useNavigate();
   const { courses, total, loading, error, page, setPage, search, setSearch, durationFilter, setDurationFilter, priceRangeIdx, setPriceRangeIdx, allDurations, totalPages, pageNumbers } = useCourses(UTM_UNIVERSITY_ID, PRICE_RANGES);
   useEffect(() => { window.scrollTo({ top: 0, behavior: "smooth" }); }, [page]);

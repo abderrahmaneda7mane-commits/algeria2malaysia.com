@@ -1,26 +1,57 @@
 import { useEffect } from "react";
 
+const BASE_DOMAIN = "https://algeria2malaysia.com";
+const DEFAULT_IMAGE = `${BASE_DOMAIN}/opengraph.jpg`;
+
 interface SEOProps {
   title: string;
   description: string;
+  canonicalPath: string;
+  ogImage?: string;
+  keywords?: string;
 }
 
-export function useSEO({ title, description }: SEOProps) {
+function setMeta(nameAttr: string, nameVal: string, content: string) {
+  let el = document.querySelector(`meta[${nameAttr}="${nameVal}"]`) as HTMLMetaElement | null;
+  if (!el) {
+    el = document.createElement("meta");
+    el.setAttribute(nameAttr, nameVal);
+    document.head.appendChild(el);
+  }
+  el.setAttribute("content", content);
+}
+
+function setLink(rel: string, href: string) {
+  let el = document.querySelector(`link[rel="${rel}"]`) as HTMLLinkElement | null;
+  if (!el) {
+    el = document.createElement("link");
+    el.rel = rel;
+    document.head.appendChild(el);
+  }
+  el.href = href;
+}
+
+export function useSEO({ title, description, canonicalPath, ogImage, keywords }: SEOProps) {
   useEffect(() => {
     document.title = title;
 
-    let metaDesc = document.querySelector('meta[name="description"]');
-    if (!metaDesc) {
-      metaDesc = document.createElement("meta");
-      metaDesc.setAttribute("name", "description");
-      document.head.appendChild(metaDesc);
-    }
-    metaDesc.setAttribute("content", description);
+    setMeta("name", "description", description);
+    if (keywords) setMeta("name", "keywords", keywords);
 
-    let ogTitle = document.querySelector('meta[property="og:title"]');
-    if (ogTitle) ogTitle.setAttribute("content", title);
+    const canonical = `${BASE_DOMAIN}${canonicalPath}`;
+    setLink("canonical", canonical);
 
-    let ogDesc = document.querySelector('meta[property="og:description"]');
-    if (ogDesc) ogDesc.setAttribute("content", description);
-  }, [title, description]);
+    setMeta("property", "og:title", title);
+    setMeta("property", "og:description", description);
+    setMeta("property", "og:url", canonical);
+    setMeta("property", "og:image", ogImage ?? DEFAULT_IMAGE);
+    setMeta("property", "og:type", "website");
+    setMeta("property", "og:locale", "ar_DZ");
+    setMeta("property", "og:site_name", "Algeria2Malaysia");
+
+    setMeta("name", "twitter:card", "summary_large_image");
+    setMeta("name", "twitter:title", title);
+    setMeta("name", "twitter:description", description);
+    setMeta("name", "twitter:image", ogImage ?? DEFAULT_IMAGE);
+  }, [title, description, canonicalPath, ogImage, keywords]);
 }

@@ -94,8 +94,10 @@ const TABS = ["☀️ السامر كامب", "📚 مكثف شهري", "🎓 م
 
 export default function BrightPage() {
   useSEO({
-    title: "معهد Bright Language Center ماليزيا | سامر كامب وبرامج أطفال",
-    description: "سامر كامب أسبوعي، برامج مكثفة شهرية، ومنح دراسية مع فيزا في Bright Language Center بكوالالمبور. مثالي للطلاب الجزائريين من 13 سنة فأكثر.",
+    title: "مركز برايت للغات كوالالمبور — سامر كامب وبرامج أطفال 2025",
+    description: "Bright Language Center في KL: سامر كامب أسبوعي من 1,365 RM، برامج مكثفة شهرية، منح 35%، وفيزا دراسية. للأطفال والشباب من 13 سنة فأكثر.",
+    canonicalPath: "/english-course-bright-kl",
+    keywords: "سامر كامب ماليزيا، Bright Language Center، كورس صيفي كوالالمبور، برامج اطفال ماليزيا",
   });
   const { go } = useNavigate();
   const [activeTab, setActiveTab] = useState(0);

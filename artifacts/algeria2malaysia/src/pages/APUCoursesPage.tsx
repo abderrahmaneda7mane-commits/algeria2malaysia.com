@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { ArrowLeft, Search, BookOpen, Clock, Calendar, DollarSign, AlertCircle, GraduationCap, ChevronRight, ChevronLeft } from "lucide-react";
+import { useSEO } from "../hooks/useSEO";
 import { useNavigate } from "../hooks/useNavigate";
 import { useCourses, PAGE_SIZE } from "../hooks/useCourses";
 import PriceDisclaimer from "../components/PriceDisclaimer";
@@ -26,6 +27,12 @@ function SkeletonCard() {
 }
 
 export default function APUCoursesPage() {
+  useSEO({
+    title: "الدراسة في جامعة APU ماليزيا 2025 — Algeria2Malaysia",
+    description: "جامعة APU في كوالالمبور: تخصصات IT، هندسة، وأعمال بتعليم دولي معتمد. رسوم تنافسية وقبول سريع للطلاب الجزائريين.",
+    canonicalPath: "/study-apu-malaysia",
+    keywords: "APU ماليزيا، جامعة APU، الدراسة في APU، IT ماليزيا",
+  });
   const { go } = useNavigate();
   const {
     courses, total, loading, error,

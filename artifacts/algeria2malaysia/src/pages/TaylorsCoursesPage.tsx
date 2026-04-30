@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { ArrowLeft, Search, BookOpen, Clock, Calendar, DollarSign, AlertCircle, ChevronRight, ChevronLeft } from "lucide-react";
+import { useSEO } from "../hooks/useSEO";
 import { useNavigate } from "../hooks/useNavigate";
 import { useCourses, PAGE_SIZE } from "../hooks/useCourses";
 import PriceDisclaimer from "../components/PriceDisclaimer";
@@ -30,6 +31,12 @@ function SkeletonCard() {
 }
 
 export default function TaylorsCoursesPage() {
+  useSEO({
+    title: "الدراسة في جامعة تايلورز ماليزيا 2025 — Algeria2Malaysia",
+    description: "جامعة Taylor's University: من أفضل الجامعات الماليزية — هندسة، أعمال، وعلوم اجتماعية. الرائدة في التصنيفات العالمية.",
+    canonicalPath: "/study-taylors-malaysia",
+    keywords: "تايلورز ماليزيا، Taylor's University، أفضل جامعة ماليزيا",
+  });
   const { go } = useNavigate();
   const {
     courses, total, loading, error,

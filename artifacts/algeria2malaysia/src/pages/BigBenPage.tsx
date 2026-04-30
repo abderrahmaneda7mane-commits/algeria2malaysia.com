@@ -144,8 +144,10 @@ const colorMap: Record<string, { header: string; tabActive: string; row: string;
 
 export default function BigBenPage() {
   useSEO({
-    title: "معهد Big Ben ماليزيا | ابدأ بدون شروط",
-    description: "برامج إنجليزية مرنة في Big Ben — ابدأ في أي وقت بدون امتحانات مسبقة. خيار مثالي للجزائريين القادمين لأول مرة لماليزيا.",
+    title: "معهد بيغ بان كوالالمبور — تعلم الإنجليزية بأسلوب بريطاني 2025",
+    description: "Big Ben Language Centre في وسط KL: IELTS، إنجليزي أعمال، Cambridge. يبدأ من 1,800 RM/شهر. مدرسون محترفون وبيئة دولية للطلاب الجزائريين.",
+    canonicalPath: "/english-course-bigben-kl",
+    keywords: "معهد بيغ بان ماليزيا، Big Ben KL، كورس انجليزي كوالالمبور، IELTS ماليزيا",
   });
   const { go } = useNavigate();
   const [activeProgram, setActiveProgram] = useState(0);
