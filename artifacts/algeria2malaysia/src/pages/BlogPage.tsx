@@ -1,7 +1,12 @@
-import { ChevronLeft, Clock, Tag } from "lucide-react";
+import { ChevronLeft, Clock, Tag, ChevronDown } from "lucide-react";
 import { useNavigate } from "../hooks/useNavigate";
 import { useSEO } from "../hooks/useSEO";
 import { useState } from "react";
+
+interface FAQ {
+  q: string;
+  a: string;
+}
 
 interface Article {
   slug: string;
@@ -13,51 +18,124 @@ interface Article {
   tag: string;
   tagColor: string;
   content: string;
+  faqs?: FAQ[];
 }
 
 const ARTICLES: Article[] = [
   {
     slug: "study-in-malaysia-algerian-students",
-    title: "الدراسة في ماليزيا للطلاب الجزائريين 2025 — الدليل الشامل",
-    summary: "كل ما تحتاج معرفته قبل السفر: التكاليف، أفضل الجامعات، شروط الفيزا، وكيف تبدأ رحلتك من الجزائر إلى ماليزيا.",
+    title: "الدراسة في ماليزيا للجزائريين 2026 — الدليل الشامل",
+    summary: "تُعدّ الدراسة في ماليزيا للجزائريين من أبرز الفرص الأكاديمية اليوم — تعليم معترف به دولياً، بيئة إسلامية آمنة، وتكاليف في المتناول. اكتشف كل شيء: الجامعات، الفيزا، التكاليف، والخطوات.",
     category: "الدراسة في ماليزيا",
-    readTime: "8 دقائق",
+    readTime: "10 دقائق",
     date: "2026-04-01",
     tag: "دليل شامل",
     tagColor: "bg-green-100 text-green-700",
     content: `
-## لماذا ماليزيا؟
+## لماذا تختار الدراسة في ماليزيا عام 2026؟
 
-تُعدّ ماليزيا واحدة من أفضل الوجهات الدراسية للطلاب الجزائريين لأسباب عدة:
+تجمع ماليزيا بين الجودة الأكاديمية والتكلفة المناسبة في بيئة إسلامية آمنة، مما يجعلها الوجهة الدراسية الأفضل للطلاب الجزائريين. وفيما يلي أبرز الأسباب التي تدفع آلاف الطلبة سنوياً لاختيارها:
 
-### الأسباب الرئيسية للدراسة في ماليزيا:
+- أسعار في المتناول: تكاليف الدراسة والمعيشة أقل بكثير مقارنة بأوروبا وأمريكا مع نفس مستوى الجودة.
+- التعليم باللغة الإنجليزية: جميع البرامج تُدرَّس بالإنجليزية مع شهادات معترف بها دولياً.
+- بيئة إسلامية آمنة: ماليزيا دولة إسلامية تتميز بالأمان والاستقرار، وتوفر مساجد ومطاعم حلال وقيماً عائلية.
+- جامعات معترف بها دولياً: شهادات تمنحك فرص توظيف واسعة بعد التخرج في أي مكان.
+- مجتمع عربي كبير: وجود جالية جزائرية نشطة يُسهّل الاندماج منذ اليوم الأول.
+- مسارات تعليمية متعددة: من تحسين اللغة الإنجليزية إلى البكالوريوس والماجستير في مختلف التخصصات.
+- إجراءات قبول مبسّطة: بدون تعقيدات إدارية، خاصة عند الاستعانة بفريق algeria2malaysia.com.
 
-**1. التكلفة المنخفضة**
-تبلغ تكلفة الدراسة الجامعية في ماليزيا بين 2,000 و5,000 دولار سنوياً، مقارنةً بـ 15,000–30,000 دولار في أوروبا وأمريكا.
+## جديد 2026: رحلات مباشرة من الجزائر إلى ماليزيا
 
-**2. جودة التعليم المعترف بها دولياً**
-جامعات ماليزيا كـ APU وتايلورز وMMU تحمل اعترافاً دولياً وتصنيفات عالمية مرموقة.
+أصبح السفر من الجزائر إلى ماليزيا أكثر سهولة من أي وقت مضى. مع إطلاق رحلات الطيران المباشرة بين الجزائر وكوالالمبور ابتداءً من 2026، اختُصرت مدة الرحلة بشكل كبير وأصبح بإمكان الطالب الجزائري الانتقال بسلاسة دون ترانزيت مرهق. هذا يعني توفيراً في الوقت والتكلفة وراحة أكبر في بداية رحلتك الأكاديمية.
 
-**3. البيئة الإسلامية**
-تُشكّل المسلمون 60% من سكان ماليزيا — مساجد، مطاعم حلال، وبيئة ثقافية مريحة للطلاب العرب.
+## كيفية التقديم للدراسة من الجزائر — خطوة بخطوة
 
-**4. اللغة الإنجليزية**
-التدريس بالكامل باللغة الإنجليزية — فرصة ذهبية لتحسين مستواك وزيادة فرصك الوظيفية.
+### الخطوة 1: اختيار التخصص والجامعة
+حدد المرحلة الدراسية (بكالوريوس أو ماجستير) ثم اختر الجامعة الأنسب لتخصصك من بين الجامعات الشريكة لـ algeria2malaysia.com.
 
-### التخصصات الأكثر طلباً:
-- هندسة المعلوماتية وتقنية المعلومات
-- إدارة الأعمال والمحاسبة
-- الهندسة الميكانيكية والكهربائية
-- الطب وطب الأسنان
-- العلوم والبيوتكنولوجيا
+### الخطوة 2: تجهيز الوثائق المطلوبة
+- شهادة البكالوريا أو الشهادة الجامعية
+- كشف النقاط (Transcript)
+- جواز السفر — نسخة واضحة سارية المفعول
+- صور شخصية بخلفية بيضاء
+- ترجمة جميع الوثائق إلى الإنجليزية
+- شهادة لغة مثل IELTS (اختياري حسب الجامعة)
 
-### الخطوات العملية للتسجيل:
-1. اختيار الجامعة والتخصص
-2. إرسال وثائق القبول (شهادة البكالوريا/الليسانس)
-3. استلام خطاب القبول
-4. تقديم طلب فيزا الطالب
-5. السفر والتسجيل الرسمي
+### الخطوة 3: الحصول على القبول الجامعي
+بعد دراسة ملفك، تُصدر الجامعة خطاب القبول (Offer Letter) وخطاب الموافقة على التأشيرة (VAL) الذي تُصدره هيئة EMGS الماليزية.
+
+### الخطوة 4: التقديم على فيزا الطالب
+تتم إجراءات الفيزا عبر الجامعة أو من خلال مكتب algeria2malaysia.com الذي يتولى المتابعة الكاملة نيابةً عن الطالب.
+
+### الخطوة 5: السفر واستلام بطاقة الإقامة
+عند الوصول إلى مطار كوالالمبور عبر الرحلة المباشرة الجديدة، تستقبلك الجامعة لإتمام الإجراءات النهائية واستلام بطاقة الطالب.
+
+## الجامعات الشريكة مع algeria2malaysia.com
+
+- Asia Pacific University (APU) — رائدة في تكنولوجيا المعلومات والذكاء الاصطناعي
+- Taylor's University — من أفضل الجامعات الخاصة، متخصصة في إدارة الأعمال والضيافة
+- Multimedia University (MMU) — عريقة في الإعلام والاتصالات والهندسة
+- Universiti Kuala Lumpur (UniKL) — متميزة في التخصصات الهندسية والتقنية
+- Lincoln University College — خيار مثالي لطلاب الطب والصيدلة وعلوم الصحة
+- Universiti Teknologi PETRONAS (UTP) — من أبرز جامعات الهندسة والبترول في آسيا
+- Universiti Putra Malaysia (UPM) — جامعة حكومية مصنّفة عالمياً في الزراعة والعلوم
+- Universiti Teknologi Malaysia (UTM) — رائدة في الهندسة والعلوم التطبيقية
+- UCSI University — ضمن أفضل 300 جامعة عالمياً في الطب وإدارة الأعمال
+- Sunway University — شريكة جامعات بريطانية عريقة بمعايير دولية
+- City University Malaysia — خيار مرن ومناسب اقتصادياً للطلبة الدوليين
+
+## شروط القبول للجزائريين
+
+**للبكالوريوس:**
+شهادة البكالوريا الجزائرية أو ما يعادلها، مع معدل مناسب حسب التخصص (الطب والهندسة يتطلبان معدلاً أعلى).
+
+**للماجستير:**
+شهادة ليسانس من جامعة معترف بها، معدل تراكمي لا يقل عن 2.5/4، رسالة دوافع، سيرة ذاتية، ورسائل توصية.
+
+**اللغة الإنجليزية:**
+IELTS بمعدل 5.5–6.5 أو TOEFL iBT بين 60–80 حسب الجامعة. بعض الجامعات تكتفي باختبار داخلي.
+
+## كم تكلفة الدراسة في ماليزيا؟
+
+تختلف التكلفة حسب الجامعة والتخصص، لكن في المتوسط تبلغ حوالي 6,000 € سنوياً — وتبقى ماليزيا أذكى خيار مقارنة بأوروبا وكندا وأستراليا.
+
+| البند | التكلفة التقريبية |
+|-------|------------------|
+| الرسوم الجامعية السنوية | 3,000 – 8,000 € |
+| السكن الشهري | 150 – 300 €/شهر |
+| المصاريف المعيشية | 100 – 200 €/شهر |
+| المجموع السنوي التقريبي | 5,000 – 9,000 € |
+
+## المنح الدراسية المتاحة للجزائريين
+
+- منحة MTCP (Malaysian Technical Cooperation Programme)
+- منح داخلية من الجامعات الماليزية كخصومات على الرسوم
+- منح من منظمات إسلامية مثل البنك الإسلامي للتنمية
+
+يمكن لفريق algeria2malaysia.com مساعدتك في التقديم على هذه المنح وزيادة فرص قبولك.
     `,
+    faqs: [
+      {
+        q: "هل يحتاج الجزائري فيزا للدراسة في ماليزيا؟",
+        a: "نعم، الطالب الجزائري يحتاج إلى تأشيرة طالب رسمية تُسمى Student Pass. الخبر الجيد أن الإجراءات مبسّطة جداً — في الغالب تتولاها الجامعة نيابةً عنك بعد قبولك. الأوراق المطلوبة هي: جواز سفر ساري، خطاب القبول الجامعي، صور شخصية، وشهادات دراسية مترجمة. مكتبنا يتابع كل هذه الإجراءات من الألف إلى الياء."
+      },
+      {
+        q: "كم تكلفة الدراسة في ماليزيا؟",
+        a: "تتراوح الرسوم الجامعية السنوية بين 3,000 و8,000 يورو حسب الجامعة والتخصص. أما المعيشة فتكلّف بين 300 و500 يورو شهرياً (سكن + طعام + مواصلات). المجموع السنوي الإجمالي يتراوح بين 5,000 و9,000 يورو — أي ما يعادل ثلث تكلفة الدراسة في أوروبا مع نفس جودة الشهادة الدولية."
+      },
+      {
+        q: "هل ماليزيا مناسبة للطلاب الجزائريين؟",
+        a: "ماليزيا من أفضل الوجهات للطلاب الجزائريين لأسباب عدة: البيئة الإسلامية (60% من السكان مسلمون، مطاعم حلال في كل مكان)، وجود جالية جزائرية وعربية كبيرة، التدريس بالإنجليزية، التكلفة المنخفضة، والإجراءات البسيطة. كثير من الطلاب الجزائريين يقولون إنهم شعروا بالراحة منذ أول يوم."
+      },
+      {
+        q: "ما هي الوثائق المطلوبة للدراسة في ماليزيا؟",
+        a: "الوثائق الأساسية هي: شهادة البكالوريا أو الليسانس + كشف النقاط، جواز السفر (ساري 6 أشهر على الأقل)، صور شخصية بخلفية بيضاء، وترجمة معتمدة لجميع الوثائق إلى الإنجليزية. بعض الجامعات تطلب إضافياً شهادة IELTS أو اختبار لغوي داخلي. مكتبنا يرشدك حسب متطلبات كل جامعة بالتحديد."
+      },
+      {
+        q: "كم تستغرق إجراءات القبول؟",
+        a: "عادةً 2 إلى 4 أسابيع لاستلام خطاب القبول من الجامعة، ثم 4 إلى 8 أسابيع إضافية لمعالجة الفيزا عبر هيئة EMGS الماليزية. المجموع من البداية حتى السفر: 6 إلى 12 أسبوعاً. إذا كانت ملفاتك مكتملة وتعاملت معنا مباشرة، نضمن لك أسرع وقت ممكن."
+      },
+    ],
   },
   {
     slug: "ielts-malaysia-preparation",
@@ -243,13 +321,85 @@ const ARTICLES: Article[] = [
   },
 ];
 
+function FAQAccordion({ faqs }: { faqs: FAQ[] }) {
+  const [openIdx, setOpenIdx] = useState<number | null>(null);
+  return (
+    <section className="mt-10 mb-6">
+      <div className="bg-gradient-to-br from-green-700 to-green-800 rounded-2xl p-5 md:p-7 text-white mb-5">
+        <h2 className="text-lg md:text-xl font-extrabold mb-1">أسئلة شائعة</h2>
+        <p className="text-green-200 text-sm">أجوبة واضحة وصريحة على الأسئلة التي يطرحها الطلاب الجزائريون</p>
+      </div>
+      <div className="space-y-3">
+        {faqs.map((faq, i) => (
+          <div
+            key={i}
+            className="bg-white border border-gray-200 rounded-xl overflow-hidden shadow-sm hover:border-green-300 transition-colors"
+          >
+            <button
+              className="w-full flex items-center justify-between gap-3 px-5 py-4 text-right text-gray-900 font-bold text-sm md:text-base hover:bg-green-50 transition-colors"
+              onClick={() => setOpenIdx(openIdx === i ? null : i)}
+            >
+              <span className="flex items-center gap-2 text-right">
+                <span className="flex-shrink-0 w-6 h-6 rounded-full bg-green-100 text-green-700 text-xs font-extrabold flex items-center justify-center">{i + 1}</span>
+                {faq.q}
+              </span>
+              <ChevronDown
+                size={18}
+                className={`flex-shrink-0 text-green-600 transition-transform duration-200 ${openIdx === i ? "rotate-180" : ""}`}
+              />
+            </button>
+            {openIdx === i && (
+              <div className="px-5 pb-5 pt-1 border-t border-gray-100 text-gray-600 text-sm leading-relaxed bg-green-50/40">
+                {faq.a}
+              </div>
+            )}
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
+
 function ArticleView({ article, onBack }: { article: Article; onBack: () => void }) {
+  const { go } = useNavigate();
+
   useSEO({
     title: `${article.title} — Algeria2Malaysia`,
     description: article.summary,
     canonicalPath: `/blog/${article.slug}`,
     keywords: `دراسة ماليزيا، ${article.category}، طلاب جزائريين`,
   });
+
+  const renderContent = (content: string) =>
+    content.trim().split("\n").map((line, i) => {
+      if (line.startsWith("## "))
+        return <h2 key={i} className="text-xl font-extrabold text-gray-900 mt-8 mb-3 pb-2 border-b border-gray-100">{line.slice(3)}</h2>;
+      if (line.startsWith("### "))
+        return <h3 key={i} className="text-base font-extrabold text-green-800 mt-5 mb-2">{line.slice(4)}</h3>;
+      if (line.startsWith("**") && line.endsWith("**"))
+        return <p key={i} className="font-bold text-gray-800 mt-3 mb-1">{line.slice(2, -2)}</p>;
+      if (line.startsWith("- ") || line.startsWith("* "))
+        return (
+          <div key={i} className="flex gap-2 mb-1.5 mr-2">
+            <span className="text-green-500 mt-0.5 flex-shrink-0">✓</span>
+            <span className="text-gray-700 text-sm">{line.slice(2)}</span>
+          </div>
+        );
+      if (line.startsWith("| ") && line.includes("|") && !line.startsWith("|---")) {
+        const cells = line.split("|").filter(c => c.trim());
+        const isHeader = i > 0 && content.trim().split("\n")[i + 1]?.startsWith("|---");
+        return (
+          <div key={i} className={`flex gap-2 border-b border-gray-100 py-2 text-sm ${isHeader ? "font-bold bg-gray-50 text-gray-800" : "text-gray-600"}`}>
+            {cells.map((c, j) => <span key={j} className="flex-1">{c.trim()}</span>)}
+          </div>
+        );
+      }
+      if (line.startsWith("|---")) return null;
+      if (line.trim() === "") return <div key={i} className="h-2" />;
+      if (/^\d+\. /.test(line))
+        return <p key={i} className="mb-1.5 text-gray-700 text-sm">{line}</p>;
+      return <p key={i} className="mb-2 text-gray-700 text-sm leading-relaxed">{line}</p>;
+    });
 
   return (
     <div className="max-w-3xl mx-auto px-4 pb-16">
@@ -261,35 +411,48 @@ function ArticleView({ article, onBack }: { article: Article; onBack: () => void
       </button>
 
       <article>
-        <div className="mb-6">
+        {/* Header */}
+        <div className="mb-7">
           <span className={`${article.tagColor} text-xs font-bold px-3 py-1 rounded-full`}>{article.tag}</span>
           <h1 className="text-2xl md:text-3xl font-extrabold text-gray-900 mt-3 mb-2 leading-tight">{article.title}</h1>
-          <div className="flex items-center gap-4 text-gray-400 text-sm">
-            <span className="flex items-center gap-1"><Clock size={13} /> {article.readTime}</span>
+          <div className="flex items-center gap-4 text-gray-400 text-xs">
+            <span className="flex items-center gap-1"><Clock size={12} /> {article.readTime}</span>
             <span>{article.date}</span>
           </div>
-          <p className="text-gray-600 mt-4 text-base leading-relaxed border-r-4 border-green-500 pr-4">{article.summary}</p>
+          <p className="text-gray-600 mt-4 text-base leading-relaxed border-r-4 border-green-500 pr-4 bg-green-50/50 py-3 rounded-l-lg">
+            {article.summary}
+          </p>
         </div>
 
-        <div className="prose-custom text-gray-700 text-sm leading-loose">
-          {article.content.trim().split("\n").map((line, i) => {
-            if (line.startsWith("## ")) return <h2 key={i} className="text-xl font-extrabold text-gray-900 mt-8 mb-3">{line.slice(3)}</h2>;
-            if (line.startsWith("### ")) return <h3 key={i} className="text-base font-extrabold text-gray-800 mt-5 mb-2">{line.slice(4)}</h3>;
-            if (line.startsWith("**") && line.endsWith("**")) return <p key={i} className="font-bold text-gray-800 mt-3 mb-1">{line.slice(2, -2)}</p>;
-            if (line.startsWith("- ") || line.startsWith("* ")) return <li key={i} className="mr-4 mb-1">{line.slice(2)}</li>;
-            if (line.startsWith("| ") && line.includes("|")) {
-              const cells = line.split("|").filter(c => c.trim());
-              return (
-                <div key={i} className="flex gap-2 border-b border-gray-100 py-1.5 text-xs">
-                  {cells.map((c, j) => <span key={j} className="flex-1">{c.trim()}</span>)}
-                </div>
-              );
-            }
-            if (line.trim() === "") return <br key={i} />;
-            if (line.startsWith("1. ") || /^\d+\. /.test(line)) return <p key={i} className="mb-1">{line}</p>;
-            return <p key={i} className="mb-2">{line}</p>;
-          })}
+        {/* Content */}
+        <div className="text-gray-700 leading-loose">
+          {renderContent(article.content)}
         </div>
+
+        {/* CTA Box */}
+        <div className="mt-8 bg-gradient-to-br from-green-600 to-green-700 rounded-2xl p-6 text-white text-center">
+          <p className="font-extrabold text-lg mb-1">مستعد تبدأ رحلتك؟</p>
+          <p className="text-green-100 text-sm mb-4">احصل على استشارة مجانية الآن — فريقنا يساعدك خطوة بخطوة.</p>
+          <div className="flex flex-col sm:flex-row gap-3 justify-center">
+            <button
+              onClick={() => go("home", { scrollTo: "apply" })}
+              className="bg-white text-green-700 font-bold px-6 py-3 rounded-xl hover:bg-green-50 transition-all text-sm"
+            >
+              ابدأ التسجيل الآن
+            </button>
+            <button
+              onClick={() => go("universities")}
+              className="bg-green-500 hover:bg-green-400 text-white font-bold px-6 py-3 rounded-xl transition-all text-sm"
+            >
+              استعرض الجامعات
+            </button>
+          </div>
+        </div>
+
+        {/* FAQ */}
+        {article.faqs && article.faqs.length > 0 && (
+          <FAQAccordion faqs={article.faqs} />
+        )}
       </article>
     </div>
   );
