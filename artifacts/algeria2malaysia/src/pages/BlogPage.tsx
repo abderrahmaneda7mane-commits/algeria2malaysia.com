@@ -370,24 +370,36 @@ function ArticleView({ article, onBack }: { article: Article; onBack: () => void
     keywords: `دراسة ماليزيا، ${article.category}، طلاب جزائريين`,
   });
 
-  const renderContent = (content: string) =>
-    content.trim().split("\n").map((line, i) => {
+  const renderInline = (text: string): React.ReactNode[] => {
+    const parts = text.split(/(\*\*[^*]+\*\*)/g);
+    return parts.map((part, j) => {
+      if (part.startsWith("**") && part.endsWith("**"))
+        return <strong key={j} className="font-bold text-gray-900">{part.slice(2, -2)}</strong>;
+      return <span key={j}>{part}</span>;
+    });
+  };
+
+  const renderContent = (content: string) => {
+    const ls = content.trim().split("\n");
+    return ls.map((line, i) => {
       if (line.startsWith("## "))
         return <h2 key={i} className="text-xl font-extrabold text-gray-900 mt-8 mb-3 pb-2 border-b border-gray-100">{line.slice(3)}</h2>;
       if (line.startsWith("### "))
         return <h3 key={i} className="text-base font-extrabold text-green-800 mt-5 mb-2">{line.slice(4)}</h3>;
       if (line.startsWith("**") && line.endsWith("**"))
-        return <p key={i} className="font-bold text-gray-800 mt-3 mb-1">{line.slice(2, -2)}</p>;
+        return <p key={i} className="font-bold text-gray-800 mt-4 mb-1">{line.slice(2, -2)}</p>;
+      if (line.startsWith("**"))
+        return <p key={i} className="font-semibold text-gray-800 mt-4 mb-1">{renderInline(line)}</p>;
       if (line.startsWith("- ") || line.startsWith("* "))
         return (
-          <div key={i} className="flex gap-2 mb-1.5 mr-2">
-            <span className="text-green-500 mt-0.5 flex-shrink-0">✓</span>
-            <span className="text-gray-700 text-sm">{line.slice(2)}</span>
+          <div key={i} className="flex items-start gap-2 mb-1.5 mr-2">
+            <span className="text-green-500 flex-shrink-0 leading-5">✓</span>
+            <span className="text-gray-700 text-sm leading-relaxed">{renderInline(line.slice(2))}</span>
           </div>
         );
       if (line.startsWith("| ") && line.includes("|") && !line.startsWith("|---")) {
         const cells = line.split("|").filter(c => c.trim());
-        const isHeader = i > 0 && content.trim().split("\n")[i + 1]?.startsWith("|---");
+        const isHeader = ls[i + 1]?.startsWith("|---");
         return (
           <div key={i} className={`flex gap-2 border-b border-gray-100 py-2 text-sm ${isHeader ? "font-bold bg-gray-50 text-gray-800" : "text-gray-600"}`}>
             {cells.map((c, j) => <span key={j} className="flex-1">{c.trim()}</span>)}
@@ -397,9 +409,10 @@ function ArticleView({ article, onBack }: { article: Article; onBack: () => void
       if (line.startsWith("|---")) return null;
       if (line.trim() === "") return <div key={i} className="h-2" />;
       if (/^\d+\. /.test(line))
-        return <p key={i} className="mb-1.5 text-gray-700 text-sm">{line}</p>;
-      return <p key={i} className="mb-2 text-gray-700 text-sm leading-relaxed">{line}</p>;
+        return <p key={i} className="mb-1.5 text-gray-700 text-sm">{renderInline(line)}</p>;
+      return <p key={i} className="mb-2 text-gray-700 text-sm leading-relaxed">{renderInline(line)}</p>;
     });
+  };
 
   return (
     <div className="max-w-3xl mx-auto px-4 pb-16">
@@ -414,12 +427,8 @@ function ArticleView({ article, onBack }: { article: Article; onBack: () => void
         {/* Header */}
         <div className="mb-7">
           <span className={`${article.tagColor} text-xs font-bold px-3 py-1 rounded-full`}>{article.tag}</span>
-          <h1 className="text-2xl md:text-3xl font-extrabold text-gray-900 mt-3 mb-2 leading-tight">{article.title}</h1>
-          <div className="flex items-center gap-4 text-gray-400 text-xs">
-            <span className="flex items-center gap-1"><Clock size={12} /> {article.readTime}</span>
-            <span>{article.date}</span>
-          </div>
-          <p className="text-gray-600 mt-4 text-base leading-relaxed border-r-4 border-green-500 pr-4 bg-green-50/50 py-3 rounded-l-lg">
+          <h1 className="text-2xl md:text-3xl font-extrabold text-gray-900 mt-3 mb-4 leading-tight">{article.title}</h1>
+          <p className="text-gray-600 mt-1 text-base leading-relaxed border-r-4 border-green-500 pr-4 bg-green-50/50 py-3 rounded-l-lg">
             {article.summary}
           </p>
         </div>
