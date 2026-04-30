@@ -576,12 +576,12 @@ export default function HomePage() {
                 borderColor: "border-teal-200",
                 accentColor: "bg-teal-600",
                 logo: "/stratford-logo.png",
+                imgClass: "w-full h-full object-contain",
                 desc: "برامج مكثفة 4-6 ساعات/يوم في موقع متميز بـ KLCC",
                 from: "950 RM",
                 fromEur: "≈ 190 €",
                 highlights: ["إنجليزي للتواصل", "مكثف 4 ساعات/يوم", "مكثف بلس 6 ساعات"],
                 onClick: () => go("stratford-institute"),
-                btnLabel: "عرض الأسعار",
               },
               {
                 name: "Big Ben Education",
@@ -591,12 +591,12 @@ export default function HomePage() {
                 borderColor: "border-red-200",
                 accentColor: "bg-red-800",
                 logo: "/bigben-logo.png",
+                imgClass: "w-full h-full object-contain",
                 desc: "المعتمد من Pearson — IELTS وبرامج أكاديمية متكاملة",
                 from: "2,618 RM",
                 fromEur: "≈ 524 €",
                 highlights: ["برنامج IEP مكثف", "تحضير IELTS", "دروس خاصة VIP"],
                 onClick: () => go("bigben-institute"),
-                btnLabel: "عرض الأسعار",
               },
               {
                 name: "Erican Language Centre",
@@ -606,12 +606,12 @@ export default function HomePage() {
                 borderColor: "border-purple-200",
                 accentColor: "bg-purple-700",
                 logo: "/erican-logo.png",
+                imgClass: "w-full h-full object-contain",
                 desc: "معتمد Cambridge وIDP IELTS — 400,000+ متعلم",
                 from: "2,000 RM",
                 fromEur: "≈ 400 €",
                 highlights: ["برنامج دولي مكثف", "تحضير IELTS", "Cambridge معتمد"],
                 onClick: () => go("erican-institute"),
-                btnLabel: "عرض الأسعار",
               },
               {
                 name: "Sheffield Academy",
@@ -621,12 +621,12 @@ export default function HomePage() {
                 borderColor: "border-blue-200",
                 accentColor: "bg-[#1a3272]",
                 logo: "/sheffield-logo.png",
+                imgClass: "w-full h-full object-contain",
                 desc: "خصومات تصل 30% + IELTS مجاني + أشهر مجانية",
                 from: "1,950 RM",
                 fromEur: "≈ 390 €",
                 highlights: ["2 شهر + شهر مجاني", "خصم 25% على 8 أشهر", "IELTS مجاني"],
                 onClick: () => go("sheffield-institute"),
-                btnLabel: "عرض العروض",
               },
               {
                 name: "Bright Language Center",
@@ -636,12 +636,12 @@ export default function HomePage() {
                 borderColor: "border-orange-200",
                 accentColor: "bg-[#e85d26]",
                 logo: "/bright-logo.png",
+                imgClass: "w-full h-full object-cover object-left",
                 desc: "سامر كامب أسبوعي + برامج أطفال 13+ ومنح دراسية مع فيزا",
                 from: "1,365 RM",
                 fromEur: "≈ 273 €",
                 highlights: ["سامر كامب أسبوعي", "7+1 أسابيع مجاناً", "منح + فيزا حتى 35%"],
                 onClick: () => go("bright-institute"),
-                btnLabel: "عرض البرامج",
               },
             ].map((inst) => (
               <div
@@ -658,7 +658,7 @@ export default function HomePage() {
                   {/* Logo + price (left col on mobile) */}
                   <div className="flex flex-col items-center gap-2 flex-shrink-0 w-16 sm:w-auto">
                     <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-xl bg-white border border-gray-100 shadow-sm flex items-center justify-center overflow-hidden p-1">
-                      <img src={inst.logo} alt={inst.name} className="w-full h-full object-contain" />
+                      <img src={inst.logo} alt={inst.name} className={inst.imgClass} />
                     </div>
                     {/* Price below logo on mobile */}
                     <div className="text-center sm:hidden">
@@ -696,7 +696,7 @@ export default function HomePage() {
                       onClick={(e) => { e.stopPropagation(); inst.onClick(); }}
                       className={`w-full sm:w-full ${inst.accentColor} hover:opacity-90 text-white text-xs sm:text-sm font-bold py-2 sm:py-2.5 rounded-xl transition-all mt-auto flex items-center justify-center gap-1.5 group-hover:gap-2.5`}
                     >
-                      <span>{inst.btnLabel}</span>
+                      <span>عرض الأسعار</span>
                       <ArrowLeft size={13} className="transition-transform group-hover:-translate-x-0.5" />
                     </button>
                   </div>

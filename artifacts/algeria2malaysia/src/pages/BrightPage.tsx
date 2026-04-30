@@ -117,8 +117,8 @@ export default function BrightPage() {
           </button>
 
           <div className="flex items-center gap-5 mb-6">
-            <div className="w-20 h-20 bg-white rounded-2xl flex items-center justify-center flex-shrink-0 p-2 shadow-xl">
-              <img src="/bright-logo.png" alt="Bright Language Center" className="max-w-full max-h-full object-contain" />
+            <div className="w-20 h-20 bg-white rounded-2xl flex-shrink-0 shadow-xl overflow-hidden">
+              <img src="/bright-logo.png" alt="Bright Language Center" className="w-full h-full object-cover object-left" />
             </div>
             <div>
               <h1 className="text-2xl md:text-3xl font-extrabold leading-tight">Bright Language Center</h1>

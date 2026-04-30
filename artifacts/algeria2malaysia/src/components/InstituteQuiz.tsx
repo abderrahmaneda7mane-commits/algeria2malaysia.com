@@ -21,6 +21,7 @@ interface InstMeta {
   nameAr: string;
   name: string;
   logo: string;
+  logoImgClass?: string;
   borderColor: string;
   headerBg: string;
   btnColor: string;
@@ -73,6 +74,7 @@ const INST_META: Record<InstId, InstMeta> = {
     nameAr: "مركز برايت للغات",
     name: "Bright Language Center",
     logo: "/bright-logo.png",
+    logoImgClass: "w-full h-full object-cover object-left",
     borderColor: "border-orange-200",
     headerBg: "bg-orange-50",
     btnColor: "bg-[#e85d26] hover:bg-[#b03a10]",
@@ -434,8 +436,8 @@ export default function InstituteQuiz(_props: Props = {}) {
               {/* Top bar */}
               <div className={`${meta.headerBg} px-4 py-3 flex items-center justify-between`}>
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 bg-white rounded-xl border border-white/60 flex items-center justify-center p-1 shadow-sm flex-shrink-0">
-                    <img src={meta.logo} alt={meta.name} className="max-w-full max-h-full object-contain" />
+                  <div className="w-10 h-10 bg-white rounded-xl border border-white/60 shadow-sm flex-shrink-0 overflow-hidden flex items-center justify-center p-1">
+                    <img src={meta.logo} alt={meta.name} className={meta.logoImgClass ?? "max-w-full max-h-full object-contain"} />
                   </div>
                   <div>
                     <div className="font-extrabold text-gray-900 text-sm leading-tight">{meta.nameAr}</div>
