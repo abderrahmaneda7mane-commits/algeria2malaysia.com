@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
 
-  <!-- ===== Core Pages ===== -->
+  <!-- ===== الصفحة الرئيسية ===== -->
   <url>
     <loc>https://algeria2malaysia.com/</loc>
     <lastmod>2026-04-30</lastmod>
@@ -11,203 +11,204 @@
     <xhtml:link rel="alternate" hreflang="ar" href="https://algeria2malaysia.com/" />
   </url>
 
+  <!-- ===== صفحات رئيسية ===== -->
   <url>
     <loc>https://algeria2malaysia.com/universities</loc>
-    <lastmod>2026-04-30</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.95</priority>
-  </url>
-
-  <url>
-    <loc>https://algeria2malaysia.com/institutes</loc>
-    <lastmod>2026-04-30</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.95</priority>
-  </url>
-
-  <url>
-    <loc>https://algeria2malaysia.com/blog</loc>
-    <lastmod>2026-04-30</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.85</priority>
+    <lastmod>2026-04-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.90</priority>
   </url>
 
   <url>
     <loc>https://algeria2malaysia.com/consultation</loc>
-    <lastmod>2026-04-30</lastmod>
+    <lastmod>2026-04-10</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.90</priority>
+    <priority>0.85</priority>
   </url>
 
   <url>
-    <loc>https://algeria2malaysia.com/compare-universities</loc>
-    <lastmod>2026-04-30</lastmod>
+    <loc>https://algeria2malaysia.com/institutes</loc>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.80</priority>
+    <priority>0.85</priority>
   </url>
 
   <url>
     <loc>https://algeria2malaysia.com/apply</loc>
-    <lastmod>2026-04-30</lastmod>
+    <lastmod>2026-04-10</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.85</priority>
+    <priority>0.80</priority>
   </url>
 
-  <!-- ===== University Pages ===== -->
+  <url>
+    <loc>https://algeria2malaysia.com/blog</loc>
+    <lastmod>2026-04-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.78</priority>
+  </url>
+
+  <url>
+    <loc>https://algeria2malaysia.com/compare-universities</loc>
+    <lastmod>2026-03-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.70</priority>
+  </url>
+
+  <!-- ===== صفحات الجامعات ===== -->
   <url>
     <loc>https://algeria2malaysia.com/study-apu-malaysia</loc>
-    <lastmod>2026-04-30</lastmod>
+    <lastmod>2026-04-18</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.90</priority>
+    <priority>0.82</priority>
   </url>
 
   <url>
     <loc>https://algeria2malaysia.com/study-taylors-malaysia</loc>
-    <lastmod>2026-04-30</lastmod>
+    <lastmod>2026-04-18</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.90</priority>
+    <priority>0.82</priority>
   </url>
 
   <url>
     <loc>https://algeria2malaysia.com/study-mmu-malaysia</loc>
-    <lastmod>2026-04-30</lastmod>
+    <lastmod>2026-04-15</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.88</priority>
+    <priority>0.78</priority>
   </url>
 
   <url>
     <loc>https://algeria2malaysia.com/study-unikl-malaysia</loc>
-    <lastmod>2026-04-30</lastmod>
+    <lastmod>2026-04-15</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.88</priority>
+    <priority>0.78</priority>
   </url>
 
   <url>
     <loc>https://algeria2malaysia.com/study-upm-malaysia</loc>
-    <lastmod>2026-04-30</lastmod>
+    <lastmod>2026-04-12</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.88</priority>
+    <priority>0.76</priority>
   </url>
 
   <url>
     <loc>https://algeria2malaysia.com/study-lincoln-malaysia</loc>
-    <lastmod>2026-04-30</lastmod>
+    <lastmod>2026-04-08</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.85</priority>
+    <priority>0.74</priority>
   </url>
 
   <url>
     <loc>https://algeria2malaysia.com/study-utp-malaysia</loc>
-    <lastmod>2026-04-30</lastmod>
+    <lastmod>2026-04-08</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.85</priority>
+    <priority>0.74</priority>
   </url>
 
   <url>
     <loc>https://algeria2malaysia.com/study-utm-malaysia</loc>
-    <lastmod>2026-04-30</lastmod>
+    <lastmod>2026-04-05</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.85</priority>
+    <priority>0.72</priority>
   </url>
 
   <url>
     <loc>https://algeria2malaysia.com/study-utem-malaysia</loc>
-    <lastmod>2026-04-30</lastmod>
+    <lastmod>2026-04-05</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.85</priority>
+    <priority>0.72</priority>
   </url>
 
   <url>
     <loc>https://algeria2malaysia.com/study-ucsi-malaysia</loc>
-    <lastmod>2026-04-30</lastmod>
+    <lastmod>2026-04-03</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.85</priority>
+    <priority>0.72</priority>
   </url>
 
   <url>
     <loc>https://algeria2malaysia.com/study-cityu-malaysia</loc>
-    <lastmod>2026-04-30</lastmod>
+    <lastmod>2026-03-28</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.85</priority>
+    <priority>0.70</priority>
   </url>
 
   <url>
     <loc>https://algeria2malaysia.com/study-sunway-malaysia</loc>
-    <lastmod>2026-04-30</lastmod>
+    <lastmod>2026-03-28</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.85</priority>
+    <priority>0.70</priority>
   </url>
 
-  <!-- ===== Institute Pages ===== -->
+  <!-- ===== صفحات المعاهد ===== -->
   <url>
     <loc>https://algeria2malaysia.com/english-course-stratford-kl</loc>
-    <lastmod>2026-04-30</lastmod>
+    <lastmod>2026-04-22</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.88</priority>
+    <priority>0.80</priority>
   </url>
 
   <url>
     <loc>https://algeria2malaysia.com/english-course-bigben-kl</loc>
-    <lastmod>2026-04-30</lastmod>
+    <lastmod>2026-04-22</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.88</priority>
+    <priority>0.76</priority>
   </url>
 
   <url>
     <loc>https://algeria2malaysia.com/english-course-erican-kl</loc>
-    <lastmod>2026-04-30</lastmod>
+    <lastmod>2026-04-20</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.85</priority>
+    <priority>0.74</priority>
   </url>
 
   <url>
     <loc>https://algeria2malaysia.com/english-course-sheffield-kl</loc>
-    <lastmod>2026-04-30</lastmod>
+    <lastmod>2026-04-20</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.85</priority>
+    <priority>0.74</priority>
   </url>
 
   <url>
     <loc>https://algeria2malaysia.com/english-course-bright-kl</loc>
-    <lastmod>2026-04-30</lastmod>
+    <lastmod>2026-04-25</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.85</priority>
+    <priority>0.72</priority>
   </url>
 
-  <!-- ===== Blog Articles ===== -->
+  <!-- ===== مقالات المدوّنة ===== -->
   <url>
     <loc>https://algeria2malaysia.com/blog/study-in-malaysia-algerian-students</loc>
-    <lastmod>2026-04-30</lastmod>
+    <lastmod>2026-04-01</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.80</priority>
-  </url>
-
-  <url>
-    <loc>https://algeria2malaysia.com/blog/ielts-malaysia-preparation</loc>
-    <lastmod>2026-04-30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.78</priority>
-  </url>
-
-  <url>
-    <loc>https://algeria2malaysia.com/blog/cost-living-kuala-lumpur-students</loc>
-    <lastmod>2026-04-30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.78</priority>
+    <priority>0.72</priority>
   </url>
 
   <url>
     <loc>https://algeria2malaysia.com/blog/student-visa-malaysia-algeria</loc>
-    <lastmod>2026-04-30</lastmod>
+    <lastmod>2026-04-15</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.80</priority>
+    <priority>0.70</priority>
+  </url>
+
+  <url>
+    <loc>https://algeria2malaysia.com/blog/ielts-malaysia-preparation</loc>
+    <lastmod>2026-04-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.68</priority>
+  </url>
+
+  <url>
+    <loc>https://algeria2malaysia.com/blog/cost-living-kuala-lumpur-students</loc>
+    <lastmod>2026-04-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.66</priority>
   </url>
 
   <url>
     <loc>https://algeria2malaysia.com/blog/summer-camp-malaysia-children</loc>
-    <lastmod>2026-04-30</lastmod>
+    <lastmod>2026-04-20</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.75</priority>
+    <priority>0.65</priority>
   </url>
 
 </urlset>
