@@ -213,18 +213,18 @@ IELTS بمعدل 5.5–6.5 أو TOEFL iBT بين 60–80 حسب الجامعة. 
     content: `
 ## كيف تعيش في كوالالمبور بميزانية محدودة؟
 
-### الميزانية الشهرية التقريبية (بالرينغيت الماليزي RM):
+### الميزانية الشهرية التقريبية (1 RM ≈ 0.20 €):
 
 | البند | الحد الأدنى | المتوسط | مريح |
 |-------|------------|---------|------|
-| السكن — شقة مشتركة | 600 RM | 800 RM | 1,000 RM |
-| السكن — استوديو | 1,300 RM | 1,800 RM | 2,500 RM |
-| فاتورة الكهرباء | 50 RM | 120 RM | 250 RM |
-| الطعام | 300 RM | 500 RM | 800 RM |
-| المواصلات | 80 RM | 120 RM | 200 RM |
-| الاتصالات | 50 RM | 60 RM | 80 RM |
-| الكتب والمستلزمات | 50 RM | 100 RM | 150 RM |
-| الترفيه | 50 RM | 100 RM | 200 RM |
+| السكن — شقة مشتركة | 600 RM (~120 €) | 800 RM (~160 €) | 1,000 RM (~200 €) |
+| السكن — استوديو | 1,300 RM (~260 €) | 1,800 RM (~360 €) | 2,500 RM (~500 €) |
+| فاتورة الكهرباء | 50 RM (~10 €) | 120 RM (~24 €) | 250 RM (~50 €) |
+| الطعام | 300 RM (~60 €) | 500 RM (~100 €) | 800 RM (~160 €) |
+| المواصلات | 80 RM (~16 €) | 120 RM (~24 €) | 200 RM (~40 €) |
+| الاتصالات | 50 RM (~10 €) | 60 RM (~12 €) | 80 RM (~16 €) |
+| الكتب والمستلزمات | 50 RM (~10 €) | 100 RM (~20 €) | 150 RM (~30 €) |
+| الترفيه | 50 RM (~10 €) | 100 RM (~20 €) | 200 RM (~40 €) |
 
 ### نصائح للتوفير في كوالالمبور:
 - السكن: نتكفل نحن بإيجاد السكن المناسب قرب معهدك أو جامعتك
@@ -416,37 +416,68 @@ function ArticleView({ article, onBack }: { article: Article; onBack: () => void
 
   const renderContent = (content: string) => {
     const ls = content.trim().split("\n");
-    return ls.map((line, i) => {
-      if (line.startsWith("## "))
-        return <h2 key={i} className="text-xl font-extrabold text-gray-900 mt-8 mb-3 pb-2 border-b border-gray-100">{line.slice(3)}</h2>;
-      if (line.startsWith("### "))
-        return <h3 key={i} className="text-base font-extrabold text-green-800 mt-5 mb-2">{line.slice(4)}</h3>;
-      if (line.startsWith("**") && line.endsWith("**"))
-        return <p key={i} className="font-bold text-gray-800 mt-4 mb-1">{line.slice(2, -2)}</p>;
-      if (line.startsWith("**"))
-        return <p key={i} className="font-semibold text-gray-800 mt-4 mb-1">{renderInline(line)}</p>;
-      if (line.startsWith("- ") || line.startsWith("* "))
-        return (
+    const result: React.ReactNode[] = [];
+    let i = 0;
+    while (i < ls.length) {
+      const line = ls[i];
+
+      // Collect consecutive table rows into one scrollable block
+      if ((line.startsWith("| ") || line.startsWith("|---")) && line.includes("|")) {
+        const tableLines: string[] = [];
+        while (i < ls.length && (ls[i].startsWith("| ") || ls[i].startsWith("|---"))) {
+          tableLines.push(ls[i]);
+          i++;
+        }
+        const rows = tableLines.filter(l => !l.startsWith("|---"));
+        result.push(
+          <div key={`table-${i}`} className="overflow-x-auto my-4 rounded-xl border border-gray-200 shadow-sm">
+            <table className="w-full text-xs min-w-[420px]" dir="rtl">
+              <tbody>
+                {rows.map((row, ri) => {
+                  const cells = row.split("|").filter(c => c.trim());
+                  const isHeader = ri === 0 && tableLines[1]?.startsWith("|---");
+                  return (
+                    <tr key={ri} className={isHeader ? "bg-green-700 text-white font-bold" : ri % 2 === 0 ? "bg-white" : "bg-gray-50"}>
+                      {cells.map((c, ci) => (
+                        isHeader
+                          ? <th key={ci} className="px-3 py-2 text-right whitespace-nowrap">{c.trim()}</th>
+                          : <td key={ci} className={`px-3 py-2 whitespace-nowrap ${ci === 0 ? "font-semibold text-gray-800" : "text-gray-600"}`}>{c.trim()}</td>
+                      ))}
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          </div>
+        );
+        continue;
+      }
+
+      if (line.startsWith("## ")) {
+        result.push(<h2 key={i} className="text-xl font-extrabold text-gray-900 mt-8 mb-3 pb-2 border-b border-gray-100">{line.slice(3)}</h2>);
+      } else if (line.startsWith("### ")) {
+        result.push(<h3 key={i} className="text-base font-extrabold text-green-800 mt-5 mb-2">{line.slice(4)}</h3>);
+      } else if (line.startsWith("**") && line.endsWith("**")) {
+        result.push(<p key={i} className="font-bold text-gray-800 mt-4 mb-1">{line.slice(2, -2)}</p>);
+      } else if (line.startsWith("**")) {
+        result.push(<p key={i} className="font-semibold text-gray-800 mt-4 mb-1">{renderInline(line)}</p>);
+      } else if (line.startsWith("- ") || line.startsWith("* ")) {
+        result.push(
           <div key={i} className="flex items-start gap-2 mb-1.5 mr-2">
             <span className="text-green-500 flex-shrink-0 leading-5">✓</span>
             <span className="text-gray-700 text-sm leading-relaxed">{renderInline(line.slice(2))}</span>
           </div>
         );
-      if (line.startsWith("| ") && line.includes("|") && !line.startsWith("|---")) {
-        const cells = line.split("|").filter(c => c.trim());
-        const isHeader = ls[i + 1]?.startsWith("|---");
-        return (
-          <div key={i} className={`flex gap-2 border-b border-gray-100 py-2 text-sm ${isHeader ? "font-bold bg-gray-50 text-gray-800" : "text-gray-600"}`}>
-            {cells.map((c, j) => <span key={j} className="flex-1">{c.trim()}</span>)}
-          </div>
-        );
+      } else if (line.trim() === "") {
+        result.push(<div key={i} className="h-2" />);
+      } else if (/^\d+\. /.test(line)) {
+        result.push(<p key={i} className="mb-1.5 text-gray-700 text-sm">{renderInline(line)}</p>);
+      } else {
+        result.push(<p key={i} className="mb-2 text-gray-700 text-sm leading-relaxed">{renderInline(line)}</p>);
       }
-      if (line.startsWith("|---")) return null;
-      if (line.trim() === "") return <div key={i} className="h-2" />;
-      if (/^\d+\. /.test(line))
-        return <p key={i} className="mb-1.5 text-gray-700 text-sm">{renderInline(line)}</p>;
-      return <p key={i} className="mb-2 text-gray-700 text-sm leading-relaxed">{renderInline(line)}</p>;
-    });
+      i++;
+    }
+    return result;
   };
 
   return (
