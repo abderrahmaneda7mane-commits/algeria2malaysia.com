@@ -566,7 +566,7 @@ export default function HomePage() {
             <InstituteQuiz />
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4">
             {[
               {
                 name: "Stratford International",
@@ -627,6 +627,21 @@ export default function HomePage() {
                 highlights: ["2 شهر + شهر مجاني", "خصم 25% على 8 أشهر", "IELTS مجاني"],
                 onClick: () => go("sheffield-institute"),
                 btnLabel: "عرض العروض",
+              },
+              {
+                name: "Bright Language Center",
+                nameAr: "مركز برايت للغات",
+                badge: "☀️ سامر كامب",
+                badgeColor: "bg-[#e85d26]",
+                borderColor: "border-orange-200",
+                accentColor: "bg-[#e85d26]",
+                logo: "/bright-logo.svg",
+                desc: "سامر كامب أسبوعي + برامج أطفال 13+ ومنح دراسية مع فيزا",
+                from: "1,365 RM",
+                fromEur: "≈ 273 €",
+                highlights: ["سامر كامب أسبوعي", "7+1 أسابيع مجاناً", "منح + فيزا حتى 35%"],
+                onClick: () => go("bright-institute"),
+                btnLabel: "عرض البرامج",
               },
             ].map((inst) => (
               <div

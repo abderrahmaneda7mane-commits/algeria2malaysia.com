@@ -15,7 +15,7 @@ interface Answers {
   budget?: Budget;
 }
 
-type InstId = "stratford" | "bigben" | "erican" | "sheffield";
+type InstId = "stratford" | "bigben" | "erican" | "sheffield" | "bright";
 
 interface InstMeta {
   nameAr: string;
@@ -69,6 +69,16 @@ const INST_META: Record<InstId, InstMeta> = {
     page: "sheffield-institute",
     from: "3,400 RM / شهر",
   },
+  bright: {
+    nameAr: "مركز برايت للغات",
+    name: "Bright Language Center",
+    logo: "/bright-logo.svg",
+    borderColor: "border-orange-200",
+    headerBg: "bg-orange-50",
+    btnColor: "bg-[#e85d26] hover:bg-[#b03a10]",
+    page: "bright-institute",
+    from: "1,365 RM / أسبوع",
+  },
 };
 
 // ─── Score Entry ───────────────────────────────────────────
@@ -109,13 +119,19 @@ function buildRecommendations(a: Answers): ScoreEntry[] {
   if (a.goal === "kids") {
     return [
       {
-        id: "sheffield", score: 94,
+        id: "bright", score: 97,
+        program: "International Summer Program 2026 (13+ سنة)",
+        reason: "برايت متخصص في برامج الأطفال والمراهقين — سامر كامب دولي بكوالالمبور يشمل رحلات ونشاطات ترفيهية وتعليمية خلال الصيف",
+        highlights: ["من 13 سنة فأكثر", "رحلات + نشاطات", "باقات سكن متنوعة"],
+      },
+      {
+        id: "sheffield", score: 88,
         program: "Kids English Course (7–17 سنة)",
         reason: "شيفيلد لديها برنامج مخصص للأطفال والمراهقين بمناهج حديثة ومعلمين متخصصين في تعليم الأطفال",
         highlights: ["مناهج خاصة بالأطفال", "7–17 سنة", "بيئة آمنة"],
       },
       {
-        id: "erican", score: 86,
+        id: "erican", score: 78,
         program: "Cambridge Young Learners Program",
         reason: "إيريكان معتمد من Cambridge للناشئين — منهج دولي يمنح الطفل شهادة Cambridge معترفاً بها",
         highlights: ["Cambridge معتمد", "شهادة دولية", "تعلم تفاعلي"],
@@ -147,54 +163,60 @@ function buildRecommendations(a: Answers): ScoreEntry[] {
   if (a.duration === "short") {
     if (a.budget === "low") {
       results.push({
-        id: "stratford", score: 97,
+        id: "bright", score: 98,
+        program: "Summer Camp أسبوعي (1–12 أسبوع)",
+        reason: "برايت هو الأفضل للبرامج الأسبوعية القصيرة — تبدأ من 1,365 RM/أسبوع مع عروض 7+1 و10+2 أسابيع مجاناً. لا تحتاج فيزا للزيارات القصيرة",
+        highlights: ["من 1,365 RM/أسبوع", "بدون فيزا", "7+1 مجاناً"],
+      });
+      results.push({
+        id: "stratford", score: 83,
         program: "General English (1–3 أشهر)",
-        reason: "الأرخص بكوالالمبور — يبدأ من 950 RM/شهر. لفترة 1-3 أشهر لا تحتاج تأشيرة طالب، وستراتفورد مثالي لهذه الحالة بالضبط",
+        reason: "ستراتفورد مثالي للبرامج الشهرية القصيرة — يبدأ من 950 RM/شهر بدون تأشيرة دراسية",
         highlights: ["من 950 RM/شهر", "بدون تأشيرة طالب", "تسجيل مرن"],
       });
       results.push({
-        id: "sheffield", score: 74,
+        id: "sheffield", score: 70,
         program: "General English + Free IELTS",
         reason: "إذا احتجت IELTS لاحقاً، شيفيلد يمنحه مجاناً مع التسجيل — قيمة مضافة لا تجدها في غيره",
         highlights: ["IELTS مجاني", "أسعار تنافسية"],
       });
     } else if (a.budget === "mid") {
       results.push({
-        id: "stratford", score: 92,
+        id: "bright", score: 95,
+        program: "Summer Camp أسبوعي أو Intensive شهري",
+        reason: "برايت يتيح لك الاختيار — سامر كامب أسبوعي مرن أو برنامج مكثف شهري بـ 3,000 RM مع خصم صيفي 25%",
+        highlights: ["مرونة الاختيار", "خصم 25% صيف 2026", "7+1 مجاناً"],
+      });
+      results.push({
+        id: "stratford", score: 85,
         program: "General English (1–3 أشهر)",
         reason: "بميزانيتك المتوسطة، ستراتفورد يوفر عليك الكثير لفترة قصيرة دون التنازل عن جودة التعليم",
         highlights: ["من 950 RM/شهر", "تسجيل مرن", "قريب من المركز"],
       });
       results.push({
-        id: "sheffield", score: 84,
+        id: "sheffield", score: 72,
         program: "General English + Free IELTS",
         reason: "شيفيلد مع عروضه الحصرية هو الأفضل قيمة — IELTS مجاني بونص حقيقي",
         highlights: ["IELTS مجاني", "عروض حصرية"],
       });
-      results.push({
-        id: "bigben", score: 68,
-        program: "IEP Short Intensive",
-        reason: "بيغ بان IEP مكثف لمن يريد تقدماً سريعاً ومحسوساً خلال شهر أو شهرين بمنهج Pearson",
-        highlights: ["Pearson معتمد", "مكثف وسريع"],
-      });
     } else {
       results.push({
-        id: "sheffield", score: 89,
+        id: "bright", score: 91,
+        program: "International Summer Program 2026 — Executive Plus",
+        reason: "بميزانيتك المرتفعة، باقة Executive Plus من برايت توفر سكن ستوديو + رحلات + استقبال مطار + سامر كامب متكامل",
+        highlights: ["شقة ستوديو", "رحلات شاملة", "استقبال مطار"],
+      });
+      results.push({
+        id: "sheffield", score: 84,
         program: "General English Premium + Free IELTS",
         reason: "بميزانيتك المرتفعة، شيفيلد يمنحك أفضل الباقات: IELTS مجاني + عروض VIP + دعم تأشيرة",
         highlights: ["IELTS مجاني", "باقات VIP", "دعم تأشيرة"],
       });
       results.push({
-        id: "bigben", score: 84,
+        id: "bigben", score: 76,
         program: "IEP Intensive Program",
         reason: "بيغ بان IEP المكثف بـ Pearson — لو هدفك رفع مستواك بسرعة ملحوظة هو الخيار الأول",
         highlights: ["Pearson معتمد", "نتائج سريعة", "IEP مكثف"],
-      });
-      results.push({
-        id: "erican", score: 73,
-        program: "General English (Cambridge)",
-        reason: "إيريكان Cambridge — شهادة دولية معترف بها مع برنامج عام شامل",
-        highlights: ["Cambridge معتمد", "شهادة دولية"],
       });
     }
   }
