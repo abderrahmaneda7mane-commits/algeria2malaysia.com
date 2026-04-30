@@ -255,7 +255,7 @@ export default function HomePage() {
               {[
                 { num: "2000+", label: t(T.stats.majors), icon: "📚" },
                 { num: "12+",   label: t(T.stats.partners), icon: "🎓" },
-                { num: "4",     label: t(T.stats.certified), icon: "🏫" },
+                { num: "5",     label: t(T.stats.certified), icon: "🏫" },
               ].map((stat) => (
                 <div key={stat.label} className="text-center bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl py-4 px-2">
                   <div className="text-xl mb-1">{stat.icon}</div>
@@ -554,7 +554,7 @@ export default function HomePage() {
               <h2 className="text-2xl md:text-3xl font-extrabold text-gray-900">معاهد اللغة الإنجليزية</h2>
             </div>
           </div>
-          <p className="text-gray-500 mb-10 mr-5">4 معاهد معتمدة في قلب كوالالمبور — IELTS، إنجليزي عام، أعمال، وأطفال</p>
+          <p className="text-gray-700 font-semibold mb-10 mr-5">5 معاهد معتمدة في قلب كوالالمبور — IELTS، إنجليزي عام، أعمال، أطفال، وسامر كامب</p>
 
           {/* Smart finder embedded */}
           <div className="bg-gradient-to-br from-green-50 to-white border border-green-100 rounded-2xl sm:rounded-3xl p-4 sm:p-8 mb-10">

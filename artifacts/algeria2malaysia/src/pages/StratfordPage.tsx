@@ -313,16 +313,16 @@ export default function StratfordPage() {
         {/* ── CTA ── */}
         <div className="bg-gradient-to-r from-green-700 to-green-600 rounded-2xl p-6 mb-8 text-white text-center">
           <h3 className="text-lg font-extrabold mb-2">جاهز للتسجيل في ستراتفورد؟</h3>
-          <p className="text-green-100 text-sm mb-5">تواصل معنا وسنساعدك في إتمام عملية القبول والتأشيرة خطوة بخطوة</p>
+          <p className="text-green-100 text-sm mb-5">عبّئ فورم المعهد وسنتواصل معك لإتمام عملية القبول والتأشيرة خطوة بخطوة</p>
           <div className="flex justify-center">
             <a
-              href="https://wa.me/601112200603"
+              href="https://docs.google.com/forms/d/e/1FAIpQLSf6Xx2DET7SCulFT3EuvLW_8wuEA9aE9EkOy06i9lGC09T81w/viewform?usp=header"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center justify-center gap-2 bg-green-500 hover:bg-green-400 text-white font-bold text-sm rounded-xl px-8 py-3 transition-all"
+              className="flex items-center justify-center gap-2 bg-white text-green-700 hover:bg-green-50 font-bold text-sm rounded-xl px-8 py-3 transition-all shadow-md"
             >
               <ExternalLink size={16} />
-              تواصل عبر واتساب
+              عبّئ فورم المعهد لاستخراج القبول
             </a>
           </div>
         </div>

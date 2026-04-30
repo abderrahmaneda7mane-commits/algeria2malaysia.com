@@ -266,16 +266,16 @@ export default function EricanPage() {
         {/* ── CTA ── */}
         <div className="bg-gradient-to-r from-[#3d1a6e] to-[#5a2a9a] rounded-2xl p-6 mb-8 text-white text-center">
           <h3 className="text-lg font-extrabold mb-2">جاهز للتسجيل في إيريكان؟</h3>
-          <p className="text-purple-100 text-sm mb-5">تواصل معنا وسنساعدك في إتمام عملية القبول والتأشيرة خطوة بخطوة</p>
+          <p className="text-purple-100 text-sm mb-5">عبّئ فورم المعهد وسنتواصل معك لإتمام عملية القبول والتأشيرة خطوة بخطوة</p>
           <div className="flex justify-center">
             <a
-              href="https://wa.me/601112200603"
+              href="https://docs.google.com/forms/d/e/1FAIpQLSf6Xx2DET7SCulFT3EuvLW_8wuEA9aE9EkOy06i9lGC09T81w/viewform?usp=header"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center justify-center gap-2 bg-white/20 hover:bg-white/30 border border-white/30 text-white font-bold text-sm rounded-xl px-8 py-3 transition-all"
+              className="flex items-center justify-center gap-2 bg-white text-[#3d1a6e] hover:bg-purple-50 font-bold text-sm rounded-xl px-8 py-3 transition-all shadow-md"
             >
               <ExternalLink size={16} />
-              تواصل عبر واتساب
+              عبّئ فورم المعهد لاستخراج القبول
             </a>
           </div>
         </div>

@@ -433,16 +433,18 @@ export default function BrightPage() {
 
         {/* ── CTA ── */}
         <div className="bg-gradient-to-r from-[#b03a10] to-[#e85d26] rounded-2xl p-6 mb-8 text-white text-center">
-          <h3 className="text-lg font-extrabold mb-2">مهتم بالتسجيل في Bright؟</h3>
-          <p className="text-orange-100 text-sm mb-5">عبّئ فورم المعاهد وسنقوم بالتواصل معك لاختيار أفضل باقة وإتمام التسجيل</p>
+          <h3 className="text-lg font-extrabold mb-2">جاهز للتسجيل في Bright؟</h3>
+          <p className="text-orange-100 text-sm mb-5">عبّئ فورم المعهد وسنتواصل معك لاختيار أفضل باقة وإتمام عملية القبول خطوة بخطوة</p>
           <div className="flex justify-center">
-            <button
-              onClick={() => go("apply", { type: "institute" })}
+            <a
+              href="https://docs.google.com/forms/d/e/1FAIpQLSf6Xx2DET7SCulFT3EuvLW_8wuEA9aE9EkOy06i9lGC09T81w/viewform?usp=header"
+              target="_blank"
+              rel="noopener noreferrer"
               className="flex items-center justify-center gap-2 bg-white text-[#e85d26] hover:bg-orange-50 font-bold text-sm rounded-xl px-8 py-3 transition-all shadow-md"
             >
-              <FileText size={16} />
-              عبّئ فورم المعاهد
-            </button>
+              <ExternalLink size={16} />
+              عبّئ فورم المعهد لاستخراج القبول
+            </a>
           </div>
         </div>
       </div>
