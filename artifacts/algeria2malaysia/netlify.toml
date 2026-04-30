@@ -1,5 +1,5 @@
 [build]
-  publish = "dist/public"
+  publish = "dist"
   command = "PORT=20374 BASE_PATH=/ pnpm run build"
 
 [build.environment]
