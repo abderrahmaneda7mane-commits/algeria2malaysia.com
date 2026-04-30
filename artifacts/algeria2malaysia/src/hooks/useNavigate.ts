@@ -55,7 +55,9 @@ const URL_TO_PAGE: Record<string, Page> = Object.fromEntries(
 
 function getPageFromUrl(): Page {
   const path = window.location.pathname.replace(/\/$/, "") || "/";
-  return URL_TO_PAGE[path] ?? "home";
+  if (URL_TO_PAGE[path]) return URL_TO_PAGE[path];
+  if (path.startsWith("/blog/")) return "blog";
+  return "home";
 }
 
 const store: NavStore = {
