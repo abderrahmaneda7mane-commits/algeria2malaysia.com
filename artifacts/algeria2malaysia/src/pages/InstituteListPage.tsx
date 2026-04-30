@@ -109,18 +109,18 @@ export default function InstituteListPage() {
   });
 
   return (
-    <div className="min-h-screen bg-gray-50" dir="rtl">
+    <div className="min-h-screen bg-gray-50 pt-[70px]" dir="rtl">
 
       {/* Hero */}
-      <section className="bg-gradient-to-br from-green-700 to-green-600 text-white py-14 px-4">
+      <section className="bg-gradient-to-br from-green-700 to-green-600 text-white py-10 md:py-14 px-4">
         <div className="max-w-4xl mx-auto text-center">
-          <div className="inline-block bg-white/20 rounded-full px-4 py-1.5 text-sm font-semibold mb-4">
+          <div className="inline-block bg-white/20 rounded-full px-4 py-1.5 text-sm font-semibold mb-3">
             5 معاهد معتمدة في كوالالمبور
           </div>
-          <h1 className="text-3xl md:text-4xl font-extrabold mb-4 leading-tight">
+          <h1 className="text-2xl md:text-4xl font-extrabold mb-3 leading-tight">
             معاهد اللغة الإنجليزية في ماليزيا
           </h1>
-          <p className="text-green-100 text-lg mb-8 max-w-2xl mx-auto">
+          <p className="text-green-100 text-base md:text-lg mb-7 max-w-2xl mx-auto leading-relaxed">
             اختر أفضل معهد لتعلم الإنجليزية في كوالالمبور — IELTS، عام، أعمال، أطفال، وسامر كامب. استشارة مجانية للطلاب الجزائريين.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">

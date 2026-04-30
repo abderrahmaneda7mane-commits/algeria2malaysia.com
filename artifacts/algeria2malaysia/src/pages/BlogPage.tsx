@@ -316,7 +316,7 @@ export default function BlogPage() {
 
   if (openArticle) {
     return (
-      <div className="min-h-screen bg-gray-50" dir="rtl">
+      <div className="min-h-screen bg-gray-50 pt-[70px]" dir="rtl">
         {/* Breadcrumb */}
         <div className="bg-white border-b border-gray-100 px-4 py-3">
           <nav className="max-w-3xl mx-auto flex items-center gap-1 text-sm text-gray-500">
@@ -333,16 +333,16 @@ export default function BlogPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50" dir="rtl">
+    <div className="min-h-screen bg-gray-50 pt-[70px]" dir="rtl">
 
       {/* Hero */}
-      <section className="bg-gradient-to-br from-gray-900 to-gray-800 text-white py-12 px-4">
+      <section className="bg-gradient-to-br from-green-800 to-green-700 text-white py-10 md:py-14 px-4">
         <div className="max-w-4xl mx-auto text-center">
-          <div className="inline-block bg-white/10 rounded-full px-4 py-1.5 text-sm font-semibold mb-4">
+          <div className="inline-block bg-white/20 rounded-full px-4 py-1.5 text-sm font-semibold mb-3">
             مقالات ونصائح مجانية
           </div>
-          <h1 className="text-3xl md:text-4xl font-extrabold mb-3">مدوّنة Algeria2Malaysia</h1>
-          <p className="text-gray-300 text-base max-w-xl mx-auto">
+          <h1 className="text-2xl md:text-4xl font-extrabold mb-3 leading-tight">مدوّنة Algeria2Malaysia</h1>
+          <p className="text-green-100 text-base max-w-xl mx-auto leading-relaxed">
             كل ما تحتاج معرفته عن الدراسة في ماليزيا — جامعات، معاهد، فيزا، تكاليف، ونصائح من خبرة حقيقية.
           </p>
         </div>
