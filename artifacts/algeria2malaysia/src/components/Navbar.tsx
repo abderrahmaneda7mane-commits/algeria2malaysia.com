@@ -91,7 +91,7 @@ export default function Navbar() {
         } ${
           isScrolled
             ? "bg-white/96 backdrop-blur-xl shadow-[0_1px_0_rgba(0,0,0,.06),0_4px_20px_-4px_rgba(0,0,0,.08)]"
-            : "bg-white/70 backdrop-blur-md"
+            : "bg-transparent"
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -105,15 +105,15 @@ export default function Navbar() {
                   src="/logo-hq.jpg"
                   alt="Algeria2Malaysia"
                   className={`relative w-10 h-10 rounded-full object-cover transition-all duration-300 ${
-                    isScrolled ? "ring-2 ring-green-500/30" : "ring-2 ring-green-400/40"
+                    isScrolled ? "ring-2 ring-green-500/30" : "ring-2 ring-white/40"
                   }`}
                 />
               </div>
               <div className="hidden sm:flex sm:flex-col sm:justify-center">
-                <div className="font-extrabold text-[15px] leading-tight text-gray-900">
+                <div className={`font-extrabold text-[15px] leading-tight transition-colors ${isScrolled ? "text-gray-900" : "text-white"}`}>
                   Algeria2Malaysia
                 </div>
-                <div className={`text-[10px] tracking-widest uppercase font-semibold transition-colors ${isScrolled ? "text-green-600" : "text-green-700"}`}>
+                <div className={`text-[10px] tracking-widest uppercase font-semibold transition-colors ${isScrolled ? "text-green-600" : "text-green-200"}`}>
                   الجزائر · ماليزيا
                 </div>
               </div>
@@ -128,8 +128,10 @@ export default function Navbar() {
                       onClick={() => setOpenDropdown(openDropdown === item.label ? null : item.label)}
                       className={`flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-sm font-semibold transition-all duration-200 ${
                         openDropdown === item.label
-                          ? "bg-green-50 text-green-700"
-                          : "text-gray-700 hover:text-green-700 hover:bg-green-50/80"
+                          ? isScrolled ? "bg-green-50 text-green-700" : "bg-white/15 text-white"
+                          : isScrolled
+                          ? "text-gray-700 hover:text-green-700 hover:bg-green-50"
+                          : "text-white/90 hover:text-white hover:bg-white/12"
                       }`}
                     >
                       {item.label}
@@ -138,7 +140,11 @@ export default function Navbar() {
                   ) : (
                     <button
                       onClick={() => handleNav(item)}
-                      className="flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-sm font-semibold transition-all duration-200 text-gray-700 hover:text-green-700 hover:bg-green-50/80"
+                      className={`flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-sm font-semibold transition-all duration-200 ${
+                        isScrolled
+                          ? "text-gray-700 hover:text-green-700 hover:bg-green-50"
+                          : "text-white/90 hover:text-white hover:bg-white/12"
+                      }`}
                     >
                       {item.label}
                     </button>
@@ -170,7 +176,9 @@ export default function Navbar() {
                 href={WA}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-sm font-semibold px-4 py-2 rounded-full transition-all duration-200 text-gray-600 hover:text-green-700 hover:bg-green-50/80"
+                className={`text-sm font-semibold px-4 py-2 rounded-full transition-all duration-200 ${
+                  isScrolled ? "text-gray-600 hover:text-green-700 hover:bg-green-50" : "text-white/85 hover:text-white hover:bg-white/12"
+                }`}
               >
                 واتساب
               </a>
@@ -186,7 +194,9 @@ export default function Navbar() {
             {/* Mobile toggle */}
             <button
               onClick={() => setMobileOpen(!mobileOpen)}
-              className="lg:hidden w-10 h-10 rounded-xl flex items-center justify-center transition-all text-gray-700 hover:bg-gray-100"
+              className={`lg:hidden w-10 h-10 rounded-xl flex items-center justify-center transition-all ${
+                isScrolled ? "text-gray-700 hover:bg-gray-100" : "text-white hover:bg-white/15"
+              }`}
             >
               {mobileOpen ? <X size={21} /> : <Menu size={21} />}
             </button>
