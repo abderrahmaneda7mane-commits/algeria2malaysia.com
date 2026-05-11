@@ -98,3 +98,22 @@ export function handlePopState() {
 export function useNavigate() {
   return { go: navigate };
 }
+
+/* ── Navbar scrolled override (for light-bg pages) ── */
+let _forceNavScrolled = false;
+const _navScrolledListeners: (() => void)[] = [];
+
+export function setNavForceScrolled(v: boolean) {
+  _forceNavScrolled = v;
+  _navScrolledListeners.forEach((fn) => fn());
+}
+
+export function getNavForceScrolled() { return _forceNavScrolled; }
+
+export function subscribeNavForceScrolled(fn: () => void) {
+  _navScrolledListeners.push(fn);
+  return () => {
+    const idx = _navScrolledListeners.indexOf(fn);
+    if (idx > -1) _navScrolledListeners.splice(idx, 1);
+  };
+}

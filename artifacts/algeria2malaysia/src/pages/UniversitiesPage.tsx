@@ -324,14 +324,6 @@ export default function UniversitiesPage() {
               <BarChart2 size={16} />
               قارن بين الجامعات
             </button>
-            <a
-              href={WA_LINK}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 bg-white/15 hover:bg-white/25 border border-white/25 text-white px-6 py-3 rounded-full font-semibold text-sm transition-all"
-            >
-              استشارة مجانية
-            </a>
           </div>
         </div>
       </div>

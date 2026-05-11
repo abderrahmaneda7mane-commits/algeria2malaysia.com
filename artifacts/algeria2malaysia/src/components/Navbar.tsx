@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { Menu, X, Search, Building2, BookOpen, Home, ChevronDown, Sparkles } from "lucide-react";
-import { useNavigate, type Page } from "../hooks/useNavigate";
+import { useNavigate, type Page, subscribeNavForceScrolled, getNavForceScrolled } from "../hooks/useNavigate";
 
 const WA = "https://wa.me/601112200603";
 
@@ -20,10 +20,6 @@ const NAV_ITEMS: NavItem[] = [
     children: [
       { label: "كل الجامعات", page: "universities", desc: "12 جامعة معتمدة" },
       { label: "مقارنة الجامعات", page: "compare", desc: "قارن حتى 3 جامعات" },
-      { label: "جامعة APU", page: "apu", desc: "IT & Technology" },
-      { label: "جامعة تايلور", page: "taylors", desc: "Top Ranked" },
-      { label: "جامعة MMU", page: "mmu", desc: "Technology" },
-      { label: "جامعة UniKL", page: "unikl", desc: "Engineering" },
     ],
   },
   {
@@ -31,9 +27,6 @@ const NAV_ITEMS: NavItem[] = [
     icon: <BookOpen size={14} />,
     children: [
       { label: "كل المعاهد", page: "institutes", desc: "5 معاهد معتمدة" },
-      { label: "معهد ستراتفورد", page: "stratford-institute", desc: "IELTS & English" },
-      { label: "معهد بيغ بان", page: "bigben-institute", desc: "British Style" },
-      { label: "مركز برايت", page: "bright-institute", desc: "Summer Camp" },
     ],
   },
   { label: "بحث شامل", page: "search", icon: <Search size={14} /> },
@@ -43,6 +36,7 @@ const NAV_ITEMS: NavItem[] = [
 export default function Navbar() {
   const { go } = useNavigate();
   const [scrolled, setScrolled] = useState(false);
+  const [forceScrolled, setForceScrolled] = useState(getNavForceScrolled);
   const [visible, setVisible] = useState(true);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
@@ -58,6 +52,10 @@ export default function Navbar() {
     };
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  useEffect(() => {
+    return subscribeNavForceScrolled(() => setForceScrolled(getNavForceScrolled()));
   }, []);
 
   useEffect(() => {
@@ -82,6 +80,8 @@ export default function Navbar() {
     setOpenDropdown(null);
   }
 
+  const isScrolled = forceScrolled || scrolled;
+
   return (
     <>
       <nav
@@ -89,31 +89,31 @@ export default function Navbar() {
         className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 ${
           visible ? "translate-y-0" : "-translate-y-full"
         } ${
-          scrolled
+          isScrolled
             ? "bg-white/96 backdrop-blur-xl shadow-[0_1px_0_rgba(0,0,0,.06),0_4px_20px_-4px_rgba(0,0,0,.08)]"
             : "bg-transparent"
         }`}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
 
             {/* Logo */}
-            <button onClick={() => go("home")} className="flex items-center gap-3 group flex-shrink-0">
-              <div className="relative">
+            <button onClick={() => go("home")} className="flex items-center gap-2.5 group flex-shrink-0">
+              <div className="relative flex-shrink-0">
                 <div className="absolute inset-0 rounded-full bg-green-400/25 scale-150 opacity-0 group-hover:opacity-100 blur-md transition-all duration-300" />
                 <img
                   src="/logo-hq.jpg"
                   alt="Algeria2Malaysia"
-                  className={`relative w-9 h-9 rounded-full object-cover transition-all duration-300 ${
-                    scrolled ? "ring-2 ring-green-500/30" : "ring-2 ring-white/40"
+                  className={`relative w-10 h-10 rounded-full object-cover transition-all duration-300 ${
+                    isScrolled ? "ring-2 ring-green-500/30" : "ring-2 ring-white/40"
                   }`}
                 />
               </div>
-              <div className="hidden sm:block">
-                <div className={`font-extrabold text-[15px] leading-none transition-colors ${scrolled ? "text-gray-900" : "text-white"}`}>
+              <div className="hidden sm:flex sm:flex-col sm:justify-center">
+                <div className={`font-extrabold text-[15px] leading-tight transition-colors ${isScrolled ? "text-gray-900" : "text-white"}`}>
                   Algeria2Malaysia
                 </div>
-                <div className={`text-[10px] tracking-widest uppercase font-semibold mt-0.5 transition-colors ${scrolled ? "text-green-600" : "text-green-200"}`}>
+                <div className={`text-[10px] tracking-widest uppercase font-semibold transition-colors ${isScrolled ? "text-green-600" : "text-green-200"}`}>
                   الجزائر · ماليزيا
                 </div>
               </div>
@@ -128,8 +128,8 @@ export default function Navbar() {
                       onClick={() => setOpenDropdown(openDropdown === item.label ? null : item.label)}
                       className={`flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-sm font-semibold transition-all duration-200 ${
                         openDropdown === item.label
-                          ? scrolled ? "bg-green-50 text-green-700" : "bg-white/15 text-white"
-                          : scrolled
+                          ? isScrolled ? "bg-green-50 text-green-700" : "bg-white/15 text-white"
+                          : isScrolled
                           ? "text-gray-700 hover:text-green-700 hover:bg-green-50"
                           : "text-white/90 hover:text-white hover:bg-white/12"
                       }`}
@@ -141,7 +141,7 @@ export default function Navbar() {
                     <button
                       onClick={() => handleNav(item)}
                       className={`flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-sm font-semibold transition-all duration-200 ${
-                        scrolled
+                        isScrolled
                           ? "text-gray-700 hover:text-green-700 hover:bg-green-50"
                           : "text-white/90 hover:text-white hover:bg-white/12"
                       }`}
@@ -177,7 +177,7 @@ export default function Navbar() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className={`text-sm font-semibold px-4 py-2 rounded-full transition-all duration-200 ${
-                  scrolled ? "text-gray-600 hover:text-green-700 hover:bg-green-50" : "text-white/85 hover:text-white hover:bg-white/12"
+                  isScrolled ? "text-gray-600 hover:text-green-700 hover:bg-green-50" : "text-white/85 hover:text-white hover:bg-white/12"
                 }`}
               >
                 واتساب
@@ -195,7 +195,7 @@ export default function Navbar() {
             <button
               onClick={() => setMobileOpen(!mobileOpen)}
               className={`lg:hidden w-10 h-10 rounded-xl flex items-center justify-center transition-all ${
-                scrolled ? "text-gray-700 hover:bg-gray-100" : "text-white hover:bg-white/15"
+                isScrolled ? "text-gray-700 hover:bg-gray-100" : "text-white hover:bg-white/15"
               }`}
             >
               {mobileOpen ? <X size={21} /> : <Menu size={21} />}

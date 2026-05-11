@@ -405,9 +405,9 @@ export default function HomePage() {
         className="section-reveal py-24 bg-white"
       >
         <div className="max-w-6xl mx-auto px-4">
-          <div className="text-center mb-14">
+          <div className="flex flex-col items-center text-center mb-14">
             <div className="inline-flex items-center gap-2 bg-green-50 text-green-700 border border-green-200/60 rounded-full px-4 py-1.5 text-sm font-semibold mb-4">
-              <div className="w-1.5 h-1.5 rounded-full bg-green-500" />
+              <div className="w-1.5 h-1.5 rounded-full bg-green-500 flex-shrink-0" />
               خدماتنا
             </div>
             <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 mb-3">كل ما تحتاجه في مكان واحد</h2>

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import emailjs from "@emailjs/browser";
-import { navigate } from "../hooks/useNavigate";
+import { navigate, setNavForceScrolled } from "../hooks/useNavigate";
 import { useSEO } from "../hooks/useSEO";
 import { ArrowRight, ArrowLeft, Clock, CheckCircle, Calendar, Send, User, BookOpen, Star } from "lucide-react";
 
@@ -189,6 +189,13 @@ export default function ConsultationPage() {
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, []);
+
+  useEffect(() => {
+    if (submitted) {
+      setNavForceScrolled(true);
+      return () => setNavForceScrolled(false);
+    }
+  }, [submitted]);
 
   const set = (field: keyof FormData) => (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) =>
     setForm(f => ({ ...f, [field]: e.target.value }));

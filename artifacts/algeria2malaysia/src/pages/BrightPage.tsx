@@ -151,12 +151,12 @@ export default function BrightPage() {
 
       {/* ── Tabs ── */}
       <div className="max-w-4xl mx-auto px-4 -mt-6 relative z-10">
-        <div className="bg-white rounded-2xl shadow-[0_4px_20px_-4px_rgba(0,0,0,.12)] border border-gray-100 p-1.5 flex flex-wrap gap-1.5 mb-6">
+        <div className="bg-white rounded-2xl shadow-[0_4px_20px_-4px_rgba(0,0,0,.12)] border border-gray-100 p-1.5 grid grid-cols-2 sm:grid-cols-4 gap-1.5 mb-6">
           {TABS.map((tab, i) => (
             <button
               key={i}
               onClick={() => setActiveTab(i)}
-              className={`flex-1 min-w-[120px] rounded-xl py-2.5 px-2 text-xs sm:text-sm font-bold transition-all ${
+              className={`rounded-xl py-2.5 px-2 text-[11px] sm:text-sm font-bold transition-all text-center ${
                 activeTab === i
                   ? "bg-[#e85d26] text-white"
                   : "text-gray-500 hover:bg-gray-50"
@@ -213,7 +213,7 @@ export default function BrightPage() {
                 <p className="text-gray-400 text-sm">Bright Language Center — Summer Camp Fee Structure</p>
               </div>
               <div className="overflow-x-auto">
-                <table className="w-full text-sm">
+                <table className="w-full min-w-[420px] text-sm">
                   <thead>
                     <tr className="bg-[#e85d26]">
                       <th className="text-right py-3 px-4 font-bold text-white border-b border-white/10">عدد الأسابيع</th>
@@ -270,7 +270,7 @@ export default function BrightPage() {
             {/* What's included */}
             <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-5">
               <h3 className="font-bold text-gray-800 mb-3">جميع الباقات تشمل:</h3>
-              <div className="grid grid-cols-2 gap-2">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                 {["رسوم التسجيل", "اختبار تحديد المستوى", "الكتب والمواد الدراسية", "رسوم الدراسة"].map((item, i) => (
                   <div key={i} className="flex items-center gap-2 text-sm text-gray-600">
                     <CheckCircle size={14} className="text-orange-500 flex-shrink-0" />

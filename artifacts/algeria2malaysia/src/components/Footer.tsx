@@ -1,9 +1,7 @@
 import { useNavigate, Page } from "../hooks/useNavigate";
-import { ArrowLeft, MessageCircle, Calendar, ExternalLink } from "lucide-react";
+import { ArrowLeft, MessageCircle, Calendar } from "lucide-react";
 
-const FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSf6Xx2DET7SCulFT3EuvLW_8wuEA9aE9EkOy06i9lGC09T81w/viewform?usp=header";
 const WA_LINK = "https://wa.me/601112200603";
-const ZCAL_URL = "https://zcal.co/i/DNzrLfY_";
 
 interface FooterLink { label: string; page?: Page; href?: string; }
 
@@ -31,8 +29,8 @@ const INSTITUTES: FooterLink[] = [
 ];
 
 const SERVICES: FooterLink[] = [
-  { label: "استشارة مجانية",   href: ZCAL_URL },
-  { label: "عبّئ فورم المعهد",  href: FORM_URL },
+  { label: "استشارة مجانية",   page: "consultation" },
+  { label: "عبّئ فورم المعهد",  page: "apply" },
   { label: "قارن الجامعات",     page: "compare" },
   { label: "بحث شامل",          page: "search" },
   { label: "مقالات ونصائح",     page: "blog" },
@@ -73,15 +71,13 @@ export default function Footer() {
                 <MessageCircle size={15} />
                 واتساب
               </a>
-              <a
-                href={ZCAL_URL}
-                target="_blank"
-                rel="noopener noreferrer"
+              <button
+                onClick={() => go("consultation")}
                 className="flex items-center gap-2 bg-white/10 hover:bg-white/18 text-white text-sm font-bold px-5 py-2.5 rounded-xl transition-all duration-200 border border-white/15 hover:border-white/25 hover:-translate-y-0.5"
               >
                 <Calendar size={15} />
                 احجز موعد
-              </a>
+              </button>
             </div>
           </div>
         </div>
@@ -197,7 +193,6 @@ export default function Footer() {
                     >
                       <ArrowLeft size={10} className="opacity-0 group-hover:opacity-100 transition-all -translate-x-1 group-hover:translate-x-0 text-green-500 flex-shrink-0" />
                       {l.label}
-                      {l.href && <ExternalLink size={9} className="opacity-40 mr-auto" />}
                     </button>
                   </li>
                 ))}
@@ -262,20 +257,6 @@ export default function Footer() {
                 Website created and developed by{" "}
                 <span className="text-gray-400/90 font-medium">Abderrahmane Kebaili</span>.
               </p>
-            </div>
-            <div className="flex items-center gap-4">
-              <a
-                href="/sitemap.xml"
-                className="text-gray-500/70 hover:text-green-400 text-xs transition-colors duration-150"
-              >
-                خريطة الموقع
-              </a>
-              <a
-                href="/robots.txt"
-                className="text-gray-500/70 hover:text-green-400 text-xs transition-colors duration-150"
-              >
-                robots.txt
-              </a>
             </div>
           </div>
         </div>
