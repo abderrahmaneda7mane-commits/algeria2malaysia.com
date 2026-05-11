@@ -36,6 +36,7 @@ export function useCourses(universityId: number, priceRanges: PriceRange[]) {
   }, [search]);
 
   useEffect(() => {
+    if (!supabase) return;
     supabase
       .from("courses")
       .select("duration")
@@ -50,6 +51,7 @@ export function useCourses(universityId: number, priceRanges: PriceRange[]) {
   }, [universityId]);
 
   const fetchData = useCallback(async () => {
+    if (!supabase) { setError("لم يتم تكوين قاعدة البيانات — أضف VITE_SUPABASE_URL و VITE_SUPABASE_ANON_KEY في ملف .env.local"); setLoading(false); return; }
     setLoading(true);
     setError(null);
     try {

@@ -5,16 +5,16 @@ export default function ThankYouPage() {
   const { go } = useNavigate();
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-green-50 to-white flex items-center justify-center py-20 px-4" dir="rtl">
+    <div className="min-h-screen bg-[#f8fafc] flex items-center justify-center py-20 px-4" dir="rtl">
       <div className="w-full max-w-lg text-center">
-        <div className="bg-white rounded-3xl shadow-xl p-10">
-          <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
+        <div className="bg-white rounded-3xl shadow-[0_4px_30px_-6px_rgba(0,0,0,.12)] border border-gray-100 p-10">
+          <div className="w-20 h-20 bg-gradient-to-br from-green-100 to-emerald-100 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-sm">
             <CheckCircle className="text-green-600" size={40} />
           </div>
 
-          <h1 className="text-3xl font-bold text-gray-900 mb-3">شكراً لك!</h1>
-          <p className="text-green-700 font-semibold text-lg mb-2">تم استلام طلبك بنجاح</p>
-          <p className="text-gray-600 text-sm leading-relaxed mb-8">
+          <h1 className="text-3xl font-black text-gray-900 mb-3">شكراً لك!</h1>
+          <p className="text-green-700 font-bold text-lg mb-2">تم استلام طلبك بنجاح</p>
+          <p className="text-gray-500 text-sm leading-relaxed mb-8">
             فريق Algeria2Malaysia سيراجع معلوماتك وسيتواصل معك
             عبر واتساب في أقرب وقت — عادةً خلال 24 ساعة.
           </p>

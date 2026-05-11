@@ -245,24 +245,24 @@ export default function ConsultationPage() {
   if (submitted && !showBooking) {
     return (
       <div
-        className="min-h-screen flex items-center justify-center px-4 bg-gray-50"
+        className="min-h-screen flex items-center justify-center px-4 bg-[#f8fafc]"
         dir="rtl"
       >
         <div className="max-w-md w-full text-center">
-          <div className="bg-white rounded-2xl shadow-sm border border-green-100 p-8 md:p-10">
+          <div className="bg-white rounded-2xl shadow-[0_4px_24px_-4px_rgba(0,0,0,.12)] border border-green-100 p-8 md:p-10">
             <div className="flex justify-center mb-5">
-              <div className="w-20 h-20 rounded-full bg-green-100 flex items-center justify-center">
+              <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-green-100 to-emerald-100 flex items-center justify-center shadow-sm">
                 <CheckCircle size={40} className="text-green-600" />
               </div>
             </div>
-            <h2 className="text-xl font-extrabold text-gray-800 mb-3">تم استلام طلبك!</h2>
-            <p className="text-gray-600 text-sm leading-relaxed mb-6">
+            <h2 className="text-xl font-black text-gray-800 mb-3">تم استلام طلبك!</h2>
+            <p className="text-gray-500 text-sm leading-relaxed mb-6">
               تم إرسال تفاصيلك للفريق.<br />
               سيتم التواصل معك قريباً عبر الواتساب لتأكيد استشارتك.
             </p>
             <button
               onClick={() => navigate("home")}
-              className="inline-flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white font-bold text-sm rounded-xl px-8 py-3.5 transition-all shadow-md hover:shadow-lg"
+              className="inline-flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white font-bold text-sm rounded-xl px-8 py-3.5 transition-all shadow-md hover:shadow-lg hover:-translate-y-0.5"
             >
               <ArrowRight size={16} />
               العودة للرئيسية
@@ -302,61 +302,68 @@ export default function ConsultationPage() {
 
       {/* ── Main page ── */}
       <div
-        className="min-h-screen bg-white"
+        className="min-h-screen bg-[#f8fafc]"
         dir="rtl"
       >
-        {/* Header */}
-        <div className="pt-24 pb-8 px-4 bg-gradient-to-b from-green-50 to-white border-b border-green-100">
-          <div className="max-w-2xl mx-auto text-center">
+        {/* Hero */}
+        <div className="relative overflow-hidden bg-gradient-to-br from-[#0a2e14] via-[#0f4d22] to-[#166534] text-white pt-20 pb-24 px-4">
+          <div className="absolute inset-0 pointer-events-none">
+            <div className="absolute top-0 right-0 w-96 h-96 bg-green-400/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/4" />
+            <div className="absolute bottom-0 left-0 w-80 h-80 bg-emerald-300/10 rounded-full blur-3xl translate-y-1/2 -translate-x-1/4" />
+            <div className="absolute inset-0 opacity-[0.025]" style={{ backgroundImage: "radial-gradient(circle, rgba(255,255,255,.8) 1px, transparent 1px)", backgroundSize: "24px 24px" }} />
+          </div>
+          <div className="relative max-w-2xl mx-auto text-center">
             <button
               onClick={() => navigate("home")}
-              className="inline-flex items-center gap-2 text-gray-400 hover:text-green-700 text-sm mb-6 transition-colors"
+              className="inline-flex items-center gap-2 text-green-300 hover:text-white text-sm mb-8 transition-colors group"
             >
-              <ArrowRight size={15} />
+              <ArrowRight size={15} className="group-hover:translate-x-0.5 transition-transform" />
               العودة للرئيسية
             </button>
-            <div className="flex justify-center mb-4">
-              <div className="w-14 h-14 rounded-2xl bg-green-100 flex items-center justify-center shadow-sm">
-                <Calendar size={26} className="text-green-700" />
+            <div className="flex justify-center mb-5">
+              <div className="w-16 h-16 rounded-2xl bg-white/15 border border-white/25 flex items-center justify-center shadow-xl backdrop-blur-sm">
+                <Calendar size={28} className="text-white" />
               </div>
             </div>
-            <div className="inline-flex items-center gap-2 bg-green-100 text-green-700 rounded-full px-4 py-1.5 text-sm font-semibold mb-3">
+            <div className="inline-flex items-center gap-2 bg-green-500/25 border border-green-400/30 text-green-100 rounded-full px-4 py-1.5 text-sm font-semibold mb-4">
               <Clock size={13} />
               مجانية — 30 دقيقة
             </div>
-            <h1 className="text-2xl md:text-3xl font-extrabold text-gray-800 mb-2">احجز استشارتك المجانية</h1>
-            <p className="text-gray-500 text-sm max-w-md mx-auto">أجب على بعض الأسئلة حتى نتمكن من تقديم أفضل استشارة لك</p>
+            <h1 className="text-3xl md:text-4xl font-black text-white mb-3 leading-tight">احجز استشارتك المجانية</h1>
+            <p className="text-green-200 text-sm max-w-md mx-auto leading-relaxed">أجب على بعض الأسئلة حتى نتمكن من تقديم أفضل استشارة مخصصة لك</p>
           </div>
         </div>
 
         {/* Form */}
-        <div className="max-w-2xl mx-auto px-4 py-8">
+        <div className="max-w-2xl mx-auto px-4 -mt-6 pb-12">
 
           {/* Step indicators */}
-          <div className="flex items-center justify-center gap-2 mb-8">
-            {steps.map((s, i) => {
-              const Icon = s.icon;
-              return (
-                <div key={i} className="flex items-center gap-2">
-                  <div className={`flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-semibold transition-all ${
-                    i === step ? "bg-green-600 text-white shadow-md" :
-                    i < step  ? "bg-green-100 text-green-700" :
-                                "bg-gray-100 text-gray-400"
-                  }`}>
-                    {i < step ? <CheckCircle size={13} /> : <Icon size={13} />}
-                    <span className="hidden sm:inline">{s.label}</span>
-                    <span className="sm:hidden">{i + 1}</span>
+          <div className="bg-white rounded-2xl shadow-[0_4px_20px_-4px_rgba(0,0,0,.12)] border border-gray-100 p-4 mb-5">
+            <div className="flex items-center justify-center gap-2">
+              {steps.map((s, i) => {
+                const Icon = s.icon;
+                return (
+                  <div key={i} className="flex items-center gap-2">
+                    <div className={`flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-semibold transition-all ${
+                      i === step ? "bg-green-600 text-white shadow-md" :
+                      i < step  ? "bg-green-100 text-green-700" :
+                                  "bg-gray-100 text-gray-400"
+                    }`}>
+                      {i < step ? <CheckCircle size={13} /> : <Icon size={13} />}
+                      <span className="hidden sm:inline">{s.label}</span>
+                      <span className="sm:hidden">{i + 1}</span>
+                    </div>
+                    {i < steps.length - 1 && (
+                      <div className={`w-8 h-0.5 ${i < step ? "bg-green-400" : "bg-gray-200"}`} />
+                    )}
                   </div>
-                  {i < steps.length - 1 && (
-                    <div className={`w-8 h-0.5 ${i < step ? "bg-green-400" : "bg-gray-200"}`} />
-                  )}
-                </div>
-              );
-            })}
+                );
+              })}
+            </div>
           </div>
 
           {/* Card */}
-          <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 md:p-8">
+          <div className="bg-white rounded-2xl shadow-[0_4px_20px_-4px_rgba(0,0,0,.12)] border border-gray-100 p-6 md:p-8">
             <h2 className="text-base font-bold text-gray-800 mb-6 pb-3 border-b border-gray-100">
               {steps[step].label}
             </h2>
@@ -485,7 +492,7 @@ export default function ConsultationPage() {
               {step < steps.length - 1 ? (
                 <button
                   onClick={next}
-                  className="flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white font-bold text-sm rounded-xl px-6 py-3 transition-all shadow-sm hover:shadow"
+                  className="flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white font-bold text-sm rounded-xl px-6 py-3 transition-all shadow-md hover:shadow-lg hover:-translate-y-0.5"
                 >
                   التالي
                   <ArrowLeft size={16} />
@@ -494,7 +501,7 @@ export default function ConsultationPage() {
                 <button
                   onClick={submit}
                   disabled={loading}
-                  className="flex items-center gap-2 bg-green-600 hover:bg-green-700 disabled:opacity-60 text-white font-bold text-sm rounded-xl px-6 py-3 transition-all shadow-sm hover:shadow"
+                  className="flex items-center gap-2 bg-green-600 hover:bg-green-700 disabled:opacity-60 text-white font-bold text-sm rounded-xl px-6 py-3 transition-all shadow-md hover:shadow-lg hover:-translate-y-0.5"
                 >
                   {loading ? (
                     <><span className="w-4 h-4 border-2 border-white/40 border-t-white rounded-full animate-spin" />جارٍ الإرسال...</>
@@ -507,8 +514,10 @@ export default function ConsultationPage() {
           </div>
 
           {/* Note */}
-          <div className="mt-5 bg-white border border-gray-100 rounded-xl px-5 py-4 flex items-start gap-3 shadow-sm">
-            <span className="text-base flex-shrink-0">💡</span>
+          <div className="mt-5 bg-white border border-green-100 rounded-2xl px-5 py-4 flex items-start gap-3 shadow-sm">
+            <div className="w-8 h-8 rounded-xl bg-green-50 flex items-center justify-center flex-shrink-0 mt-0.5">
+              <span className="text-base">💡</span>
+            </div>
             <p className="text-gray-500 text-sm leading-relaxed">
               بعد إرسال معلوماتك ستُفتح صفحة حجز الموعد مع أحد مستشارينا. الاستشارة مجانية تماماً ولا تلزمك بأي شيء.
             </p>

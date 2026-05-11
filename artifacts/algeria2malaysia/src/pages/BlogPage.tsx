@@ -574,9 +574,9 @@ export default function BlogPage() {
 
   if (openArticle) {
     return (
-      <div className="min-h-screen bg-gray-50 pt-[70px]" dir="rtl">
+      <div className="min-h-screen bg-[#f8fafc] pt-[70px]" dir="rtl">
         {/* Breadcrumb */}
-        <div className="bg-white border-b border-gray-100 px-4 py-3">
+        <div className="bg-white border-b border-gray-100 px-4 py-3 shadow-sm">
           <nav className="max-w-3xl mx-auto flex items-center gap-1 text-sm text-gray-500">
             <button onClick={() => go("home")} className="hover:text-green-600 transition-colors">الرئيسية</button>
             <ChevronLeft size={14} className="rotate-180" />
@@ -591,23 +591,28 @@ export default function BlogPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 pt-[70px]" dir="rtl">
+    <div className="min-h-screen bg-[#f8fafc]" dir="rtl">
 
       {/* Hero */}
-      <section className="bg-gradient-to-br from-green-800 to-green-700 text-white py-10 md:py-14 px-4">
-        <div className="max-w-4xl mx-auto text-center">
-          <div className="inline-block bg-white/20 rounded-full px-4 py-1.5 text-sm font-semibold mb-3">
+      <section className="relative overflow-hidden bg-gradient-to-br from-[#0a2e14] via-[#0f4d22] to-[#166534] text-white pt-20 pb-24 px-4">
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-0 right-0 w-96 h-96 bg-green-400/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/4" />
+          <div className="absolute bottom-0 left-0 w-80 h-80 bg-emerald-300/10 rounded-full blur-3xl translate-y-1/2 -translate-x-1/4" />
+          <div className="absolute inset-0 opacity-[0.025]" style={{ backgroundImage: "radial-gradient(circle, rgba(255,255,255,.8) 1px, transparent 1px)", backgroundSize: "24px 24px" }} />
+        </div>
+        <div className="relative max-w-4xl mx-auto text-center">
+          <div className="inline-flex items-center gap-2 bg-green-500/25 border border-green-400/30 rounded-full px-4 py-1.5 text-sm font-semibold text-green-100 mb-4">
             مقالات ونصائح مجانية
           </div>
-          <h1 className="text-2xl md:text-4xl font-extrabold mb-3 leading-tight">مدوّنة Algeria2Malaysia</h1>
-          <p className="text-green-100 text-base max-w-xl mx-auto leading-relaxed">
+          <h1 className="text-3xl md:text-4xl font-black mb-3 leading-tight">مدوّنة Algeria2Malaysia</h1>
+          <p className="text-green-200 text-base max-w-xl mx-auto leading-relaxed">
             كل ما تحتاج معرفته عن الدراسة في ماليزيا — جامعات، معاهد، فيزا، تكاليف، ونصائح من خبرة حقيقية.
           </p>
         </div>
       </section>
 
       {/* Breadcrumb */}
-      <div className="max-w-5xl mx-auto px-4 py-3">
+      <div className="max-w-5xl mx-auto px-4 pt-5 pb-2">
         <nav className="flex items-center gap-1 text-sm text-gray-500">
           <button onClick={() => go("home")} className="hover:text-green-600 transition-colors">الرئيسية</button>
           <ChevronLeft size={14} className="rotate-180" />
@@ -619,24 +624,27 @@ export default function BlogPage() {
 
         {/* Featured article */}
         <div
-          className="bg-white rounded-2xl border border-gray-200 overflow-hidden mb-8 shadow-sm hover:shadow-md transition-all cursor-pointer group"
+          className="relative overflow-hidden rounded-2xl border border-gray-100 mb-8 shadow-[0_4px_20px_-4px_rgba(0,0,0,.1)] hover:shadow-[0_8px_30px_-6px_rgba(0,0,0,.15)] hover:-translate-y-0.5 transition-all duration-200 cursor-pointer group"
           onClick={() => openArticleWithUrl(ARTICLES[0])}
         >
-          <div className="bg-gradient-to-br from-green-600 to-green-700 p-6 text-white">
-            <span className="bg-white/20 text-white text-xs font-bold px-3 py-1 rounded-full">
-              {ARTICLES[0].tag}
-            </span>
-            <h2 className="text-xl md:text-2xl font-extrabold mt-3 mb-2 group-hover:text-green-200 transition-colors leading-tight">
-              {ARTICLES[0].title}
-            </h2>
-            <p className="text-green-100 text-sm leading-relaxed">{ARTICLES[0].summary}</p>
-            <div className="flex items-center gap-3 mt-4 text-green-200 text-xs">
-              <span className="flex items-center gap-1"><Clock size={12} />{ARTICLES[0].readTime}</span>
-              <span>{ARTICLES[0].date}</span>
+          <div className="bg-gradient-to-br from-[#0a2e14] via-[#0f4d22] to-[#166534] p-6 md:p-8 text-white">
+            <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: "radial-gradient(circle, rgba(255,255,255,.8) 1px, transparent 1px)", backgroundSize: "20px 20px" }} />
+            <div className="relative">
+              <span className="bg-white/20 border border-white/25 text-white text-xs font-bold px-3 py-1 rounded-full">
+                {ARTICLES[0].tag}
+              </span>
+              <h2 className="text-xl md:text-2xl font-black mt-3 mb-2 group-hover:text-green-200 transition-colors leading-tight">
+                {ARTICLES[0].title}
+              </h2>
+              <p className="text-green-200 text-sm leading-relaxed">{ARTICLES[0].summary}</p>
+              <div className="flex items-center gap-3 mt-4 text-green-300 text-xs">
+                <span className="flex items-center gap-1"><Clock size={12} />{ARTICLES[0].readTime}</span>
+                <span>{ARTICLES[0].date}</span>
+              </div>
             </div>
           </div>
-          <div className="p-4 flex justify-end">
-            <span className="text-green-600 font-bold text-sm group-hover:gap-2 flex items-center gap-1 transition-all">
+          <div className="bg-white p-4 flex justify-end border-t border-gray-100">
+            <span className="text-green-600 font-bold text-sm group-hover:text-green-700 flex items-center gap-1.5 transition-all">
               اقرأ المقال كاملاً ←
             </span>
           </div>
@@ -647,7 +655,7 @@ export default function BlogPage() {
           {ARTICLES.slice(1).map((article) => (
             <article
               key={article.slug}
-              className="bg-white rounded-2xl border border-gray-200 p-5 hover:border-green-300 hover:shadow-md transition-all cursor-pointer group"
+              className="bg-white rounded-2xl border border-gray-100 p-5 hover:border-green-200 hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 cursor-pointer group shadow-sm"
               onClick={() => openArticleWithUrl(article)}
             >
               <div className="flex items-start justify-between mb-3">
@@ -660,12 +668,12 @@ export default function BlogPage() {
                 </div>
               </div>
 
-              <h2 className="font-extrabold text-gray-900 text-base leading-tight mb-2 group-hover:text-green-700 transition-colors">
+              <h2 className="font-bold text-gray-900 text-base leading-tight mb-2 group-hover:text-green-700 transition-colors">
                 {article.title}
               </h2>
               <p className="text-gray-500 text-sm leading-relaxed line-clamp-3 mb-4">{article.summary}</p>
 
-              <div className="flex items-center justify-between">
+              <div className="flex items-center justify-between pt-3 border-t border-gray-50">
                 <span className="text-gray-400 text-xs flex items-center gap-1">
                   <Tag size={11} /> {article.category}
                 </span>
@@ -677,23 +685,26 @@ export default function BlogPage() {
           ))}
         </div>
 
-        {/* Internal links */}
-        <section className="mt-12 bg-gradient-to-br from-green-700 to-green-600 rounded-2xl p-7 text-white text-center">
-          <h2 className="text-xl font-extrabold mb-2">مستعد تبدأ رحلتك؟</h2>
-          <p className="text-green-100 text-sm mb-5">استشارة مجانية لتحديد أفضل جامعة أو معهد يناسب هدفك وميزانيتك.</p>
-          <div className="flex flex-col sm:flex-row justify-center gap-3">
-            <button
-              onClick={() => go("universities")}
-              className="bg-white text-green-700 font-bold px-6 py-3 rounded-xl hover:bg-green-50 transition-all"
-            >
-              استعرض الجامعات
-            </button>
-            <button
-              onClick={() => go("institutes")}
-              className="bg-green-500 hover:bg-green-400 text-white font-bold px-6 py-3 rounded-xl transition-all"
-            >
-              استعرض المعاهد
-            </button>
+        {/* CTA */}
+        <section className="relative overflow-hidden mt-12 bg-gradient-to-br from-[#0a2e14] via-[#0f4d22] to-[#166534] rounded-2xl p-7 text-white text-center shadow-xl">
+          <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: "radial-gradient(circle, rgba(255,255,255,.8) 1px, transparent 1px)", backgroundSize: "20px 20px" }} />
+          <div className="relative">
+            <h2 className="text-xl font-black mb-2">مستعد تبدأ رحلتك؟</h2>
+            <p className="text-green-200 text-sm mb-5">استشارة مجانية لتحديد أفضل جامعة أو معهد يناسب هدفك وميزانيتك.</p>
+            <div className="flex flex-col sm:flex-row justify-center gap-3">
+              <button
+                onClick={() => go("universities")}
+                className="bg-white text-green-800 font-bold px-6 py-3 rounded-xl hover:bg-green-50 transition-all shadow-md hover:shadow-lg hover:-translate-y-0.5"
+              >
+                استعرض الجامعات
+              </button>
+              <button
+                onClick={() => go("institutes")}
+                className="bg-green-500/30 border border-green-400/40 hover:bg-green-500/40 text-white font-bold px-6 py-3 rounded-xl transition-all"
+              >
+                استعرض المعاهد
+              </button>
+            </div>
           </div>
         </section>
       </main>

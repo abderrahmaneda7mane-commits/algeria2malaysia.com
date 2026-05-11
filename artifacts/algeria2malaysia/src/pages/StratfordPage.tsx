@@ -148,14 +148,19 @@ export default function StratfordPage() {
   const c = colorMap[prog.color];
 
   return (
-    <div className="min-h-screen bg-gray-50" dir="rtl">
+    <div className="min-h-screen bg-[#f8fafc]" dir="rtl">
 
       {/* ── Header ── */}
-      <div className={`bg-gradient-to-br ${c.header} text-white pt-20 pb-20 px-4 transition-all duration-500`}>
-        <div className="max-w-4xl mx-auto">
+      <div className={`relative overflow-hidden bg-gradient-to-br ${c.header} text-white pt-20 pb-24 px-4 transition-all duration-500`}>
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-0 right-0 w-96 h-96 bg-white/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/4" />
+          <div className="absolute bottom-0 left-0 w-80 h-80 bg-white/5 rounded-full blur-3xl translate-y-1/2 -translate-x-1/4" />
+          <div className="absolute inset-0 opacity-[0.025]" style={{ backgroundImage: "radial-gradient(circle, rgba(255,255,255,.8) 1px, transparent 1px)", backgroundSize: "24px 24px" }} />
+        </div>
+        <div className="relative max-w-4xl mx-auto">
           <button
             onClick={() => go("home", { scrollTo: "institutes" })}
-            className="flex items-center gap-2 bg-white/20 hover:bg-white/30 text-white font-semibold text-sm px-4 py-2 rounded-xl transition-all mb-6 group border border-white/30"
+            className="flex items-center gap-2 bg-white/15 hover:bg-white/25 text-white font-semibold text-sm px-4 py-2 rounded-xl transition-all mb-8 group border border-white/25"
           >
             <ArrowLeft size={16} className="group-hover:-translate-x-1 transition-transform" />
             <span>العودة للرئيسية</span>
@@ -166,7 +171,7 @@ export default function StratfordPage() {
               <img src="/stratford-logo.png" alt="Stratford" className="max-w-full max-h-full object-contain" />
             </div>
             <div>
-              <h1 className="text-2xl md:text-3xl font-extrabold leading-tight">معهد ستراتفورد الدولي للغات</h1>
+              <h1 className="text-2xl md:text-3xl font-black leading-tight">معهد ستراتفورد الدولي للغات</h1>
               <p className="text-white/70 text-sm mt-1">Stratford International Language Centre</p>
             </div>
           </div>
@@ -178,7 +183,7 @@ export default function StratfordPage() {
               { icon: <MapPin size={14} />, text: "G Tower، KLCC" },
               { icon: <CheckCircle size={14} />, text: "تأشيرة طالب متاحة" },
             ].map((item, i) => (
-              <div key={i} className="flex items-center gap-2 bg-white/10 rounded-xl px-3 py-2 text-sm">
+              <div key={i} className="flex items-center gap-2 bg-white/10 border border-white/15 rounded-xl px-3 py-2 text-sm backdrop-blur-sm">
                 <span className="text-white/70">{item.icon}</span>
                 <span className="text-white/90 font-medium">{item.text}</span>
               </div>
@@ -188,8 +193,8 @@ export default function StratfordPage() {
       </div>
 
       {/* ── Program Tabs ── */}
-      <div className="max-w-4xl mx-auto px-4 -mt-8">
-        <div className="bg-white rounded-2xl shadow-md border border-gray-100 p-1.5 flex gap-1.5 mb-6">
+      <div className="max-w-4xl mx-auto px-4 -mt-6 relative z-10">
+        <div className="bg-white rounded-2xl shadow-[0_4px_20px_-4px_rgba(0,0,0,.12)] border border-gray-100 p-1.5 flex gap-1.5 mb-6">
           {PROGRAMS.map((p, i) => (
             <button
               key={p.id}
@@ -313,19 +318,22 @@ export default function StratfordPage() {
         </div>
 
         {/* ── CTA ── */}
-        <div className="bg-gradient-to-r from-green-700 to-green-600 rounded-2xl p-6 mb-8 text-white text-center">
-          <h3 className="text-lg font-extrabold mb-2">جاهز للتسجيل في ستراتفورد؟</h3>
-          <p className="text-green-100 text-sm mb-5">عبّئ فورم المعهد وسنتواصل معك لإتمام عملية القبول والتأشيرة خطوة بخطوة</p>
-          <div className="flex justify-center">
-            <a
-              href="https://docs.google.com/forms/d/e/1FAIpQLSf6Xx2DET7SCulFT3EuvLW_8wuEA9aE9EkOy06i9lGC09T81w/viewform?usp=header"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center justify-center gap-2 bg-white text-green-700 hover:bg-green-50 font-bold text-sm rounded-xl px-8 py-3 transition-all shadow-md"
-            >
-              <ExternalLink size={16} />
-              عبّئ فورم المعهد لاستخراج القبول
-            </a>
+        <div className="relative overflow-hidden bg-gradient-to-br from-[#0a2e14] via-[#0f4d22] to-[#166534] rounded-2xl p-6 mb-8 text-white text-center shadow-xl">
+          <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: "radial-gradient(circle, rgba(255,255,255,.8) 1px, transparent 1px)", backgroundSize: "20px 20px" }} />
+          <div className="relative">
+            <h3 className="text-lg font-black mb-2">جاهز للتسجيل في ستراتفورد؟</h3>
+            <p className="text-green-200 text-sm mb-5">عبّئ فورم المعهد وسنتواصل معك لإتمام عملية القبول والتأشيرة خطوة بخطوة</p>
+            <div className="flex justify-center">
+              <a
+                href="https://docs.google.com/forms/d/e/1FAIpQLSf6Xx2DET7SCulFT3EuvLW_8wuEA9aE9EkOy06i9lGC09T81w/viewform?usp=header"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-center gap-2 bg-white text-green-800 hover:bg-green-50 font-bold text-sm rounded-xl px-8 py-3 transition-all shadow-md hover:shadow-lg hover:-translate-y-0.5"
+              >
+                <ExternalLink size={16} />
+                عبّئ فورم المعهد لاستخراج القبول
+              </a>
+            </div>
           </div>
         </div>
       </div>

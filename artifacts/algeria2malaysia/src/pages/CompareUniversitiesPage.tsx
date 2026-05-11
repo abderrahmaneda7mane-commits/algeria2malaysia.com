@@ -234,24 +234,29 @@ export default function CompareUniversitiesPage() {
   /* ════════════════════ SELECTION SCREEN ════════════════════ */
   if (!comparing) {
     return (
-      <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white" dir="rtl">
+      <div className="min-h-screen bg-[#f8fafc]" dir="rtl">
         {/* ── Hero Header ── */}
-        <div className="bg-gradient-to-br from-green-950 via-green-900 to-green-800 pt-12 pb-20 px-4">
-          <div className="max-w-4xl mx-auto">
+        <div className="relative overflow-hidden bg-gradient-to-br from-[#0a2e14] via-[#0f4d22] to-[#166534] pt-20 pb-24 px-4">
+          <div className="absolute inset-0 pointer-events-none">
+            <div className="absolute top-0 right-0 w-96 h-96 bg-green-400/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/4" />
+            <div className="absolute bottom-0 left-0 w-80 h-80 bg-emerald-300/10 rounded-full blur-3xl translate-y-1/2 -translate-x-1/4" />
+            <div className="absolute inset-0 opacity-[0.025]" style={{ backgroundImage: "radial-gradient(circle, rgba(255,255,255,.8) 1px, transparent 1px)", backgroundSize: "24px 24px" }} />
+          </div>
+          <div className="relative max-w-4xl mx-auto">
             <button
               onClick={() => go("universities")}
-              className="inline-flex items-center gap-2 text-green-300/80 hover:text-white text-sm mb-8 transition-colors group"
+              className="inline-flex items-center gap-2 text-green-300 hover:text-white text-sm mb-8 transition-colors group"
             >
               <ArrowLeft size={16} className="group-hover:-translate-x-0.5 transition-transform" />
               العودة إلى الجامعات
             </button>
             <div className="flex items-center gap-4 mb-3">
-              <div className="w-12 h-12 bg-white/15 backdrop-blur rounded-2xl flex items-center justify-center border border-white/20">
-                <BarChart2 size={22} className="text-white" />
+              <div className="w-14 h-14 bg-white/15 backdrop-blur rounded-2xl flex items-center justify-center border border-white/25 shadow-xl">
+                <BarChart2 size={24} className="text-white" />
               </div>
               <div>
-                <h1 className="text-3xl font-extrabold text-white leading-tight">قارن بين الجامعات</h1>
-                <p className="text-green-300 text-sm mt-0.5">اختر من 2 إلى 3 جامعات لمقارنتها</p>
+                <h1 className="text-3xl md:text-4xl font-black text-white leading-tight">قارن بين الجامعات</h1>
+                <p className="text-green-200 text-sm mt-1">اختر من 2 إلى 3 جامعات لمقارنتها</p>
               </div>
             </div>
           </div>
@@ -415,24 +420,29 @@ export default function CompareUniversitiesPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white" dir="rtl">
+    <div className="min-h-screen bg-[#f8fafc]" dir="rtl">
       {/* ── Header ── */}
-      <div className="bg-gradient-to-br from-green-950 via-green-900 to-green-800 pt-10 pb-16 px-4">
-        <div className="max-w-5xl mx-auto">
+      <div className="relative overflow-hidden bg-gradient-to-br from-[#0a2e14] via-[#0f4d22] to-[#166534] pt-20 pb-20 px-4">
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-0 right-0 w-96 h-96 bg-green-400/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/4" />
+          <div className="absolute bottom-0 left-0 w-80 h-80 bg-emerald-300/10 rounded-full blur-3xl translate-y-1/2 -translate-x-1/4" />
+          <div className="absolute inset-0 opacity-[0.025]" style={{ backgroundImage: "radial-gradient(circle, rgba(255,255,255,.8) 1px, transparent 1px)", backgroundSize: "24px 24px" }} />
+        </div>
+        <div className="relative max-w-5xl mx-auto">
           <button
             onClick={() => setComparing(false)}
-            className="inline-flex items-center gap-2 text-green-300/80 hover:text-white text-sm mb-6 transition-colors group"
+            className="inline-flex items-center gap-2 text-green-300 hover:text-white text-sm mb-6 transition-colors group"
           >
             <ArrowLeft size={16} className="group-hover:-translate-x-0.5 transition-transform" />
             تغيير الاختيار
           </button>
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 bg-white/15 backdrop-blur rounded-2xl flex items-center justify-center border border-white/20 flex-shrink-0">
-              <BarChart2 size={20} className="text-white" />
+            <div className="w-12 h-12 bg-white/15 backdrop-blur rounded-2xl flex items-center justify-center border border-white/25 flex-shrink-0 shadow-xl">
+              <BarChart2 size={22} className="text-white" />
             </div>
             <div>
-              <h1 className="text-2xl font-extrabold text-white">مقارنة الجامعات</h1>
-              <p className="text-green-300 text-xs mt-0.5">{selectedUnis.map(u => u.name).join(" · ")}</p>
+              <h1 className="text-2xl md:text-3xl font-black text-white">مقارنة الجامعات</h1>
+              <p className="text-green-200 text-xs mt-1">{selectedUnis.map(u => u.name).join(" · ")}</p>
             </div>
           </div>
         </div>

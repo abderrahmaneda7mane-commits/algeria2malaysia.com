@@ -278,7 +278,7 @@ export default function ApplyPage({ initialType }: { initialType?: "institute" |
 
   if (step === "goal") {
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center py-20 px-4" dir="rtl">
+      <div className="min-h-screen bg-[#f8fafc] flex items-center justify-center py-20 px-4" dir="rtl">
         <div className="w-full max-w-lg bg-white rounded-2xl sm:rounded-3xl shadow-xl p-5 sm:p-8">
           <button onClick={() => setStep("type")} className="flex items-center gap-2 text-green-700 text-sm mb-6 hover:underline">
             <ArrowRight size={16} /> رجوع
@@ -331,7 +331,7 @@ export default function ApplyPage({ initialType }: { initialType?: "institute" |
       { value: 25000, label: "أكثر من 15,000 RM", labelEur: "≈ أكثر من 3,000 €" },
     ];
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center py-20 px-4" dir="rtl">
+      <div className="min-h-screen bg-[#f8fafc] flex items-center justify-center py-20 px-4" dir="rtl">
         <div className="w-full max-w-lg bg-white rounded-2xl sm:rounded-3xl shadow-xl p-5 sm:p-8">
           <button onClick={() => setStep("goal")} className="flex items-center gap-2 text-green-700 text-sm mb-6 hover:underline">
             <ArrowRight size={16} /> رجوع
@@ -366,7 +366,7 @@ export default function ApplyPage({ initialType }: { initialType?: "institute" |
 
   if (step === "suggestion") {
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center py-20 px-4" dir="rtl">
+      <div className="min-h-screen bg-[#f8fafc] flex items-center justify-center py-20 px-4" dir="rtl">
         <div className="w-full max-w-lg bg-white rounded-2xl sm:rounded-3xl shadow-xl p-5 sm:p-8">
           <button onClick={() => setStep("budget")} className="flex items-center gap-2 text-green-700 text-sm mb-6 hover:underline">
             <ArrowRight size={16} /> رجوع
@@ -424,7 +424,7 @@ export default function ApplyPage({ initialType }: { initialType?: "institute" |
 
   if (step === "accommodation") {
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center py-20 px-4" dir="rtl">
+      <div className="min-h-screen bg-[#f8fafc] flex items-center justify-center py-20 px-4" dir="rtl">
         <div className="w-full max-w-lg bg-white rounded-2xl sm:rounded-3xl shadow-xl p-5 sm:p-8">
           <button onClick={() => setStep("suggestion")} className="flex items-center gap-2 text-green-700 text-sm mb-6 hover:underline">
             <ArrowRight size={16} /> رجوع
@@ -464,7 +464,7 @@ export default function ApplyPage({ initialType }: { initialType?: "institute" |
       "يوليو", "أغسطس", "سبتمبر", "أكتوبر", "نوفمبر", "ديسمبر",
     ];
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center py-20 px-4" dir="rtl">
+      <div className="min-h-screen bg-[#f8fafc] flex items-center justify-center py-20 px-4" dir="rtl">
         <div className="w-full max-w-lg bg-white rounded-2xl sm:rounded-3xl shadow-xl p-5 sm:p-8">
           <button onClick={() => setStep("accommodation")} className="flex items-center gap-2 text-green-700 text-sm mb-6 hover:underline">
             <ArrowRight size={16} /> رجوع
@@ -505,7 +505,7 @@ export default function ApplyPage({ initialType }: { initialType?: "institute" |
     const goalLabel = { ielts: "IELTS", general: "إنجليزي عام", pathway: "مسار الجامعة" }[form.goal || "general"];
 
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center py-20 px-4" dir="rtl">
+      <div className="min-h-screen bg-[#f8fafc] flex items-center justify-center py-20 px-4" dir="rtl">
         <div className="w-full max-w-lg bg-white rounded-2xl sm:rounded-3xl shadow-xl p-5 sm:p-8">
           <div className="text-center mb-6">
             <CheckCircle className="text-green-600 mx-auto mb-3" size={48} />

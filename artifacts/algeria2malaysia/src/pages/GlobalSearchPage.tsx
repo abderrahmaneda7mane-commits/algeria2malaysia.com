@@ -67,6 +67,7 @@ export default function GlobalSearchPage() {
   useSEO({
     title: "تصفح تخصصات ماليزيا 2026 | ابحث مجاناً",
     description: "200+ تخصص في 12 جامعة ماليزية معتمدة — اعثر على تخصصك وشاهد الأسعار والمتطلبات فوراً. دليل شامل للطلاب الجزائريين 2026.",
+    canonicalPath: "/global-search",
   });
   const { go } = useNavigate();
   const inputRef = useRef<HTMLInputElement>(null);
@@ -100,6 +101,7 @@ export default function GlobalSearchPage() {
 
   const doSearch = useCallback(async (term: string) => {
     if (!term.trim()) { setResults([]); setSearched(false); return; }
+    if (!supabase) { setResults([]); setSearched(true); setLoading(false); return; }
     setLoading(true);
     setSearched(true);
     try {
@@ -135,6 +137,7 @@ export default function GlobalSearchPage() {
     setModal(null);
     setCompareLoading(true);
     setCompareResults([]);
+    if (!supabase) { setCompareLoading(false); return; }
     try {
       const { data } = await supabase
         .from("courses")
@@ -165,37 +168,42 @@ export default function GlobalSearchPage() {
   const minPrice = compareResults.length ? compareResults[0].price ?? 0 : 0;
 
   return (
-    <div className="min-h-screen bg-gray-50" dir="rtl">
-      {/* Header */}
-      <div className="bg-gradient-to-br from-green-900 via-green-800 to-green-700 pt-10 pb-16 px-4">
-        <div className="max-w-3xl mx-auto">
+    <div className="min-h-screen bg-[#f8fafc]" dir="rtl">
+      {/* ── Hero ── */}
+      <div className="relative overflow-hidden bg-gradient-to-br from-[#0a2e14] via-[#0f4d22] to-[#166534] pt-20 pb-24 px-4">
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-0 right-0 w-96 h-96 bg-green-400/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/4" />
+          <div className="absolute bottom-0 left-0 w-80 h-80 bg-emerald-300/10 rounded-full blur-3xl translate-y-1/2 -translate-x-1/4" />
+          <div className="absolute inset-0 opacity-[0.025]" style={{ backgroundImage: "radial-gradient(circle, rgba(255,255,255,.8) 1px, transparent 1px)", backgroundSize: "24px 24px" }} />
+        </div>
+        <div className="relative max-w-3xl mx-auto">
           <button
             onClick={() => go("home")}
-            className="flex items-center gap-2 text-green-200 hover:text-white transition-colors mb-6 group"
+            className="flex items-center gap-2 text-green-300 hover:text-white transition-colors mb-8 group text-sm"
           >
-            <ArrowLeft size={18} className="group-hover:-translate-x-1 transition-transform" />
+            <ArrowLeft size={16} className="group-hover:-translate-x-1 transition-transform" />
             <span>الرئيسية</span>
           </button>
           <div className="flex items-center gap-3 mb-2">
-            <div className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center">
+            <div className="w-11 h-11 bg-white/15 border border-white/20 backdrop-blur rounded-2xl flex items-center justify-center flex-shrink-0">
               <Search size={20} className="text-white" />
             </div>
-            <h1 className="text-2xl font-bold text-white">ابحث عن تخصصك</h1>
+            <div>
+              <h1 className="text-3xl md:text-4xl font-black text-white leading-tight">ابحث عن تخصصك</h1>
+              <p className="text-green-300 text-sm mt-1">أكثر من 2,000 تخصص في 12 جامعة ماليزية معتمدة</p>
+            </div>
           </div>
-          <p className="text-green-200 text-sm mb-6 mr-13">
-            أكثر من 2,000 تخصص في 12 جامعة ماليزية معتمدة
-          </p>
 
           {/* Search box */}
-          <div className="relative">
-            <Search size={20} className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none" />
+          <div className="relative mt-6">
+            <Search size={19} className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none" />
             <input
               ref={inputRef}
               type="text"
               value={query}
               onChange={e => setQuery(e.target.value)}
               placeholder="اكتب التخصص أو اسم الجامعة... مثل: APU, UPM, Engineering, Business"
-              className="w-full bg-white rounded-2xl py-4 pr-12 pl-12 text-base text-gray-800 shadow-lg focus:outline-none focus:ring-4 focus:ring-green-400/40 placeholder:text-gray-400"
+              className="w-full bg-white rounded-2xl py-4 pr-12 pl-12 text-base text-gray-800 shadow-xl focus:outline-none focus:ring-4 focus:ring-green-400/40 placeholder:text-gray-400 border border-white"
             />
             {query && (
               <button
@@ -209,7 +217,7 @@ export default function GlobalSearchPage() {
         </div>
       </div>
 
-      {/* Results */}
+      {/* ── Results ── */}
       <div className="max-w-3xl mx-auto px-4 -mt-6 pb-16">
 
         {loading && (

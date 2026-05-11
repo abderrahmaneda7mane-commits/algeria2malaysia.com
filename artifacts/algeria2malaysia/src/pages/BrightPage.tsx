@@ -105,14 +105,19 @@ export default function BrightPage() {
   useEffect(() => { window.scrollTo({ top: 0, behavior: "smooth" }); }, []);
 
   return (
-    <div className="min-h-screen bg-gray-50" dir="rtl">
+    <div className="min-h-screen bg-[#f8fafc]" dir="rtl">
 
       {/* ── Header ── */}
-      <div className="bg-gradient-to-br from-[#b03a10] via-[#e85d26] to-[#f07a40] text-white pt-20 pb-20 px-4">
-        <div className="max-w-4xl mx-auto">
+      <div className="relative overflow-hidden bg-gradient-to-br from-[#b03a10] via-[#e85d26] to-[#f07a40] text-white pt-20 pb-24 px-4">
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-0 right-0 w-96 h-96 bg-orange-300/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/4" />
+          <div className="absolute bottom-0 left-0 w-80 h-80 bg-yellow-200/10 rounded-full blur-3xl translate-y-1/2 -translate-x-1/4" />
+          <div className="absolute inset-0 opacity-[0.025]" style={{ backgroundImage: "radial-gradient(circle, rgba(255,255,255,.8) 1px, transparent 1px)", backgroundSize: "24px 24px" }} />
+        </div>
+        <div className="relative max-w-4xl mx-auto">
           <button
             onClick={() => go("home", { scrollTo: "institutes" })}
-            className="flex items-center gap-2 bg-white/20 hover:bg-white/30 text-white font-semibold text-sm px-4 py-2 rounded-xl transition-all mb-6 group border border-white/30"
+            className="flex items-center gap-2 bg-white/15 hover:bg-white/25 text-white font-semibold text-sm px-4 py-2 rounded-xl transition-all mb-8 group border border-white/25"
           >
             <ArrowLeft size={16} className="group-hover:-translate-x-1 transition-transform" />
             <span>العودة للرئيسية</span>
@@ -123,7 +128,7 @@ export default function BrightPage() {
               <img src="/bright-logo.png" alt="Bright Language Center" className="w-full h-full object-cover object-left" />
             </div>
             <div>
-              <h1 className="text-2xl md:text-3xl font-extrabold leading-tight">Bright Language Center</h1>
+              <h1 className="text-2xl md:text-3xl font-black leading-tight">Bright Language Center</h1>
               <p className="text-white/80 text-sm mt-1">مركز برايت للغات — كوالالمبور</p>
             </div>
           </div>
@@ -135,7 +140,7 @@ export default function BrightPage() {
               { icon: <MapPin size={14} />,       text: "كوالالمبور" },
               { icon: <CheckCircle size={14} />,  text: "تأشيرة طالب متاحة" },
             ].map((item, i) => (
-              <div key={i} className="flex items-center gap-2 bg-white/15 rounded-xl px-3 py-2 text-sm">
+              <div key={i} className="flex items-center gap-2 bg-white/10 border border-white/15 rounded-xl px-3 py-2 text-sm backdrop-blur-sm">
                 <span className="text-white/70">{item.icon}</span>
                 <span className="text-white/90 font-medium">{item.text}</span>
               </div>
@@ -145,8 +150,8 @@ export default function BrightPage() {
       </div>
 
       {/* ── Tabs ── */}
-      <div className="max-w-4xl mx-auto px-4 -mt-8">
-        <div className="bg-white rounded-2xl shadow-md border border-gray-100 p-1.5 flex flex-wrap gap-1.5 mb-6">
+      <div className="max-w-4xl mx-auto px-4 -mt-6 relative z-10">
+        <div className="bg-white rounded-2xl shadow-[0_4px_20px_-4px_rgba(0,0,0,.12)] border border-gray-100 p-1.5 flex flex-wrap gap-1.5 mb-6">
           {TABS.map((tab, i) => (
             <button
               key={i}

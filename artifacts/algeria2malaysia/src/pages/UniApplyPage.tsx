@@ -205,7 +205,7 @@ export default function UniApplyPage() {
   if (submitted) {
     const waMsg = encodeURIComponent("مرحباً، لقد قمت بإرسال نموذج طلب خطاب القبول. أرجو مساعدتي في استكمال الإجراءات.");
     return (
-      <div className="min-h-screen bg-gradient-to-br from-green-50 to-white flex items-center justify-center px-4 py-20" dir="rtl">
+      <div className="min-h-screen bg-[#f8fafc] flex items-center justify-center px-4 py-20" dir="rtl">
         <div className="max-w-md w-full text-center">
           <div className="w-24 h-24 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg">
             <CheckCircle size={48} className="text-green-600" />
@@ -258,10 +258,14 @@ export default function UniApplyPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50" dir="rtl">
+    <div className="min-h-screen bg-[#f8fafc]" dir="rtl">
       {/* Header */}
-      <div className="bg-gradient-to-br from-green-900 via-green-800 to-green-700 text-white py-14 px-4 text-center relative overflow-hidden">
-        <div className="absolute inset-0 opacity-10" style={{ backgroundImage: "radial-gradient(circle at 20% 50%, white 1px, transparent 1px), radial-gradient(circle at 80% 20%, white 1px, transparent 1px)", backgroundSize: "60px 60px" }} />
+      <div className="bg-gradient-to-br from-[#0a2e14] via-[#0f4d22] to-[#166534] text-white py-20 px-4 text-center relative overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-0 right-0 w-96 h-96 bg-green-400/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/4" />
+          <div className="absolute bottom-0 left-0 w-80 h-80 bg-emerald-300/10 rounded-full blur-3xl translate-y-1/2 -translate-x-1/4" />
+          <div className="absolute inset-0 opacity-[0.025]" style={{ backgroundImage: "radial-gradient(circle, rgba(255,255,255,.8) 1px, transparent 1px)", backgroundSize: "24px 24px" }} />
+        </div>
         <div className="relative z-10 max-w-2xl mx-auto">
           <button
             onClick={() => go("home")}
