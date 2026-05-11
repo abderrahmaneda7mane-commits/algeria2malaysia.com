@@ -144,113 +144,105 @@ export default function HomePage() {
       <section
         id="hero"
         className="relative min-h-screen flex items-center justify-center overflow-hidden pt-[68px]"
-        style={{
-          background: "linear-gradient(145deg, #0e5c30 0%, #166534 35%, #15803d 65%, #16a34a 100%)",
-        }}
+        style={{ backgroundColor: "#f0fdf4" }}
       >
-        {/* Background decorations */}
-        <div className="absolute inset-0 pointer-events-none">
-          {/* Large blobs */}
-          <div className="absolute top-16 right-8 w-96 h-96 bg-white/8 rounded-full blur-3xl animate-float" />
-          <div className="absolute bottom-24 left-8 w-[480px] h-[480px] bg-emerald-300/8 rounded-full blur-3xl animate-float" style={{ animationDelay: "2s" }} />
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-green-300/5 rounded-full blur-3xl" />
-          {/* Subtle grid overlay */}
-          <div
-            className="absolute inset-0 opacity-[0.03]"
-            style={{
-              backgroundImage: "linear-gradient(rgba(255,255,255,.8) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.8) 1px, transparent 1px)",
-              backgroundSize: "40px 40px",
-            }}
-          />
-          {/* Top-right accent */}
-          <div className="absolute -top-20 -right-20 w-80 h-80 bg-green-400/15 rounded-full blur-2xl" />
-        </div>
+        {/* Background illustration */}
+        <div
+          className="absolute inset-0 z-0 hero-bg"
+          aria-hidden="true"
+        />
 
-        <div className="relative z-10 max-w-5xl mx-auto px-4 text-center text-white py-16">
+        {/* White overlay for text readability */}
+        <div
+          className="absolute inset-0 z-[1] hero-overlay"
+          aria-hidden="true"
+        />
+
+        {/* Subtle radial green vignette at corners */}
+        <div
+          className="absolute inset-0 z-[2] pointer-events-none"
+          style={{ background: "radial-gradient(ellipse 110% 70% at 50% 50%, transparent 35%, rgba(22,101,52,.04) 100%)" }}
+          aria-hidden="true"
+        />
+
+        <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 text-center py-12 sm:py-16">
 
           {/* Logo */}
-          <div className="flex justify-center mb-8 animate-fade-in-up">
+          <div className="flex justify-center mb-7 sm:mb-8 animate-fade-in-up">
             <div className="relative">
-              <div className="absolute inset-0 rounded-full bg-green-300/30 scale-[1.4] blur-xl animate-pulse" />
-              <div className="absolute inset-0 rounded-full border-2 border-white/20 scale-[1.15] animate-spin-slow" />
-              <div className="relative w-[130px] h-[130px] rounded-full overflow-hidden shadow-[0_20px_60px_-10px_rgba(0,0,0,0.4)] border-[3px] border-white/80">
+              <div className="absolute inset-0 rounded-full bg-green-400/18 scale-[1.5] blur-2xl animate-pulse" />
+              <div className="absolute inset-0 rounded-full border border-green-300/40 scale-[1.14] animate-spin-slow" />
+              <div className="relative w-[108px] h-[108px] sm:w-[128px] sm:h-[128px] rounded-full overflow-hidden shadow-[0_16px_48px_-8px_rgba(22,163,74,.22)] border-4 border-white ring-2 ring-green-200/50">
                 <img src="/logo-hq.jpg" alt="Algeria2Malaysia" className="w-full h-full object-cover scale-[1.18]" />
               </div>
             </div>
           </div>
 
           {/* Badge */}
-          <div className="animate-fade-in-up delay-100">
-            <div className="inline-flex items-center gap-2 bg-white/15 backdrop-blur-md border border-white/25 rounded-full px-5 py-2 text-sm font-medium mb-6 shadow-sm">
-              <div className="w-1.5 h-1.5 rounded-full bg-green-300 animate-pulse" />
-              {t(T.hero.badge)}
+          <div className="animate-hero-badge opacity-0-start" style={{ animationDelay: "80ms", animationFillMode: "forwards" }}>
+            <div className="inline-flex items-center gap-2 bg-white/80 backdrop-blur-sm border border-green-200/70 rounded-full px-5 py-2 text-sm font-semibold mb-6 shadow-sm text-green-800">
+              <span className="text-base">🇩🇿</span>
+              <span>{t(T.hero.badge)}</span>
+              <span className="text-base">🇲🇾</span>
             </div>
           </div>
 
           {/* Heading */}
           <div className="animate-fade-in-up delay-200">
-            <h1 className="text-4xl md:text-6xl font-extrabold mb-5 leading-[1.12] tracking-tight">
-              {t(T.hero.title1)}
-              <span className="block mt-2 text-transparent bg-clip-text bg-gradient-to-l from-green-200 to-emerald-100">
-                {t(T.hero.title3)}
-              </span>
+            <h1 className="text-[2.6rem] sm:text-5xl md:text-[4.25rem] lg:text-7xl font-extrabold mb-5 leading-[1.08] tracking-tight">
+              <span className="text-gray-900">{t(T.hero.title1)}</span>
+              <span className="block mt-2 text-gradient-green">{t(T.hero.title3)}</span>
             </h1>
           </div>
 
           {/* Subtitle */}
           <div className="animate-fade-in-up delay-300">
-            <p className="text-lg md:text-xl text-green-100/90 mb-10 max-w-2xl mx-auto leading-relaxed">
+            <p className="text-base sm:text-lg md:text-xl text-gray-600 mb-9 sm:mb-10 max-w-2xl mx-auto leading-relaxed px-2">
               {t(T.hero.subtitle)}
             </p>
           </div>
 
           {/* CTAs */}
-          <div className="animate-fade-in-up delay-400 flex flex-col sm:flex-row gap-4 justify-center mb-14">
+          <div className="animate-fade-in-up delay-400 flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center mb-12 sm:mb-14 px-4 sm:px-0">
             <button
               onClick={() => go("apply")}
-              className="bg-white text-green-800 px-8 py-4 rounded-2xl font-bold text-lg hover:bg-green-50 transition-all duration-200 shadow-[0_8px_32px_-4px_rgba(0,0,0,0.25)] hover:shadow-[0_12px_40px_-4px_rgba(0,0,0,0.30)] hover:-translate-y-0.5 flex items-center justify-center gap-2 group"
+              className="bg-green-700 text-white px-7 sm:px-8 py-3.5 sm:py-4 rounded-2xl font-bold text-base sm:text-lg hover:bg-green-800 transition-all duration-200 shadow-[0_8px_32px_-4px_rgba(22,163,74,.40)] hover:shadow-[0_14px_40px_-4px_rgba(22,163,74,.52)] hover:-translate-y-0.5 flex items-center justify-center gap-2 group"
             >
               <span>{t(T.hero.cta1)}</span>
               <ArrowLeft size={17} className="group-hover:-translate-x-0.5 transition-transform" />
             </button>
             <a
               href="#about"
-              className="border-2 border-white/40 text-white px-8 py-4 rounded-2xl font-semibold text-lg hover:bg-white/12 hover:border-white/60 transition-all duration-200 backdrop-blur-sm"
+              className="border-2 border-green-700/25 text-green-800 px-7 sm:px-8 py-3.5 sm:py-4 rounded-2xl font-semibold text-base sm:text-lg hover:bg-green-50/80 hover:border-green-700/40 transition-all duration-200"
             >
               {t(T.hero.cta2)}
             </a>
           </div>
 
           {/* Stats grid */}
-          <div className="animate-fade-in-up delay-500 max-w-2xl mx-auto">
-            <div className="grid grid-cols-3 gap-3 mb-3">
+          <div className="animate-fade-in-up delay-500 max-w-2xl mx-auto px-2 sm:px-0">
+            <div className="grid grid-cols-3 gap-2 sm:gap-3 mb-2 sm:mb-3">
               {[
                 { num: "2000+", label: t(T.stats.majors),    icon: "📚" },
                 { num: "12+",   label: t(T.stats.partners),  icon: "🎓" },
                 { num: "5",     label: t(T.stats.certified), icon: "🏫" },
               ].map((stat) => (
-                <div
-                  key={stat.label}
-                  className="text-center bg-white/10 backdrop-blur-md border border-white/18 rounded-2xl py-4 px-2 hover:bg-white/15 transition-colors"
-                >
-                  <div className="text-xl mb-1">{stat.icon}</div>
-                  <div className="text-2xl font-extrabold text-white leading-none">{stat.num}</div>
-                  <div className="text-[11px] text-green-200/90 mt-1 font-medium">{stat.label}</div>
+                <div key={stat.label} className="stat-card-light text-center py-4 sm:py-5 px-2">
+                  <div className="text-lg sm:text-xl mb-1">{stat.icon}</div>
+                  <div className="text-xl sm:text-2xl font-extrabold text-gray-900 leading-none">{stat.num}</div>
+                  <div className="text-[10px] sm:text-[11px] text-gray-500 mt-1 font-medium leading-tight">{stat.label}</div>
                 </div>
               ))}
             </div>
-            <div className="grid grid-cols-2 gap-3">
+            <div className="grid grid-cols-2 gap-2 sm:gap-3">
               {[
                 { num: "100%", label: t(T.stats.transparent), icon: "✅" },
                 { num: "24h",  label: t(T.stats.fast),        icon: "⚡" },
               ].map((stat) => (
-                <div
-                  key={stat.label}
-                  className="text-center bg-white/10 backdrop-blur-md border border-white/18 rounded-2xl py-4 px-2 hover:bg-white/15 transition-colors"
-                >
-                  <div className="text-xl mb-1">{stat.icon}</div>
-                  <div className="text-2xl font-extrabold text-white leading-none">{stat.num}</div>
-                  <div className="text-[11px] text-green-200/90 mt-1 font-medium">{stat.label}</div>
+                <div key={stat.label} className="stat-card-light text-center py-4 sm:py-5 px-2">
+                  <div className="text-lg sm:text-xl mb-1">{stat.icon}</div>
+                  <div className="text-xl sm:text-2xl font-extrabold text-gray-900 leading-none">{stat.num}</div>
+                  <div className="text-[10px] sm:text-[11px] text-gray-500 mt-1 font-medium leading-tight">{stat.label}</div>
                 </div>
               ))}
             </div>
@@ -258,9 +250,9 @@ export default function HomePage() {
         </div>
 
         {/* Scroll indicator */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce-subtle">
-          <div className="w-6 h-10 border-2 border-white/35 rounded-full flex justify-center pt-2">
-            <div className="w-1.5 h-3 bg-white/55 rounded-full" />
+        <div className="absolute bottom-7 sm:bottom-8 left-1/2 -translate-x-1/2 animate-bounce-subtle">
+          <div className="w-6 h-10 border-2 border-green-500/35 rounded-full flex justify-center pt-2">
+            <div className="w-1.5 h-3 bg-green-600/45 rounded-full" />
           </div>
         </div>
       </section>
@@ -271,10 +263,10 @@ export default function HomePage() {
       <section
         id="about"
         ref={aboutRef as RefObject<HTMLElement>}
-        className="section-reveal py-24 bg-white"
+        className="section-reveal py-20 sm:py-24 bg-white"
       >
-        <div className="max-w-6xl mx-auto px-4">
-          <div className="grid md:grid-cols-2 gap-14 items-center">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6">
+          <div className="grid md:grid-cols-2 gap-10 md:gap-14 items-center">
             <div>
               <div className="inline-flex items-center gap-2 bg-green-50 text-green-700 border border-green-200/60 rounded-full px-4 py-1.5 text-sm font-semibold mb-5">
                 <div className="w-1.5 h-1.5 rounded-full bg-green-500" />
@@ -334,12 +326,12 @@ export default function HomePage() {
       <section
         id="why"
         ref={whyRef as RefObject<HTMLElement>}
-        className="section-reveal py-24"
+        className="section-reveal py-20 sm:py-24"
         style={{ background: "linear-gradient(180deg, #f0fdf4 0%, #ffffff 100%)" }}
       >
-        <div className="max-w-6xl mx-auto px-4">
-          <div className="text-center mb-14">
-            <h2 className="text-4xl md:text-6xl font-extrabold text-gray-900 mb-3 leading-tight">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6">
+          <div className="text-center mb-12 sm:mb-14">
+            <h2 className="text-3xl sm:text-4xl md:text-6xl font-extrabold text-gray-900 mb-3 leading-tight">
               لماذا{" "}
               <span className="text-gradient-green">ماليزيا؟</span>
             </h2>
@@ -349,7 +341,7 @@ export default function HomePage() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5 mb-8">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 mb-8 stagger-children">
             {[
               { icon: <DollarSign size={24} />, title: "أسعار في المتناول",             desc: "تكاليف الدراسة والمعيشة أقل بكثير مقارنة بأوروبا وأمريكا مع نفس مستوى الجودة", color: "text-green-600",  bg: "bg-green-50",  border: "border-green-100" },
               { icon: <Globe size={24} />,      title: "التعليم باللغة الإنجليزية",    desc: "جميع البرامج تدرس باللغة الإنجليزية مع شهادات معترف بها دولياً",                 color: "text-blue-600",   bg: "bg-blue-50",   border: "border-blue-100" },
@@ -360,7 +352,7 @@ export default function HomePage() {
             ].map((item) => (
               <div
                 key={item.title}
-                className="card-premium p-6 group"
+                className="card-premium card-hover p-5 sm:p-6 group"
               >
                 <div className={`w-12 h-12 ${item.bg} border ${item.border} rounded-xl flex items-center justify-center mb-4 group-hover:scale-105 transition-transform duration-200`}>
                   <div className={item.color}>{item.icon}</div>
@@ -402,10 +394,10 @@ export default function HomePage() {
       <section
         id="services"
         ref={servicesRef as RefObject<HTMLElement>}
-        className="section-reveal py-24 bg-white"
+        className="section-reveal py-20 sm:py-24 bg-white"
       >
-        <div className="max-w-6xl mx-auto px-4">
-          <div className="flex flex-col items-center text-center mb-14">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6">
+          <div className="flex flex-col items-center text-center mb-12 sm:mb-14">
             <div className="inline-flex items-center gap-2 bg-green-50 text-green-700 border border-green-200/60 rounded-full px-4 py-1.5 text-sm font-semibold mb-4">
               <div className="w-1.5 h-1.5 rounded-full bg-green-500 flex-shrink-0" />
               خدماتنا
@@ -414,7 +406,7 @@ export default function HomePage() {
             <p className="text-gray-500 max-w-md mx-auto text-[15px]">نقدم خدمة شاملة من أول استشارة حتى وصولك إلى ماليزيا</p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5 mb-8">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 mb-8 stagger-children">
             {[
               { icon: <MessageCircle size={28} />,   title: "استشارة مجانية",    desc: "جلسة استشارية مجانية لتقييم وضعك وتحديد أفضل مسار دراسي يناسبك",                         highlight: true },
               { icon: <GraduationCap size={28} />,   title: "التسجيل والقبول",   desc: "نتولى كامل إجراءات التسجيل والقبول في المعاهد والجامعات الماليزية",                        highlight: false, iconColor: "text-blue-600",   iconBg: "bg-blue-50"   },
@@ -505,11 +497,11 @@ export default function HomePage() {
       <section
         id="how"
         ref={howRef as RefObject<HTMLElement>}
-        className="section-reveal py-24"
+        className="section-reveal py-20 sm:py-24"
         style={{ background: "linear-gradient(180deg, #f0fdf4 0%, #dcfce7 60%, #f0fdf4 100%)" }}
       >
-        <div className="max-w-5xl mx-auto px-4">
-          <div className="text-center mb-14">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6">
+          <div className="text-center mb-12 sm:mb-14">
             <div className="inline-flex items-center gap-2 bg-green-200/60 text-green-800 border border-green-300/40 rounded-full px-4 py-1.5 text-sm font-semibold mb-4">
               <div className="w-1.5 h-1.5 rounded-full bg-green-600" />
               كيف يعمل؟
@@ -524,7 +516,7 @@ export default function HomePage() {
               <div className="h-full bg-gradient-to-l from-green-300 via-green-200 to-green-300 rounded-full" />
             </div>
 
-            <div className="grid md:grid-cols-4 gap-6 relative z-10">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-5 sm:gap-6 relative z-10">
               {[
                 { step: "01", icon: "📝", title: "املأ النموذج",      desc: "استغرق 3 دقائق فقط، أجب على بعض الأسئلة عن هدفك وميزانيتك" },
                 { step: "02", icon: "🔍", title: "نراجع ملفك",         desc: "فريقنا يراجع معلوماتك ويحدد أنسب خيار لك" },
@@ -565,9 +557,9 @@ export default function HomePage() {
       <section
         id="institutes"
         ref={instRef as RefObject<HTMLElement>}
-        className="section-reveal py-24 bg-white"
+        className="section-reveal py-20 sm:py-24 bg-white"
       >
-        <div className="max-w-6xl mx-auto px-4">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6">
 
           {/* Track label */}
           <div className="flex items-center gap-3 mb-3">
@@ -685,10 +677,10 @@ export default function HomePage() {
       <section
         id="universities"
         ref={uniRef as RefObject<HTMLElement>}
-        className="section-reveal py-24"
+        className="section-reveal py-20 sm:py-24"
         style={{ background: "linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%)" }}
       >
-        <div className="max-w-6xl mx-auto px-4">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6">
 
           {/* Track label */}
           <div className="flex items-center gap-3 mb-3">
@@ -730,11 +722,11 @@ export default function HomePage() {
             </div>
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+          <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-4">
             {UNIVERSITIES.map((uni) => (
               <div
                 key={uni.name}
-                className="card-premium cursor-pointer group overflow-hidden"
+                className="card-premium card-hover cursor-pointer group overflow-hidden"
                 onClick={() => go("universities", { scrollTo: uni.uniId })}
               >
                 <div className="relative h-36 bg-white flex items-center justify-center px-6 py-4 border-b border-gray-100/80 overflow-hidden">
@@ -792,8 +784,8 @@ export default function HomePage() {
       {/* ══════════════════════════════════════
           CTA APPLY
       ══════════════════════════════════════ */}
-      <section id="apply" className="py-24 bg-white">
-        <div className="max-w-3xl mx-auto px-4 text-center">
+      <section id="apply" className="py-20 sm:py-24 bg-white">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 text-center">
           <div className="relative overflow-hidden bg-gradient-to-br from-green-700 via-green-800 to-green-900 rounded-3xl p-10 md:p-14 text-white shadow-[0_20px_60px_-10px_rgba(22,163,74,0.40)]">
             {/* Background decoration */}
             <div className="absolute inset-0 opacity-10 pointer-events-none"
@@ -835,15 +827,15 @@ export default function HomePage() {
       {/* ══════════════════════════════════════
           TRUST PILLARS
       ══════════════════════════════════════ */}
-      <section className="py-20 bg-gradient-to-b from-gray-50 to-white">
-        <div className="max-w-5xl mx-auto px-4">
-          <div className="grid md:grid-cols-3 gap-6 text-center">
+      <section className="py-16 sm:py-20 bg-gradient-to-b from-gray-50 to-white">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6">
+          <div className="grid sm:grid-cols-3 gap-4 sm:gap-6 text-center stagger-children">
             {[
               { icon: <CheckCircle size={28} />, title: "خبرة موثوقة",          desc: "متخصصون في توجيه الطلاب الجزائريين نحو ماليزيا", color: "text-green-600", bg: "bg-green-50", border: "border-green-100" },
               { icon: <Star size={28} />,        title: "شركاء رسميون",          desc: "شراكات مع وكلاء رسميين معتمدين لدى المعاهد والجامعات الماليزية", color: "text-amber-600", bg: "bg-amber-50", border: "border-amber-100" },
               { icon: <Shield size={28} />,      title: "أسعار شفافة 100%",      desc: "لا رسوم مخفية، كل التكاليف واضحة من البداية", color: "text-blue-600", bg: "bg-blue-50", border: "border-blue-100" },
             ].map((item) => (
-              <div key={item.title} className="p-7 bg-white rounded-2xl border border-gray-100 hover:border-green-200 hover:shadow-lg transition-all duration-250 group hover:-translate-y-1">
+              <div key={item.title} className="p-6 sm:p-7 bg-white rounded-2xl border border-gray-100 hover:border-green-200 hover:shadow-lg transition-all duration-250 group hover:-translate-y-1">
                 <div className={`w-14 h-14 ${item.bg} border ${item.border} rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-105 transition-transform`}>
                   <div className={item.color}>{item.icon}</div>
                 </div>
@@ -861,9 +853,9 @@ export default function HomePage() {
       <section
         id="guide"
         ref={guideRef as RefObject<HTMLElement>}
-        className="section-reveal py-24 bg-gray-50/60"
+        className="section-reveal py-20 sm:py-24 bg-gray-50/60"
       >
-        <div className="max-w-3xl mx-auto px-4">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6">
           <div className="mb-12 text-center">
             <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-green-500 to-emerald-600 shadow-lg mb-5 text-3xl">
               📖
@@ -1055,9 +1047,9 @@ export default function HomePage() {
       <section
         id="faq"
         ref={faqRef as RefObject<HTMLElement>}
-        className="section-reveal py-24 bg-white"
+        className="section-reveal py-20 sm:py-24 bg-white"
       >
-        <div className="max-w-3xl mx-auto px-4">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6">
           <div className="text-center mb-12">
             <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-gradient-to-br from-green-500 to-emerald-600 shadow-[0_4px_16px_-2px_rgba(22,163,74,0.40)] mb-5 text-2xl">
               ❓
@@ -1162,8 +1154,8 @@ export default function HomePage() {
       {/* ══════════════════════════════════════
           CONTACT SECTION
       ══════════════════════════════════════ */}
-      <section id="contact" className="py-20 bg-gradient-to-b from-gray-50 to-white">
-        <div className="max-w-2xl mx-auto px-4 text-center">
+      <section id="contact" className="py-16 sm:py-20 bg-gradient-to-b from-gray-50 to-white">
+        <div className="max-w-2xl mx-auto px-4 sm:px-6 text-center">
           <h2 className="text-2xl font-extrabold text-gray-900 mb-2">تواصل معنا مباشرة</h2>
           <p className="text-gray-500 mb-7">فريقنا جاهز للإجابة على استفساراتك</p>
           <a
