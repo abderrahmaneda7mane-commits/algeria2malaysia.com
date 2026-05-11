@@ -262,7 +262,7 @@ export default function CompareUniversitiesPage() {
           </div>
         </div>
 
-        <div className="max-w-4xl mx-auto px-4 -mt-10 pb-28">
+        <div className="max-w-4xl mx-auto px-4 -mt-10 relative z-10 pb-28">
           {/* ── Selection bar ── */}
           <div className="bg-white rounded-3xl shadow-xl border border-gray-100 p-5 mb-6 flex items-center justify-between gap-4">
             <div className="flex items-center gap-4">
@@ -448,7 +448,7 @@ export default function CompareUniversitiesPage() {
         </div>
       </div>
 
-      <div className="max-w-5xl mx-auto px-3 sm:px-4 -mt-8 pb-24">
+      <div className="max-w-5xl mx-auto px-3 sm:px-4 -mt-8 relative z-10 pb-24">
         <PriceDisclaimer />
 
         {/* ── University header cards — sticky on mobile ── */}
