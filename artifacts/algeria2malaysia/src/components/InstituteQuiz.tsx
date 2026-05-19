@@ -5,7 +5,7 @@ import { useLanguage } from "../i18n/LanguageContext";
 import { translations as T } from "../i18n/translations";
 import type { Lang } from "../i18n/translations";
 
-type Goal     = "general" | "ielts" | "business" | "kids";
+type Goal     = "general" | "ielts" | "business" | "kids" | "international";
 type Duration = "weekly" | "short" | "mid" | "long";
 type Budget   = "low" | "mid" | "high";
 
@@ -103,23 +103,47 @@ interface ScoreEntry {
 }
 
 function buildRecommendations(a: Answers): ScoreEntry[] {
+  // ── International environment (low Arabic) ─────────────
+  if (a.goal === "international") {
+    return [
+      {
+        id: "cambright", score: 99,
+        program: "Academic / Intensive — بيئة دولية متعددة الجنسيات",
+        reason: "Cambright هو المعهد الوحيد في كوالالمبور المصمم خصيصاً للبيئة الدولية — طلاب من جنسيات مختلفة حول العالم، الإنجليزية هي لغة التواصل الوحيدة، وأقل نسبة متحدثين بالعربية. مثالي لمن يريد تحسين المحادثة بشكل طبيعي وسريع",
+        highlights: ["أقل عرب 🌍", "جنسيات متعددة", "تحسين المحادثة طبيعياً", "موقع KLCC"],
+      },
+      {
+        id: "stratford", score: 72,
+        program: "General English — بيئة متنوعة نسبياً",
+        reason: "ستراتفورد في G Tower KLCC يضم طلاباً من جنسيات مختلفة مع أسعار مناسبة — خيار جيد لمن يريد بيئة متنوعة بتكلفة معقولة",
+        highlights: ["موقع KLCC", "أسعار مناسبة", "جنسيات متعددة"],
+      },
+      {
+        id: "bigben", score: 65,
+        program: "IEP Intensive — بيئة أكاديمية متنوعة",
+        reason: "بيغ بان يضم طلاباً من خلفيات مختلفة مع منهج Pearson المكثف الذي يركز على التطور الفردي",
+        highlights: ["Pearson معتمد", "مجموعات صغيرة", "تقدم مضمون"],
+      },
+    ];
+  }
+
   // ── IELTS ──────────────────────────────────────────────
   if (a.goal === "ielts") {
     return [
       {
-        id: "bigben", score: 96,
+        id: "cambright", score: 98,
+        program: "IELTS Preparation — بيئة دولية + تدريب يومي",
+        reason: "Cambright هو الأفضل لـ IELTS لأنه يجمع التحضير الأكاديمي مع بيئة دولية حقيقية — تتحدث إنجليزية مع جنسيات مختلفة يومياً مما يطور جزء Speaking بشكل طبيعي لا يمكن تعلمه في الفصل وحده",
+        highlights: ["Speaking طبيعي 🌍", "تحضير IELTS متكامل", "4h/يوم", "KLCC"],
+      },
+      {
+        id: "bigben", score: 91,
         program: "IELTS Preparation + IEP (Pearson)",
         reason: "بيغ بان متخصص بـ IELTS بشهادة Pearson الدولية — برنامج IEP المكثف يرفع درجتك في وقت قياسي مع مدرسين معتمدين",
         highlights: ["Pearson معتمد", "IEP مكثف", "نتائج مضمونة"],
       },
       {
-        id: "cambright", score: 90,
-        program: "IELTS Preparation — بيئة دولية",
-        reason: "Cambright يجمع تحضير IELTS مع بيئة دولية حقيقية — تتدرب على المحادثة يومياً مع جنسيات مختلفة مما يطور الجزء الشفهي بشكل طبيعي وسريع",
-        highlights: ["بيئة دولية 🌍", "تدريب محادثة يومي", "موقع KLCC"],
-      },
-      {
-        id: "sheffield", score: 82,
+        id: "sheffield", score: 80,
         program: "IELTS Preparation + اختبار مجاني",
         reason: "شيفيلد يمنحك اختبار IELTS مجاناً مع أي تسجيل — توفير فعلي يصل إلى 800 RM، مع دعم كامل للتأشيرة",
         highlights: ["IELTS مجاني ✓", "توفير 800 RM", "تأشيرة طالب"],
@@ -354,10 +378,11 @@ function buildSteps(t: TFn) {
       key: "goal",
       q: t(T.quiz.q1.q), sub: t(T.quiz.q1.sub),
       options: [
-        { value: "general",  label: t(T.quiz.q1.general),  icon: "🗣️", desc: t(T.quiz.q1.generalD) },
-        { value: "ielts",    label: t(T.quiz.q1.ielts),    icon: "📋", desc: t(T.quiz.q1.ieltsD) },
-        { value: "business", label: t(T.quiz.q1.business), icon: "💼", desc: t(T.quiz.q1.businessD) },
-        { value: "kids",     label: t(T.quiz.q1.kids),     icon: "🎒", desc: t(T.quiz.q1.kidsD) },
+        { value: "general",       label: t(T.quiz.q1.general),       icon: "🗣️", desc: t(T.quiz.q1.generalD) },
+        { value: "ielts",         label: t(T.quiz.q1.ielts),         icon: "📋", desc: t(T.quiz.q1.ieltsD) },
+        { value: "international", label: t(T.quiz.q1.international), icon: "🌍", desc: t(T.quiz.q1.internationalD) },
+        { value: "business",      label: t(T.quiz.q1.business),      icon: "💼", desc: t(T.quiz.q1.businessD) },
+        { value: "kids",          label: t(T.quiz.q1.kids),          icon: "🎒", desc: t(T.quiz.q1.kidsD) },
       ],
     },
     {

@@ -26,7 +26,7 @@ const NAV_ITEMS: NavItem[] = [
     label: "المعاهد",
     icon: <BookOpen size={14} />,
     children: [
-      { label: "كل المعاهد", page: "institutes", desc: "5 معاهد معتمدة" },
+      { label: "كل المعاهد", page: "institutes", desc: "6 معاهد معتمدة" },
     ],
   },
   { label: "بحث شامل", page: "search", icon: <Search size={14} /> },

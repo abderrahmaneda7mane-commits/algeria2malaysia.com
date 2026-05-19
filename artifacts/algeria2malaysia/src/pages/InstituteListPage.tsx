@@ -203,8 +203,8 @@ export default function InstituteListPage() {
 
         {/* Section title */}
         <div className="flex items-center justify-between mb-2">
-          <h2 className="text-2xl font-black text-gray-900">المعاهد المعتمدة الخمسة</h2>
-          <span className="text-sm text-gray-400">5 معاهد</span>
+          <h2 className="text-2xl font-black text-gray-900">المعاهد المعتمدة الستة</h2>
+          <span className="text-sm text-gray-400">6 معاهد</span>
         </div>
 
         {/* Institute cards */}

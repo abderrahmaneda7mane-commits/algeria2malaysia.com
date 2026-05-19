@@ -168,11 +168,11 @@ export default function CambrightPage() {
       <div className="bg-gradient-to-br from-[#1a2a6c] via-[#1e3a8a] to-[#b21f1f] text-white">
         <div className="max-w-4xl mx-auto px-4 pt-6 pb-8">
           <button
-            onClick={() => go("institutes")}
-            className="flex items-center gap-2 text-white/70 hover:text-white text-sm mb-6 transition-colors"
+            onClick={() => go("home", { scrollTo: "institutes" })}
+            className="flex items-center gap-2 bg-white/15 hover:bg-white/25 text-white font-semibold text-sm px-4 py-2 rounded-xl transition-all mb-6 group border border-white/25"
           >
-            <ArrowLeft size={16} />
-            العودة للمعاهد
+            <ArrowLeft size={16} className="group-hover:-translate-x-1 transition-transform" />
+            <span>العودة للرئيسية</span>
           </button>
 
           <div className="flex items-start gap-4 mb-6">
