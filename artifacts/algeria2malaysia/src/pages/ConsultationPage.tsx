@@ -314,7 +314,7 @@ export default function ConsultationPage() {
         dir="rtl"
       >
         {/* Hero */}
-        <div className="relative overflow-hidden bg-gradient-to-br from-[#0a2e14] via-[#0f4d22] to-[#166534] text-white pt-20 pb-24 px-4">
+        <div className="relative overflow-hidden bg-gradient-to-br from-[#0a2e14] via-[#0f4d22] to-[#166534] text-white pt-20 pb-36 px-4">
           <div className="absolute inset-0 pointer-events-none">
             <div className="absolute top-0 right-0 w-96 h-96 bg-green-400/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/4" />
             <div className="absolute bottom-0 left-0 w-80 h-80 bg-emerald-300/10 rounded-full blur-3xl translate-y-1/2 -translate-x-1/4" />

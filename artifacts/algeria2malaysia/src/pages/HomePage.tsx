@@ -189,9 +189,9 @@ export default function HomePage() {
 
           {/* Heading */}
           <div className="animate-fade-in-up delay-200">
-            <h1 className="text-4xl md:text-6xl font-extrabold mb-5 leading-[1.12] tracking-tight">
+            <h1 className="text-4xl md:text-6xl font-extrabold mb-5 leading-[1.12] tracking-tight text-white">
               {t(T.hero.title1)}
-              <span className="block mt-2 text-transparent bg-clip-text bg-gradient-to-l from-green-200 to-emerald-100">
+              <span className="block mt-2 text-emerald-200">
                 {t(T.hero.title3)}
               </span>
             </h1>
@@ -227,7 +227,7 @@ export default function HomePage() {
               {[
                 { num: "2000+", label: t(T.stats.majors),    icon: "📚" },
                 { num: "12+",   label: t(T.stats.partners),  icon: "🎓" },
-                { num: "5",     label: t(T.stats.certified), icon: "🏫" },
+                { num: "6",     label: t(T.stats.certified), icon: "🏫" },
               ].map((stat) => (
                 <div
                   key={stat.label}

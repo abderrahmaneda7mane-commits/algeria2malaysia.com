@@ -25,7 +25,8 @@ const INSTITUTES: FooterLink[] = [
   { label: "معهد بيغ بان",     page: "bigben-institute" },
   { label: "معهد إيريكان",     page: "erican-institute" },
   { label: "معهد شيفيلد",      page: "sheffield-institute" },
-  { label: "مركز برايت للغات", page: "bright-institute" },
+  { label: "مركز برايت للغات",    page: "bright-institute" },
+  { label: "معهد Cambright الدولي", page: "cambright-institute" },
 ];
 
 const SERVICES: FooterLink[] = [

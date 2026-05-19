@@ -163,20 +163,26 @@ export default function CambrightPage() {
   const priceData = activeProgram === "academic" ? ACADEMIC_PRICES : INTENSIVE_PRICES;
 
   return (
-    <div className="min-h-screen bg-gray-50" dir="rtl">
-      {/* Hero */}
-      <div className="bg-gradient-to-br from-[#1a2a6c] via-[#1e3a8a] to-[#b21f1f] text-white">
-        <div className="max-w-4xl mx-auto px-4 pt-6 pb-8">
+    <div className="min-h-screen bg-[#f8fafc]" dir="rtl">
+
+      {/* ── Hero ── */}
+      <div className="relative overflow-hidden bg-gradient-to-br from-[#1a2a6c] via-[#1e3a8a] to-[#b21f1f] text-white pt-20 pb-10 px-4">
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-0 right-0 w-96 h-96 bg-white/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/4" />
+          <div className="absolute bottom-0 left-0 w-80 h-80 bg-white/5 rounded-full blur-3xl translate-y-1/2 -translate-x-1/4" />
+          <div className="absolute inset-0 opacity-[0.025]" style={{ backgroundImage: "radial-gradient(circle, rgba(255,255,255,.8) 1px, transparent 1px)", backgroundSize: "24px 24px" }} />
+        </div>
+        <div className="relative max-w-4xl mx-auto">
           <button
             onClick={() => go("home", { scrollTo: "institutes" })}
-            className="flex items-center gap-2 bg-white/15 hover:bg-white/25 text-white font-semibold text-sm px-4 py-2 rounded-xl transition-all mb-6 group border border-white/25"
+            className="flex items-center gap-2 bg-white/15 hover:bg-white/25 text-white font-semibold text-sm px-4 py-2 rounded-xl transition-all mb-8 group border border-white/25"
           >
             <ArrowLeft size={16} className="group-hover:-translate-x-1 transition-transform" />
             <span>العودة للرئيسية</span>
           </button>
 
-          <div className="flex items-start gap-4 mb-6">
-            <div className="w-20 h-20 bg-white rounded-2xl shadow-lg flex-shrink-0 overflow-hidden flex items-center justify-center p-2">
+          <div className="flex items-center gap-5 mb-6">
+            <div className="w-20 h-20 bg-white rounded-2xl flex items-center justify-center flex-shrink-0 p-2 shadow-xl">
               <img src="/cambright-logo.png" alt="Cambright" className="max-w-full max-h-full object-contain" />
             </div>
             <div>
@@ -185,31 +191,27 @@ export default function CambrightPage() {
                 <span className="bg-yellow-400 text-yellow-900 text-xs font-bold px-3 py-1 rounded-full">Wisma MCA — KLCC</span>
                 <span className="bg-green-400 text-green-900 text-xs font-bold px-3 py-1 rounded-full">دولي 🌍</span>
               </div>
-              <h1 className="text-2xl sm:text-3xl font-black leading-tight">
-                Cambright International<br />Language Centre
-              </h1>
-              <p className="text-white/80 text-sm mt-1">معهد لغة إنجليزية دولي — بيئة متعددة الجنسيات بدون هيمنة العربية</p>
+              <h1 className="text-2xl md:text-3xl font-black leading-tight">Cambright International Language Centre</h1>
+              <p className="text-white/70 text-sm mt-1">معهد لغة إنجليزية دولي — بيئة متعددة الجنسيات بأقل نسبة عربية</p>
             </div>
           </div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-6">
             {[
-              { label: "يبدأ من", value: "2,650 RM" },
-              { label: "المكثف من", value: "3,551 RM" },
-              { label: "السامر كامب", value: "2,200 RM/أسبوع" },
-              { label: "المحادثة المنفردة", value: "50 RM/جلسة" },
-            ].map((s) => (
-              <div key={s.label} className="bg-white/15 backdrop-blur rounded-xl p-3 text-center">
-                <div className="text-white font-black text-base">{s.value}</div>
-                <div className="text-white/70 text-xs mt-0.5">{s.label}</div>
+              { icon: <Clock size={14} />, text: "4 برامج متاحة" },
+              { icon: <Calendar size={14} />, text: "دخول كل شهر" },
+              { icon: <MapPin size={14} />, text: "Wisma MCA، KLCC" },
+              { icon: <Globe size={14} />, text: "بيئة دولية 🌍" },
+            ].map((item, i) => (
+              <div key={i} className="flex items-center gap-2 bg-white/10 border border-white/15 rounded-xl px-3 py-2 text-sm backdrop-blur-sm">
+                <span className="text-white/70">{item.icon}</span>
+                <span className="text-white/90 font-medium">{item.text}</span>
               </div>
             ))}
           </div>
-        </div>
 
-        {/* Tabs */}
-        <div className="max-w-4xl mx-auto px-4">
-          <div className="flex gap-1 overflow-x-auto pb-0">
+          {/* Tabs */}
+          <div className="flex gap-1 overflow-x-auto -mb-10 pb-0">
             {TABS.map((t, i) => (
               <button
                 key={t}
@@ -568,21 +570,19 @@ export default function CambrightPage() {
         )}
 
         {/* CTA */}
-        <div className="mt-8 bg-white rounded-2xl border border-gray-200 p-5">
-          <h3 className="font-black text-gray-900 text-lg mb-2">ابدأ رحلتك مع Cambright</h3>
-          <p className="text-gray-500 text-sm mb-4">فريقنا يساعدك في التسجيل وإجراءات التأشيرة — مجاناً وبدون أي التزام.</p>
+        <div className="mt-8 bg-gradient-to-br from-[#1a2a6c] to-[#0f1d52] rounded-2xl p-5 text-white">
+          <h3 className="font-black text-xl mb-2">جاهز للتسجيل في Cambright؟</h3>
+          <p className="text-white/75 text-sm mb-4">فريقنا يساعدك في التسجيل وإجراءات التأشيرة — مجاناً وبدون أي التزام.</p>
           <div className="flex flex-col sm:flex-row gap-3">
-            <a
-              href="https://wa.me/601112200603?text=السلام عليكم، أريد الاستفسار عن معهد Cambright International Language Centre"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex-1 bg-[#25d366] hover:bg-[#1da851] text-white font-bold rounded-xl py-3 text-center transition-all"
+            <button
+              onClick={() => go("apply")}
+              className="flex-1 bg-white text-[#1a2a6c] font-black rounded-xl py-3 text-center transition-all hover:bg-blue-50 shadow-lg"
             >
-              📲 واتساب — استفسار مجاني
-            </a>
+              📝 عبّئ الفورم — مجاناً
+            </button>
             <button
               onClick={() => go("consultation")}
-              className="flex-1 bg-[#1a2a6c] hover:bg-[#0f1d52] text-white font-bold rounded-xl py-3 text-center transition-all"
+              className="flex-1 bg-white/15 hover:bg-white/25 border border-white/30 text-white font-bold rounded-xl py-3 text-center transition-all"
             >
               📅 احجز استشارة مجانية
             </button>
