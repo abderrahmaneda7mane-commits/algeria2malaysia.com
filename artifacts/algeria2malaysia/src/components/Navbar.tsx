@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { Menu, X, Search, Building2, BookOpen, Home, ChevronDown, Sparkles } from "lucide-react";
-import { useNavigate, type Page, subscribeNavForceScrolled, getNavForceScrolled } from "../hooks/useNavigate";
+import { useNavigate, type Page, PAGE_TO_URL, subscribeNavForceScrolled, getNavForceScrolled } from "../hooks/useNavigate";
 
 const WA = "https://wa.me/601112200603";
 
@@ -98,7 +98,7 @@ export default function Navbar() {
           <div className="flex items-center justify-between h-16">
 
             {/* Logo */}
-            <button onClick={() => go("home")} className="flex items-center gap-2.5 group flex-shrink-0">
+            <a href="/" onClick={(e) => { e.preventDefault(); go("home"); }} className="flex items-center gap-2.5 group flex-shrink-0">
               <div className="relative flex-shrink-0">
                 <div className="absolute inset-0 rounded-full bg-green-400/25 scale-150 opacity-0 group-hover:opacity-100 blur-md transition-all duration-300" />
                 <img
@@ -117,7 +117,7 @@ export default function Navbar() {
                   الجزائر · ماليزيا
                 </div>
               </div>
-            </button>
+            </a>
 
             {/* Desktop Nav */}
             <div ref={dropdownRef} className="hidden lg:flex items-center gap-0.5">
@@ -138,8 +138,9 @@ export default function Navbar() {
                       <ChevronDown size={13} className={`transition-transform duration-200 ${openDropdown === item.label ? "rotate-180" : ""}`} />
                     </button>
                   ) : (
-                    <button
-                      onClick={() => handleNav(item)}
+                    <a
+                      href={item.page ? PAGE_TO_URL[item.page] : item.href ?? "/"}
+                      onClick={(e) => { e.preventDefault(); handleNav(item); }}
                       className={`flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-sm font-semibold transition-all duration-200 ${
                         isScrolled
                           ? "text-gray-700 hover:text-green-700 hover:bg-green-50"
@@ -147,21 +148,22 @@ export default function Navbar() {
                       }`}
                     >
                       {item.label}
-                    </button>
+                    </a>
                   )}
 
                   {item.children && openDropdown === item.label && (
                     <div className="absolute top-full right-0 mt-2 w-60 bg-white rounded-2xl shadow-[0_8px_30px_-4px_rgba(0,0,0,.12),0_2px_8px_-2px_rgba(0,0,0,.06)] border border-gray-100/80 overflow-hidden animate-fade-in-down">
                       <div className="p-2">
                         {item.children.map((child) => (
-                          <button
+                          <a
                             key={child.label}
-                            onClick={() => handleNav(child)}
+                            href={child.page ? PAGE_TO_URL[child.page] : child.href ?? "/"}
+                            onClick={(e) => { e.preventDefault(); handleNav(child); }}
                             className="w-full text-right px-3.5 py-2.5 rounded-xl hover:bg-green-50 transition-colors group flex items-center justify-between gap-3"
                           >
                             <span className="text-sm font-semibold text-gray-800 group-hover:text-green-700 transition-colors">{child.label}</span>
                             {child.desc && <span className="text-xs text-gray-400 group-hover:text-green-500 transition-colors flex-shrink-0">{child.desc}</span>}
-                          </button>
+                          </a>
                         ))}
                       </div>
                     </div>
@@ -182,13 +184,14 @@ export default function Navbar() {
               >
                 واتساب
               </a>
-              <button
-                onClick={() => go("consultation")}
+              <a
+                href={PAGE_TO_URL["consultation"]}
+                onClick={(e) => { e.preventDefault(); go("consultation"); }}
                 className="flex items-center gap-1.5 bg-green-600 hover:bg-green-700 text-white text-sm font-bold px-5 py-2.5 rounded-full shadow-[0_4px_14px_-2px_rgba(22,163,74,.40)] hover:shadow-[0_6px_20px_-2px_rgba(22,163,74,.50)] hover:-translate-y-0.5 transition-all duration-200"
               >
                 <Sparkles size={13} />
                 استشارة مجانية
-              </button>
+              </a>
             </div>
 
             {/* Mobile toggle */}
@@ -215,10 +218,10 @@ export default function Navbar() {
           className={`absolute top-0 right-0 h-full w-80 max-w-[calc(100vw-3rem)] bg-white shadow-2xl transition-transform duration-300 flex flex-col ${mobileOpen ? "translate-x-0" : "translate-x-full"}`}
         >
           <div className="flex items-center justify-between px-5 h-16 border-b border-gray-100 flex-shrink-0">
-            <button onClick={() => { go("home"); setMobileOpen(false); }} className="flex items-center gap-3">
+            <a href="/" onClick={(e) => { e.preventDefault(); go("home"); setMobileOpen(false); }} className="flex items-center gap-3">
               <img src="/logo-hq.jpg" alt="Logo" className="w-9 h-9 rounded-full object-cover ring-2 ring-green-500/30" />
               <span className="font-extrabold text-gray-900 text-[15px]">Algeria2Malaysia</span>
-            </button>
+            </a>
             <button onClick={() => setMobileOpen(false)} className="w-9 h-9 rounded-xl bg-gray-100 flex items-center justify-center text-gray-500 hover:bg-gray-200 transition-colors">
               <X size={17} />
             </button>
@@ -231,36 +234,39 @@ export default function Navbar() {
                   <>
                     <div className="px-4 pt-4 pb-1 text-[11px] font-bold text-gray-400 uppercase tracking-widest">{item.label}</div>
                     {item.children.map((child) => (
-                      <button
+                      <a
                         key={child.label}
-                        onClick={() => handleNav(child)}
+                        href={child.page ? PAGE_TO_URL[child.page] : child.href ?? "/"}
+                        onClick={(e) => { e.preventDefault(); handleNav(child); }}
                         className="w-full text-right px-4 py-2.5 rounded-xl text-sm font-semibold text-gray-700 hover:bg-green-50 hover:text-green-700 transition-colors flex items-center justify-between"
                       >
                         <span>{child.label}</span>
                         {child.desc && <span className="text-xs text-gray-400">{child.desc}</span>}
-                      </button>
+                      </a>
                     ))}
                   </>
                 ) : (
-                  <button
-                    onClick={() => handleNav(item)}
+                  <a
+                    href={item.page ? PAGE_TO_URL[item.page] : item.href ?? "/"}
+                    onClick={(e) => { e.preventDefault(); handleNav(item); }}
                     className="w-full text-right px-4 py-3 rounded-xl text-sm font-semibold text-gray-700 hover:bg-green-50 hover:text-green-700 transition-colors flex items-center gap-2"
                   >
                     <span className="text-gray-400">{item.icon}</span>
                     {item.label}
-                  </button>
+                  </a>
                 )}
               </div>
             ))}
           </div>
 
           <div className="p-4 border-t border-gray-100 space-y-2.5 flex-shrink-0">
-            <button
-              onClick={() => { go("consultation"); setMobileOpen(false); }}
-              className="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-3 rounded-full text-sm transition-all shadow-[0_4px_14px_-2px_rgba(22,163,74,.35)]"
+            <a
+              href={PAGE_TO_URL["consultation"]}
+              onClick={(e) => { e.preventDefault(); go("consultation"); setMobileOpen(false); }}
+              className="w-full block text-center bg-green-600 hover:bg-green-700 text-white font-bold py-3 rounded-full text-sm transition-all shadow-[0_4px_14px_-2px_rgba(22,163,74,.35)]"
             >
               استشارة مجانية
-            </button>
+            </a>
             <a
               href={WA}
               target="_blank"

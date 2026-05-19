@@ -1,8 +1,15 @@
 import { CheckCircle, Clock, MessageCircle } from "lucide-react";
 import { useNavigate } from "../hooks/useNavigate";
+import { useSEO } from "../hooks/useSEO";
 
 export default function ThankYouPage() {
   const { go } = useNavigate();
+  useSEO({
+    title: "شكراً لك — Algeria2Malaysia",
+    description: "تم استلام طلبك بنجاح. سيتواصل معك فريق Algeria2Malaysia قريباً.",
+    canonicalPath: "/thank-you",
+    noindex: true,
+  });
 
   return (
     <div className="min-h-screen bg-[#f8fafc] flex items-center justify-center py-20 px-4" dir="rtl">

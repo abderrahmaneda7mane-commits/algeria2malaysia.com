@@ -578,9 +578,9 @@ export default function BlogPage() {
         {/* Breadcrumb */}
         <div className="bg-white border-b border-gray-100 px-4 py-3 shadow-sm">
           <nav className="max-w-3xl mx-auto flex items-center gap-1 text-sm text-gray-500">
-            <button onClick={() => go("home")} className="hover:text-green-600 transition-colors">الرئيسية</button>
+            <a href="/" onClick={(e) => { e.preventDefault(); go("home"); }} className="hover:text-green-600 transition-colors">الرئيسية</a>
             <ChevronLeft size={14} className="rotate-180" />
-            <button onClick={closeArticle} className="hover:text-green-600 transition-colors">المقالات</button>
+            <a href="/blog" onClick={(e) => { e.preventDefault(); closeArticle(); }} className="hover:text-green-600 transition-colors">المقالات</a>
             <ChevronLeft size={14} className="rotate-180" />
             <span className="text-gray-900 font-semibold truncate max-w-48">{openArticle.title.slice(0, 40)}…</span>
           </nav>
@@ -614,7 +614,7 @@ export default function BlogPage() {
       {/* Breadcrumb */}
       <div className="max-w-5xl mx-auto px-4 pt-5 pb-2">
         <nav className="flex items-center gap-1 text-sm text-gray-500">
-          <button onClick={() => go("home")} className="hover:text-green-600 transition-colors">الرئيسية</button>
+          <a href="/" onClick={(e) => { e.preventDefault(); go("home"); }} className="hover:text-green-600 transition-colors">الرئيسية</a>
           <ChevronLeft size={14} className="rotate-180" />
           <span className="text-gray-900 font-semibold">المقالات</span>
         </nav>
@@ -623,9 +623,10 @@ export default function BlogPage() {
       <main className="max-w-5xl mx-auto px-4 pb-16">
 
         {/* Featured article */}
-        <div
-          className="relative overflow-hidden rounded-2xl border border-gray-100 mb-8 shadow-[0_4px_20px_-4px_rgba(0,0,0,.1)] hover:shadow-[0_8px_30px_-6px_rgba(0,0,0,.15)] hover:-translate-y-0.5 transition-all duration-200 cursor-pointer group"
-          onClick={() => openArticleWithUrl(ARTICLES[0])}
+        <a
+          href={`/blog/${ARTICLES[0].slug}`}
+          onClick={(e) => { e.preventDefault(); openArticleWithUrl(ARTICLES[0]); }}
+          className="relative overflow-hidden rounded-2xl border border-gray-100 mb-8 shadow-[0_4px_20px_-4px_rgba(0,0,0,.1)] hover:shadow-[0_8px_30px_-6px_rgba(0,0,0,.15)] hover:-translate-y-0.5 transition-all duration-200 cursor-pointer group block"
         >
           <div className="bg-gradient-to-br from-[#0a2e14] via-[#0f4d22] to-[#166534] p-6 md:p-8 text-white">
             <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: "radial-gradient(circle, rgba(255,255,255,.8) 1px, transparent 1px)", backgroundSize: "20px 20px" }} />
@@ -648,15 +649,16 @@ export default function BlogPage() {
               اقرأ المقال كاملاً ←
             </span>
           </div>
-        </div>
+        </a>
 
         {/* Article grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
           {ARTICLES.slice(1).map((article) => (
-            <article
+            <a
               key={article.slug}
-              className="bg-white rounded-2xl border border-gray-100 p-5 hover:border-green-200 hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 cursor-pointer group shadow-sm"
-              onClick={() => openArticleWithUrl(article)}
+              href={`/blog/${article.slug}`}
+              onClick={(e) => { e.preventDefault(); openArticleWithUrl(article); }}
+              className="bg-white rounded-2xl border border-gray-100 p-5 hover:border-green-200 hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 cursor-pointer group shadow-sm block"
             >
               <div className="flex items-start justify-between mb-3">
                 <span className={`${article.tagColor} text-xs font-bold px-2.5 py-1 rounded-full`}>
@@ -681,7 +683,7 @@ export default function BlogPage() {
                   اقرأ أكثر ←
                 </span>
               </div>
-            </article>
+            </a>
           ))}
         </div>
 

@@ -25,7 +25,7 @@ export const translations = {
       en: "We help Algerian students study at top Malaysian institutes and universities. Free consultation — we guide you every step of the way.",
       fr: "Nous aidons les étudiants algériens à étudier dans les meilleures universités et instituts de Malaisie. Consultation gratuite — nous vous accompagnons jusqu'en Malaisie.",
     },
-    cta1:   { ar: "ابدأ رحلتك الآن ←", en: "Start Your Journey →", fr: "Commencez maintenant →" },
+    cta1:   { ar: "ابدأ رحلتك الآن", en: "Start Your Journey", fr: "Commencez maintenant" },
     cta2:   { ar: "اعرف أكثر",          en: "Learn More",           fr: "En savoir plus" },
   },
 

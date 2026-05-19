@@ -9,6 +9,7 @@ interface SEOProps {
   canonicalPath: string;
   ogImage?: string;
   keywords?: string;
+  noindex?: boolean;
 }
 
 function setMeta(nameAttr: string, nameVal: string, content: string) {
@@ -31,12 +32,13 @@ function setLink(rel: string, href: string) {
   el.href = href;
 }
 
-export function useSEO({ title, description, canonicalPath, ogImage, keywords }: SEOProps) {
+export function useSEO({ title, description, canonicalPath, ogImage, keywords, noindex }: SEOProps) {
   useEffect(() => {
     document.title = title;
 
     setMeta("name", "description", description);
     if (keywords) setMeta("name", "keywords", keywords);
+    setMeta("name", "robots", noindex ? "noindex, nofollow" : "index, follow");
 
     const canonical = `${BASE_DOMAIN}${canonicalPath}`;
     setLink("canonical", canonical);
@@ -53,5 +55,5 @@ export function useSEO({ title, description, canonicalPath, ogImage, keywords }:
     setMeta("name", "twitter:title", title);
     setMeta("name", "twitter:description", description);
     setMeta("name", "twitter:image", ogImage ?? DEFAULT_IMAGE);
-  }, [title, description, canonicalPath, ogImage, keywords]);
+  }, [title, description, canonicalPath, ogImage, keywords, noindex]);
 }

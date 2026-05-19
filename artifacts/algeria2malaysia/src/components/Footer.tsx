@@ -1,4 +1,4 @@
-import { useNavigate, Page } from "../hooks/useNavigate";
+import { useNavigate, Page, PAGE_TO_URL } from "../hooks/useNavigate";
 import { ArrowLeft, MessageCircle, Calendar } from "lucide-react";
 
 const WA_LINK = "https://wa.me/601112200603";
@@ -39,9 +39,16 @@ const SERVICES: FooterLink[] = [
 export default function Footer() {
   const { go } = useNavigate();
 
-  function handleLink(link: FooterLink) {
+  function handleLink(e: React.MouseEvent, link: FooterLink) {
+    e.preventDefault();
     if (link.href) window.open(link.href, "_blank", "noopener noreferrer");
     else if (link.page) go(link.page);
+  }
+
+  function getHref(link: FooterLink): string {
+    if (link.href) return link.href;
+    if (link.page) return PAGE_TO_URL[link.page] ?? "/";
+    return "/";
   }
 
   return (
@@ -71,13 +78,14 @@ export default function Footer() {
                 <MessageCircle size={15} />
                 واتساب
               </a>
-              <button
-                onClick={() => go("consultation")}
+              <a
+                href={PAGE_TO_URL["consultation"]}
+                onClick={(e) => { e.preventDefault(); go("consultation"); }}
                 className="flex items-center gap-2 bg-white/10 hover:bg-white/18 text-white text-sm font-bold px-5 py-2.5 rounded-xl transition-all duration-200 border border-white/15 hover:border-white/25 hover:-translate-y-0.5"
               >
                 <Calendar size={15} />
                 احجز موعد
-              </button>
+              </a>
             </div>
           </div>
         </div>
@@ -88,7 +96,7 @@ export default function Footer() {
 
             {/* Brand */}
             <div className="col-span-2 md:col-span-1">
-              <button onClick={() => go("home")} className="flex items-center gap-3 mb-5 group">
+              <a href="/" onClick={(e) => { e.preventDefault(); go("home"); }} className="flex items-center gap-3 mb-5 group">
                 <div className="relative">
                   <div className="absolute inset-0 rounded-full bg-green-400/20 scale-125 opacity-0 group-hover:opacity-100 blur-sm transition-opacity duration-300" />
                   <img
@@ -101,7 +109,7 @@ export default function Footer() {
                   <div className="font-extrabold text-white text-[15px] leading-tight">Algeria2Malaysia</div>
                   <div className="text-green-400/80 text-[11px] tracking-widest uppercase">الجزائر · ماليزيا</div>
                 </div>
-              </button>
+              </a>
               <p className="text-gray-400/90 text-sm leading-relaxed mb-6">
                 نساعد الطلاب الجزائريين على الدراسة في أفضل الجامعات والمعاهد الماليزية — من القبول حتى الوصول.
               </p>
@@ -127,23 +135,25 @@ export default function Footer() {
               <ul className="space-y-2">
                 {UNIVERSITIES.slice(0, 7).map((l) => (
                   <li key={l.label}>
-                    <button
-                      onClick={() => handleLink(l)}
+                    <a
+                      href={getHref(l)}
+                      onClick={(e) => handleLink(e, l)}
                       className="text-gray-400/90 hover:text-green-400 text-sm transition-colors duration-150 text-right w-full flex items-center gap-1.5 group"
                     >
                       <ArrowLeft size={10} className="opacity-0 group-hover:opacity-100 transition-all -translate-x-1 group-hover:translate-x-0 text-green-500 flex-shrink-0" />
                       {l.label}
-                    </button>
+                    </a>
                   </li>
                 ))}
                 <li>
-                  <button
-                    onClick={() => go("universities")}
+                  <a
+                    href={PAGE_TO_URL["universities"]}
+                    onClick={(e) => { e.preventDefault(); go("universities"); }}
                     className="text-green-500 hover:text-green-400 text-sm font-semibold transition-colors flex items-center gap-1.5 group mt-1"
                   >
                     <span>عرض كل الجامعات</span>
                     <ArrowLeft size={12} className="group-hover:-translate-x-0.5 transition-transform" />
-                  </button>
+                  </a>
                 </li>
               </ul>
             </div>
@@ -157,23 +167,25 @@ export default function Footer() {
               <ul className="space-y-2 mb-5">
                 {INSTITUTES.map((l) => (
                   <li key={l.label}>
-                    <button
-                      onClick={() => handleLink(l)}
+                    <a
+                      href={getHref(l)}
+                      onClick={(e) => handleLink(e, l)}
                       className="text-gray-400/90 hover:text-green-400 text-sm transition-colors duration-150 text-right w-full flex items-center gap-1.5 group"
                     >
                       <ArrowLeft size={10} className="opacity-0 group-hover:opacity-100 transition-all -translate-x-1 group-hover:translate-x-0 text-green-500 flex-shrink-0" />
                       {l.label}
-                    </button>
+                    </a>
                   </li>
                 ))}
                 <li>
-                  <button
-                    onClick={() => go("institutes")}
+                  <a
+                    href={PAGE_TO_URL["institutes"]}
+                    onClick={(e) => { e.preventDefault(); go("institutes"); }}
                     className="text-green-500 hover:text-green-400 text-sm font-semibold transition-colors flex items-center gap-1.5 group mt-1"
                   >
                     <span>عرض كل المعاهد</span>
                     <ArrowLeft size={12} className="group-hover:-translate-x-0.5 transition-transform" />
-                  </button>
+                  </a>
                 </li>
               </ul>
             </div>
@@ -187,13 +199,14 @@ export default function Footer() {
               <ul className="space-y-2 mb-6">
                 {SERVICES.map((l) => (
                   <li key={l.label}>
-                    <button
-                      onClick={() => handleLink(l)}
+                    <a
+                      href={getHref(l)}
+                      onClick={(e) => handleLink(e, l)}
                       className="text-gray-400/90 hover:text-green-400 text-sm transition-colors duration-150 text-right w-full flex items-center gap-1.5 group"
                     >
                       <ArrowLeft size={10} className="opacity-0 group-hover:opacity-100 transition-all -translate-x-1 group-hover:translate-x-0 text-green-500 flex-shrink-0" />
                       {l.label}
-                    </button>
+                    </a>
                   </li>
                 ))}
               </ul>
@@ -210,13 +223,14 @@ export default function Footer() {
                   { label: "المقالات",          page: "blog" as Page },
                 ] as FooterLink[]).map((l) => (
                   <li key={l.label}>
-                    <button
-                      onClick={() => handleLink(l)}
+                    <a
+                      href={getHref(l)}
+                      onClick={(e) => handleLink(e, l)}
                       className="text-gray-400/90 hover:text-green-400 text-sm transition-colors duration-150 text-right w-full flex items-center gap-1.5 group"
                     >
                       <ArrowLeft size={10} className="opacity-0 group-hover:opacity-100 transition-all -translate-x-1 group-hover:translate-x-0 text-green-500 flex-shrink-0" />
                       {l.label}
-                    </button>
+                    </a>
                   </li>
                 ))}
               </ul>
@@ -236,13 +250,14 @@ export default function Footer() {
                 { label: "سامر كامب ماليزيا",           page: "bright-institute" as Page },
                 { label: "قارن الجامعات الماليزية",     page: "compare" as Page },
               ].map((l) => (
-                <button
+                <a
                   key={l.label}
-                  onClick={() => go(l.page)}
+                  href={PAGE_TO_URL[l.page]}
+                  onClick={(e) => { e.preventDefault(); go(l.page); }}
                   className="text-gray-500/70 hover:text-green-400 text-xs transition-colors duration-150 hover:underline decoration-green-500/50 underline-offset-2"
                 >
                   {l.label}
-                </button>
+                </a>
               ))}
             </div>
           </div>

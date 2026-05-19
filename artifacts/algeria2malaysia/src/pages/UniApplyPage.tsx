@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { ArrowLeft, CheckCircle, User, Phone, Mail, GraduationCap, FileText, Globe, Upload, BookOpen } from "lucide-react";
 import { useNavigate, getNavState } from "../hooks/useNavigate";
+import { useSEO } from "../hooks/useSEO";
 
 const WA_NUMBER = "601112200603";
 const GOOGLE_FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSd0wQH2-RL3zDf2BB1UsskwBfIIXsJ8KLxw1lMVD6TEQnWpgA/viewform";
@@ -104,6 +105,12 @@ const DOC_FIELDS: DocField[] = [
 
 export default function UniApplyPage() {
   const { go } = useNavigate();
+  useSEO({
+    title: "تقديم طلب جامعة — Algeria2Malaysia",
+    description: "تقديم طلب التسجيل في الجامعات الماليزية عبر Algeria2Malaysia.",
+    canonicalPath: "/apply-university",
+    noindex: true,
+  });
   const [form, setForm] = useState<FormData>(empty);
   const [errors, setErrors] = useState<Partial<FormData & { howHeard: string }>>({});
   const [submitted, setSubmitted] = useState(false);

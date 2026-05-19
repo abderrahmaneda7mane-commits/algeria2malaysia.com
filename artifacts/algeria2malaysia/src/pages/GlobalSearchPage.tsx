@@ -67,7 +67,7 @@ export default function GlobalSearchPage() {
   useSEO({
     title: "تصفح تخصصات ماليزيا 2026 | ابحث مجاناً",
     description: "200+ تخصص في 12 جامعة ماليزية معتمدة — اعثر على تخصصك وشاهد الأسعار والمتطلبات فوراً. دليل شامل للطلاب الجزائريين 2026.",
-    canonicalPath: "/global-search",
+    canonicalPath: "/search",
   });
   const { go } = useNavigate();
   const inputRef = useRef<HTMLInputElement>(null);
