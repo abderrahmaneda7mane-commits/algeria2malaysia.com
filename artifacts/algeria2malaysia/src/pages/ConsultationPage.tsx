@@ -195,6 +195,7 @@ export default function ConsultationPage() {
       setNavForceScrolled(true);
       return () => setNavForceScrolled(false);
     }
+    return undefined;
   }, [submitted]);
 
   const set = (field: keyof FormData) => (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) =>
@@ -353,8 +354,8 @@ export default function ConsultationPage() {
                   <div key={i} className="flex items-center gap-2">
                     <div className={`flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-semibold transition-all ${
                       i === step ? "bg-green-600 text-white shadow-md" :
-                      i < step  ? "bg-green-100 text-green-700" :
-                                  "bg-gray-100 text-gray-400"
+                      i < step  ? "bg-green-100 text-green-800" :
+                                  "bg-gray-200 text-gray-600"
                     }`}>
                       {i < step ? <CheckCircle size={13} /> : <Icon size={13} />}
                       <span className="hidden sm:inline">{s.label}</span>

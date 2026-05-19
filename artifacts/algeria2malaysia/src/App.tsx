@@ -27,6 +27,7 @@ import BigBenPage from "./pages/BigBenPage";
 import EricanPage from "./pages/EricanPage";
 import SheffieldPage from "./pages/SheffieldPage";
 import BrightPage from "./pages/BrightPage";
+import CambrightPage from "./pages/CambrightPage";
 import InstituteListPage from "./pages/InstituteListPage";
 import BlogPage from "./pages/BlogPage";
 import { getNavState, subscribeNav, handlePopState } from "./hooks/useNavigate";
@@ -71,7 +72,7 @@ const PAGES_WITH_NAVBAR = new Set([
   "utp", "utm", "utem", "ucsi", "cityu-courses", "sunway",
   "search", "compare", "consultation",
   "stratford-institute", "bigben-institute", "erican-institute",
-  "sheffield-institute", "bright-institute",
+  "sheffield-institute", "bright-institute", "cambright-institute",
 ]);
 
 const PAGES_WITH_FOOTER = new Set([
@@ -80,7 +81,7 @@ const PAGES_WITH_FOOTER = new Set([
   "utp", "utm", "utem", "ucsi", "cityu-courses", "sunway",
   "search", "compare",
   "stratford-institute", "bigben-institute", "erican-institute",
-  "sheffield-institute", "bright-institute",
+  "sheffield-institute", "bright-institute", "cambright-institute",
 ]);
 
 function App() {
@@ -145,6 +146,7 @@ function App() {
           {page === "erican-institute"    && <EricanPage />}
           {page === "sheffield-institute" && <SheffieldPage />}
           {page === "bright-institute"    && <BrightPage />}
+          {page === "cambright-institute" && <CambrightPage />}
         </main>
         {showFooter && <Footer />}
         {showFormPopup && <FormReturnPopup onClose={() => setShowFormPopup(false)} />}

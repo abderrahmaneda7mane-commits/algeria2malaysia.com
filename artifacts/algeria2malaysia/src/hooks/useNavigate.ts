@@ -4,7 +4,7 @@ export type Page =
   | "utp" | "utm" | "utem" | "ucsi" | "cityu-courses" | "sunway"
   | "search" | "compare" | "consultation"
   | "stratford-institute" | "bigben-institute" | "erican-institute"
-  | "sheffield-institute" | "bright-institute"
+  | "sheffield-institute" | "bright-institute" | "cambright-institute"
   | "institutes" | "blog";
 
 export interface PageState {
@@ -41,6 +41,7 @@ export const PAGE_TO_URL: Record<Page, string> = {
   "erican-institute":    "/english-course-erican-kl",
   "sheffield-institute": "/english-course-sheffield-kl",
   "bright-institute":    "/english-course-bright-kl",
+  "cambright-institute": "/english-course-cambright-klcc",
   apply:                 "/apply",
   "thank-you":           "/thank-you",
   consultation:          "/consultation",

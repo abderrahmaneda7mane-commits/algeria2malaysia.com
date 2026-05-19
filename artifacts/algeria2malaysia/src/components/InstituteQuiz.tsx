@@ -15,7 +15,7 @@ interface Answers {
   budget?: Budget;
 }
 
-type InstId = "stratford" | "bigben" | "erican" | "sheffield" | "bright";
+type InstId = "stratford" | "bigben" | "erican" | "sheffield" | "bright" | "cambright";
 
 interface InstMeta {
   nameAr: string;
@@ -81,6 +81,16 @@ const INST_META: Record<InstId, InstMeta> = {
     page: "bright-institute",
     from: "1,365 RM / أسبوع",
   },
+  cambright: {
+    nameAr: "معهد Cambright الدولي",
+    name: "Cambright International Language Centre",
+    logo: "/cambright-logo.png",
+    borderColor: "border-blue-300",
+    headerBg: "bg-[#1a2a6c]/5",
+    btnColor: "bg-[#1a2a6c] hover:bg-[#0f1d52]",
+    page: "cambright-institute",
+    from: "2,650 RM / شهر",
+  },
 };
 
 // ─── Score Entry ───────────────────────────────────────────
@@ -103,16 +113,16 @@ function buildRecommendations(a: Answers): ScoreEntry[] {
         highlights: ["Pearson معتمد", "IEP مكثف", "نتائج مضمونة"],
       },
       {
-        id: "sheffield", score: 88,
+        id: "cambright", score: 90,
+        program: "IELTS Preparation — بيئة دولية",
+        reason: "Cambright يجمع تحضير IELTS مع بيئة دولية حقيقية — تتدرب على المحادثة يومياً مع جنسيات مختلفة مما يطور الجزء الشفهي بشكل طبيعي وسريع",
+        highlights: ["بيئة دولية 🌍", "تدريب محادثة يومي", "موقع KLCC"],
+      },
+      {
+        id: "sheffield", score: 82,
         program: "IELTS Preparation + اختبار مجاني",
         reason: "شيفيلد يمنحك اختبار IELTS مجاناً مع أي تسجيل — توفير فعلي يصل إلى 800 RM، مع دعم كامل للتأشيرة",
         highlights: ["IELTS مجاني ✓", "توفير 800 RM", "تأشيرة طالب"],
-      },
-      {
-        id: "erican", score: 78,
-        program: "IELTS Preparation (IDP & Cambridge)",
-        reason: "إيريكان معتمد من IDP وCambridge — بيئة أكاديمية صارمة لمن يريد أعلى درجة بأعلى مستوى تدريسي",
-        highlights: ["IDP & Cambridge", "7 مستويات", "بيئة أكاديمية"],
       },
     ];
   }
@@ -121,19 +131,19 @@ function buildRecommendations(a: Answers): ScoreEntry[] {
   if (a.goal === "kids") {
     return [
       {
-        id: "bright", score: 97,
+        id: "cambright", score: 99,
+        program: "سامر كامب Cambright (7–15 سنة) — بيئة دولية",
+        reason: "Cambright هو الأفضل للأطفال الذين يريدون بيئة دولية حقيقية — سامر كامب للأعمار 7-15 سنة مع طلاب من جنسيات مختلفة، برنامج يومي منظم، وجبات، وكتب Cambridge. هذا يجعل الطفل يتحدث الإنجليزية بشكل طبيعي بدون الاعتماد على العربية",
+        highlights: ["7–15 سنة ✓", "بيئة دولية 🌍", "كتب Cambridge", "برنامج يومي كامل"],
+      },
+      {
+        id: "bright", score: 91,
         program: "International Summer Program 2026 (13+ سنة)",
-        reason: "برايت متخصص في برامج الأطفال والمراهقين — سامر كامب دولي بكوالالمبور يشمل رحلات ونشاطات ترفيهية وتعليمية خلال الصيف",
+        reason: "برايت متخصص في برامج المراهقين 13+ — سامر كامب دولي بكوالالمبور يشمل رحلات ونشاطات ترفيهية وتعليمية خلال الصيف",
         highlights: ["من 13 سنة فأكثر", "رحلات + نشاطات", "باقات سكن متنوعة"],
       },
       {
-        id: "sheffield", score: 88,
-        program: "Kids English Course (7–17 سنة)",
-        reason: "شيفيلد لديها برنامج مخصص للأطفال والمراهقين بمناهج حديثة ومعلمين متخصصين في تعليم الأطفال",
-        highlights: ["مناهج خاصة بالأطفال", "7–17 سنة", "بيئة آمنة"],
-      },
-      {
-        id: "erican", score: 78,
+        id: "erican", score: 75,
         program: "Cambridge Young Learners Program",
         reason: "إيريكان معتمد من Cambridge للناشئين — منهج دولي يمنح الطفل شهادة Cambridge معترفاً بها",
         highlights: ["Cambridge معتمد", "شهادة دولية", "تعلم تفاعلي"],
@@ -202,35 +212,35 @@ function buildRecommendations(a: Answers): ScoreEntry[] {
       });
     } else if (a.budget === "mid") {
       results.push({
-        id: "bright", score: 95,
+        id: "cambright", score: 96,
+        program: "Academic Program 1–3 أشهر — بيئة دولية",
+        reason: "Cambright هو الأفضل لمن يريد تطوير المحادثة والإنجليزية بسرعة في بيئة دولية حقيقية — 4 ساعات يومياً في قلب KLCC مع طلاب من جنسيات مختلفة",
+        highlights: ["بيئة دولية 🌍", "KLCC", "تحسن سريع"],
+      });
+      results.push({
+        id: "bright", score: 88,
         program: "Summer Camp أسبوعي أو Intensive شهري",
         reason: "برايت يتيح لك الاختيار — سامر كامب أسبوعي مرن أو برنامج مكثف شهري بـ 3,000 RM مع خصم صيفي 25%",
         highlights: ["مرونة الاختيار", "خصم 25% صيف 2026", "7+1 مجاناً"],
       });
       results.push({
-        id: "stratford", score: 85,
+        id: "stratford", score: 78,
         program: "General English (1–3 أشهر)",
         reason: "بميزانيتك المتوسطة، ستراتفورد يوفر عليك الكثير لفترة قصيرة دون التنازل عن جودة التعليم",
         highlights: ["من 950 RM/شهر", "تسجيل مرن", "قريب من المركز"],
       });
-      results.push({
-        id: "sheffield", score: 72,
-        program: "General English + Free IELTS",
-        reason: "شيفيلد مع عروضه الحصرية هو الأفضل قيمة — IELTS مجاني بونص حقيقي",
-        highlights: ["IELTS مجاني", "عروض حصرية"],
-      });
     } else {
       results.push({
-        id: "bright", score: 91,
+        id: "cambright", score: 94,
+        program: "Intensive Program 1–3 أشهر — 6h/يوم",
+        reason: "بميزانيتك المرتفعة، البرنامج المكثف من Cambright (4h أكاديمي + 2h محادثة) في بيئة دولية هو الأسرع لتطوير الإنجليزية بشكل متكامل",
+        highlights: ["6h/يوم", "بيئة دولية", "أكاديمي + محادثة"],
+      });
+      results.push({
+        id: "bright", score: 84,
         program: "International Summer Program 2026 — Executive Plus",
         reason: "بميزانيتك المرتفعة، باقة Executive Plus من برايت توفر سكن ستوديو + رحلات + استقبال مطار + سامر كامب متكامل",
         highlights: ["شقة ستوديو", "رحلات شاملة", "استقبال مطار"],
-      });
-      results.push({
-        id: "sheffield", score: 84,
-        program: "General English Premium + Free IELTS",
-        reason: "بميزانيتك المرتفعة، شيفيلد يمنحك أفضل الباقات: IELTS مجاني + عروض VIP + دعم تأشيرة",
-        highlights: ["IELTS مجاني", "باقات VIP", "دعم تأشيرة"],
       });
       results.push({
         id: "bigben", score: 76,
@@ -250,17 +260,17 @@ function buildRecommendations(a: Answers): ScoreEntry[] {
         highlights: ["عرض 6 أشهر حصري", "IELTS مجاني ✓", "تأشيرة طالب ✓"],
       });
       results.push({
-        id: "bigben", score: 69,
-        program: "IEP 4–6 Months",
-        reason: "بيغ بان IEP لمدة 4-6 أشهر — Pearson معتمد بتكلفة معقولة مع دعم تأشيرة الطالب",
-        highlights: ["Pearson معتمد", "تأشيرة طالب ✓"],
+        id: "cambright", score: 78,
+        program: "Academic Program 4–6 أشهر",
+        reason: "Cambright لـ 4-6 أشهر يمنحك بيئة دولية حقيقية مع منهج Cambridge — خيار ممتاز لتطوير الإنجليزية الطبيعية",
+        highlights: ["بيئة دولية", "Cambridge", "KLCC"],
       });
     } else if (a.budget === "mid") {
       results.push({
-        id: "sheffield", score: 96,
-        program: "Medium-Term Package + Free IELTS",
-        reason: "الأفضل قيمة لـ 4-6 أشهر بكوالالمبور — عروض شيفيلد الحصرية + IELTS مجاني + دعم تأشيرة كاملة",
-        highlights: ["IELTS مجاني", "أفضل سعر", "تأشيرة طالب ✓"],
+        id: "cambright", score: 97,
+        program: "Intensive Program 4–6 أشهر — بيئة دولية",
+        reason: "Cambright المكثف لـ 4-6 أشهر هو الأفضل لمن يريد بيئة إنجليزية حقيقية — 6 ساعات يومياً مع جنسيات مختلفة يجعلك تتكلم الإنجليزية بثقة خلال أسابيع",
+        highlights: ["بيئة دولية 🌍", "6h/يوم", "تطور سريع مضمون"],
       });
       results.push({
         id: "bigben", score: 84,
@@ -269,29 +279,29 @@ function buildRecommendations(a: Answers): ScoreEntry[] {
         highlights: ["Pearson معتمد", "IEP مكثف", "تقدم مضمون"],
       });
       results.push({
-        id: "erican", score: 74,
-        program: "General English (Cambridge Certified)",
-        reason: "إيريكان Cambridge لمن يريد شهادة دولية معترف بها بجانب الدراسة",
-        highlights: ["Cambridge معتمد", "شهادة دولية"],
+        id: "sheffield", score: 74,
+        program: "Medium-Term Package + Free IELTS",
+        reason: "شيفيلد مع عروضه الحصرية + IELTS مجاني + دعم تأشيرة كاملة",
+        highlights: ["IELTS مجاني", "أفضل سعر", "تأشيرة طالب ✓"],
       });
     } else {
       results.push({
-        id: "bigben", score: 93,
+        id: "cambright", score: 96,
+        program: "Intensive Program 4–6 أشهر — Premium",
+        reason: "بميزانيتك المرتفعة، البرنامج المكثف من Cambright في بيئة دولية KLCC هو الأفضل — 6 ساعات يومياً مع مناهج Cambridge وطلاب من جنسيات مختلفة",
+        highlights: ["6h/يوم", "بيئة دولية 🌍", "Cambridge", "KLCC Premium"],
+      });
+      results.push({
+        id: "bigben", score: 88,
         program: "IEP Premium (Pearson) 4–6 Months",
-        reason: "بميزانيتك المرتفعة، بيغ بان IEP Premium هو الأفضل — أفضل مدرسين Pearson مع برنامج مكثف منظم",
+        reason: "بيغ بان IEP Premium — أفضل مدرسين Pearson مع برنامج مكثف منظم",
         highlights: ["Pearson معتمد", "IEP Premium", "تأشيرة طالب ✓"],
       });
       results.push({
-        id: "erican", score: 85,
+        id: "erican", score: 79,
         program: "Comprehensive English (Cambridge) 6 Months",
         reason: "إيريكان Cambridge المتكامل — 6 برامج متخصصة مع شهادة دولية معترف بها لدى أصحاب العمل",
         highlights: ["Cambridge & IDP", "6 برامج", "شهادة دولية"],
-      });
-      results.push({
-        id: "sheffield", score: 77,
-        program: "Premium Package + Free IELTS",
-        reason: "شيفيلد مع الميزانية المرتفعة يتيح لك أفضل الباقات + IELTS مجاني كـ bonus",
-        highlights: ["IELTS مجاني", "باقات VIP"],
       });
     }
   }

@@ -107,6 +107,26 @@ const INSTITUTES = [
     rating: 4.5,
     highlight: "للأطفال 13+",
   },
+  {
+    id: "cambright-institute" as const,
+    name: "Cambright International Language Centre",
+    nameAr: "معهد Cambright الدولي",
+    logo: "/cambright-logo.png",
+    color: "#1a2a6c",
+    bg: "from-blue-50 to-indigo-50",
+    border: "border-blue-300",
+    badge: "بيئة دولية 🌍",
+    badgeBg: "bg-[#1a2a6c]",
+    tagBg: "bg-blue-100 text-blue-900",
+    desc: "معهد دولي في KLCC — طلاب من جنسيات مختلفة، تركيز على المحادثة، ومناهج Cambridge. الخيار الأمثل لمن يريد إنجليزية حقيقية بعيداً عن الجو العربي.",
+    programs: ["Academic 4h/يوم", "Intensive 6h/يوم", "IELTS Preparation", "سامر كامب 7-15 سنة", "حصص خاصة"],
+    duration: "شهر — 12 شهراً",
+    from: "2,650 RM",
+    perUnit: "شهر",
+    location: "Wisma MCA — KLCC",
+    rating: 4.8,
+    highlight: "أقل عرب — أكثر تنوع",
+  },
 ];
 
 const WHY = [
@@ -120,7 +140,7 @@ export default function InstituteListPage() {
 
   useSEO({
     title: "معاهد اللغة الإنجليزية في ماليزيا 2025 — Algeria2Malaysia",
-    description: "دليل أفضل 5 معاهد لغة إنجليزية معتمدة في كوالالمبور ماليزيا: ستراتفورد، بيغ بان، إيريكان، شيفيلد، برايت. IELTS، إنجليزي عام، سامر كامب للجزائريين.",
+    description: "دليل أفضل 6 معاهد لغة إنجليزية معتمدة في كوالالمبور ماليزيا: ستراتفورد، بيغ بان، إيريكان، شيفيلد، برايت، وCambright الدولي. IELTS، إنجليزي عام، سامر كامب للجزائريين.",
     canonicalPath: "/institutes",
     keywords: "معهد لغة انجليزية ماليزيا، IELTS ماليزيا، كورس انجليزي كوالالمبور، معاهد معتمدة جزائر ماليزيا",
   });
@@ -142,7 +162,7 @@ export default function InstituteListPage() {
           </button>
           <div className="inline-flex items-center gap-2 bg-white/12 border border-white/20 rounded-full px-4 py-1.5 text-sm font-semibold text-green-200 mb-5">
             <BookOpen size={14} />
-            5 معاهد معتمدة في كوالالمبور
+            6 معاهد معتمدة في كوالالمبور
           </div>
           <h1 className="text-4xl md:text-5xl font-black mb-4 leading-tight">
             معاهد اللغة الإنجليزية<br />
