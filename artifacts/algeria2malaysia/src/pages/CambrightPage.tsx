@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { ArrowLeft, MapPin, Clock, CheckCircle, Calendar, Globe, Users, BookOpen, Mic, Star } from "lucide-react";
 import { useNavigate } from "../hooks/useNavigate";
+import { GOOGLE_FORM_LINKS } from "../data/institutes";
 import { useSEO } from "../hooks/useSEO";
 
 const EUR = (rm: number) => Math.round(rm / 5).toLocaleString();
@@ -575,7 +576,7 @@ export default function CambrightPage() {
           <p className="text-white/75 text-sm mb-4">فريقنا يساعدك في التسجيل وإجراءات التأشيرة — مجاناً وبدون أي التزام.</p>
           <div className="flex flex-col sm:flex-row gap-3">
             <button
-              onClick={() => go("apply")}
+              onClick={() => window.open(GOOGLE_FORM_LINKS.institute, "_blank", "noopener noreferrer")}
               className="flex-1 bg-white text-[#1a2a6c] font-black rounded-xl py-3 text-center transition-all hover:bg-blue-50 shadow-lg"
             >
               📝 عبّئ الفورم — مجاناً
