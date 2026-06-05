@@ -2,6 +2,7 @@
 import emailjs from "@emailjs/browser";
 import { navigate, setNavForceScrolled } from "@/hooks/useNavigate";
 import { useSEO } from "@/hooks/useSEO";
+import { useReveal } from "@/hooks/useReveal";
 import { ArrowRight, ArrowLeft, Clock, CheckCircle, Calendar, Send, User, BookOpen, Star } from "lucide-react";
 
 const EMAILJS_PUBLIC_KEY  = import.meta.env.VITE_EMAILJS_PUBLIC_KEY  as string;
@@ -179,6 +180,7 @@ export default function ConsultationPage() {
     canonicalPath: "/consultation",
     keywords: "استشارة دراسة ماليزيا مجانية، قبول جامعة ماليزيا، Algeria2Malaysia",
   });
+  const reveal = useReveal();
   const [showBooking, setShowBooking] = useState(false);
   const [submitted, setSubmitted] = useState(() => localStorage.getItem(SUBMITTED_KEY) === "1");
   const [step, setStep] = useState(0);
@@ -343,7 +345,7 @@ export default function ConsultationPage() {
         </div>
 
         {/* Form */}
-        <div className="max-w-2xl mx-auto px-4 -mt-16 pb-12">
+        <div ref={reveal} className="section-reveal max-w-2xl mx-auto px-4 -mt-16 pb-12">
 
           {/* Step indicators */}
           <div className="bg-white rounded-2xl shadow-[0_4px_20px_-4px_rgba(0,0,0,.12)] border border-gray-100 p-4 mb-5">

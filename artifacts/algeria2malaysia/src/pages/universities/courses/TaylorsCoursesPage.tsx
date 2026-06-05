@@ -1,6 +1,7 @@
 ﻿import { useEffect } from "react";
 import { ArrowLeft, Search, BookOpen, Clock, Calendar, DollarSign, AlertCircle, GraduationCap, ChevronRight, ChevronLeft, Filter } from "lucide-react";
 import { useSEO } from "@/hooks/useSEO";
+import { useReveal } from "@/hooks/useReveal";
 import { useNavigate } from "@/hooks/useNavigate";
 import { useCourses, PAGE_SIZE } from "@/hooks/useCourses";
 import PriceDisclaimer from "@/components/shared/PriceDisclaimer";
@@ -38,6 +39,7 @@ export default function TaylorsCoursesPage() {
     keywords: "تايلورز ماليزيا، Taylor's University، أفضل جامعة ماليزيا",
   });
   const { go } = useNavigate();
+  const reveal = useReveal();
   const {
     courses, total, loading, error,
     page, setPage, search, setSearch,
@@ -52,7 +54,7 @@ export default function TaylorsCoursesPage() {
     <div className="min-h-screen bg-[#f8fafc]" dir="rtl">
 
       {/* ── Hero ── */}
-      <div className="relative overflow-hidden bg-gradient-to-br from-purple-900 via-purple-800 to-purple-700 text-white pt-20 pb-20 px-4">
+      <div ref={reveal} className="section-reveal relative overflow-hidden bg-gradient-to-br from-purple-900 via-purple-800 to-purple-700 text-white pt-20 pb-20 px-4">
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-0 right-0 w-96 h-96 bg-purple-400/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/4" />
           <div className="absolute bottom-0 left-0 w-80 h-80 bg-purple-300/10 rounded-full blur-3xl translate-y-1/2 -translate-x-1/4" />

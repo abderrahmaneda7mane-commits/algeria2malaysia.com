@@ -1,6 +1,7 @@
 ﻿import { ArrowLeft, Star, Clock, MapPin, BookOpen, Users, DollarSign, GraduationCap, CheckCircle } from "lucide-react";
 import { useNavigate } from "@/hooks/useNavigate";
 import { useSEO } from "@/hooks/useSEO";
+import { useReveal } from "@/hooks/useReveal";
 
 const FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSf6Xx2DET7SCulFT3EuvLW_8wuEA9aE9EkOy06i9lGC09T81w/viewform?usp=header";
 const WA = "https://wa.me/601112200603";
@@ -137,6 +138,7 @@ const WHY = [
 
 export default function InstituteListPage() {
   const { go } = useNavigate();
+  const reveal = useReveal();
 
   useSEO({
     title: "معاهد اللغة الإنجليزية في ماليزيا 2025 — Algeria2Malaysia",

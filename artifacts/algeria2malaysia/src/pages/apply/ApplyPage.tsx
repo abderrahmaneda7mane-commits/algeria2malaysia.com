@@ -4,6 +4,7 @@ import { INSTITUTES, ACCOMMODATION_OPTIONS, suggestInstitutes, GOOGLE_FORM_LINKS
 import type { Goal, RoomType } from "@/data/institutes";
 import { useNavigate } from "@/hooks/useNavigate";
 import { useSEO } from "@/hooks/useSEO";
+import { useReveal } from "@/hooks/useReveal";
 import InstituteQuiz from "@/components/shared/InstituteQuiz";
 import { useLanguage } from "@/i18n/LanguageContext";
 import { translations as T } from "@/i18n/translations";
@@ -95,6 +96,7 @@ export default function ApplyPage({ initialType }: { initialType?: "institute" |
     keywords: "تسجيل جامعة ماليزيا، قبول ماليزيا، التقديم للدراسة في ماليزيا",
   });
   const { go } = useNavigate();
+  const reveal = useReveal();
   const { t, dir } = useLanguage();
   const [form, setForm] = useState<FormState>({ ...initialState, type: initialType || null });
   const [step, setStep] = useState<Step>(initialType === "university" ? "university-redirect" : "type");

@@ -5,6 +5,7 @@ import {
 } from "lucide-react";
 import { useNavigate } from "@/hooks/useNavigate";
 import { useSEO } from "@/hooks/useSEO";
+import { useReveal } from "@/hooks/useReveal";
 import PriceDisclaimer from "@/components/shared/PriceDisclaimer";
 
 function fmtEur(rm: number) { return Math.round(rm / 5).toLocaleString(); }
@@ -217,6 +218,7 @@ export default function CompareUniversitiesPage() {
     keywords: "مقارنة جامعات ماليزيا، أفضل جامعة ماليزيا، APU vs تايلورز، جامعات KL",
   });
   const { go } = useNavigate();
+  const reveal = useReveal();
   const [selected, setSelected] = useState<string[]>([]);
   const [comparing, setComparing] = useState(false);
 

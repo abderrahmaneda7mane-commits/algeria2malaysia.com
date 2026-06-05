@@ -2,6 +2,7 @@
 import { ArrowLeft, CheckCircle, User, Phone, Mail, GraduationCap, FileText, Globe, Upload, BookOpen } from "lucide-react";
 import { useNavigate, getNavState } from "@/hooks/useNavigate";
 import { useSEO } from "@/hooks/useSEO";
+import { useReveal } from "@/hooks/useReveal";
 
 const WA_NUMBER = "601112200603";
 const GOOGLE_FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSd0wQH2-RL3zDf2BB1UsskwBfIIXsJ8KLxw1lMVD6TEQnWpgA/viewform";
@@ -105,6 +106,7 @@ const DOC_FIELDS: DocField[] = [
 
 export default function UniApplyPage() {
   const { go } = useNavigate();
+  const reveal = useReveal();
   useSEO({
     title: "تقديم طلب جامعة — Algeria2Malaysia",
     description: "تقديم طلب التسجيل في الجامعات الماليزية عبر Algeria2Malaysia.",
@@ -213,7 +215,7 @@ export default function UniApplyPage() {
     const waMsg = encodeURIComponent("مرحباً، لقد قمت بإرسال نموذج طلب خطاب القبول. أرجو مساعدتي في استكمال الإجراءات.");
     return (
       <div className="min-h-screen bg-[#f8fafc] flex items-center justify-center px-4 py-20" dir="rtl">
-        <div className="max-w-md w-full text-center">
+        <div ref={reveal} className="section-reveal max-w-md w-full text-center">
           <div className="w-24 h-24 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg">
             <CheckCircle size={48} className="text-green-600" />
           </div>
@@ -298,7 +300,7 @@ export default function UniApplyPage() {
       </div>
 
       {/* Form */}
-      <div className="max-w-2xl mx-auto px-4 py-10">
+      <div ref={reveal} className="section-reveal max-w-2xl mx-auto px-4 py-10">
         <form onSubmit={handleSubmit} noValidate className="space-y-6">
 
           {/* Personal Information */}

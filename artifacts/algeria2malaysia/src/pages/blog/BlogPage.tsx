@@ -1,6 +1,7 @@
 ﻿import { ChevronLeft, Clock, Tag, ChevronDown } from "lucide-react";
 import { useNavigate } from "@/hooks/useNavigate";
 import { useSEO } from "@/hooks/useSEO";
+import { useReveal } from "@/hooks/useReveal";
 import { useState } from "react";
 
 interface FAQ {
@@ -397,6 +398,7 @@ function FAQAccordion({ faqs }: { faqs: FAQ[] }) {
 
 function ArticleView({ article, onBack }: { article: Article; onBack: () => void }) {
   const { go } = useNavigate();
+  const reveal = useReveal();
 
   useSEO({
     title: `${article.title} — Algeria2Malaysia`,
@@ -481,7 +483,7 @@ function ArticleView({ article, onBack }: { article: Article; onBack: () => void
   };
 
   return (
-    <div className="max-w-3xl mx-auto px-4 pb-16">
+    <div ref={reveal} className="section-reveal max-w-3xl mx-auto px-4 pb-16">
       <button
         onClick={onBack}
         className="flex items-center gap-2 text-green-600 hover:text-green-700 font-semibold text-sm py-4 transition-colors"
@@ -543,6 +545,7 @@ function ArrowLeftIcon() {
 
 export default function BlogPage() {
   const { go } = useNavigate();
+  const reveal = useReveal();
 
   const getArticleFromUrl = () => {
     const path = window.location.pathname;

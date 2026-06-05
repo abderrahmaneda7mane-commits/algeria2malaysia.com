@@ -2,6 +2,7 @@
 import { ArrowLeft, MapPin, Clock, CheckCircle, Calendar, ExternalLink, BookOpen } from "lucide-react";
 import { useNavigate } from "@/hooks/useNavigate";
 import { useSEO } from "@/hooks/useSEO";
+import { useReveal } from "@/hooks/useReveal";
 
 const EUR = (rm: number) => Math.round(rm / 5).toLocaleString();
 const RM  = (rm: number) => rm.toLocaleString();
@@ -85,12 +86,13 @@ export default function EricanPage() {
     keywords: "معهد إيريكان ماليزيا، Erican College، كورس اطفال كوالالمبور، انجليزي للاطفال ماليزيا",
   });
   const { go } = useNavigate();
+  const reveal = useReveal();
   const [activeTab, setActiveTab] = useState(0);
 
   useEffect(() => { window.scrollTo({ top: 0, behavior: "smooth" }); }, []);
 
   return (
-    <div className="min-h-screen bg-[#f8fafc]" dir="rtl">
+    <div ref={reveal} className="section-reveal min-h-screen bg-[#f8fafc]" dir="rtl">
 
       {/* ── Header ── */}
       <div className="relative overflow-hidden bg-gradient-to-br from-[#3d1a6e] via-[#5a2a9a] to-[#6d3ab0] text-white pt-20 pb-24 px-4">

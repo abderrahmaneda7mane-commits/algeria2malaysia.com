@@ -2,6 +2,7 @@
 import { ArrowLeft, MapPin, Clock, CheckCircle, Calendar, ExternalLink, Star, Gift, Sun, Users, FileText } from "lucide-react";
 import { useNavigate } from "@/hooks/useNavigate";
 import { useSEO } from "@/hooks/useSEO";
+import { useReveal } from "@/hooks/useReveal";
 
 const EUR = (rm: number) => Math.round(rm / 5).toLocaleString();
 const RM  = (rm: number) => rm.toLocaleString();
@@ -100,12 +101,13 @@ export default function BrightPage() {
     keywords: "سامر كامب ماليزيا، Bright Language Center، كورس صيفي كوالالمبور، برامج اطفال ماليزيا",
   });
   const { go } = useNavigate();
+  const reveal = useReveal();
   const [activeTab, setActiveTab] = useState(0);
 
   useEffect(() => { window.scrollTo({ top: 0, behavior: "smooth" }); }, []);
 
   return (
-    <div className="min-h-screen bg-[#f8fafc]" dir="rtl">
+    <div ref={reveal} className="section-reveal min-h-screen bg-[#f8fafc]" dir="rtl">
 
       {/* ── Header ── */}
       <div className="relative overflow-hidden bg-gradient-to-br from-[#b03a10] via-[#e85d26] to-[#f07a40] text-white pt-20 pb-24 px-4">

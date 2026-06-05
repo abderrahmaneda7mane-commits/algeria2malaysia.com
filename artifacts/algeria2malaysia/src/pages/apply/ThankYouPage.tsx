@@ -1,9 +1,11 @@
 ﻿import { CheckCircle, Clock, MessageCircle } from "lucide-react";
 import { useNavigate } from "@/hooks/useNavigate";
 import { useSEO } from "@/hooks/useSEO";
+import { useReveal } from "@/hooks/useReveal";
 
 export default function ThankYouPage() {
   const { go } = useNavigate();
+  const reveal = useReveal();
   useSEO({
     title: "شكراً لك — Algeria2Malaysia",
     description: "تم استلام طلبك بنجاح. سيتواصل معك فريق Algeria2Malaysia قريباً.",
@@ -13,7 +15,7 @@ export default function ThankYouPage() {
 
   return (
     <div className="min-h-screen bg-[#f8fafc] flex items-center justify-center py-20 px-4" dir="rtl">
-      <div className="w-full max-w-lg text-center">
+      <div ref={reveal} className="section-reveal w-full max-w-lg text-center">
         <div className="bg-white rounded-3xl shadow-[0_4px_30px_-6px_rgba(0,0,0,.12)] border border-gray-100 p-10">
           <div className="w-20 h-20 bg-gradient-to-br from-green-100 to-emerald-100 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-sm">
             <CheckCircle className="text-green-600" size={40} />

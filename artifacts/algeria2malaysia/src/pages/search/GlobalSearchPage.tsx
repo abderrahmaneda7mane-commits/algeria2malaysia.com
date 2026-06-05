@@ -6,6 +6,7 @@ import {
 } from "lucide-react";
 import { useNavigate } from "@/hooks/useNavigate";
 import { useSEO } from "@/hooks/useSEO";
+import { useReveal } from "@/hooks/useReveal";
 import { supabase } from "@/lib/supabase";
 import PriceDisclaimer from "@/components/shared/PriceDisclaimer";
 
@@ -70,6 +71,7 @@ export default function GlobalSearchPage() {
     canonicalPath: "/search",
   });
   const { go } = useNavigate();
+  const reveal = useReveal();
   const inputRef = useRef<HTMLInputElement>(null);
 
   const [query, setQuery] = useState("");

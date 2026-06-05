@@ -3,6 +3,7 @@ import { ArrowLeft, MapPin, Clock, CheckCircle, Calendar, Globe, Users, BookOpen
 import { useNavigate } from "@/hooks/useNavigate";
 import { GOOGLE_FORM_LINKS } from "@/data/institutes";
 import { useSEO } from "@/hooks/useSEO";
+import { useReveal } from "@/hooks/useReveal";
 
 const EUR = (rm: number) => Math.round(rm / 5).toLocaleString();
 const RM  = (rm: number) => rm.toLocaleString();
@@ -151,6 +152,7 @@ const TABS = ["📚 الأسعار", "☀️ سامر كامب أطفال", "�
 
 export default function CambrightPage() {
   const { go } = useNavigate();
+  const reveal = useReveal();
   const [tab, setTab] = useState(0);
   const [activeProgram, setActiveProgram] = useState<"academic" | "intensive">("academic");
 
@@ -164,7 +166,7 @@ export default function CambrightPage() {
   const priceData = activeProgram === "academic" ? ACADEMIC_PRICES : INTENSIVE_PRICES;
 
   return (
-    <div className="min-h-screen bg-[#f8fafc]" dir="rtl">
+    <div ref={reveal} className="section-reveal min-h-screen bg-[#f8fafc]" dir="rtl">
 
       {/* ── Hero ── */}
       <div className="relative overflow-hidden bg-gradient-to-br from-[#1a2a6c] via-[#1e3a8a] to-[#b21f1f] text-white pt-20 pb-10 px-4">

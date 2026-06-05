@@ -1,10 +1,11 @@
-﻿import { useEffect, useRef, useState, type RefObject, type ReactNode } from "react";
+﻿import { useEffect, useState, type ReactNode } from "react";
 import {
   GraduationCap, Globe, DollarSign, Shield, Star, CheckCircle,
   ArrowLeft, Building2, BookOpen, Users, Award,
   Wifi, Home, Plane, MessageCircle, ChevronDown,
 } from "lucide-react";
 import { useNavigate, getNavState } from "@/hooks/useNavigate";
+import { useReveal } from "@/hooks/useReveal";
 import { useSEO } from "@/hooks/useSEO";
 import InstituteQuiz from "@/components/shared/InstituteQuiz";
 import { useLanguage } from "@/i18n/LanguageContext";
@@ -33,22 +34,6 @@ const UNIVERSITIES = [
   { uniId: "sunway",  name: "Sunway University", nameAr: "جامعة صنواي",                           desc: "حرم عصري متكامل بشراكات دولية مرموقة",                         strengths: ["حرم حديث ومتكامل", "شراكات دولية", "موقع مثالي بكوالالمبور"],             img: "/logos/sunway.png",  badge: "Modern Campus",        badgeColor: "bg-indigo-600" },
   { uniId: "cityu",   name: "City University",   nameAr: "جامعة سيتي ماليزيا",                   desc: "جامعة معتمدة من 1984 في الهندسة والقانون والأعمال وتكنولوجيا المعلومات", strengths: ["هندسة وقانون وأعمال", "معتمدة MQA", "رسوم تنافسية"],            img: "/logos/cityu.png",   badge: "Engineering & Law",    badgeColor: "bg-red-600" },
 ];
-
-/* ── Scroll-reveal hook ── */
-function useReveal(): RefObject<HTMLElement | null> {
-  const ref = useRef<HTMLElement | null>(null);
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    const obs = new IntersectionObserver(
-      ([entry]) => { if (entry.isIntersecting) { el.classList.add("revealed"); obs.disconnect(); } },
-      { threshold: 0.12 }
-    );
-    obs.observe(el);
-    return () => obs.disconnect();
-  }, []);
-  return ref;
-}
 
 /* ── FAQ accordion ── */
 function FaqItem({ question, answer }: { question: string; answer: ReactNode }) {
@@ -111,15 +96,7 @@ export default function HomePage() {
     }
   }, []);
 
-  /* Section reveal refs */
-  const aboutRef    = useReveal();
-  const whyRef      = useReveal();
-  const servicesRef = useReveal();
-  const howRef      = useReveal();
-  const instRef     = useReveal();
-  const uniRef      = useReveal();
-  const guideRef    = useReveal();
-  const faqRef      = useReveal();
+  const reveal = useReveal();
 
   return (
     <div className="min-h-screen bg-white" dir={dir}>
@@ -270,7 +247,7 @@ export default function HomePage() {
       ══════════════════════════════════════ */}
       <section
         id="about"
-        ref={aboutRef as RefObject<HTMLElement>}
+        ref={reveal}
         className="section-reveal py-24 bg-white"
       >
         <div className="max-w-6xl mx-auto px-4">
@@ -333,7 +310,7 @@ export default function HomePage() {
       ══════════════════════════════════════ */}
       <section
         id="why"
-        ref={whyRef as RefObject<HTMLElement>}
+        ref={reveal}
         className="section-reveal py-24"
         style={{ background: "linear-gradient(180deg, #f0fdf4 0%, #ffffff 100%)" }}
       >
@@ -401,7 +378,7 @@ export default function HomePage() {
       ══════════════════════════════════════ */}
       <section
         id="services"
-        ref={servicesRef as RefObject<HTMLElement>}
+        ref={reveal}
         className="section-reveal py-24 bg-white"
       >
         <div className="max-w-6xl mx-auto px-4">
@@ -504,7 +481,7 @@ export default function HomePage() {
       ══════════════════════════════════════ */}
       <section
         id="how"
-        ref={howRef as RefObject<HTMLElement>}
+        ref={reveal}
         className="section-reveal py-24"
         style={{ background: "linear-gradient(180deg, #f0fdf4 0%, #dcfce7 60%, #f0fdf4 100%)" }}
       >
@@ -564,7 +541,7 @@ export default function HomePage() {
       ══════════════════════════════════════ */}
       <section
         id="institutes"
-        ref={instRef as RefObject<HTMLElement>}
+        ref={reveal}
         className="section-reveal py-24 bg-white"
       >
         <div className="max-w-6xl mx-auto px-4">
@@ -685,7 +662,7 @@ export default function HomePage() {
       ══════════════════════════════════════ */}
       <section
         id="universities"
-        ref={uniRef as RefObject<HTMLElement>}
+        ref={reveal}
         className="section-reveal py-24"
         style={{ background: "linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%)" }}
       >
@@ -861,7 +838,7 @@ export default function HomePage() {
       ══════════════════════════════════════ */}
       <section
         id="guide"
-        ref={guideRef as RefObject<HTMLElement>}
+        ref={reveal}
         className="section-reveal py-24 bg-gray-50/60"
       >
         <div className="max-w-3xl mx-auto px-4">
@@ -1055,7 +1032,7 @@ export default function HomePage() {
       ══════════════════════════════════════ */}
       <section
         id="faq"
-        ref={faqRef as RefObject<HTMLElement>}
+        ref={reveal}
         className="section-reveal py-24 bg-white"
       >
         <div className="max-w-3xl mx-auto px-4">

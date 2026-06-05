@@ -269,6 +269,15 @@
 @layer base {
   * { @apply border-border; }
 
+  /* Global smooth micro-interactions */
+  a, button {
+    transition: color 150ms ease, background-color 150ms ease,
+                border-color 150ms ease, opacity 150ms ease,
+                box-shadow 200ms ease, transform 200ms ease;
+  }
+
+  img { transition: opacity 300ms ease; }
+
   body {
     @apply font-sans antialiased bg-background text-foreground;
     direction: rtl;

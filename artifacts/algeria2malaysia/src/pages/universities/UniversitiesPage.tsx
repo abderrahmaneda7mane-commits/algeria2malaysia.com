@@ -2,6 +2,7 @@
 import { ArrowLeft, CheckCircle, GraduationCap, MapPin, BookOpen, BarChart2, ExternalLink, Calendar } from "lucide-react";
 import { useNavigate, getNavState } from "@/hooks/useNavigate";
 import { useSEO } from "@/hooks/useSEO";
+import { useReveal } from "@/hooks/useReveal";
 import PriceDisclaimer from "@/components/shared/PriceDisclaimer";
 
 const WA_LINK = "https://wa.me/601112200603";
@@ -276,6 +277,7 @@ export default function UniversitiesPage() {
     keywords: "جامعات ماليزيا، الدراسة في ماليزيا، APU ماليزيا، تايلورز ماليزيا، جامعات للجزائريين",
   });
   const { go } = useNavigate();
+  const reveal = useReveal();
 
   useEffect(() => {
     const { state } = getNavState();
@@ -346,13 +348,13 @@ export default function UniversitiesPage() {
       </div>
 
       {/* ── University Sections ── */}
-      <div className="max-w-6xl mx-auto px-4 py-12 space-y-10">
+      <div ref={reveal} className="section-reveal max-w-6xl mx-auto px-4 py-12 space-y-10">
         <PriceDisclaimer />
 
         {UNIVERSITIES.map((uni) => {
           const a = ACCENT[uni.accentColor as AccentKey] || ACCENT.green;
           return (
-            <section key={uni.id} id={uni.id} className="scroll-mt-16">
+            <section ref={reveal} key={uni.id} id={uni.id} className="section-reveal scroll-mt-16">
               <div className={`bg-white rounded-3xl border ${a.border} shadow-[0_4px_24px_-4px_rgba(0,0,0,.08)] overflow-hidden hover:shadow-[0_8px_36px_-6px_rgba(0,0,0,.12)] transition-shadow duration-300`}>
 
                 {/* ── Card Header ── */}
