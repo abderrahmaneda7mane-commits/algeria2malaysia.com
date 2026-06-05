@@ -1,26 +1,32 @@
 import { useEffect, useRef, useCallback } from "react";
 
 export function useReveal(threshold = 0.12) {
-  const observer = useRef<IntersectionObserver | null>(null);
+  const observerRef = useRef<IntersectionObserver | null>(null);
+
+  function getObserver() {
+    if (!observerRef.current) {
+      observerRef.current = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("revealed");
+              observerRef.current?.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold }
+      );
+    }
+    return observerRef.current;
+  }
 
   useEffect(() => {
-    observer.current = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("revealed");
-            observer.current?.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold }
-    );
-    return () => observer.current?.disconnect();
-  }, [threshold]);
+    return () => observerRef.current?.disconnect();
+  }, []);
 
   const reveal = useCallback((el: HTMLElement | null) => {
-    if (el && observer.current) observer.current.observe(el);
-  }, []);
+    if (el) getObserver().observe(el);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   return reveal;
 }

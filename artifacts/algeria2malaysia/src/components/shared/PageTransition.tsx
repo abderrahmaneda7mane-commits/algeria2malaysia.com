@@ -1,21 +1,13 @@
 import { motion } from "framer-motion";
 
-const variants = {
-  hidden:  { opacity: 0, y: 10 },
-  visible: { opacity: 1, y: 0 },
-  exit:    { opacity: 0, y: -6 },
-};
-
 export default function PageTransition({ children, pageKey }: { children: React.ReactNode; pageKey: string }) {
   return (
     <motion.div
       key={pageKey}
-      variants={variants}
-      initial="hidden"
-      animate="visible"
-      exit="exit"
-      transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
-      style={{ minHeight: "inherit" }}
+      initial={{ opacity: 0, y: 16 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -8 }}
+      transition={{ duration: 0.32, ease: [0.25, 0.46, 0.45, 0.94] }}
     >
       {children}
     </motion.div>
