@@ -1,5 +1,5 @@
-import { useState, useEffect, useCallback, useMemo } from "react";
-import { supabase } from "../lib/supabase";
+﻿import { useState, useEffect, useCallback, useMemo } from "react";
+import { supabase } from "@/lib/supabase";
 
 export const PAGE_SIZE = 12;
 
