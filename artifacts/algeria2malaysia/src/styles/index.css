@@ -5,13 +5,12 @@
 @custom-variant dark (&:is(.dark *));
 
 /* ═══════════════════════════════════════════
-   DESIGN SYSTEM — FULL TOKEN PALETTE
-   Use these as: bg-brand-500, text-gold-700,
-   max-w-section, shadow-green, etc.
+   DESIGN SYSTEM — COLOR PALETTE
+   Generates: bg-brand-500, text-gold-700,
+   border-neutral-200, bg-dark-50, etc.
 ═══════════════════════════════════════════ */
 @theme {
-
-  /* ── Brand Green (primary) ── */
+  /* ── Brand Green ── */
   --color-brand-50:  hsl(142, 72%, 97%);
   --color-brand-100: hsl(142, 65%, 93%);
   --color-brand-200: hsl(142, 60%, 85%);
@@ -24,7 +23,7 @@
   --color-brand-900: hsl(142, 72%, 14%);
   --color-brand-950: hsl(142, 72%, 9%);
 
-  /* ── Gold (accent) ── */
+  /* ── Gold ── */
   --color-gold-50:  hsl(38, 92%, 97%);
   --color-gold-100: hsl(38, 92%, 92%);
   --color-gold-200: hsl(38, 90%, 84%);
@@ -43,21 +42,21 @@
   --color-neutral-200: hsl(145, 13%, 90%);
   --color-neutral-300: hsl(145, 12%, 82%);
   --color-neutral-400: hsl(145, 10%, 65%);
-  --color-neutral-500: hsl(145, 9%,  50%);
+  --color-neutral-500: hsl(145, 9%, 50%);
   --color-neutral-600: hsl(145, 10%, 38%);
   --color-neutral-700: hsl(145, 12%, 28%);
   --color-neutral-800: hsl(145, 15%, 18%);
   --color-neutral-900: hsl(150, 20%, 11%);
   --color-neutral-950: hsl(150, 25%, 7%);
 
-  /* ── Dark (hero / footer backgrounds) ── */
+  /* ── Dark ── */
   --color-dark-50:  hsl(150, 25%, 12%);
   --color-dark-100: hsl(150, 28%, 10%);
   --color-dark-200: hsl(150, 30%, 8%);
   --color-dark-300: hsl(150, 32%, 6%);
   --color-dark-950: hsl(0, 0%, 0%);
 
-  /* ── Status colors ── */
+  /* ── Status ── */
   --color-success-light: hsl(142, 65%, 93%);
   --color-success:       hsl(142, 65%, 38%);
   --color-success-dark:  hsl(142, 65%, 26%);
@@ -70,66 +69,6 @@
   --color-info-light:    hsl(217, 91%, 95%);
   --color-info:          hsl(217, 91%, 60%);
   --color-info-dark:     hsl(217, 80%, 42%);
-
-  /* ── Max-widths / container widths ── */
-  --width-section-xs:  480px;
-  --width-section-sm:  640px;
-  --width-section-md:  768px;
-  --width-section-lg:  1024px;
-  --width-section-xl:  1200px;
-  --width-section-2xl: 1400px;
-
-  /* ── Custom spacing ── */
-  --spacing-18:  4.5rem;
-  --spacing-22:  5.5rem;
-  --spacing-26:  6.5rem;
-  --spacing-30:  7.5rem;
-  --spacing-34:  8.5rem;
-  --spacing-38:  9.5rem;
-  --spacing-section: 5rem;
-
-  /* ── Custom border radius ── */
-  --radius-2xl: 1.25rem;
-  --radius-3xl: 1.5rem;
-  --radius-4xl: 2rem;
-  --radius-card: 1.25rem;
-  --radius-badge: 9999px;
-
-  /* ── Custom font sizes ── */
-  --font-size-hero:    clamp(2.25rem, 5vw, 3.75rem);
-  --font-size-display: clamp(1.875rem, 4vw, 3rem);
-  --font-size-title:   clamp(1.5rem, 3vw, 2.25rem);
-  --font-size-heading: clamp(1.25rem, 2.5vw, 1.75rem);
-  --font-size-lead:    clamp(1rem, 1.5vw, 1.125rem);
-
-  /* ── Custom shadows ── */
-  --shadow-green-sm: 0 4px 14px -2px rgba(22,163,74,.22);
-  --shadow-green:    0 8px 28px -4px rgba(22,163,74,.28);
-  --shadow-green-lg: 0 18px 48px -8px rgba(22,163,74,.35);
-  --shadow-gold-sm:  0 4px 14px -2px rgba(217,119,6,.22);
-  --shadow-gold:     0 8px 28px -4px rgba(217,119,6,.28);
-  --shadow-card:     0 3px 8px -1px rgba(0,0,0,.08), 0 1px 3px -1px rgba(0,0,0,.04);
-  --shadow-card-hover: 0 18px 38px -6px rgba(0,0,0,.14), 0 6px 14px -3px rgba(0,0,0,.07);
-
-  /* ── Z-index scale ── */
-  --z-below:   -1;
-  --z-base:    0;
-  --z-raised:  10;
-  --z-overlay: 20;
-  --z-modal:   30;
-  --z-sticky:  40;
-  --z-navbar:  50;
-  --z-toast:   60;
-  --z-top:     9999;
-
-  /* ── Transitions ── */
-  --ease-spring:  cubic-bezier(.16, 1, .3, 1);
-  --ease-snappy:  cubic-bezier(.4, 0, .2, 1);
-  --ease-bounce:  cubic-bezier(.34, 1.56, .64, 1);
-  --duration-fast:   150ms;
-  --duration-normal: 280ms;
-  --duration-slow:   500ms;
-  --duration-reveal: 750ms;
 }
 
 @theme inline {
@@ -184,9 +123,67 @@
 }
 
 /* ═══════════════════════════════════════════
-   ROOT — PREMIUM DESIGN TOKENS
+   ROOT — ALL NON-COLOR DESIGN TOKENS
+   (widths, spacing, shadows, typography,
+    transitions, z-index, border-radius)
 ═══════════════════════════════════════════ */
 :root {
+  /* ── Container widths ── */
+  --width-section-xs:  480px;
+  --width-section-sm:  640px;
+  --width-section-md:  768px;
+  --width-section-lg:  1024px;
+  --width-section-xl:  1200px;
+  --width-section-2xl: 1400px;
+
+  /* ── Spacing ── */
+  --spacing-18:  4.5rem;
+  --spacing-22:  5.5rem;
+  --spacing-26:  6.5rem;
+  --spacing-30:  7.5rem;
+  --spacing-section: 5rem;
+
+  /* ── Border radius ── */
+  --radius-2xl:  1.25rem;
+  --radius-3xl:  1.5rem;
+  --radius-4xl:  2rem;
+  --radius-card: 1.25rem;
+  --radius-badge: 9999px;
+
+  /* ── Typography scale ── */
+  --font-size-hero:    clamp(2.25rem, 5vw, 3.75rem);
+  --font-size-display: clamp(1.875rem, 4vw, 3rem);
+  --font-size-title:   clamp(1.5rem, 3vw, 2.25rem);
+  --font-size-heading: clamp(1.25rem, 2.5vw, 1.75rem);
+  --font-size-lead:    clamp(1rem, 1.5vw, 1.125rem);
+
+  /* ── Custom shadows ── */
+  --shadow-green-sm:   0 4px 14px -2px rgba(22,163,74,.22);
+  --shadow-green:      0 8px 28px -4px rgba(22,163,74,.28);
+  --shadow-green-lg:   0 18px 48px -8px rgba(22,163,74,.35);
+  --shadow-gold-sm:    0 4px 14px -2px rgba(217,119,6,.22);
+  --shadow-gold:       0 8px 28px -4px rgba(217,119,6,.28);
+  --shadow-card:       0 3px 8px -1px rgba(0,0,0,.08), 0 1px 3px -1px rgba(0,0,0,.04);
+  --shadow-card-hover: 0 18px 38px -6px rgba(0,0,0,.14), 0 6px 14px -3px rgba(0,0,0,.07);
+
+  /* ── Z-index scale ── */
+  --z-below:   -1;
+  --z-base:    0;
+  --z-raised:  10;
+  --z-overlay: 20;
+  --z-modal:   30;
+  --z-sticky:  40;
+  --z-navbar:  50;
+  --z-toast:   60;
+  --z-top:     9999;
+
+  /* ── Easing & duration ── */
+  --ease-spring:    cubic-bezier(.16, 1, .3, 1);
+  --ease-snappy:    cubic-bezier(.4, 0, .2, 1);
+  --ease-bounce:    cubic-bezier(.34, 1.56, .64, 1);
+  --duration-fast:  150ms;
+  --duration-normal: 280ms;
+  --duration-slow:  500ms;
   --button-outline: rgba(0,0,0,.10);
   --badge-outline: rgba(0,0,0,.05);
   --opaque-button-border-intensity: -8;
