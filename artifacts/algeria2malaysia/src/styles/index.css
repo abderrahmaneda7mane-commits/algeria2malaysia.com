@@ -703,7 +703,6 @@
   .border.active-elevate:not(.no-active-interaction-elevate)::after,
   .border.hover-elevate-2:not(.no-hover-interaction-elevate)::after,
   .border.active-elevate-2:not(.no-active-interaction-elevate)::after { inset: -1px; }
-}
 
   /* ── Container / section widths ── */
   .container-xs  { max-width: var(--width-section-xs);  margin-inline: auto; padding-inline: 1rem; }
@@ -725,35 +724,33 @@
   .text-lead    { font-size: var(--font-size-lead);    line-height: 1.7; }
 
   /* ── Shadow utilities ── */
-  .shadow-green-sm  { box-shadow: var(--shadow-green-sm); }
-  .shadow-green     { box-shadow: var(--shadow-green); }
-  .shadow-green-lg  { box-shadow: var(--shadow-green-lg); }
-  .shadow-gold-sm   { box-shadow: var(--shadow-gold-sm); }
-  .shadow-gold      { box-shadow: var(--shadow-gold); }
-  .shadow-card      { box-shadow: var(--shadow-card); }
+  .shadow-green-sm   { box-shadow: var(--shadow-green-sm); }
+  .shadow-green      { box-shadow: var(--shadow-green); }
+  .shadow-green-lg   { box-shadow: var(--shadow-green-lg); }
+  .shadow-gold-sm    { box-shadow: var(--shadow-gold-sm); }
+  .shadow-gold       { box-shadow: var(--shadow-gold); }
+  .shadow-card       { box-shadow: var(--shadow-card); }
   .shadow-card-hover { box-shadow: var(--shadow-card-hover); }
 
   /* ── Transition utilities ── */
-  .transition-spring  { transition-timing-function: var(--ease-spring); }
-  .transition-snappy  { transition-timing-function: var(--ease-snappy); }
-  .transition-bounce  { transition-timing-function: var(--ease-bounce); }
-  .duration-fast      { transition-duration: var(--duration-fast); }
-  .duration-normal    { transition-duration: var(--duration-normal); }
-  .duration-slow      { transition-duration: var(--duration-slow); }
+  .transition-spring { transition-timing-function: var(--ease-spring); }
+  .transition-snappy { transition-timing-function: var(--ease-snappy); }
+  .transition-bounce { transition-timing-function: var(--ease-bounce); }
+  .duration-fast     { transition-duration: var(--duration-fast); }
+  .duration-normal   { transition-duration: var(--duration-normal); }
+  .duration-slow     { transition-duration: var(--duration-slow); }
 
   /* ── Brand gradient backgrounds ── */
-  .bg-brand-gradient    { background: linear-gradient(135deg, hsl(142,72%,26%) 0%, hsl(158,68%,38%) 100%); }
+  .bg-brand-gradient      { background: linear-gradient(135deg, hsl(142,72%,26%) 0%, hsl(158,68%,38%) 100%); }
   .bg-brand-gradient-soft { background: linear-gradient(135deg, hsl(142,60%,96%) 0%, hsl(145,55%,92%) 100%); }
-  .bg-gold-gradient     { background: linear-gradient(135deg, hsl(38,85%,42%) 0%, hsl(38,92%,58%) 100%); }
-  .bg-dark-gradient     { background: linear-gradient(135deg, hsl(150,30%,8%) 0%, hsl(145,35%,12%) 100%); }
-  .bg-hero-gradient     {
-    background: radial-gradient(ellipse at 60% 50%, hsl(142,60%,96%) 0%, hsl(145,40%,98%) 40%, white 70%);
-  }
+  .bg-gold-gradient       { background: linear-gradient(135deg, hsl(38,85%,42%) 0%, hsl(38,92%,58%) 100%); }
+  .bg-dark-gradient       { background: linear-gradient(135deg, hsl(150,30%,8%) 0%, hsl(145,35%,12%) 100%); }
+  .bg-hero-gradient       { background: radial-gradient(ellipse at 60% 50%, hsl(142,60%,96%) 0%, hsl(145,40%,98%) 40%, white 70%); }
 
   /* ── Badge variants ── */
-  .badge-brand { background: var(--color-brand-50);  color: var(--color-brand-800); border: 1px solid var(--color-brand-200); border-radius: var(--radius-badge); padding: .25rem .75rem; font-size: .8rem; font-weight: 600; }
-  .badge-gold  { background: var(--color-gold-50);   color: var(--color-gold-800);  border: 1px solid var(--color-gold-200);  border-radius: var(--radius-badge); padding: .25rem .75rem; font-size: .8rem; font-weight: 600; }
-  .badge-dark  { background: var(--color-dark-50);   color: white;                  border-radius: var(--radius-badge); padding: .25rem .75rem; font-size: .8rem; font-weight: 600; }
+  .badge-brand { background: var(--color-brand-50); color: var(--color-brand-800); border: 1px solid var(--color-brand-200); border-radius: var(--radius-badge); padding: .25rem .75rem; font-size: .8rem; font-weight: 600; }
+  .badge-gold  { background: var(--color-gold-50);  color: var(--color-gold-800);  border: 1px solid var(--color-gold-200);  border-radius: var(--radius-badge); padding: .25rem .75rem; font-size: .8rem; font-weight: 600; }
+  .badge-dark  { background: var(--color-dark-50);  color: white; border-radius: var(--radius-badge); padding: .25rem .75rem; font-size: .8rem; font-weight: 600; }
 
   /* ── RTL helpers ── */
   .rtl-flip { transform: scaleX(-1); }
