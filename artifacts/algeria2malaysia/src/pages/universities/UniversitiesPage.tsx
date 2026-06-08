@@ -348,7 +348,7 @@ export default function UniversitiesPage() {
       </div>
 
       {/* ── University Sections ── */}
-      <div ref={reveal} className="section-reveal max-w-6xl mx-auto px-4 py-12 space-y-10">
+      <div className="max-w-6xl mx-auto px-4 py-12 space-y-10">
         <PriceDisclaimer />
 
         {UNIVERSITIES.map((uni) => {
