@@ -1,8 +1,8 @@
 ﻿import { ChevronLeft, Clock, Tag, ChevronDown } from "lucide-react";
-import { useNavigate } from "@/hooks/useNavigate";
+import { useNavigate, setNavForceScrolled } from "@/hooks/useNavigate";
 import { useSEO } from "@/hooks/useSEO";
 import { useReveal } from "@/hooks/useReveal";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 interface FAQ {
   q: string;
@@ -19,6 +19,8 @@ interface Article {
   tag: string;
   tagColor: string;
   content: string;
+  featuredImage?: string;
+  toc?: string[];
   faqs?: FAQ[];
 }
 
@@ -307,6 +309,196 @@ IELTS بمعدل 5.5–6.5 أو TOEFL iBT بين 60–80 حسب الجامعة. 
     `,
   },
   {
+    slug: "albukhary-scholarship-malaysia-algerian-2026",
+    title: "منحة جامعة البخاري ماليزيا 2026 — ممولة بالكامل للجزائريين",
+    summary: "منحة جامعة البخاري الدولية ماليزيا 2026: ممولة بالكامل — رسوم + سكن مجاني + راتب شهري. الشروط والتخصصات والتقديم خطوة بخطوة للطلاب الجزائريين.",
+    category: "منح دراسية",
+    readTime: "12 دقيقة",
+    date: "2026-06-20",
+    tag: "منحة كاملة",
+    tagColor: "bg-emerald-100 text-emerald-700",
+    featuredImage: "/albukhary-banner.jpg",
+    toc: [
+      "معلومات سريعة عن المنحة",
+      "نبذة عن جامعة البخاري الدولية",
+      "مزايا المنحة الكاملة",
+      "شروط القبول للجزائريين",
+      "التخصصات المتاحة",
+      "المستندات المطلوبة",
+      "خطوات التقديم خطوة بخطوة",
+      "نصائح ذهبية لزيادة فرص القبول",
+    ],
+    content: `
+## معلومات سريعة عن منحة جامعة البخاري 2026
+
+| العنصر | التفاصيل |
+|--------|----------|
+| الجهة الممولة | جامعة البخاري الدولية (AIU) |
+| الدولة المستضيفة | ماليزيا |
+| الدرجة العلمية | البكالوريوس |
+| نوع التمويل | ممولة بالكامل أو جزئياً |
+| الجنسيات المؤهلة | جميع الجنسيات بما فيها الجزائريون |
+| الفئات المستهدفة | طلاب الدول النامية وذوو الدخل المحدود |
+| آخر موعد للتقديم | 30 يوليو 2026 |
+
+## نبذة عن جامعة البخاري الدولية في ماليزيا
+
+تُعدّ منحة جامعة البخاري الدولية (Albukhary International University — AIU) واحدة من أبرز المنح الممولة بالكامل للطلاب الدوليين الراغبين في دراسة البكالوريوس في ماليزيا. تتبنى الجامعة رسالة إنسانية تهدف إلى تمكين الطلاب الموهوبين من الدول النامية وذوي الدخل المحدود من الحصول على تعليم عالي الجودة دون عوائق مالية.
+
+لا تقتصر المنحة على الدعم المالي، بل تهدف كذلك إلى إعداد قادة المستقبل من خلال تنمية المهارات القيادية وتعزيز المسؤولية الاجتماعية وخدمة المجتمع.
+
+## مزايا منحة جامعة البخاري الكاملة
+
+### الإعفاء الكامل من الرسوم الدراسية
+تغطي المنحة الرسوم الدراسية كاملةً طوال مدة البرنامج الأكاديمي.
+
+### السكن الجامعي المجاني
+توفر الجامعة إقامة مجانية داخل الحرم الجامعي طوال فترة الدراسة.
+
+### بدل معيشة شهري
+يحصل الطالب المقبول على بدل شهري يبلغ حوالي 450 رينغيت ماليزي (ما يعادل نحو 105 دولارات أمريكياً).
+
+### التأمين الصحي الشامل
+تغطية صحية كاملة لجميع الاحتياجات الطبية الأساسية طوال فترة الدراسة.
+
+### برنامج اللغة الإنجليزية المجاني
+دورة إنجليزية مجانية لمدة تصل إلى سنة كاملة للطلاب الذين لا يمتلكون شهادات لغوية معتمدة.
+
+### تغطية رسوم اختبار IELTS
+قد تتحمل الجامعة رسوم اختبار IELTS بعد انتهاء البرنامج التحضيري.
+
+**ملاحظة مهمة:** لا تشمل المنحة عادةً تذاكر السفر الدولية، رسوم تأشيرة الطالب (Student Pass)، ولا رسوم السند الأمني.
+
+## شروط القبول في منحة البخاري للجزائريين
+
+### العمر والحالة الاجتماعية
+- أن يتراوح عمر المتقدم بين 18 و22 عاماً
+- أن يكون أعزب طوال فترة الدراسة
+
+### المعدل الأكاديمي
+- ألا يقل المعدل التراكمي عن 2.8 من 4
+- أو ما يعادل 70%–80% وفقاً لنظام التعليم الجزائري
+
+### حد دخل الأسرة الشهري (للطلاب الدوليين)
+- يجب أن يكون إجمالي دخل الأسرة أقل من 300 دولار أمريكي شهرياً
+
+### شروط إضافية
+- عدم الجمع بين هذه المنحة ومنح دراسية أخرى
+- عدم العمل خلال فترة الدراسة
+- اجتياز المقابلة الشخصية عبر الإنترنت بنجاح
+- ألا يكون للمتقدم أفراد عائلة مكفولون من مؤسسة البخاري
+
+## التخصصات المتاحة في منحة البخاري
+
+- بكالوريوس إدارة الأعمال — تخصص التسويق (مع مرتبة الشرف)
+- بكالوريوس إدارة الأعمال — إدارة الموارد البشرية (مع مرتبة الشرف)
+- بكالوريوس التنمية الاجتماعية (مع مرتبة الشرف)
+- بكالوريوس الاقتصاد (مع مرتبة الشرف)
+- بكالوريوس المالية — التمويل الإسلامي (مع مرتبة الشرف)
+- بكالوريوس العلوم السياسية والعلاقات الدولية (مع مرتبة الشرف)
+- بكالوريوس إدارة الأعمال مع علوم الحاسوب (مع مرتبة الشرف)
+- بكالوريوس التعليم الابتدائي (مع مرتبة الشرف)
+- بكالوريوس التعليم في مرحلة الطفولة المبكرة (مع مرتبة الشرف)
+- بكالوريوس الإعلام والاتصال (مع مرتبة الشرف)
+- بكالوريوس علوم الحاسوب (مع مرتبة الشرف)
+- بكالوريوس علوم البيانات (مع مرتبة الشرف)
+
+## المستندات المطلوبة للتقديم 2026
+
+| المستند | التفاصيل |
+|---------|----------|
+| جواز السفر | ساري المفعول 18 شهراً على الأقل، نسخة ملونة |
+| الشهادة الدراسية | شهادة الثانوية + كشف الدرجات من السنة 10 إلى 12 |
+| إثبات دخل الأسرة | أقل من 300 دولار شهرياً، مترجم ومصدق |
+| الصورة الشخصية | 3.5×4.5 سم، خلفية بيضاء، حديثة |
+| البيان الشخصي | الأهداف والخطط المهنية وأسباب اختيار AIU |
+| رسائل التوصية | رسالتان من معلمين أو مشرفين أكاديميين |
+| السيرة الذاتية | تشمل الإنجازات والأنشطة التطوعية والمهارات |
+| صور منزل الأسرة | واجهة المنزل، غرفة المعيشة، المطبخ |
+| نموذج إقرار الدخل | معتمد من الجامعة، مرفق في ملف التقديم |
+| IELTS / TOEFL | اختيارية — الجامعة توفر برنامجاً تحضيرياً مجاناً |
+
+**تنبيه:** يجب ترجمة جميع المستندات إلى الإنجليزية وتصديقها رسمياً قبل الرفع على منصة التقديم.
+
+## كيفية التقديم خطوة بخطوة
+
+### الخطوة 1 — زيارة بوابة القبول الرسمية
+الدخول إلى الموقع الرسمي لجامعة البخاري والانتقال لصفحة التقديم الخاصة بالبكالوريوس والمنح.
+
+### الخطوة 2 — إنشاء حساب جديد
+إنشاء حساب ببريد إلكتروني فعّال وتفعيله عبر رسالة التأكيد.
+
+### الخطوة 3 — تعبئة نموذج الطلب
+ملء جميع الأقسام بدقة: المعلومات الشخصية، البيانات الأكاديمية، الوضع الاقتصادي، وقسم المنحة.
+
+### الخطوة 4 — كتابة البيان الشخصي
+الإجابة عن الأسئلة المقالية مع التركيز على الطموحات المستقبلية والأنشطة القيادية والتطوعية.
+
+### الخطوة 5 — رفع المستندات
+رفع جميع الوثائق المترجمة والمصدّقة بصيغة PDF وجودة عالية.
+
+### الخطوة 6 — المقابلة الشخصية عبر الإنترنت
+بعد الفرز الأولي، تُجرى مقابلة تُقيّم: الشخصية، مهارات التواصل، الدوافع، والإمكانات القيادية.
+
+### الخطوة 7 — استلام قرار القبول
+يُبلَّغ المقبولون عبر البريد الإلكتروني، ثم تبدأ إجراءات التأشيرة والتسجيل الجامعي والسفر إلى ماليزيا.
+
+## نصائح ذهبية لزيادة فرص القبول
+
+- ابدأ بتجهيز المستندات مبكراً — لا تنتظر الموعد النهائي
+- تأكد من صحة جميع المعلومات مطابقةً للمستندات الرسمية تماماً
+- اكتب بياناً شخصياً قوياً يُبرز قيمك القيادية وتأثيرك المجتمعي
+- كن صادقاً وواضحاً عند وصف وضعك المالي
+- ارفع صوراً واضحة وعالية الجودة لمنزل العائلة
+- حسّن مستوى الإنجليزية قبل المقابلة — تواصل مع فريقنا للمساعدة
+- تابع البريد الإلكتروني والتحديثات الرسمية للجامعة باستمرار
+
+**ملاحظة للمصداقية:** التقديم على هذه المنحة يتم مباشرةً عبر الموقع الرسمي لجامعة البخاري الدولية وهو مجاني بالكامل. هذا المقال نشرناه كمحتوى تعليمي مجاني لمتابعينا ولا يوجد أي هدف ربحي منه — نشاركه لأن هذه الفرصة تستحق أن يعرفها كل طالب جزائري.
+    `,
+    faqs: [
+      {
+        q: "هل منحة جامعة البخاري متاحة للطلاب الجزائريين؟",
+        a: "نعم، منحة البخاري مفتوحة لجميع الجنسيات بما فيها الجزائريون، بشرط استيفاء معايير الاستحقاق المالي (دخل الأسرة أقل من 300 دولار شهرياً) والأكاديمي (معدل لا يقل عن 2.8 من 4 أو ما يعادل 70% في نظام التعليم الجزائري)."
+      },
+      {
+        q: "هل يشترط تقديم شهادة IELTS أو TOEFL للتقديم؟",
+        a: "لا يُشترط ذلك دائماً. توفر جامعة البخاري برنامجاً تحضيرياً مجانياً للغة الإنجليزية لمدة تصل إلى سنة كاملة. كما قد تتكفل الجامعة برسوم اختبار IELTS بعد انتهاء البرنامج."
+      },
+      {
+        q: "كم يبلغ بدل المعيشة الشهري لمنحة البخاري؟",
+        a: "يحصل الطالب المستفيد من المنحة الكاملة على بدل شهري يبلغ حوالي 450 رينغيت ماليزي، أي ما يعادل نحو 105 دولارات أمريكية أو حوالي 95 يورو."
+      },
+      {
+        q: "ما الحد الأقصى لدخل الأسرة للتأهل للمنحة؟",
+        a: "بالنسبة للطلاب الدوليين، يجب ألا يتجاوز إجمالي دخل الأسرة 300 دولار أمريكي شهرياً. يجب إثبات ذلك بمستندات رسمية مترجمة ومصدّقة."
+      },
+      {
+        q: "هل يمكن للطالب المتزوج التقديم على منحة البخاري؟",
+        a: "لا، يشترط أن يكون المتقدم أعزب طوال فترة الدراسة. الحالة الاجتماعية المتزوجة تُعدّ سبباً للرفض الفوري."
+      },
+      {
+        q: "هل تغطي المنحة تكاليف تذاكر الطيران من الجزائر إلى ماليزيا؟",
+        a: "لا، لا تشمل المنحة عادةً تذاكر السفر الدولية. يتحمل الطالب تكلفة الطيران ذهاباً. كما لا تغطي رسوم تأشيرة الطالب أو رسوم السند الأمني."
+      },
+      {
+        q: "ما هي أبرز التخصصات المتاحة في منحة البخاري؟",
+        a: "تشمل المنحة 12 تخصصاً في مجالات الأعمال والتكنولوجيا والعلوم الإنسانية، من بينها: علوم الحاسوب، علوم البيانات، إدارة الأعمال، الاقتصاد، التمويل الإسلامي، العلوم السياسية، والإعلام والاتصال."
+      },
+      {
+        q: "ما مدة الدراسة التي تغطيها المنحة؟",
+        a: "تغطي المنحة المدة الرسمية لبرنامج البكالوريوس التي تتراوح بين 3 و4 سنوات، بالإضافة إلى مدة البرنامج التحضيري للغة الإنجليزية إن احتاجه الطالب."
+      },
+      {
+        q: "متى يجب تقديم الطلب وما آخر موعد؟",
+        a: "آخر موعد للتقديم هو 30 يوليو 2026. يُنصح بالتقديم المبكر لأن مراجعة الطلبات وإجراء المقابلات الشخصية تستغرق وقتاً طويلاً."
+      },
+      {
+        q: "هل التقديم على منحة البخاري مجاني؟",
+        a: "نعم، التقديم مجاني بالكامل ويتم مباشرةً عبر الموقع الرسمي لجامعة البخاري الدولية. لا توجد رسوم تقديم ولا وسيط ضروري — كل ما تحتاجه هو تجهيز مستنداتك والتقديم عبر البوابة الرسمية للجامعة."
+      },
+    ],
+  },
+  {
     slug: "summer-camp-malaysia-children",
     title: "سامر كامب ماليزيا للأطفال والشباب 2026 — كل التفاصيل",
     summary: "برامج الصيف في ماليزيا للأطفال (13+): أسعار، مواعيد، ماذا يتعلمون، وكيف تحجز. مرخّص ومتكامل مع الإقامة.",
@@ -399,6 +591,13 @@ function FAQAccordion({ faqs }: { faqs: FAQ[] }) {
 function ArticleView({ article, onBack }: { article: Article; onBack: () => void }) {
   const { go } = useNavigate();
   const reveal = useReveal();
+  const [imgLoaded, setImgLoaded] = useState(false);
+  const [imgError, setImgError] = useState(false);
+
+  useEffect(() => {
+    setNavForceScrolled(true);
+    return () => setNavForceScrolled(false);
+  }, []);
 
   useSEO({
     title: `${article.title} — Algeria2Malaysia`,
@@ -406,6 +605,41 @@ function ArticleView({ article, onBack }: { article: Article; onBack: () => void
     canonicalPath: `/blog/${article.slug}`,
     keywords: `دراسة ماليزيا، ${article.category}، طلاب جزائريين`,
   });
+
+  useEffect(() => {
+    const id = "article-schema-ld";
+    document.getElementById(id)?.remove();
+    const graph: object[] = [
+      {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": article.title,
+        "description": article.summary,
+        "datePublished": article.date,
+        "inLanguage": "ar",
+        "author": { "@type": "Organization", "name": "Algeria2Malaysia", "url": "https://algeria2malaysia.com" },
+        "publisher": { "@type": "Organization", "name": "Algeria2Malaysia", "url": "https://algeria2malaysia.com" },
+        "mainEntityOfPage": { "@type": "WebPage", "@id": `https://algeria2malaysia.com/blog/${article.slug}` }
+      }
+    ];
+    if (article.faqs?.length) {
+      graph.push({
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": article.faqs.map(f => ({
+          "@type": "Question",
+          "name": f.q,
+          "acceptedAnswer": { "@type": "Answer", "text": f.a }
+        }))
+      });
+    }
+    const s = document.createElement("script");
+    s.id = id;
+    s.type = "application/ld+json";
+    s.textContent = JSON.stringify(graph);
+    document.head.appendChild(s);
+    return () => { document.getElementById(id)?.remove(); };
+  }, [article]);
 
   const renderInline = (text: string): React.ReactNode[] => {
     const parts = text.split(/(\*\*[^*]+\*\*)/g);
@@ -483,55 +717,109 @@ function ArticleView({ article, onBack }: { article: Article; onBack: () => void
   };
 
   return (
-    <div ref={reveal} className="section-reveal max-w-3xl mx-auto px-4 pb-16">
-      <button
-        onClick={onBack}
-        className="flex items-center gap-2 text-green-600 hover:text-green-700 font-semibold text-sm py-4 transition-colors"
-      >
-        <ArrowLeftIcon /> العودة للمقالات
-      </button>
+    <>
+      <div className="max-w-3xl mx-auto px-4 pb-16">
+        <button
+          onClick={onBack}
+          className="flex items-center gap-2 text-green-600 hover:text-green-700 font-semibold text-sm py-4 transition-colors group"
+        >
+          <span className="group-hover:-translate-x-1 transition-transform"><ArrowLeftIcon /></span>
+          العودة للمقالات
+        </button>
 
-      <article>
-        {/* Header */}
-        <div className="mb-7">
-          <span className={`${article.tagColor} text-xs font-bold px-3 py-1 rounded-full`}>{article.tag}</span>
-          <h1 className="text-2xl md:text-3xl font-extrabold text-gray-900 mt-3 mb-4 leading-tight">{article.title}</h1>
-          <p className="text-gray-600 mt-1 text-base leading-relaxed border-r-4 border-green-500 pr-4 bg-green-50/50 py-3 rounded-l-lg">
-            {article.summary}
-          </p>
-        </div>
-
-        {/* Content */}
-        <div className="text-gray-700 leading-loose">
-          {renderContent(article.content)}
-        </div>
-
-        {/* CTA Box */}
-        <div className="mt-8 bg-gradient-to-br from-green-600 to-green-700 rounded-2xl p-6 text-white text-center">
-          <p className="font-extrabold text-lg mb-1">مستعد تبدأ رحلتك؟</p>
-          <p className="text-green-100 text-sm mb-4">احصل على استشارة مجانية الآن — فريقنا يساعدك خطوة بخطوة.</p>
-          <div className="flex flex-col sm:flex-row gap-3 justify-center">
-            <button
-              onClick={() => go("home", { scrollTo: "apply" })}
-              className="bg-white text-green-700 font-bold px-6 py-3 rounded-xl hover:bg-green-50 transition-all text-sm"
-            >
-              ابدأ التسجيل الآن
-            </button>
-            <button
-              onClick={() => go("universities")}
-              className="bg-green-500 hover:bg-green-400 text-white font-bold px-6 py-3 rounded-xl transition-all text-sm"
-            >
-              استعرض الجامعات
-            </button>
+        <article>
+          {/* Header */}
+          <div className="mb-6 animate-fade-in-up">
+            <span className={`${article.tagColor} text-xs font-bold px-3 py-1 rounded-full`}>{article.tag}</span>
+            <h1 className="text-2xl md:text-3xl font-extrabold text-gray-900 mt-3 mb-3 leading-tight">{article.title}</h1>
+            <div className="flex flex-wrap items-center gap-4 mb-4 text-xs text-gray-400">
+              <span className="flex items-center gap-1.5"><Clock size={12} className="text-green-500" />{article.readTime}</span>
+              <span className="flex items-center gap-1.5"><Tag size={12} className="text-green-500" />{article.category}</span>
+              <span>{article.date}</span>
+            </div>
+            <p className="text-gray-600 text-[15px] leading-relaxed border-r-4 border-green-500 pr-4 bg-green-50/60 py-3 rounded-l-xl">
+              {article.summary}
+            </p>
           </div>
-        </div>
 
-        {/* FAQ */}
-        {article.faqs && article.faqs.length > 0 && (
-          <FAQAccordion faqs={article.faqs} />
-        )}
-      </article>
-    </div>
+          {/* ── Featured Image ── */}
+          {article.featuredImage && !imgError && (
+            <div className="mb-8 animate-fade-in-up">
+              <div className="relative rounded-2xl overflow-hidden border border-gray-200 shadow-md bg-gray-100">
+                {!imgLoaded && (
+                  <div className="animate-pulse bg-gradient-to-r from-gray-200 via-gray-100 to-gray-200" style={{ height: 320 }} />
+                )}
+                <img
+                  src={article.featuredImage}
+                  alt={article.title}
+                  className={`w-full object-cover transition-opacity duration-700 ${imgLoaded ? "opacity-100" : "opacity-0"}`}
+                  style={{ height: 320, display: "block" }}
+                  onLoad={() => setImgLoaded(true)}
+                  onError={() => setImgError(true)}
+                />
+              </div>
+            </div>
+          )}
+
+          {/* ── Table of Contents ── */}
+          {article.toc && article.toc.length > 0 && (
+            <div ref={reveal} className="section-reveal bg-gradient-to-br from-green-50 to-emerald-50/60 border border-green-200 rounded-2xl p-5 mb-8 shadow-sm">
+              <div className="flex items-center gap-2 mb-4">
+                <div className="w-7 h-7 bg-green-600 rounded-xl flex items-center justify-center flex-shrink-0">
+                  <span className="text-white text-sm font-black leading-none">≡</span>
+                </div>
+                <h3 className="font-extrabold text-green-800 text-sm">جدول المحتويات</h3>
+              </div>
+              <ol className="space-y-2 stagger-children revealed">
+                {article.toc.map((item, i) => (
+                  <li key={i} className="flex items-center gap-3 text-sm text-green-700 hover:text-green-900 transition-colors cursor-default">
+                    <span className="flex-shrink-0 w-6 h-6 rounded-full bg-green-600 text-white text-xs font-extrabold flex items-center justify-center shadow-sm">
+                      {i + 1}
+                    </span>
+                    <span className="leading-snug">{item}</span>
+                  </li>
+                ))}
+              </ol>
+            </div>
+          )}
+
+          {/* ── Article Content ── */}
+          <div ref={reveal} className="section-reveal text-gray-700 leading-loose">
+            {renderContent(article.content)}
+          </div>
+
+          {/* ── CTA Box ── */}
+          <div ref={reveal} className="section-reveal mt-10 relative overflow-hidden bg-gradient-to-br from-[#0a2e14] via-[#0f4d22] to-[#166534] rounded-2xl p-7 text-white text-center shadow-xl">
+            <div className="absolute inset-0 opacity-[0.04]" style={{ backgroundImage: "radial-gradient(circle, rgba(255,255,255,.8) 1px, transparent 1px)", backgroundSize: "20px 20px" }} />
+            <div className="relative">
+              <p className="font-extrabold text-xl mb-1">مستعد تبدأ رحلتك؟</p>
+              <p className="text-green-200 text-sm mb-5 max-w-sm mx-auto">احصل على استشارة مجانية — فريقنا يساعدك خطوة بخطوة من القبول حتى السفر.</p>
+              <div className="flex flex-col sm:flex-row gap-3 justify-center">
+                <button
+                  onClick={() => go("home", { scrollTo: "apply" })}
+                  className="bg-white text-green-700 font-bold px-6 py-3 rounded-xl hover:bg-green-50 transition-all text-sm shadow-md hover:shadow-lg hover:-translate-y-0.5"
+                >
+                  ابدأ التسجيل الآن
+                </button>
+                <button
+                  onClick={() => go("universities")}
+                  className="bg-green-500/30 border border-green-400/40 hover:bg-green-500/40 text-white font-bold px-6 py-3 rounded-xl transition-all text-sm"
+                >
+                  استعرض الجامعات
+                </button>
+              </div>
+            </div>
+          </div>
+
+          {/* ── FAQ ── */}
+          {article.faqs && article.faqs.length > 0 && (
+            <div ref={reveal} className="section-reveal">
+              <FAQAccordion faqs={article.faqs} />
+            </div>
+          )}
+        </article>
+      </div>
+    </>
   );
 }
 
@@ -577,15 +865,15 @@ export default function BlogPage() {
 
   if (openArticle) {
     return (
-      <div className="min-h-screen bg-[#f8fafc] pt-[70px]" dir="rtl">
+      <div className="min-h-screen bg-[#f8fafc]" dir="rtl" style={{ paddingTop: 70 }}>
         {/* Breadcrumb */}
-        <div className="bg-white border-b border-gray-100 px-4 py-3 shadow-sm">
-          <nav className="max-w-3xl mx-auto flex items-center gap-1 text-sm text-gray-500">
+        <div className="bg-white border-b border-gray-100 px-4 py-2.5">
+          <nav className="max-w-3xl mx-auto flex items-center gap-1 text-xs text-gray-500">
             <a href="/" onClick={(e) => { e.preventDefault(); go("home"); }} className="hover:text-green-600 transition-colors">الرئيسية</a>
-            <ChevronLeft size={14} className="rotate-180" />
+            <ChevronLeft size={12} className="rotate-180 text-gray-300" />
             <a href="/blog" onClick={(e) => { e.preventDefault(); closeArticle(); }} className="hover:text-green-600 transition-colors">المقالات</a>
-            <ChevronLeft size={14} className="rotate-180" />
-            <span className="text-gray-900 font-semibold truncate max-w-48">{openArticle.title.slice(0, 40)}…</span>
+            <ChevronLeft size={12} className="rotate-180 text-gray-300" />
+            <span className="text-gray-700 font-medium truncate max-w-[200px]">{openArticle.title.slice(0, 35)}…</span>
           </nav>
         </div>
         <ArticleView article={openArticle} onBack={closeArticle} />

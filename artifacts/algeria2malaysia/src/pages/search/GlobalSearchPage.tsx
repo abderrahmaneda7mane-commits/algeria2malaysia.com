@@ -220,7 +220,7 @@ export default function GlobalSearchPage() {
       </div>
 
       {/* ── Results ── */}
-      <div className="max-w-3xl mx-auto px-4 -mt-6 pb-16">
+      <div className="relative z-10 max-w-3xl mx-auto px-4 mt-6 pb-16">
 
         {loading && (
           <div className="bg-white rounded-2xl shadow-lg p-8 text-center border border-gray-100">
@@ -251,11 +251,14 @@ export default function GlobalSearchPage() {
         )}
 
         {!loading && searched && results.length === 0 && (
-          <div className="bg-white rounded-2xl shadow-lg p-10 text-center border border-gray-100">
-            <BookOpen size={48} className="mx-auto text-gray-200 mb-3" />
-            <h3 className="text-gray-700 font-bold text-lg mb-2">لا توجد نتائج</h3>
-            <p className="text-gray-500 text-sm">جرّب كلمة أخرى أو تأكد من الإملاء باللغة الإنجليزية</p>
-          </div>
+          <>
+            <div className="bg-white rounded-2xl shadow-lg p-10 text-center border border-gray-100">
+              <BookOpen size={48} className="mx-auto text-gray-200 mb-3" />
+              <h3 className="text-gray-700 font-bold text-lg mb-2">لا توجد نتائج</h3>
+              <p className="text-gray-500 text-sm">جرّب كلمة أخرى أو تأكد من الإملاء باللغة الإنجليزية</p>
+            </div>
+            <div className="mt-4"><PriceDisclaimer /></div>
+          </>
         )}
 
         {!loading && results.length > 0 && (
