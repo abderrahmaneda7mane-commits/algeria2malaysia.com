@@ -604,6 +604,7 @@ function ArticleView({ article, onBack }: { article: Article; onBack: () => void
     description: article.summary,
     canonicalPath: `/blog/${article.slug}`,
     keywords: `دراسة ماليزيا، ${article.category}، طلاب جزائريين`,
+    ogImage: article.featuredImage ? `https://algeria2malaysia.com${article.featuredImage}` : undefined,
   });
 
   useEffect(() => {
@@ -667,7 +668,7 @@ function ArticleView({ article, onBack }: { article: Article; onBack: () => void
         const rows = tableLines.filter(l => !l.startsWith("|---"));
         result.push(
           <div key={`table-${i}`} className="overflow-x-auto my-4 rounded-xl border border-gray-200 shadow-sm">
-            <table className="w-full text-xs min-w-[420px]" dir="rtl">
+            <table className="w-full text-xs" dir="rtl">
               <tbody>
                 {rows.map((row, ri) => {
                   const cells = row.split("|").filter(c => c.trim());
@@ -677,7 +678,7 @@ function ArticleView({ article, onBack }: { article: Article; onBack: () => void
                       {cells.map((c, ci) => (
                         isHeader
                           ? <th key={ci} className="px-3 py-2 text-right whitespace-nowrap">{c.trim()}</th>
-                          : <td key={ci} className={`px-3 py-2 whitespace-nowrap ${ci === 0 ? "font-semibold text-gray-800" : "text-gray-600"}`}>{c.trim()}</td>
+                          : <td key={ci} className={`px-3 py-2 ${ci === 0 ? "font-semibold text-gray-800 whitespace-nowrap" : "text-gray-600 break-words min-w-0"}`}>{c.trim()}</td>
                       ))}
                     </tr>
                   );
@@ -753,7 +754,7 @@ function ArticleView({ article, onBack }: { article: Article; onBack: () => void
                   src={article.featuredImage}
                   alt={article.title}
                   className={`w-full object-cover transition-opacity duration-700 ${imgLoaded ? "opacity-100" : "opacity-0"}`}
-                  style={{ height: 320, display: "block" }}
+                  style={{ height: "clamp(180px, 40vw, 300px)", display: "block" }}
                   onLoad={() => setImgLoaded(true)}
                   onError={() => setImgError(true)}
                 />
