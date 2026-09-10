@@ -49,7 +49,6 @@
     "@types/node": "catalog:",
     "@types/react": "catalog:",
     "@types/react-dom": "catalog:",
-    "@vercel/node": "^12.0.2",
     "@vitejs/plugin-react": "catalog:",
     "@workspace/api-client-react": "workspace:*",
     "class-variance-authority": "catalog:",
@@ -79,6 +78,7 @@
   },
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
-    "@supabase/supabase-js": "^2.101.1"
+    "@supabase/supabase-js": "^2.101.1",
+    "@vercel/node": "^12.0.2"
   }
 }

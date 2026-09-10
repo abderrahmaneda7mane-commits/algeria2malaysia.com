@@ -185,6 +185,9 @@ importers:
       '@supabase/supabase-js':
         specifier: ^2.101.1
         version: 2.101.1
+      '@vercel/node':
+        specifier: ^12.0.2
+        version: 12.0.2(rollup@4.59.0)
     devDependencies:
       '@hookform/resolvers':
         specifier: ^3.10.0
@@ -297,9 +300,6 @@ importers:
       '@types/react-dom':
         specifier: 'catalog:'
         version: 19.2.3(@types/react@19.2.14)
-      '@vercel/node':
-        specifier: ^12.0.2
-        version: 12.0.2(rollup@4.59.0)
       '@vitejs/plugin-react':
         specifier: 'catalog:'
         version: 5.1.4(vite@7.3.1(@types/node@25.3.5)(jiti@2.6.1)(lightningcss@1.31.1)(tsx@4.21.0)(yaml@2.8.2))
