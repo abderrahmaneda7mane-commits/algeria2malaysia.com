@@ -584,10 +584,10 @@ export default function CambrightPage() {
               📝 عبّئ الفورم — مجاناً
             </button>
             <button
-              onClick={() => go("consultation")}
+              onClick={() => go("institutes")}
               className="flex-1 bg-white/15 hover:bg-white/25 border border-white/30 text-white font-bold rounded-xl py-3 text-center transition-all"
             >
-              📅 احجز استشارة مجانية
+              📚 استكشف المعاهد الأخرى
             </button>
           </div>
         </div>

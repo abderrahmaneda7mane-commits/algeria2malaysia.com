@@ -30,7 +30,7 @@ const INSTITUTES: FooterLink[] = [
 ];
 
 const SERVICES: FooterLink[] = [
-  { label: "استشارة مجانية",   page: "consultation" },
+  { label: "استكشف الجامعات",  page: "universities" },
   { label: "عبّئ فورم المعهد",  page: "apply" },
   { label: "قارن الجامعات",     page: "compare" },
   { label: "بحث شامل",          page: "search" },

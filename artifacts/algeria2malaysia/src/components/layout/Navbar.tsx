@@ -1,5 +1,5 @@
 ﻿import { useState, useEffect, useRef } from "react";
-import { Menu, X, Search, Building2, BookOpen, Home, ChevronDown, Sparkles } from "lucide-react";
+import { Menu, X, Search, Building2, BookOpen, Home, ChevronDown } from "lucide-react";
 import { useNavigate, type Page, PAGE_TO_URL, subscribeNavForceScrolled, getNavForceScrolled } from "@/hooks/useNavigate";
 
 const WA = "https://wa.me/601112200603";
@@ -185,12 +185,12 @@ export default function Navbar() {
                 واتساب
               </a>
               <a
-                href={PAGE_TO_URL["consultation"]}
-                onClick={(e) => { e.preventDefault(); go("consultation"); }}
+                href={PAGE_TO_URL["search"]}
+                onClick={(e) => { e.preventDefault(); go("search"); }}
                 className="flex items-center gap-1.5 bg-green-600 hover:bg-green-700 text-white text-sm font-bold px-5 py-2.5 rounded-full shadow-[0_4px_14px_-2px_rgba(22,163,74,.40)] hover:shadow-[0_6px_20px_-2px_rgba(22,163,74,.50)] hover:-translate-y-0.5 transition-all duration-200"
               >
-                <Sparkles size={13} />
-                استشارة مجانية
+                <Search size={13} />
+                ابحث عن تخصصك
               </a>
             </div>
 
@@ -261,11 +261,11 @@ export default function Navbar() {
 
           <div className="p-4 border-t border-gray-100 space-y-2.5 flex-shrink-0">
             <a
-              href={PAGE_TO_URL["consultation"]}
-              onClick={(e) => { e.preventDefault(); go("consultation"); setMobileOpen(false); }}
+              href={PAGE_TO_URL["search"]}
+              onClick={(e) => { e.preventDefault(); go("search"); setMobileOpen(false); }}
               className="w-full block text-center bg-green-600 hover:bg-green-700 text-white font-bold py-3 rounded-full text-sm transition-all shadow-[0_4px_14px_-2px_rgba(22,163,74,.35)]"
             >
-              استشارة مجانية
+              ابحث عن تخصصك
             </a>
             <a
               href={WA}

@@ -10,7 +10,7 @@ export const translations = {
     institutes:   { ar: "المعاهد",      en: "Institutes",    fr: "Instituts" },
     contact:      { ar: "تواصل معنا",   en: "Contact",       fr: "Contact" },
     search:       { ar: "ابحث عن تخصص", en: "Search Course", fr: "Chercher un cours" },
-    consult:      { ar: "استشارة مجانية", en: "Free Consult", fr: "Consultation" },
+    consult:      { ar: "ابحث عن تخصصك", en: "Find Your Major", fr: "Trouvez votre spécialité" },
     start:        { ar: "ابدأ الآن",    en: "Get Started",   fr: "Commencer" },
   },
 
@@ -79,7 +79,7 @@ export const translations = {
     quizTitle: { ar: "أجب على 3 أسئلة — نجد لك أفضل معهد", en: "Answer 3 questions — we find your best institute", fr: "Répondez à 3 questions — nous trouvons votre meilleur institut" },
     quizSub:   { ar: "بناءً على هدفك وميزانيتك ومدة إقامتك", en: "Based on your goal, budget and duration", fr: "Selon vos objectifs, budget et durée" },
     cta1:    { ar: "ابدأ طلب التسجيل", en: "Start Application", fr: "Commencer l'inscription" },
-    cta2:    { ar: "استشارة مجانية",   en: "Free Consultation", fr: "Consultation gratuite" },
+    cta2:    { ar: "استكشف المعاهد",   en: "Explore Institutes", fr: "Explorer les instituts" },
   },
 
   // ─── University Track ─────────────────────────────────────
@@ -203,7 +203,7 @@ export const translations = {
     title:   { ar: "نحن هنا لمساعدتك", en: "We're Here to Help", fr: "Nous sommes là pour vous" },
     subtitle: { ar: "تواصل معنا عبر أي من القنوات التالية", en: "Reach us through any of these channels", fr: "Contactez-nous via l'un de ces canaux" },
     whatsapp: { ar: "تواصل عبر واتساب", en: "WhatsApp Us", fr: "Nous contacter via WhatsApp" },
-    consult:  { ar: "احجز استشارة مجانية", en: "Book Free Consultation", fr: "Réserver une consultation gratuite" },
+    consult:  { ar: "استكشف الجامعات", en: "Explore Universities", fr: "Explorer les universités" },
   },
 } as const;
 

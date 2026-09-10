@@ -648,10 +648,10 @@ export default function HomePage() {
               <ArrowLeft size={16} className="group-hover:-translate-x-0.5 transition-transform" />
             </button>
             <button
-              onClick={() => go("consultation")}
+              onClick={() => go("institutes")}
               className="w-full sm:w-auto border-2 border-green-600 text-green-700 hover:bg-green-50 px-8 py-4 rounded-2xl font-bold text-[15px] transition-all duration-200 hover:shadow-sm"
             >
-              استشارة مجانية
+              استكشف المعاهد
             </button>
           </div>
         </div>
@@ -1010,10 +1010,10 @@ export default function HomePage() {
               </p>
               <div className="flex flex-col sm:flex-row gap-3 justify-center">
                 <button
-                  onClick={() => go("consultation")}
+                  onClick={() => go("institutes")}
                   className="bg-white text-green-800 font-bold px-7 py-3 rounded-xl hover:bg-green-50 transition-all duration-200 shadow-md hover:shadow-lg hover:-translate-y-0.5 text-sm"
                 >
-                  📅 احجز استشارتك المجانية
+                  📚 استعرض المعاهد
                 </button>
                 <button
                   onClick={() => go("universities")}
@@ -1128,10 +1128,10 @@ export default function HomePage() {
             <p className="text-gray-700 font-semibold mb-1">لديك سؤال لم تجد إجابته هنا؟</p>
             <p className="text-gray-500 text-sm mb-4">تواصل مع فريقنا مباشرة — نرد في أقل من 24 ساعة</p>
             <button
-              onClick={() => go("consultation")}
+              onClick={() => window.open(WA_LINK, "_blank", "noopener noreferrer")}
               className="bg-green-700 hover:bg-green-800 text-white px-7 py-3 rounded-xl font-bold text-sm transition-all duration-200 shadow-md hover:shadow-lg hover:-translate-y-0.5"
             >
-              احجز استشارتك المجانية الآن
+              تواصل معنا عبر واتساب
             </button>
           </div>
         </div>

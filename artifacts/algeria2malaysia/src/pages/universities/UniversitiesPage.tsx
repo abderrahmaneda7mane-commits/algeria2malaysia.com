@@ -485,7 +485,7 @@ export default function UniversitiesPage() {
                       rel="noopener noreferrer"
                       className="flex items-center gap-1.5 bg-gray-100 hover:bg-gray-200 text-gray-700 px-4 py-2 rounded-full text-xs font-bold transition-all"
                     >
-                      استشارة مجانية
+                      تواصل عبر واتساب
                     </a>
                   </div>
                 </div>

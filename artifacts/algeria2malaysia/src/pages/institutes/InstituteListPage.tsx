@@ -289,10 +289,10 @@ export default function InstituteListPage() {
               ابدأ الاختبار السريع
             </button>
             <button
-              onClick={() => go("consultation")}
+              onClick={() => go("universities")}
               className="bg-white/15 hover:bg-white/25 border border-white/25 text-white font-bold px-6 py-3 rounded-full text-sm transition-all"
             >
-              استشارة مجانية
+              استكشف الجامعات
             </button>
           </div>
         </div>
