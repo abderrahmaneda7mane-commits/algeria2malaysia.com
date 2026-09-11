@@ -204,7 +204,7 @@ export default function GlobalSearchPage() {
               type="text"
               value={query}
               onChange={e => setQuery(e.target.value)}
-              placeholder="اكتب التخصص أو اسم الجامعة... مثل: APU, UPM, Engineering, Business"
+              placeholder="يرجى كتابة اسم التخصص باللغة الانجليزية"
               className="w-full bg-white rounded-2xl py-4 pr-12 pl-12 text-base text-gray-800 shadow-xl focus:outline-none focus:ring-4 focus:ring-green-400/40 placeholder:text-gray-400 border border-white"
             />
             {query && (
