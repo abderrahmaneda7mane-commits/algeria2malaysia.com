@@ -1,5 +1,5 @@
 ﻿import { useNavigate, Page, PAGE_TO_URL } from "@/hooks/useNavigate";
-import { ArrowLeft, MessageCircle, Calendar } from "lucide-react";
+import { ArrowLeft, MessageCircle } from "lucide-react";
 
 const WA_LINK = "https://wa.me/601112200603";
 
@@ -78,14 +78,6 @@ export default function Footer() {
               >
                 <MessageCircle size={15} />
                 واتساب
-              </a>
-              <a
-                href={PAGE_TO_URL["consultation"]}
-                onClick={(e) => { e.preventDefault(); go("consultation"); }}
-                className="flex items-center gap-2 bg-white/10 hover:bg-white/18 text-white text-sm font-bold px-5 py-2.5 rounded-xl transition-all duration-200 border border-white/15 hover:border-white/25 hover:-translate-y-0.5"
-              >
-                <Calendar size={15} />
-                احجز موعد
               </a>
             </div>
           </div>
