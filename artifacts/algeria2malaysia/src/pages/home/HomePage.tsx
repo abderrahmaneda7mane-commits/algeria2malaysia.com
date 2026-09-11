@@ -1125,17 +1125,6 @@ export default function HomePage() {
               <FaqItem key={i} question={item.q} answer={item.a} />
             ))}
           </div>
-
-          <div className="mt-8 bg-gradient-to-br from-green-50 to-white border border-green-100 rounded-2xl p-6 text-center shadow-sm">
-            <p className="text-gray-700 font-semibold mb-1">لديك سؤال لم تجد إجابته هنا؟</p>
-            <p className="text-gray-500 text-sm mb-4">تواصل مع فريقنا مباشرة — نرد في أقل من 24 ساعة</p>
-            <button
-              onClick={() => window.open(WA_LINK, "_blank", "noopener noreferrer")}
-              className="bg-green-700 hover:bg-green-800 text-white px-7 py-3 rounded-xl font-bold text-sm transition-all duration-200 shadow-md hover:shadow-lg hover:-translate-y-0.5"
-            >
-              تواصل معنا عبر واتساب
-            </button>
-          </div>
         </div>
       </section>
 
