@@ -275,13 +275,15 @@ export default function HomePage() {
                   </div>
                 ))}
               </div>
-              <button
-                onClick={() => go("consultation")}
-                className="inline-flex items-center gap-2.5 bg-green-700 hover:bg-green-800 text-white px-8 py-4 rounded-2xl font-bold text-[15px] transition-all duration-200 shadow-[0_4px_20px_-4px_rgba(22,163,74,0.35)] hover:shadow-[0_8px_28px_-4px_rgba(22,163,74,0.45)] hover:-translate-y-0.5 group"
+              <a
+                href={WA_LINK}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2.5 bg-[#25D366] hover:bg-[#1ebe5d] text-white px-8 py-4 rounded-2xl font-bold text-[15px] transition-all duration-200 shadow-[0_4px_20px_-4px_rgba(37,211,102,0.35)] hover:shadow-[0_8px_28px_-4px_rgba(37,211,102,0.45)] hover:-translate-y-0.5 group"
               >
-                <span>{t(T.about.cta)}</span>
-                <ArrowLeft size={17} className="group-hover:-translate-x-0.5 transition-transform" />
-              </button>
+                <div className="w-[18px] h-[18px]">{WHATSAPP_SVG}</div>
+                <span>تواصل معنا عبر واتساب</span>
+              </a>
             </div>
 
             {/* Stats cards */}
