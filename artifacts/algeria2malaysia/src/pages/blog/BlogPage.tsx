@@ -988,7 +988,7 @@ function FAQAccordion({ faqs }: { faqs: FAQ[] }) {
 
 function ArticleView({ article, onBack }: { article: Article; onBack: () => void }) {
   const { go } = useNavigate();
-  const reveal = useReveal();
+  const reveal = useReveal(0);
   const [imgLoaded, setImgLoaded] = useState(false);
   const [imgError, setImgError] = useState(false);
 
