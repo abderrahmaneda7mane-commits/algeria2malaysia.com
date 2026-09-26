@@ -10,7 +10,7 @@ const ARTICLES: Record<string, { title: string; description: string; image: stri
   },
   "algeria2malaysia-experience-gulf-summer-program": {
     title: "تجربة Algeria2Malaysia الصيفية — لأبناء الجالية الجزائرية في الخليج",
-    description: "برنامج صيفي متكامل بالتعاون مع Cambright Language Centre في كوالالمبور: تعلّم الإنجليزية، إقامة، رحلات، وتجربة دولية حقيقية قبل الجامعة.",
+    description: "برنامج صيفي متكامل في كوالالمبور لأبناء الجالية الجزائرية في الخليج، بالتعاون مع Cambright International Language Centre.",
     image: `${BASE}/algeria2malaysia-experience-banner.jpg`,
   },
   "ielts-malaysia-preparation": {
