@@ -8,6 +8,11 @@ const ARTICLES: Record<string, { title: string; description: string; image: stri
     description: "الجامعات، الفيزا، التكاليف، وكل ما تحتاجه للدراسة في ماليزيا.",
     image: `${BASE}/opengraph.jpg`,
   },
+  "algeria2malaysia-experience-gulf-summer-program": {
+    title: "تجربة Algeria2Malaysia الصيفية — لأبناء الجالية الجزائرية في الخليج",
+    description: "برنامج صيفي متكامل بالتعاون مع Cambright Language Centre في كوالالمبور: تعلّم الإنجليزية، إقامة، رحلات، وتجربة دولية حقيقية قبل الجامعة.",
+    image: `${BASE}/algeria2malaysia-experience-banner.jpg`,
+  },
   "ielts-malaysia-preparation": {
     title: "تحضير IELTS في ماليزيا — أفضل 5 معاهد للجزائريين 2026",
     description: "دليل شامل لأفضل معاهد IELTS في كوالالمبور مع خطة دراسة 8 أسابيع.",

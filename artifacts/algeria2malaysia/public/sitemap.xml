@@ -177,6 +177,13 @@
 
   <!-- ===== مقالات المدوّنة ===== -->
   <url>
+    <loc>https://algeria2malaysia.com/blog/algeria2malaysia-experience-gulf-summer-program</loc>
+    <lastmod>2026-09-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.80</priority>
+  </url>
+
+  <url>
     <loc>https://algeria2malaysia.com/blog/study-in-malaysia-algerian-students</loc>
     <lastmod>2026-05-19</lastmod>
     <changefreq>monthly</changefreq>

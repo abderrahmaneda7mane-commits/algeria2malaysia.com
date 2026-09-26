@@ -1,4 +1,4 @@
-﻿import { ChevronLeft, Clock, Tag, ChevronDown } from "lucide-react";
+﻿import { ChevronLeft, Clock, Tag, ChevronDown, Check, X, Crown, Sparkles, GraduationCap, Globe2 } from "lucide-react";
 import { useNavigate, setNavForceScrolled } from "@/hooks/useNavigate";
 import { useSEO } from "@/hooks/useSEO";
 import { useReveal } from "@/hooks/useReveal";
@@ -7,6 +7,24 @@ import { useState, useEffect } from "react";
 interface FAQ {
   q: string;
   a: string;
+}
+
+interface PricingFeature {
+  text: string;
+  included: boolean;
+}
+
+interface PricingPackage {
+  id: string;
+  duration: string;
+  name: string;
+  price: string;
+  badge?: string;
+  popular?: boolean;
+  vip?: boolean;
+  accent: string;
+  icon: keyof typeof PRICING_ICONS;
+  features: PricingFeature[];
 }
 
 interface Article {
@@ -22,7 +40,15 @@ interface Article {
   featuredImage?: string;
   toc?: string[];
   faqs?: FAQ[];
+  pricingPackages?: PricingPackage[];
 }
+
+const PRICING_ICONS = {
+  graduation: GraduationCap,
+  sparkles: Sparkles,
+  globe: Globe2,
+  crown: Crown,
+};
 
 const ARTICLES: Article[] = [
   {
@@ -137,6 +163,303 @@ IELTS بمعدل 5.5–6.5 أو TOEFL iBT بين 60–80 حسب الجامعة. 
       {
         q: "كم تستغرق إجراءات القبول؟",
         a: "عادةً 2 إلى 4 أسابيع لاستلام خطاب القبول من الجامعة، ثم 4 إلى 8 أسابيع إضافية لمعالجة الفيزا عبر هيئة EMGS الماليزية. المجموع من البداية حتى السفر: 6 إلى 12 أسبوعاً. إذا كانت ملفاتك مكتملة وتعاملت معنا مباشرة، نضمن لك أسرع وقت ممكن."
+      },
+    ],
+  },
+  {
+    slug: "algeria2malaysia-experience-gulf-summer-program",
+    title: "تجربة Algeria2Malaysia الصيفية — لأبناء الجالية الجزائرية في الخليج",
+    summary: "برنامج صيفي متكامل لأبناء الجالية الجزائرية في الخليج بالتعاون مع Cambright Language Centre في قلب كوالالمبور: تعلّم الإنجليزية، إقامة، رحلات، وتجربة دولية حقيقية قبل الجامعة. اكتشف الباقات والأسعار.",
+    category: "برامج صيفية",
+    readTime: "9 دقائق",
+    date: "2026-09-26",
+    tag: "برنامج حصري",
+    tagColor: "bg-teal-100 text-teal-700",
+    featuredImage: "/algeria2malaysia-experience-banner.jpg",
+    toc: [
+      "ماذا لو كان هذا الصيف أكثر من مجرد عطلة؟",
+      "لماذا ماليزيا؟",
+      "الدراسة في قلب كوالالمبور مع Cambright",
+      "تعلم الإنجليزية في بيئة دولية",
+      "أكثر من مجرد دورة لغة",
+      "الإقامة والسكن",
+      "من لحظة الوصول إلى الاكتشاف",
+      "Bring Your Buddy — خذ صاحبك معاك",
+      "باقات البرنامج والأسعار",
+      "الطيران، الطعام، ومتطلبات التسجيل",
+    ],
+    content: `
+ماذا لو كان هذا الصيف أكثر من مجرد عطلة؟
+
+هل تفكر في أن ترسل ابنك للدراسة في الخارج، لكنك متردد؟ هل تخاف أن تكون أول تجربة له بعيدًا عن العائلة صعبة؟
+
+وماذا لو كانت هناك فرصة ليعيش تجربة الدراسة في الخارج قبل الجامعة، لفترة محددة، وفي بلد مسلم ومتعدد الثقافات مثل ماليزيا؟
+
+تخيل أن ابنك يقضي جزءًا من عطلته في ماليزيا:
+
+- يتعلم اللغة الإنجليزية
+- يتعامل مع طلاب من مختلف أنحاء العالم
+- يعيش في قلب العاصمة كوالالمبور
+- يطور قدرته على التواصل باللغة الإنجليزية
+- يكتشف أجمل الأماكن في ماليزيا
+
+ثم يعود إلى المنزل بتجربة حقيقية يمكن أن تساعده في مرحلة الجامعة وما بعدها.
+
+**Algeria2Malaysia Experience** هو برنامج مصمم خصيصًا لأبناء الجالية الجزائرية المقيمة في دول الخليج، يجمع بين تعلم اللغة الإنجليزية، الإقامة، الحياة الدولية، الرحلات واكتشاف ماليزيا. مع Algeria2Malaysia، ابنك لا يدرس الإنجليزية فقط... بل يعيش تجربة دولية متكاملة.
+
+## لماذا ماليزيا؟
+
+ماليزيا ليست مجرد وجهة سياحية. إنها دولة مسلمة ومتعددة الثقافات، تستقبل الطلاب من مختلف أنحاء العالم، مع انتشار واسع للغة الإنجليزية في التعليم وقطاعات الأعمال والحياة اليومية — مما يمنح الطالب فرصة لاستخدام اللغة خارج الفصل وليس فقط أثناء الدروس. كما تتميز بتكاليف دراسة ومعيشة تنافسية مقارنة بالعديد من الوجهات الدولية.
+
+- دولة مسلمة وبيئة متعددة الثقافات
+- وجهة تعليمية دولية معترف بها
+- الإنجليزية منتشرة على نطاق واسع
+- تكلفة أكثر تنافسية من العديد من الوجهات الغربية
+- حياة عصرية في كوالالمبور مع طبيعة وسياحة متنوعة
+
+## الدراسة في قلب كوالالمبور
+
+سيكون البرنامج بالتنسيق مع **Cambright International Language Centre** — Wisma MCA, 163 Jalan Ampang, Kuala Lumpur.
+
+يقع المعهد في منطقة مركزية بالقرب من KLCC وPetronas Twin Towers، على بعد حوالي 150 متراً من Ampang Park MRT، و190 متراً من محطة LRT، وحوالي 1.2 كم فقط من Suria KLCC. هذا يعني أن الطالب سيكون في قلب مدينة كوالالمبور، بالقرب من المواصلات والمطاعم وأشهر معالم العاصمة.
+
+## تعلم الإنجليزية في بيئة دولية
+
+الهدف ليس أن يحفظ الطالب الكلمات والقواعد فقط، بل أن يعيش اللغة. داخل الفصل سيعمل الطالب على تطوير:
+
+- Speaking — التحدث
+- Listening — الاستماع
+- Reading — القراءة
+- Writing — الكتابة
+
+وخارج الفصل، ستكون لديه فرصة لاستخدام الإنجليزية في مواقف الحياة اليومية والتعامل مع أشخاص من خلفيات مختلفة، ضمن برامج Cambright International Language Centre التي يشرف عليها معلمون مؤهلون وذوو خبرة في تدريس اللغة الإنجليزية للطلاب الدوليين.
+
+## أكثر من مجرد دورة لغة
+
+نحن نؤمن أن تجربة الدراسة في الخارج يمكن أن تمنح الطالب مهارات لا يحصل عليها من الفصل الدراسي وحده:
+
+**مهارات التواصل** — استخدام الإنجليزية بشكل أكثر راحة وثقة.
+
+**الوعي الثقافي** — التعامل مع أشخاص من جنسيات وثقافات مختلفة.
+
+**الاستقلالية** — التعود على تحمل المسؤولية وتنظيم الوقت.
+
+**الخبرة الدولية** — التعرف على الحياة خارج الوطن.
+
+**الاستعداد للجامعة** — الحصول على تجربة أولية للحياة الدراسية في الخارج قبل اتخاذ قرار الدراسة الجامعية.
+
+من الطبيعي أن يخاف الأهل من إرسال ابنهم للدراسة في الخارج، خصوصًا إذا كانت أول مرة يسافر فيها بعيدًا عن عائلته. لهذا يمكن أن تكون هذه التجربة خطوة أولى قبل الجامعة: يدرس ← يسافر ← يعيش في بيئة جديدة ← يتعلم الإنجليزية ← يكتشف نفسه. وبعدها سيكون لديه تصور أفضل عن الحياة الدراسية خارج الوطن.
+
+## الإقامة والسكن
+
+نعمل على توفير خيارات سكن قريبة من منطقة المعهد، مع مستويات مختلفة تناسب احتياجات وميزانيات العائلات.
+
+| نوع السكن | الوصف |
+|-----------|-------|
+| Standard Accommodation | سكن مشترك أو غرفة ضمن شقة/سكن مناسب للطلاب |
+| VIP Private Studio | خيار أكثر خصوصية — استوديو خاص للطالب |
+
+يتم اختيار السكن وفق عدة عوامل: القرب من المعهد، سهولة الوصول إلى المواصلات، مستوى السكن والخصوصية، شروط الإقامة، عمر الطالب ومتطلباته، والسعر.
+
+## من لحظة الوصول إلى الاكتشاف
+
+نريد أن تبدأ التجربة من اللحظة الأولى — Welcome to Malaysia! بحسب الباقة المختارة، يمكن أن تشمل الخدمات:
+
+- Airport Pickup — استقبال في المطار
+- Malaysian SIM Card — شريحة اتصال ماليزية
+- Welcome Gift — هدية ترحيبية
+- Accommodation — الإقامة
+- English Course — دورة اللغة الإنجليزية
+- Student Support — دعم ومتابعة الطالب
+
+كما يمكن لفريق Algeria2Malaysia المساعدة في ترتيب تذكرة الطيران ذهابًا وعودة كخدمة إضافية.
+
+الدراسة ليست كل شيء — ماليزيا تقدم تجربة متنوعة من المدن الحديثة إلى الطبيعة والجزر والثقافة. نعمل على تنظيم مجموعة من الرحلات والأنشطة بالتنسيق مع جهات سياحية محلية، وقد تشمل حسب مدة البرنامج والباقة:
+
+- Kuala Lumpur & KLCC
+- Genting Highlands
+- Port Dickson
+- Melaka
+- أنشطة في الطبيعة والهواء الطلق
+
+وبذلك لا يعود الطالب إلى المنزل ومعه تحسن في اللغة فقط، بل ومعه تجربة دولية وذكريات جديدة.
+
+## Bring Your Buddy — خذ صاحبك معاك
+
+نحن نعلم أن أول تجربة في الخارج تكون أسهل وأكثر متعة عندما يشاركها الطالب مع شخص يعرفه. لذلك نوفر **Bring Your Buddy**: يمكن للطلاب الذين يرغبون في التسجيل مع صديق أو قريب الاستفادة من Special Group Rate وفق شروط البرنامج.
+
+ما تروحش وحدك… خذ صاحبك معاك 🇩🇿🤝🇲🇾
+
+## باقات البرنامج والأسعار
+
+اختر الباقة المناسبة لابنك — اضغط على أي باقة أدناه لعرض كل التفاصيل والخدمات المشمولة.
+{{PRICING_PACKAGES}}
+**Student Visa:** بالنسبة لبرنامج 6 أشهر، يخضع الطالب لإجراءات Student Visa / Student Pass المطلوبة، وسيتم مساعدته في تجهيز الملف بالتنسيق مع المعهد والجهات المختصة. الموافقة النهائية تخضع للجهات الماليزية المختصة.
+
+## الطيران والطعام
+
+تذكرة الطيران والوجبات غير مشمولة في الأسعار الأساسية لأي باقة.
+
+يمكن لفريق Algeria2Malaysia مساعدتك في ترتيب تذكرة الطيران ذهابًا وعودة من بلد إقامة الطالب في الخليج — ويختلف السعر حسب دولة ومدينة المغادرة، تاريخ السفر، شركة الطيران، الأمتعة، وتوفر المقاعد. لذلك يُقدَّم سعر الطيران بشكل منفصل عند تحديد موعد السفر.
+
+أما الوجبات، فيتكفل الطالب بها يوميًا، مع توفر العديد من المطاعم والخيارات الغذائية بالقرب من منطقة الدراسة والسكن — مما يتيح للعائلة التحكم في ميزانية الطعام وفق احتياجات الطالب.
+
+## متطلبات التسجيل والقبول
+
+تختلف المتطلبات حسب مدة البرنامج:
+
+### برنامج شهر واحد أو 3 أشهر
+- نسخة واضحة وسارية من جواز سفر الطالب
+- استكمال بيانات التسجيل
+- إجراء English Placement Test — يمكن إجراؤه Online قبل السفر أو عند وصول الطالب إلى ماليزيا لتحديد مستواه المناسب
+
+### برنامج 6 أشهر
+نظرًا لأن البرنامج يتطلب إجراءات Student Visa / Student Pass، هناك متطلبات إضافية:
+- نسخة واضحة وسارية من جواز السفر
+- نسخة من شهادة الثانوية العامة
+- الوثائق المطلوبة لإجراءات Student Pass
+- استكمال بيانات التسجيل
+- إجراء English Placement Test
+
+**الدفع عند الوصول:** لمنح العائلات مرونة أكبر، يمكن ترتيب دفع رسوم دورة اللغة الإنجليزية عند وصول الطالب إلى ماليزيا وفق شروط وآلية الدفع المعتمدة من المعهد. سيتم توضيح جميع تفاصيل الدفع والتكاليف الأخرى قبل إتمام الحجز.
+
+## من الخليج إلى ماليزيا
+
+البرنامج مخصص بشكل أساسي لأبناء الجالية الجزائرية المقيمة في: الإمارات، قطر، السعودية، الكويت، البحرين، وعُمان — ليعيش الطالب تجربة تجمع بين اللغة، التعليم، السفر والاستقلالية، مع فرصة للتعرف على شباب جزائريين آخرين والتواصل مع طلاب من مختلف الجنسيات.
+
+ربما ابنك سيدخل الجامعة قريبًا، وربما تفكر في إرساله يومًا ما للدراسة في الخارج. لكن ماذا لو أعطيته فرصة لتجربة ذلك قبل الجامعة؟ ليس لسنوات، وليس التزامًا طويلًا، بل تجربة حقيقية ومحددة المدة — يتعلم فيها الإنجليزية، يسافر، يعيش في بيئة جديدة، يتعرف على ثقافات مختلفة، ويكتشف ماليزيا... ويبدأ في اكتشاف نفسه أيضًا.
+
+استثمر في ابنك اليوم، وامنحه تجربة قد تبقى معه لسنوات.
+
+**للحجز والاستفسار:** فريقنا متاح عبر واتساب على الرقم +60 11-1220 0603 لمساعدتك في اختيار الباقة المناسبة، وتوضيح تفاصيل السكن والرحلات والطيران، وشرح خطوات التسجيل حسب مدة البرنامج.
+
+**ملاحظة حول الأسعار:** جميع الأسعار بالدولار الأمريكي (USD) وقد تختلف حسب توفر السكن وتواريخ السفر والترتيبات النهائية للبرنامج. تذكرة الطيران والوجبات غير مشمولة إلا إذا ذُكر ذلك صراحةً. فيزا الطالب (Student Pass) مطلوبة للبرامج التي تستلزم ذلك وتبقى خاضعة لموافقة الجهات الماليزية المختصة.
+    `,
+    pricingPackages: [
+      {
+        id: "1m",
+        duration: "1 Month",
+        name: "Summer Starter — تجربة صيفية قصيرة",
+        price: "$1,499",
+        accent: "bg-gradient-to-l from-green-600 to-green-500",
+        icon: "graduation",
+        features: [
+          { text: "Intensive English Course", included: true },
+          { text: "Standard Accommodation", included: true },
+          { text: "Airport Pickup", included: true },
+          { text: "Malaysian SIM Card", included: true },
+          { text: "Welcome Gift", included: true },
+          { text: "Selected Activities", included: true },
+          { text: "Student Support", included: true },
+          { text: "Flight Ticket", included: false },
+          { text: "Meals", included: false },
+        ],
+      },
+      {
+        id: "3m",
+        duration: "3 Months",
+        name: "Malaysia Explorer — الأكثر توازناً",
+        price: "$2,999",
+        badge: "🔥 2 أشهر + شهر مجاني",
+        popular: true,
+        accent: "bg-gradient-to-l from-blue-600 to-blue-500",
+        icon: "sparkles",
+        features: [
+          { text: "Intensive English Course", included: true },
+          { text: "3 Months Accommodation", included: true },
+          { text: "Airport Pickup", included: true },
+          { text: "Malaysian SIM Card", included: true },
+          { text: "Welcome Gift", included: true },
+          { text: "Selected Trips & Activities", included: true },
+          { text: "Student Support", included: true },
+          { text: "Flight Ticket", included: false },
+          { text: "Meals", included: false },
+        ],
+      },
+      {
+        id: "6m",
+        duration: "6 Months",
+        name: "Malaysia Immersion — انغماس كامل",
+        price: "$6,599",
+        accent: "bg-gradient-to-l from-purple-600 to-purple-500",
+        icon: "globe",
+        features: [
+          { text: "Intensive English Course", included: true },
+          { text: "6 Months Accommodation", included: true },
+          { text: "Airport Pickup", included: true },
+          { text: "Malaysian SIM Card", included: true },
+          { text: "Welcome Gift", included: true },
+          { text: "Trips & Activities", included: true },
+          { text: "Student Support", included: true },
+          { text: "Student Visa / Student Pass Assistance", included: true },
+          { text: "Flight Ticket", included: false },
+        ],
+      },
+      {
+        id: "vip3",
+        duration: "3 Months VIP",
+        name: "VIP Experience — خصوصية وراحة",
+        price: "$3,699",
+        vip: true,
+        accent: "bg-gradient-to-l from-amber-500 to-yellow-500",
+        icon: "crown",
+        features: [
+          { text: "كل خدمات باقة 3 Months", included: true },
+          { text: "Private Studio", included: true },
+          { text: "More Privacy", included: true },
+          { text: "Priority Support", included: true },
+          { text: "Additional VIP Benefits", included: true },
+          { text: "Flight Ticket", included: false },
+          { text: "Meals", included: false },
+        ],
+      },
+      {
+        id: "vip6",
+        duration: "6 Months VIP",
+        name: "VIP Experience — تجربة كاملة راقية",
+        price: "$7,999",
+        vip: true,
+        accent: "bg-gradient-to-l from-amber-600 to-yellow-600",
+        icon: "crown",
+        features: [
+          { text: "كل خدمات باقة 6 Months", included: true },
+          { text: "Private Studio", included: true },
+          { text: "More Privacy", included: true },
+          { text: "Priority Support", included: true },
+          { text: "Additional VIP Benefits", included: true },
+          { text: "Student Visa / Student Pass Assistance", included: true },
+          { text: "Flight Ticket", included: false },
+        ],
+      },
+    ],
+    faqs: [
+      {
+        q: "لمن يوجّه برنامج Algeria2Malaysia Experience؟",
+        a: "البرنامج مصمم خصيصًا لأبناء الجالية الجزائرية المقيمة في دول الخليج (الإمارات، قطر، السعودية، الكويت، البحرين، عُمان) الراغبين في خوض تجربة صيفية أو فصلية لتعلّم الإنجليزية والعيش في ماليزيا قبل مرحلة الجامعة."
+      },
+      {
+        q: "أين يقع مقر الدراسة بالضبط؟",
+        a: "الدراسة تكون في Cambright International Language Centre، الكائن في Wisma MCA، 163 Jalan Ampang، كوالالمبور — على بعد خطوات من KLCC ومحطتي Ampang Park للمترو (MRT وLRT)، وحوالي 1.2 كم فقط من Suria KLCC."
+      },
+      {
+        q: "هل تذكرة الطيران والوجبات مشمولة في السعر؟",
+        a: "لا، تذكرة الطيران والوجبات غير مشمولة في أي من الباقات. يمكن لفريق Algeria2Malaysia مساعدتك في ترتيب تذكرة الطيران ذهابًا وعودة بسعر يُحدَّد بشكل منفصل حسب مدينة المغادرة وتاريخ السفر."
+      },
+      {
+        q: "هل يحتاج الطالب فيزا للمشاركة في البرنامج؟",
+        a: "بالنسبة لبرنامجي شهر واحد و3 أشهر، غالبًا لا تُشترط إجراءات فيزا طويلة المدى. أما برنامج 6 أشهر فيتطلب إجراءات Student Visa / Student Pass، ويتولى فريقنا مساعدة الطالب في تجهيز الملف بالتنسيق مع المعهد والجهات المختصة، مع العلم أن الموافقة النهائية تبقى خاضعة للجهات الماليزية."
+      },
+      {
+        q: "هل يمكن للطالب التسجيل مع صديق؟",
+        a: "نعم، من خلال خدمة Bring Your Buddy، يمكن للطلاب الراغبين بالتسجيل مع صديق أو قريب الاستفادة من Special Group Rate وفق شروط البرنامج — ليعيش الطالب التجربة بثقة أكبر برفقة شخص يعرفه."
+      },
+      {
+        q: "متى يمكن دفع رسوم دورة اللغة الإنجليزية؟",
+        a: "يمكن ترتيب دفع رسوم دورة اللغة الإنجليزية عند وصول الطالب إلى ماليزيا مباشرة، وفق شروط وآلية الدفع المعتمدة من المعهد، مما يمنح العائلات مرونة أكبر في التخطيط المالي."
+      },
+      {
+        q: "ما الفرق بين الباقة العادية وباقة VIP؟",
+        a: "باقة VIP توفر للطالب Private Studio بدل السكن المشترك، مع مستوى أعلى من الخصوصية، ودعم ذو أولوية (Priority Support)، بالإضافة إلى مزايا إضافية خاصة بفئة VIP — وهي مناسبة للعائلات التي تبحث عن راحة وخصوصية أكبر لابنها."
       },
     ],
   },
@@ -549,6 +872,84 @@ IELTS بمعدل 5.5–6.5 أو TOEFL iBT بين 60–80 حسب الجامعة. 
   },
 ];
 
+function PricingPackages({ packages }: { packages: PricingPackage[] }) {
+  const [openId, setOpenId] = useState<string | null>(packages.find((p) => p.popular)?.id ?? null);
+
+  return (
+    <div className="my-8 space-y-4">
+      {packages.map((pkg) => {
+        const isOpen = openId === pkg.id;
+        const Icon = PRICING_ICONS[pkg.icon];
+        return (
+          <div
+            key={pkg.id}
+            className={`rounded-2xl border overflow-hidden bg-white transition-shadow duration-300 ${
+              pkg.popular ? "border-blue-300 ring-2 ring-blue-100" : pkg.vip ? "border-amber-300" : "border-gray-200"
+            } ${isOpen ? "shadow-lg" : "shadow-sm hover:shadow-md"}`}
+          >
+            <button
+              onClick={() => setOpenId(isOpen ? null : pkg.id)}
+              className={`w-full flex items-center justify-between gap-3 px-4 md:px-5 py-4 text-right transition-transform active:scale-[0.99] ${pkg.accent}`}
+            >
+              <div className="flex items-center gap-3 min-w-0">
+                <div className="w-10 h-10 md:w-11 md:h-11 rounded-xl bg-white/20 flex items-center justify-center flex-shrink-0">
+                  <Icon size={20} className="text-white" />
+                </div>
+                <div className="min-w-0 text-right">
+                  <div className="flex items-center gap-2 flex-wrap">
+                    <span dir="ltr" className="font-extrabold text-white text-sm md:text-base">{pkg.duration}</span>
+                    {pkg.popular && (
+                      <span className="bg-white/25 text-white text-[10px] font-bold px-2 py-0.5 rounded-full whitespace-nowrap">
+                        ⭐ الأكثر طلباً
+                      </span>
+                    )}
+                    {pkg.vip && (
+                      <span className="bg-white/25 text-white text-[10px] font-bold px-2 py-0.5 rounded-full whitespace-nowrap">
+                        VIP
+                      </span>
+                    )}
+                  </div>
+                  <p className="text-white/85 text-xs md:text-sm truncate">{pkg.name}</p>
+                </div>
+              </div>
+              <div className="flex items-center gap-2 md:gap-3 flex-shrink-0">
+                <div className="text-left">
+                  <div className="text-white font-black text-base md:text-xl leading-none">{pkg.price}</div>
+                  {pkg.badge && <div className="text-white/90 text-[10px] font-semibold mt-1 whitespace-nowrap">{pkg.badge}</div>}
+                </div>
+                <ChevronDown size={20} className={`pricing-chevron text-white flex-shrink-0 ${isOpen ? "open" : ""}`} />
+              </div>
+            </button>
+
+            <div className={`pricing-panel ${isOpen ? "open" : ""}`}>
+              <div>
+                <div className="p-4 md:p-5 bg-gray-50/70 border-t border-gray-100">
+                  <div className="grid sm:grid-cols-2 gap-2.5">
+                    {pkg.features.map((f, i) => (
+                      <div
+                        key={i}
+                        className="pricing-feature flex items-start gap-2 text-sm"
+                        style={{ transitionDelay: isOpen ? `${i * 45}ms` : "0ms" }}
+                      >
+                        {f.included ? (
+                          <Check size={16} className="text-green-600 flex-shrink-0 mt-0.5" />
+                        ) : (
+                          <X size={16} className="text-gray-300 flex-shrink-0 mt-0.5" />
+                        )}
+                        <span dir="ltr" className={f.included ? "text-gray-700 text-right" : "text-gray-400 line-through text-right"}>{f.text}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  );
+}
+
 function FAQAccordion({ faqs }: { faqs: FAQ[] }) {
   const [openIdx, setOpenIdx] = useState<number | null>(null);
   return (
@@ -786,7 +1187,20 @@ function ArticleView({ article, onBack }: { article: Article; onBack: () => void
 
           {/* ── Article Content ── */}
           <div ref={reveal} className="section-reveal text-gray-700 leading-loose">
-            {renderContent(article.content)}
+            {article.pricingPackages && article.content.includes("{{PRICING_PACKAGES}}") ? (
+              (() => {
+                const [before, after] = article.content.split("{{PRICING_PACKAGES}}");
+                return (
+                  <>
+                    {renderContent(before)}
+                    <PricingPackages packages={article.pricingPackages} />
+                    {after && renderContent(after)}
+                  </>
+                );
+              })()
+            ) : (
+              renderContent(article.content)
+            )}
           </div>
 
           {/* ── CTA Box ── */}
