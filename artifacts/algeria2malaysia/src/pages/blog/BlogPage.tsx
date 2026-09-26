@@ -331,7 +331,7 @@ IELTS بمعدل 5.5–6.5 أو TOEFL iBT بين 60–80 حسب الجامعة. 
 
 استثمر في ابنك اليوم، وامنحه تجربة قد تبقى معه لسنوات.
 
-**للحجز والاستفسار:** فريقنا متاح عبر واتساب على الرقم +60 11-1220 0603 لمساعدتك في اختيار الباقة المناسبة، وتوضيح تفاصيل السكن والرحلات والطيران، وشرح خطوات التسجيل حسب مدة البرنامج.
+**للحجز والاستفسار:** فريقنا متاح عبر واتساب على الرقم +601112200603 لمساعدتك في اختيار الباقة المناسبة، وتوضيح تفاصيل السكن والرحلات والطيران، وشرح خطوات التسجيل حسب مدة البرنامج.
 
 **ملاحظة حول الأسعار:** جميع الأسعار بالدولار الأمريكي (USD) وقد تختلف حسب توفر السكن وتواريخ السفر والترتيبات النهائية للبرنامج. تذكرة الطيران والوجبات غير مشمولة إلا إذا ذُكر ذلك صراحةً. فيزا الطالب (Student Pass) مطلوبة للبرامج التي تستلزم ذلك وتبقى خاضعة لموافقة الجهات الماليزية المختصة.
     `,
@@ -352,7 +352,6 @@ IELTS بمعدل 5.5–6.5 أو TOEFL iBT بين 60–80 حسب الجامعة. 
           { text: "Selected Activities", included: true },
           { text: "Student Support", included: true },
           { text: "Flight Ticket", included: false },
-          { text: "Meals", included: false },
         ],
       },
       {
@@ -373,7 +372,6 @@ IELTS بمعدل 5.5–6.5 أو TOEFL iBT بين 60–80 حسب الجامعة. 
           { text: "Selected Trips & Activities", included: true },
           { text: "Student Support", included: true },
           { text: "Flight Ticket", included: false },
-          { text: "Meals", included: false },
         ],
       },
       {
@@ -410,7 +408,6 @@ IELTS بمعدل 5.5–6.5 أو TOEFL iBT بين 60–80 حسب الجامعة. 
           { text: "Priority Support", included: true },
           { text: "Additional VIP Benefits", included: true },
           { text: "Flight Ticket", included: false },
-          { text: "Meals", included: false },
         ],
       },
       {
@@ -1044,10 +1041,12 @@ function ArticleView({ article, onBack }: { article: Article; onBack: () => void
   }, [article]);
 
   const renderInline = (text: string): React.ReactNode[] => {
-    const parts = text.split(/(\*\*[^*]+\*\*)/g);
+    const parts = text.split(/(\*\*[^*]+\*\*|\+\d[\d\-\s]{5,}\d)/g);
     return parts.map((part, j) => {
       if (part.startsWith("**") && part.endsWith("**"))
         return <strong key={j} className="font-bold text-gray-900">{part.slice(2, -2)}</strong>;
+      if (/^\+\d/.test(part))
+        return <span key={j} dir="ltr" className="inline-block">{part}</span>;
       return <span key={j}>{part}</span>;
     });
   };
