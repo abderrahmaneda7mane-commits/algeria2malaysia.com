@@ -8,6 +8,11 @@ const ARTICLES: Record<string, { title: string; description: string; image: stri
     description: "الجامعات، الفيزا، التكاليف، وكل ما تحتاجه للدراسة في ماليزيا.",
     image: `${BASE}/opengraph.jpg`,
   },
+  "study-in-malaysia-algerians-before-you-travel": {
+    title: "الدراسة في ماليزيا للجزائريين: أشياء لازم تعرفها قبل ما تجي",
+    description: "دليل عملي قبل السفر: اختيار الجامعة، إجراءات الطالب الدولي، الوثائق، الميزانية، السكن، وأول أسبوع في ماليزيا.",
+    image: `${BASE}/study-malaysia-before-travel-banner.jpg`,
+  },
   "algeria2malaysia-experience-gulf-summer-program": {
     title: "تجربة Algeria2Malaysia الصيفية — لأبناء الجالية الجزائرية في الخليج",
     description: "برنامج صيفي متكامل في كوالالمبور لأبناء الجالية الجزائرية في الخليج، بالتعاون مع Cambright International Language Centre.",
