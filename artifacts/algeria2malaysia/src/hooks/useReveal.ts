@@ -1,6 +1,6 @@
 import { useEffect, useRef, useCallback } from "react";
 
-export function useReveal(threshold = 0.12) {
+export function useReveal(threshold = 0.12, rootMargin?: string) {
   const observerRef = useRef<IntersectionObserver | null>(null);
 
   function getObserver() {
@@ -14,7 +14,7 @@ export function useReveal(threshold = 0.12) {
             }
           });
         },
-        { threshold }
+        { threshold, rootMargin }
       );
     }
     return observerRef.current;

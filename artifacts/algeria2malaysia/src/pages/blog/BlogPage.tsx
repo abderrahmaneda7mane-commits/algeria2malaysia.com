@@ -1,8 +1,21 @@
-﻿import { ChevronLeft, Clock, Tag, ChevronDown, Check, X, Crown, Sparkles, GraduationCap, Globe2 } from "lucide-react";
+﻿import { ChevronLeft, Clock, Tag, ChevronDown, Check, X, Crown, Sparkles, GraduationCap, Globe2, Lightbulb, AlertTriangle, Info, ArrowUp, Quote } from "lucide-react";
 import { useNavigate, setNavForceScrolled } from "@/hooks/useNavigate";
 import { useSEO } from "@/hooks/useSEO";
 import { useReveal } from "@/hooks/useReveal";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
+
+const CALLOUT_STYLES = {
+  tip:  { icon: Lightbulb,     box: "bg-gradient-to-l from-green-50 to-emerald-50/40 border-green-200",  iconBox: "bg-green-600",  label: "text-green-800" },
+  warn: { icon: AlertTriangle, box: "bg-gradient-to-l from-amber-50 to-orange-50/40 border-amber-200",   iconBox: "bg-amber-500",  label: "text-amber-800" },
+  note: { icon: Info,          box: "bg-gradient-to-l from-sky-50 to-blue-50/40 border-sky-200",         iconBox: "bg-sky-600",    label: "text-sky-800" },
+};
+
+function calloutKind(label: string): keyof typeof CALLOUT_STYLES | null {
+  if (label.startsWith("نصيحة")) return "tip";
+  if (label.startsWith("تنبيه")) return "warn";
+  if (label.startsWith("ملاحظة")) return "note";
+  return null;
+}
 
 interface FAQ {
   q: string;
@@ -1311,13 +1324,52 @@ function FAQAccordion({ faqs }: { faqs: FAQ[] }) {
 function ArticleView({ article, onBack }: { article: Article; onBack: () => void }) {
   const { go } = useNavigate();
   const reveal = useReveal(0);
+  const blockReveal = useReveal(0, "0px 0px -40px 0px");
   const [imgLoaded, setImgLoaded] = useState(false);
   const [imgError, setImgError] = useState(false);
+  const [showTop, setShowTop] = useState(false);
+  const articleRef = useRef<HTMLElement>(null);
+  const progressRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     setNavForceScrolled(true);
     return () => setNavForceScrolled(false);
   }, []);
+
+  // Reading progress bar + back-to-top visibility (DOM-driven to avoid re-rendering on every scroll)
+  useEffect(() => {
+    let raf = 0;
+    const update = () => {
+      raf = 0;
+      const el = articleRef.current;
+      if (!el) return;
+      const rect = el.getBoundingClientRect();
+      const total = el.offsetHeight - window.innerHeight;
+      const p = total > 0 ? Math.min(1, Math.max(0, -rect.top / total)) : 1;
+      if (progressRef.current) progressRef.current.style.transform = `scaleX(${p})`;
+      setShowTop(window.scrollY > 900);
+    };
+    const onScroll = () => { if (!raf) raf = requestAnimationFrame(update); };
+    update();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+      if (raf) cancelAnimationFrame(raf);
+    };
+  }, []);
+
+  const scrollToHeading = (item: string) => {
+    const norm = (s: string) => s.replace(/^\d+\.\s*/, "").trim();
+    const target = norm(item);
+    const headings = Array.from(articleRef.current?.querySelectorAll("h2") ?? []);
+    const h = headings.find(el => {
+      const t = norm(el.dataset.title ?? "");
+      return t === target || t.includes(target) || target.includes(t);
+    });
+    h?.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
 
   useSEO({
     title: `${article.title} — Algeria2Malaysia`,
@@ -1384,8 +1436,10 @@ function ArticleView({ article, onBack }: { article: Article; onBack: () => void
     const ls = content.trim().split("\n");
     const result: React.ReactNode[] = [];
     let i = 0;
+    let listIdx = 0;
     while (i < ls.length) {
       const line = ls[i];
+      if (!line.startsWith("- ") && !line.startsWith("* ") && line.trim() !== "") listIdx = 0;
 
       // Collect consecutive table rows into one scrollable block
       if ((line.startsWith("| ") || line.startsWith("|---")) && line.includes("|")) {
@@ -1419,17 +1473,62 @@ function ArticleView({ article, onBack }: { article: Article; onBack: () => void
         continue;
       }
 
+      const callout = line.match(/^\*\*([^*]+?):\*\*\s*(.+)$/);
+      const kind = callout ? calloutKind(callout[1]) : null;
+
       if (line.startsWith("## ")) {
-        result.push(<h2 key={i} className="text-xl font-extrabold text-gray-900 mt-8 mb-3 pb-2 border-b border-gray-100">{line.slice(3)}</h2>);
+        const text = line.slice(3);
+        const num = text.match(/^(\d+)\.\s+(.*)$/);
+        const title = num ? num[2] : text;
+        result.push(
+          <h2 key={i} data-title={title} className="scroll-mt-24 flex items-start gap-3 text-xl font-extrabold text-gray-900 mt-10 mb-4">
+            {num && (
+              <span className="article-h2-num flex-shrink-0 w-9 h-9 rounded-xl bg-gradient-to-br from-green-500 to-green-700 text-white text-base font-black flex items-center justify-center shadow-md shadow-green-600/25">
+                {num[1]}
+              </span>
+            )}
+            <span className="relative pb-2.5 leading-snug pt-0.5">
+              {title}
+              <span className="article-h2-bar absolute bottom-0 right-0 h-[3px] rounded-full bg-gradient-to-l from-green-600 to-emerald-300" />
+            </span>
+          </h2>
+        );
       } else if (line.startsWith("### ")) {
-        result.push(<h3 key={i} className="text-base font-extrabold text-green-800 mt-5 mb-2">{line.slice(4)}</h3>);
+        result.push(
+          <h3 key={i} className="flex items-center gap-2 text-base font-extrabold text-green-800 mt-6 mb-2">
+            <span className="w-1.5 h-4 rounded-full bg-green-500 flex-shrink-0" />
+            {line.slice(4)}
+          </h3>
+        );
+      } else if (kind && callout) {
+        const s = CALLOUT_STYLES[kind];
+        const Icon = s.icon;
+        result.push(
+          <div key={i} className={`article-callout flex items-start gap-3 my-5 p-4 rounded-2xl border shadow-sm ${s.box}`}>
+            <span className={`flex-shrink-0 w-8 h-8 rounded-xl ${s.iconBox} text-white flex items-center justify-center shadow-sm`}>
+              <Icon size={16} />
+            </span>
+            <p className="text-sm leading-relaxed text-gray-700 pt-1">
+              <strong className={`font-extrabold ${s.label}`}>{callout[1]}: </strong>
+              {renderInline(callout[2])}
+            </p>
+          </div>
+        );
+      } else if (line.startsWith("**") && line.endsWith("**") && !line.endsWith(":**") && line.length > 50) {
+        result.push(
+          <blockquote key={i} className="article-callout relative my-6 py-5 pr-12 pl-5 rounded-2xl bg-gradient-to-l from-green-50 via-emerald-50/50 to-white border-r-4 border-green-500 shadow-sm">
+            <Quote size={22} className="absolute top-4 right-3.5 text-green-400 rotate-180" />
+            <p className="font-bold text-green-900 text-[15px] leading-relaxed">{line.slice(2, -2)}</p>
+          </blockquote>
+        );
       } else if (line.startsWith("**") && line.endsWith("**")) {
         result.push(<p key={i} className="font-bold text-gray-800 mt-4 mb-1">{line.slice(2, -2)}</p>);
       } else if (line.startsWith("**")) {
         result.push(<p key={i} className="font-semibold text-gray-800 mt-4 mb-1">{renderInline(line)}</p>);
       } else if (line.startsWith("- ") || line.startsWith("* ")) {
+        const delay = Math.min(listIdx++, 8) * 60;
         result.push(
-          <div key={i} className="flex items-start gap-2 mb-1.5 mr-2">
+          <div key={i} className="article-li flex items-start gap-2 mb-1.5 mr-2 rounded-lg px-1 -mx-1 hover:bg-green-50/70" style={{ transitionDelay: `${delay}ms, ${delay}ms, 0ms` }}>
             <span className="text-green-500 flex-shrink-0 leading-5">✓</span>
             <span className="text-gray-700 text-sm leading-relaxed">{renderInline(line.slice(2))}</span>
           </div>
@@ -1446,8 +1545,43 @@ function ArticleView({ article, onBack }: { article: Article; onBack: () => void
     return result;
   };
 
+  // One reveal block per "## " section: small blocks animate in as you read,
+  // and never leave a tall invisible gap on mobile.
+  const renderSections = (content: string, keyPrefix: string) => {
+    const sections: string[][] = [];
+    let cur: string[] = [];
+    for (const l of content.trim().split("\n")) {
+      if (l.startsWith("## ") && cur.some(x => x.trim())) { sections.push(cur); cur = []; }
+      cur.push(l);
+    }
+    if (cur.length) sections.push(cur);
+    return sections.map((s, si) => (
+      <div key={`${keyPrefix}-${si}`} ref={blockReveal} className="article-block">
+        {renderContent(s.join("\n"))}
+      </div>
+    ));
+  };
+
   return (
     <>
+      {/* ── Reading progress ── */}
+      <div className="fixed top-0 inset-x-0 h-1 z-[60] pointer-events-none" aria-hidden="true">
+        <div
+          ref={progressRef}
+          className="h-full origin-right bg-gradient-to-l from-green-500 via-emerald-400 to-green-700 shadow-[0_0_8px_rgba(34,197,94,.6)]"
+          style={{ transform: "scaleX(0)" }}
+        />
+      </div>
+
+      {/* ── Back to top ── */}
+      <button
+        onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+        aria-label="العودة إلى الأعلى"
+        className={`fixed bottom-6 left-6 z-50 w-11 h-11 rounded-full bg-white border border-green-200 text-green-700 shadow-lg flex items-center justify-center transition-all duration-300 hover:bg-green-600 hover:text-white hover:-translate-y-1 ${showTop ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4 pointer-events-none"}`}
+      >
+        <ArrowUp size={18} />
+      </button>
+
       <div className="max-w-3xl mx-auto px-4 pb-16">
         <button
           onClick={onBack}
@@ -1457,7 +1591,7 @@ function ArticleView({ article, onBack }: { article: Article; onBack: () => void
           العودة للمقالات
         </button>
 
-        <article>
+        <article ref={articleRef}>
           {/* Header */}
           <div className="mb-6 animate-fade-in-up">
             <span className={`${article.tagColor} text-xs font-bold px-3 py-1 rounded-full`}>{article.tag}</span>
@@ -1475,18 +1609,22 @@ function ArticleView({ article, onBack }: { article: Article; onBack: () => void
           {/* ── Featured Image ── */}
           {article.featuredImage && !imgError && (
             <div className="mb-8 animate-fade-in-up">
-              <div className="relative rounded-2xl overflow-hidden border border-gray-200 shadow-md bg-gray-100">
+              <div
+                className="article-banner relative rounded-2xl overflow-hidden border border-gray-200 shadow-md hover:shadow-xl transition-shadow duration-500 bg-gray-100"
+                style={imgLoaded ? undefined : { aspectRatio: "16 / 9" }}
+              >
                 {!imgLoaded && (
-                  <div className="animate-pulse bg-gradient-to-r from-gray-200 via-gray-100 to-gray-200" style={{ height: 320 }} />
+                  <div className="absolute inset-0 animate-pulse bg-gradient-to-r from-gray-200 via-gray-100 to-gray-200" />
                 )}
+                {/* Full image, never cropped — banners carry the logo and headline near the edges */}
                 <img
                   src={article.featuredImage}
                   alt={article.title}
-                  className={`w-full object-cover transition-opacity duration-700 ${imgLoaded ? "opacity-100" : "opacity-0"}`}
-                  style={{ height: "clamp(180px, 40vw, 300px)", display: "block" }}
+                  className={`article-banner-img w-full h-auto block ${imgLoaded ? "loaded" : ""}`}
                   onLoad={() => setImgLoaded(true)}
                   onError={() => setImgError(true)}
                 />
+                <div className="article-banner-shine absolute inset-0 pointer-events-none" />
               </div>
             </div>
           )}
@@ -1502,11 +1640,17 @@ function ArticleView({ article, onBack }: { article: Article; onBack: () => void
               </div>
               <ol className="space-y-2 stagger-children revealed">
                 {article.toc.map((item, i) => (
-                  <li key={i} className="flex items-center gap-3 text-sm text-green-700 hover:text-green-900 transition-colors cursor-default">
-                    <span className="flex-shrink-0 w-6 h-6 rounded-full bg-green-600 text-white text-xs font-extrabold flex items-center justify-center shadow-sm">
-                      {i + 1}
-                    </span>
-                    <span className="leading-snug">{item}</span>
+                  <li key={i}>
+                    <button
+                      type="button"
+                      onClick={() => scrollToHeading(item)}
+                      className="group w-full flex items-center gap-3 text-sm text-right text-green-700 hover:text-green-900 rounded-lg -mx-1 px-1 py-0.5 hover:bg-white/70 transition-colors"
+                    >
+                      <span className="flex-shrink-0 w-6 h-6 rounded-full bg-green-600 text-white text-xs font-extrabold flex items-center justify-center shadow-sm group-hover:scale-110 group-hover:bg-green-700 transition-transform">
+                        {i + 1}
+                      </span>
+                      <span className="leading-snug group-hover:-translate-x-1 transition-transform">{item}</span>
+                    </button>
                   </li>
                 ))}
               </ol>
@@ -1514,20 +1658,22 @@ function ArticleView({ article, onBack }: { article: Article; onBack: () => void
           )}
 
           {/* ── Article Content ── */}
-          <div ref={reveal} className="section-reveal text-gray-700 leading-loose">
+          <div className="text-gray-700 leading-loose">
             {article.pricingPackages && article.content.includes("{{PRICING_PACKAGES}}") ? (
               (() => {
                 const [before, after] = article.content.split("{{PRICING_PACKAGES}}");
                 return (
                   <>
-                    {renderContent(before)}
-                    <PricingPackages packages={article.pricingPackages} />
-                    {after && renderContent(after)}
+                    {renderSections(before, "before")}
+                    <div ref={blockReveal} className="article-block">
+                      <PricingPackages packages={article.pricingPackages} />
+                    </div>
+                    {after && renderSections(after, "after")}
                   </>
                 );
               })()
             ) : (
-              renderContent(article.content)
+              renderSections(article.content, "body")
             )}
           </div>
 

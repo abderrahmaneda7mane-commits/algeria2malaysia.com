@@ -368,6 +368,9 @@
   from { opacity: 0; transform: translateY(10px); }
   to   { opacity: 1; transform: translateY(0); }
 }
+@keyframes banner-shine {
+  to { transform: translateX(120%); }
+}
 @keyframes reveal-width {
   from { width: 0; }
   to   { width: 100%; }
@@ -455,6 +458,60 @@
   .pricing-panel.open .pricing-feature { opacity: 1; transform: translateY(0); }
   .pricing-chevron { transition: transform .35s cubic-bezier(.16,1,.3,1); }
   .pricing-chevron.open { transform: rotate(180deg); }
+
+  /* ── Blog article reading experience ── */
+  .article-banner-img {
+    opacity: 0;
+    transform: scale(1.08);
+    transition: opacity .9s ease, transform 1.8s cubic-bezier(.16,1,.3,1);
+  }
+  .article-banner-img.loaded { opacity: 1; transform: scale(1); }
+  .article-banner:hover .article-banner-img.loaded { transform: scale(1.025); transition-duration: .9s, .9s; }
+  .article-banner-shine {
+    background: linear-gradient(110deg, transparent 30%, rgba(255,255,255,.45) 50%, transparent 70%);
+    transform: translateX(-120%);
+  }
+  .article-banner-img.loaded + .article-banner-shine { animation: banner-shine 1.6s .7s cubic-bezier(.4,0,.2,1) forwards; }
+
+  .article-block {
+    opacity: 0;
+    transform: translateY(26px);
+    transition: opacity .7s cubic-bezier(.16,1,.3,1), transform .7s cubic-bezier(.16,1,.3,1);
+  }
+  .article-block.revealed { opacity: 1; transform: translateY(0); }
+
+  .article-h2-num {
+    opacity: 0;
+    transform: scale(.4) rotate(-25deg);
+    transition: opacity .4s ease .15s, transform .6s cubic-bezier(.34,1.56,.64,1) .15s;
+  }
+  .article-block.revealed .article-h2-num { opacity: 1; transform: scale(1) rotate(0); }
+
+  .article-h2-bar { width: 0; transition: width .9s cubic-bezier(.16,1,.3,1) .3s; }
+  .article-block.revealed .article-h2-bar { width: 3.5rem; }
+
+  .article-li {
+    opacity: 0;
+    transform: translateX(18px);
+    transition: opacity .5s cubic-bezier(.16,1,.3,1), transform .5s cubic-bezier(.16,1,.3,1), background-color .2s ease;
+  }
+  .article-block.revealed .article-li { opacity: 1; transform: translateX(0); }
+
+  .article-callout {
+    opacity: 0;
+    transform: translateY(12px) scale(.97);
+    transition: opacity .6s ease .2s, transform .6s cubic-bezier(.34,1.4,.64,1) .2s, box-shadow .3s ease;
+  }
+  .article-block.revealed .article-callout { opacity: 1; transform: none; }
+  .article-callout:hover { box-shadow: 0 10px 28px -10px rgba(22,101,52,.25); }
+
+  @media (prefers-reduced-motion: reduce) {
+    .article-banner-img, .article-block, .article-h2-num, .article-li, .article-callout {
+      opacity: 1 !important; transform: none !important; transition: none !important;
+    }
+    .article-h2-bar { width: 3.5rem; transition: none; }
+    .article-banner-shine { display: none; }
+  }
 
   /* ── Glassmorphism ── */
   .glass {
